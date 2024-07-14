@@ -100,6 +100,7 @@ function formatFullDescription(description) {
 }
 
 function attachEventListeners() {
+    
     document.querySelectorAll('.info-button').forEach(button => {
         button.addEventListener('click', function() {
             const additionalInfo = this.closest('.tool-link, .concept').querySelector('.additional-info');
