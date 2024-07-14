@@ -1,0 +1,166 @@
+/* AI Section Styles */
+#text-generation-section {
+    direction: ltr;
+    text-align: left;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+#text-generation-section h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+#text-generation-section input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.button-container {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#generate-button {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    width: auto;
+    display: inline-block;
+}
+
+#generate-button:hover {
+    background-color: #005f7f;
+}
+
+.conversation-box {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #fff;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.user-message {
+    background-color: #e6f3ff;
+}
+
+.assistant-message {
+    background-color: #f0f0f0;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #008CBA;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+#generate-button,
+#tts-button {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin: 0 5px;
+}
+
+#generate-button:hover,
+#tts-button:hover {
+    background-color: #005f7f;
+}
+
+#tts-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+#tts-audio {
+    width: 100%;
+    margin-top: 15px;
+}
+
+#voice-select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 20px auto;
+}
+
+#voice-select:hover {
+    border-color: #999;
+}
+
+#voice-select:focus {
+    outline: none;
+    border-color: #008CBA;
+    box-shadow: 0 0 5px rgba(0,140,186,0.5);
+}
+
+/* Style for the label, if you want to add one */
+label[for="voice-select"] {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Container for the select, if you want to add a label */
+.select-container {
+    margin-bottom: 15px;
+}

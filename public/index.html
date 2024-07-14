@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div class="header-background"></div>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/ai-section.css">
+</head>
+<body>
+    <div id="linkedin-profile">
+        <a href="https://www.linkedin.com/in/leon-melamud/" target="_blank" rel="noopener noreferrer">
+            <img src="https://media.licdn.com/dms/image/D4D03AQF1r6hbdiYyCA/profile-displayphoto-shrink_200_200/0/1718693861077?e=1726099200&v=beta&t=wAPolpJrvMQzQOchmF-97QZ2H1UcsYKBR8H8Xhh7LUM" alt="Leon Melamud LinkedIn Profile" id="profile-picture">
+        </a>
+    </div>
+    <header>
+        <h1>המדריך המקיף לבינה מלאכותית</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#basics">יסודות</a></li>
+            <li><a href="#advanced-concepts">מושגים מתקדמים</a></li>
+            <li><a href="#libraries">ספריות וכלים</a></li>
+            <li><a href="#techniques">טכניקות מתקדמות</a></li>
+            <li><a href="#text-generation-section"> יצירת פרומטים וקול </a></li>
+        </ul>
+    </nav>
+
+    <div class="container clearfix">
+        <main class="main-content" id="mainContent">
+            <!-- Content will be dynamically inserted here -->
+        </main>
+
+        <aside class="sidebar" id="sidebar">
+            <h2>לינקים שימושיים</h2>
+            <!-- Sidebar content will be dynamically inserted here -->
+        </aside>
+    </div>
+   
+    <div lang="en" dir="ltr">
+        <div id="text-generation-section" class="container clearfix">
+            <h2>GPT-3.5 Text Generator</h2>
+            <div class="input-group">
+                <input type="text" id="api-key" placeholder="Enter your API key">
+            </div>
+            <div class="input-group">
+                <input type="text" id="prompt-input" placeholder="Enter your prompt">
+            </div>
+            <div class="button-container">
+                <button id="generate-button">Generate Text</button>
+            </div>
+            <div id="conversation-history" class="conversation-box"></div>
+            <div id="spinner" class="spinner" style="display: none;"></div>
+            <audio id="tts-audio" controls style="display: none;"></audio>
+            <div id="voice-selection" style="display: none;">
+                <label for="voice-select">Select Voice:</label>
+                <select id="voice-select">
+                    <option value="alloy">Alloy</option>
+                    <option value="echo">Echo</option>
+                    <option value="fable">Fable</option>
+                    <option value="onyx">Onyx</option>
+                    <option value="nova">Nova</option>
+                    <option value="shimmer">Shimmer</option>
+                </select>
+            </div>
+            <div id="token-usage" class="token-usage"></div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 המדריך המקיף לבינה מלאכותית. כל הזכויות שמורות.</p>
+    </footer>
+
+
+    <script src="js/main.js"></script>
+    <script src="js/llm-apis.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+</body>
+</html>
