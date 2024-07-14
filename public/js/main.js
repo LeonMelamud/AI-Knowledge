@@ -4,22 +4,9 @@ let lastLoadTime = 0;
 
 async function loadData() {
     try {
-        const [linksResponse, conceptsResponse] = await Promise.all([
-            fetch('links.yaml'),
-            fetch('concepts.yaml')
-        ]);
-
-        const [linksYaml, conceptsYaml] = await Promise.all([
-            linksResponse.text(),
-            conceptsResponse.text()
-        ]);
-
-        const data = {
-            links: jsyaml.load(linksYaml),
-            concepts: jsyaml.load(conceptsYaml),
-            timestamp: Date.now()
-        };
-
+        const response = await fetch('/data');
+        const data = await response.json();
+        
         if (!linksData || data.timestamp > lastLoadTime) {
             linksData = data.links;
             conceptsData = data.concepts;
@@ -31,7 +18,6 @@ async function loadData() {
         console.error('Error fetching data:', error);
     }
 }
-
 
 document.addEventListener('DOMContentLoaded', async function() {
     try {
