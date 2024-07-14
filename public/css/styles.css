@@ -360,3 +360,16 @@ input[type="text"],
     }
 }
 
+.code-block {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 1em;
+    margin: 1em 0;
+    overflow-x: auto;
+}
+
+.code-block code {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
