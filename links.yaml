@@ -2,7 +2,7 @@ tools:
   - id: chat-tools
     title: כלים של שפה
     items:
-      - name: ChatGpt
+      - name: ChatGPT
         company: OpenAi
         url: https://chatgpt.com/
         description: |
@@ -72,7 +72,7 @@ tools:
           לאחרונה הוספו תמיכה ב-Transformers.js להרצת מודלים בדפדפן וב-Transformers Tuner לאופטימיזציה של מודלים.
 
       - name: LangChain
-        company: פרויקט קוד פתוח
+        company: LangChain
         url: https://www.langchain.com/
         description: |
           LangChain היא מסגרת לפיתוח אפליקציות המבוססות על מודלים גדולים של שפה (LLMs). 
@@ -142,7 +142,22 @@ tools:
           הכלי מסוגל להנפיש תמונות, להרחיב סרטונים קיימים ואף למלא פריימים חסרים, תוך הקפדה על דיוק ופרטים
           
       - name: Runway(Gen-3)
-        company: Runway aiֿ
+        company: Runway ai
         url: https://runwayml.com/
         description: |
           כלים לעיבוד וידאו בזמן אמת וליצירת תוכן חזותי מתקדם בעזרת AI
+
+      - name: LivePortrait
+        company: open source
+        url: https://huggingface.co/spaces/KwaiVGI/LivePortrait
+        description: |
+          עיבוד תמונה ווידאו, חיקוי של תנועות פנים מוידאו לתוך תמונה סטטית.
+
+      - name: Play AI
+        company: PlayAI 
+        url: https://play.ai/
+        description: |
+          מדמה קול בשביל שירות לקוחות או כל עסק.
+          מקליטים שיחה קצרה עם הקול והוא מכין סוכן .
+          
+          my voice: https://play.ai/agent/YOUR-AI-CLONE-mUU6LGsosIX-ra3-jxn_-
