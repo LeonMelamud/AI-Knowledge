@@ -47,6 +47,9 @@ function buildContent() {
     if (mainContent && conceptsData && conceptsData.concepts) {
         mainContent.innerHTML = buildConcepts(conceptsData.concepts);
     }
+
+    // Initialize Prism.js after content is built
+    Prism.highlightAll();
 }
 
 function buildToolLinks(tools) {
@@ -85,7 +88,9 @@ function buildConcepts(concepts) {
                     <p>${item.shortDescription}</p>
                     <button class="info-button">הצג ${item.codeExample ? 'דוגמת קוד' : 'מידע מורחב'}</button>
                     <div class="additional-info" style="display: none;">
-                        ${item.codeExample ? `<pre><code>${item.codeExample}</code></pre>` : formatFullDescription(item.fullDescription)}
+                        ${item.codeExample 
+                            ? `<pre class="code-block"><code class="language-python">${escapeHtml(item.codeExample)}</code></pre>`
+                            : formatFullDescription(item.fullDescription)}
                     </div>
                 </div>
             `).join('')}
@@ -97,6 +102,15 @@ function formatFullDescription(description) {
     if(description === undefined)
         return '';
     return description.split('\n').map(line => `<p>${line}</p>`).join('');
+}
+
+function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
 }
 
 function attachEventListeners() {
