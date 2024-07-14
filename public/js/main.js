@@ -4,8 +4,16 @@ let lastLoadTime = 0;
 
 async function loadData() {
     try {
-        const response = await fetch('/data');
-        const data = await response.json();
+        let data;
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            // Local development: fetch from Express server
+            const response = await fetch('/data');
+            data = await response.json();
+        } else {
+            // Production: fetch from static JSON file
+            const response = await fetch('data.json');
+            data = await response.json();
+        }
         
         if (!linksData || data.timestamp > lastLoadTime) {
             linksData = data.links;
