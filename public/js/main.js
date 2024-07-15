@@ -98,7 +98,7 @@ function buildConcepts(concepts) {
                             <h4>דוגמת קוד:</h4>
                             <pre class="code-block"><code class="language-python">${escapeHtml(item.codeExample)}</code></pre>
                         ` : ''}
-                       
+                        <hr class="info-separator">
                     </div>
                 </div>
             `).join('')}
