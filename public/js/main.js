@@ -84,13 +84,21 @@ function buildConcepts(concepts) {
             <h2>${concept.title}</h2>
             ${concept.items.map(item => `
                 <div class="concept">
-                    <h3>${item.name}</h3>
+                    <h3>
+                        ${item.url 
+                            ? `<a href="${escapeHtml(item.url)}" target="_blank" class="concept-name">${escapeHtml(item.name)}</a>`
+                            : escapeHtml(item.name)}
+                    </h3>
                     <p>${item.shortDescription}</p>
-                    <button class="info-button">הצג ${item.codeExample ? 'דוגמת קוד' : 'מידע מורחב'}</button>
+                    <button class="info-button">הצג מידע מורחב</button>
                     <div class="additional-info" style="display: none;">
-                        ${item.codeExample 
-                            ? `<pre class="code-block"><code class="language-python">${escapeHtml(item.codeExample)}</code></pre>`
-                            : formatFullDescription(item.fullDescription)}
+                        ${formatFullDescription(item.fullDescription)}
+                        ${item.imageUrl ? `<div class="image-container"><img src="${escapeHtml(item.imageUrl)}" alt="${escapeHtml(item.name)}" class="concept-image"></div>` : ''}
+                        ${item.codeExample ? `
+                            <h4>דוגמת קוד:</h4>
+                            <pre class="code-block"><code class="language-python">${escapeHtml(item.codeExample)}</code></pre>
+                        ` : ''}
+                       
                     </div>
                 </div>
             `).join('')}
@@ -114,7 +122,6 @@ function escapeHtml(unsafe) {
 }
 
 function attachEventListeners() {
-    
     document.querySelectorAll('.info-button').forEach(button => {
         button.addEventListener('click', function() {
             const additionalInfo = this.closest('.tool-link, .concept').querySelector('.additional-info');
@@ -123,9 +130,11 @@ function attachEventListeners() {
                 this.textContent = 'הסתר מידע';
             } else {
                 additionalInfo.style.display = 'none';
-                this.textContent = this.closest('.concept') ? 
-                    `הצג ${this.closest('.concept').querySelector('.additional-info pre') ? 'דוגמת קוד' : 'מידע מורחב'}` : 
-                    'מידע נוסף';
+                if (this.closest('.concept')) {
+                    this.textContent = 'הצג מידע מורחב';
+                } else {
+                    this.textContent = 'מידע נוסף';
+                }
             }
         });
     });
