@@ -1,171 +1,151 @@
 tools:
-  - id: chat-tools
-    title: כלים של שפה
-    items:
-      - name: ChatGPT
-        company: OpenAi
-        url: https://chatgpt.com/
-        description: |
-          ChatGpt הוא מודל של עיבוד שפה טבעית מבית OpenAI, המסוגל להבין ולהפיק טקסט דמוי אנושי במגוון רחב של יישומים, כולל תשובות לשאלות, כתיבת טקסטים, ותרגום שפה.
-      - name: Claude
-        company: Anthropic
-        url: https://claude.ai/new
-        description: |
-          Claude הוא כלי של עיבוד שפה טבעית מבית Anthropic, המספק פתרונות מתקדמים לתקשורת טקסטואלית, סיווג טקסטים וניתוח שפה טבעית.
-      - name: Gemini
-        company: Google
-        url: https://gemini.google.com/
-        description: |
-          Gemini הוא כלי של עיבוד שפה טבעית מבית Google, המספק פתרונות לשיפור התקשורת בין אדם למחשב באמצעות ניתוח ושיפור טקסטים.
-          
-  - id: libraries
-    title: ספריות של כלים
-    items:
-      - name: TensorFlow
-        company: Google
-        url: https://www.tensorflow.org
-        description: |
-          TensorFlow היא ספריית קוד פתוח לחישוב נומרי ולמידת מכונה. היא מספקת מגוון רחב של כלים, ספריות ומשאבים קהילתיים 
-          שעוזרים לחוקרים להאיץ ML ו-AI חדשניים, ומאפשרים למפתחים לבנות ולפרוס בקלות יישומים מבוססי ML. 
-          היא תומכת במגוון רחב של יישומים, עם דגש מיוחד על אימון והסקה של רשתות עצביות עמוקות.
-        recentUpdates: |
-          לאחרונה, TensorFlow הוסיפה תמיכה ב-TensorFlow.js המאפשר הרצת מודלים בדפדפן וב-TensorFlow Lite המיועד למכשירים ניידים.
+- id: chat-tools
+  title: כלים של שפה
+  items:
+  - name: ChatGPT
+    company: OpenAi
+    url: https://chatgpt.com/
+    description: |
+      ChatGpt הוא מודל של עיבוד שפה טבעית מבית OpenAI, המסוגל להבין ולהפיק טקסט דמוי אנושי במגוון רחב של יישומים, כולל תשובות לשאלות, כתיבת טקסטים, ותרגום שפה.
+  - name: Claude
+    company: Anthropic
+    url: https://claude.ai/new
+    description: |
+      Claude הוא כלי של עיבוד שפה טבעית מבית Anthropic, המספק פתרונות מתקדמים לתקשורת טקסטואלית, סיווג טקסטים וניתוח שפה טבעית.
+  - name: Gemini
+    company: Google
+    url: https://gemini.google.com/
+    description: |
+      Gemini הוא כלי של עיבוד שפה טבעית מבית Google, המספק פתרונות לשיפור התקשורת בין אדם למחשב באמצעות ניתוח ושיפור טקסטים.
 
-      - name: PyTorch
-        company: Meta
-        url: https://pytorch.org
-        description: |
-          PyTorch היא ספריית למידה עמוקה פתוחה המספקת זרימת נתונים גמישה ומהירה מ-GPU. 
-          היא מאפשרת חישוב מהיר, אופטימיזציה אוטומטית של הנגזרות, וממשקי API עמוקים לעיבוד אותות, ראייה ממוחשבת ועיבוד שפה טבעית.
-          PyTorch ידועה בממשק הפייתוני האינטואיטיבי שלה ובגמישות שהיא מציעה למחקר בתחום הלמידה העמוקה.
-        recentUpdates: |
-          PyTorch 2.0 יצאה לאחרונה ומביאה שיפורים משמעותיים בביצועים ותמיכה בגרפיקה דינמית.
+- id: libraries
+  title: ספריות של כלים
+  items:
+  - name: TensorFlow
+    company: Google
+    url: https://www.tensorflow.org
+    description: "TensorFlow היא ספריית קוד פתוח לחישוב נומרי ולמידת מכונה. היא מספקת מגוון רחב של כלים, ספריות ומשאבים קהילתיים \nשעוזרים לחוקרים להאיץ ML ו-AI חדשניים, ומאפשרים למפתחים לבנות ולפרוס בקלות יישומים מבוססי ML. \nהיא תומכת במגוון רחב של יישומים, עם דגש מיוחד על אימון והסקה של רשתות עצביות עמוקות.\n"
+    recentUpdates: |
+      לאחרונה, TensorFlow הוסיפה תמיכה ב-TensorFlow.js המאפשר הרצת מודלים בדפדפן וב-TensorFlow Lite המיועד למכשירים ניידים.
 
-      - name: Scikit-learn
-        company: פרויקט קוד פתוח
-        url: https://scikit-learn.org
-        description: |
-          Scikit-learn היא ספריית למידת מכונה לשפת Python. היא מציעה כלים פשוטים ויעילים לניתוח נתונים ולמידת מכונה, 
-          נגישים לכולם ושימושיים במגוון הקשרים. היא בנויה על NumPy, SciPy ו-matplotlib, ומספקת מגוון 
-          רחב של אלגוריתמים לסיווג, רגרסיה, אשכול, הפחתת ממדים, בחירת מודל ועיבוד מקדים.
-        recentUpdates: |
-          גרסה 1.0 של Scikit-learn יצאה לאחרונה ומביאה עימה שיפורים באלגוריתמים חדשים ותמיכה במקביליות.
+  - name: PyTorch
+    company: Meta
+    url: https://pytorch.org
+    description: "PyTorch היא ספריית למידה עמוקה פתוחה המספקת זרימת נתונים גמישה ומהירה מ-GPU. \nהיא מאפשרת חישוב מהיר, אופטימיזציה אוטומטית של הנגזרות, וממשקי API עמוקים לעיבוד אותות, ראייה ממוחשבת ועיבוד שפה טבעית.\nPyTorch ידועה בממשק הפייתוני האינטואיטיבי שלה ובגמישות שהיא מציעה למחקר בתחום הלמידה העמוקה.\n"
+    recentUpdates: |
+      PyTorch 2.0 יצאה לאחרונה ומביאה שיפורים משמעותיים בביצועים ותמיכה בגרפיקה דינמית.
 
-      - name: Keras
-        company: TensorFlow (Google)
-        url: https://keras.io
-        description: |
-          Keras היא ממשק ברמה גבוהה לבניית ואימון מודלים של למידה עמוקה. היא מתוכננת להיות מודולרית, 
-          מהירה וידידותית למשתמש. היא מאפשרת יצירה מהירה של אבות טיפוס ותומכת הן ברשתות קונבולוציה 
-          והן ברשתות חוזרות, כמו גם בשילובים של השתיים.
-        recentUpdates: |
-          Keras משולבת בצורה מלאה עם TensorFlow, ותומכת ב-Keras Tuner לאופטימיזציה של היפר-פרמטרים.
+  - name: Scikit-learn
+    company: פרויקט קוד פתוח
+    url: https://scikit-learn.org
+    description: "Scikit-learn היא ספריית למידת מכונה לשפת Python. היא מציעה כלים פשוטים ויעילים לניתוח נתונים ולמידת מכונה, \nנגישים לכולם ושימושיים במגוון הקשרים. היא בנויה על NumPy, SciPy ו-matplotlib, ומספקת מגוון \nרחב של אלגוריתמים לסיווג, רגרסיה, אשכול, הפחתת ממדים, בחירת מודל ועיבוד מקדים.\n"
+    recentUpdates: |
+      גרסה 1.0 של Scikit-learn יצאה לאחרונה ומביאה עימה שיפורים באלגוריתמים חדשים ותמיכה במקביליות.
 
-      - name: Hugging Face Transformers
-        company: Hugging Face
-        url: https://huggingface.co/transformers/
-        description: |
-          Hugging Face Transformers היא ספרייה למודלי שפה מתקדמים, המספקת גישה קלה למודלים מאומנים מראש. 
-          היא כוללת ארכיטקטורות מובילות לעיבוד שפה טבעית (NLP) כמו BERT, GPT-2, RoBERTa, XLM, ועוד. 
-          הספרייה מאפשרת שימוש קל במודלים אלו למשימות כמו סיווג טקסט, זיהוי ישויות, תשובות לשאלות, ועוד.
-        recentUpdates: |
-          לאחרונה הוספו תמיכה ב-Transformers.js להרצת מודלים בדפדפן וב-Transformers Tuner לאופטימיזציה של מודלים.
+  - name: Keras
+    company: TensorFlow (Google)
+    url: https://keras.io
+    description: "Keras היא ממשק ברמה גבוהה לבניית ואימון מודלים של למידה עמוקה. היא מתוכננת להיות מודולרית, \nמהירה וידידותית למשתמש. היא מאפשרת יצירה מהירה של אבות טיפוס ותומכת הן ברשתות קונבולוציה \nוהן ברשתות חוזרות, כמו גם בשילובים של השתיים.\n"
+    recentUpdates: |
+      Keras משולבת בצורה מלאה עם TensorFlow, ותומכת ב-Keras Tuner לאופטימיזציה של היפר-פרמטרים.
 
-      - name: LangChain
-        company: LangChain
-        url: https://www.langchain.com/
-        description: |
-          LangChain היא מסגרת לפיתוח אפליקציות המבוססות על מודלים גדולים של שפה (LLMs). 
-          LangChain מספקת כלים ליצירת יישומים מורכבים המשלבים LLMs עם מקורות מידע חיצוניים ומאפשרת יצירת 
-          שרשראות של פעולות מורכבות. היא תומכת ביישום טכניקות כמו RAG ומאפשרת אינטגרציה 
-          קלה של LLMs עם מערכות קיימות.
-        recentUpdates: |
-          LangChain מוסיפה כלים חדשים לעבודה עם מודלים גנרטיביים וליצירת שרשראות מבוססות LLMs.
+  - name: Hugging Face Transformers
+    company: Hugging Face
+    url: https://huggingface.co/transformers/
+    description: "Hugging Face Transformers היא ספרייה למודלי שפה מתקדמים, המספקת גישה קלה למודלים מאומנים מראש. \nהיא כוללת ארכיטקטורות מובילות לעיבוד שפה טבעית (NLP) כמו BERT, GPT-2, RoBERTa, XLM, ועוד. \nהספרייה מאפשרת שימוש קל במודלים אלו למשימות כמו סיווג טקסט, זיהוי ישויות, תשובות לשאלות, ועוד.\n"
+    recentUpdates: |
+      לאחרונה הוספו תמיכה ב-Transformers.js להרצת מודלים בדפדפן וב-Transformers Tuner לאופטימיזציה של מודלים.
 
-      - name: LlamaIndex
-        company: פרויקט קוד פתוח
-        url: https://www.llamaindex.ai/
-        description: |
-          LlamaIndex היא ספרייה המתמחה באינדוקס ואחזור מידע יעיל עבור מודלים גדולים של שפה. 
-          LlamaIndex מספקת כלים לארגון וניהול של מידע מובנה ולא מובנה, ומאפשרת גישה יעילה למידע זה 
-          עבור LLMs. היא מציעה מגוון שיטות אינדוקס ואחזור, ותומכת ביישום יעיל של טכניקות כמו RAG.
-        recentUpdates: |
-          לאחרונה הוספה תמיכה באחזור בזמן אמת ושילוב עם מקורות נתונים נוספים.
+  - name: LangChain
+    company: LangChain
+    url: https://www.langchain.com/
+    description: "LangChain היא מסגרת לפיתוח אפליקציות המבוססות על מודלים גדולים של שפה (LLMs). \nLangChain מספקת כלים ליצירת יישומים מורכבים המשלבים LLMs עם מקורות מידע חיצוניים ומאפשרת יצירת \nשרשראות של פעולות מורכבות. היא תומכת ביישום טכניקות כמו RAG ומאפשרת אינטגרציה \nקלה של LLMs עם מערכות קיימות.\n"
+    recentUpdates: |
+      LangChain מוסיפה כלים חדשים לעבודה עם מודלים גנרטיביים וליצירת שרשראות מבוססות LLMs.
 
-      - name: OpenAI Gym
-        company: OpenAI
-        url: https://github.com/topics/openai-gym
-        description: |
-          OpenAI Gym היא ערכת כלים לפיתוח והשוואת אלגוריתמים של למידת חיזוקים (Reinforcement Learning). 
-          Gym מספקת ממשק סטנדרטי למגוון רחב של סביבות למידה, מבעיות פשוטות ועד משחקי וידאו 
-          מורכבים ובקרת רובוטים. היא מאפשרת למפתחים ליצור, להשוות ולשתף אלגוריתמים למידת 
-          חיזוקים בצורה קלה ואחידה.
-        recentUpdates: |
-          Gym הוסיפה תמיכה בסביבות חדשות ובשיפורים בתשתית למידת חיזוקים.
+  - name: LangGraph
+    company: LangChain
+    url: https://github.com/langchain-ai/langgraph
+    description: |
+      LangGraph היא ספריית Python המרחיבה את היכולות של LangChain לבניית אפליקציות מורכבות מבוססות LLM.
+      היא מאפשרת יצירת גרפים של זרימת מידע ובקרה, המורכבים מרכיבים שונים כמו LLMs, כלים, ומקורות מידע חיצוניים.
+      LangGraph מספקת מסגרת לתיאור ויישום של תהליכים מורכבים ורב-שלביים, כגון תכנון, פתרון בעיות, וקבלת החלטות.
+    recentUpdates: |
+      LangGraph היא ספרייה חדשה יחסית שהושקה בסוף 2023. עדכונים אחרונים כוללים שיפורים בתמיכה
+      בסוגים שונים של גרפים, כלים משופרים לדיבוג ווויזואליזציה של תהליכים, ואינטגרציה הדוקה יותר עם רכיבי LangChain.
+  - name: LlamaIndex
+    company: פרויקט קוד פתוח
+    url: https://www.llamaindex.ai/
+    description: "LlamaIndex היא ספרייה המתמחה באינדוקס ואחזור מידע יעיל עבור מודלים גדולים של שפה. \nLlamaIndex מספקת כלים לארגון וניהול של מידע מובנה ולא מובנה, ומאפשרת גישה יעילה למידע זה \nעבור LLMs. היא מציעה מגוון שיטות אינדוקס ואחזור, ותומכת ביישום יעיל של טכניקות כמו RAG.\n"
+    recentUpdates: |
+      לאחרונה הוספה תמיכה באחזור בזמן אמת ושילוב עם מקורות נתונים נוספים.
 
-      - name: Pandas
-        company: פרויקט קוד פתוח
-        url: https://pandas.pydata.org/
-        description: |
-          Pandas היא ספריית Python לניתוח וטיפול בנתונים. היא מספקת מבני נתונים מהירים, גמישים 
-          וביטויים, המיועדים להפוך את העבודה עם נתונים "מובנים" או "מתויגים" לקלה ואינטואיטיבית. 
-          היא מאפשרת לבצע פעולות מורכבות על נתונים בקלות, כולל מיזוג, עיצוב מחדש, בחירה, 
-          וניקוי נתונים.
-        recentUpdates: |
-          Pandas גרסה 1.4 יצאה לאחרונה ומביאה שיפורים בביצועים ותמיכה בתכונות חדשות כמו סוגי נתונים מותאמים אישית.
-  
-  - id: graphics
-    title: כלים של גרפיקה
-    items:
-      - name: Krea
-        company: Krea
-        url: https://www.krea.ai/home
-        description: |
-          הכלי מאפשר ליצור תמונות, סרטונים, עיצובים גרפיים ועוד, תוך שימוש בטקסט בלבד
+  - name: OpenAI Gym
+    company: OpenAI
+    url: https://github.com/topics/openai-gym
+    description: "OpenAI Gym היא ערכת כלים לפיתוח והשוואת אלגוריתמים של למידת חיזוקים (Reinforcement Learning). \nGym מספקת ממשק סטנדרטי למגוון רחב של סביבות למידה, מבעיות פשוטות ועד משחקי וידאו \nמורכבים ובקרת רובוטים. היא מאפשרת למפתחים ליצור, להשוות ולשתף אלגוריתמים למידת \nחיזוקים בצורה קלה ואחידה.\n"
+    recentUpdates: |
+      Gym הוסיפה תמיכה בסביבות חדשות ובשיפורים בתשתית למידת חיזוקים.
 
-      - name: Luma
-        company: lumalabs
-        url: https://lumalabs.ai/dream-machine
-        description: |
-          כלי המאפשר לכם ליצור סרטונים מקצועיים מטקסט באיכות גבוהה במהירות ובקלות
+  - name: Pandas
+    company: פרויקט קוד פתוח
+    url: https://pandas.pydata.org/
+    description: "Pandas היא ספריית Python לניתוח וטיפול בנתונים. היא מספקת מבני נתונים מהירים, גמישים \nוביטויים, המיועדים להפוך את העבודה עם נתונים \"מובנים\" או \"מתויגים\" לקלה ואינטואיטיבית. \nהיא מאפשרת לבצע פעולות מורכבות על נתונים בקלות, כולל מיזוג, עיצוב מחדש, בחירה, \nוניקוי נתונים.\n"
+    recentUpdates: |
+      Pandas גרסה 1.4 יצאה לאחרונה ומביאה שיפורים בביצועים ותמיכה בתכונות חדשות כמו סוגי נתונים מותאמים אישית.
 
-      - name: Pika ai
-        company: Pika ai
-        url: https://pika.art/home
-        description: |
-          פלטפורמה מבוססת AI המאפשרת למשתמשים ליצור וידאו בקלות ובמהירות, הן מטקסט והן מתמונות סטילס
+- id: graphics
+  title: כלים של גרפיקה
+  items:
+  - name: Krea
+    company: Krea
+    url: https://www.krea.ai/home
+    description: |
+      הכלי מאפשר ליצור תמונות, סרטונים, עיצובים גרפיים ועוד, תוך שימוש בטקסט בלבד
 
-      - name: Sora ai
-        company: openai
-        url: https://openai.com/index/sora/
-        description: |
-          הכלי מסוגל להנפיש תמונות, להרחיב סרטונים קיימים ואף למלא פריימים חסרים, תוך הקפדה על דיוק ופרטים
-          
-      - name: Runway(Gen-3)
-        company: Runway ai
-        url: https://runwayml.com/
-        description: |
-          כלים לעיבוד וידאו בזמן אמת וליצירת תוכן חזותי מתקדם בעזרת AI
+  - name: Luma
+    company: lumalabs
+    url: https://lumalabs.ai/dream-machine
+    description: |
+      כלי המאפשר לכם ליצור סרטונים מקצועיים מטקסט באיכות גבוהה במהירות ובקלות
 
-      - name: LivePortrait
-        company: open source
-        url: https://huggingface.co/spaces/KwaiVGI/LivePortrait
-        description: |
-          עיבוד תמונה ווידאו, חיקוי של תנועות פנים מוידאו לתוך תמונה סטטית.
+  - name: Pika ai
+    company: Pika ai
+    url: https://pika.art/home
+    description: |
+      פלטפורמה מבוססת AI המאפשרת למשתמשים ליצור וידאו בקלות ובמהירות, הן מטקסט והן מתמונות סטילס
 
-      - name: Play AI
-        company: PlayAI 
-        url: https://play.ai/
-        description: |
-          מדמה קול בשביל שירות לקוחות או כל עסק.
-          מקליטים שיחה קצרה עם הקול והוא מכין סוכן .
-          
-          my voice: https://play.ai/agent/YOUR-AI-CLONE-mUU6LGsosIX-ra3-jxn_-
-      
-      - name: Character AI
-        company: Character.AI
-        url: https://character.ai/
-        description: |
-          הוא צ'אט בוט מונע בינה מלאכותית המאפשר למשתמשים ליצור ולהתחבר עם מגוון דמויות AI.
-          משתמשים יכולים לעצב דמויות, לנהל שיחות, לשחק משחקי תפקידים ולפתח קשרים אישיים עם היצירות שלהם. הפלטפורמה מושכת קהל מגוון, כולל אנשים המחפשים חברות, תמיכה רגשית או מוצא יצירתי.
-          Character.AI מציע חוויה ייחודית שבה אנשים יכולים ליצור קשרים משמעותיים עם דמויות AI, מה שהופך אותו לפופולרי בקרב אנשים המחפשים אינטראקציה חברתית בצורה חדשה וחדשנית.
+  - name: Sora ai
+    company: openai
+    url: https://openai.com/index/sora/
+    description: |
+      הכלי מסוגל להנפיש תמונות, להרחיב סרטונים קיימים ואף למלא פריימים חסרים, תוך הקפדה על דיוק ופרטים
+
+  - name: Runway(Gen-3)
+    company: Runway ai
+    url: https://runwayml.com/
+    description: |
+      כלים לעיבוד וידאו בזמן אמת וליצירת תוכן חזותי מתקדם בעזרת AI
+
+  - name: LivePortrait
+    company: open source
+    url: https://huggingface.co/spaces/KwaiVGI/LivePortrait
+    description: |
+      עיבוד תמונה ווידאו, חיקוי של תנועות פנים מוידאו לתוך תמונה סטטית.
+
+  - name: Play AI
+    company: PlayAI
+    url: https://play.ai/
+    description: |
+      מדמה קול בשביל שירות לקוחות או כל עסק.
+      מקליטים שיחה קצרה עם הקול והוא מכין סוכן .
+
+      my voice: https://play.ai/agent/YOUR-AI-CLONE-mUU6LGsosIX-ra3-jxn_-
+
+  - name: Character AI
+    company: Character.AI
+    url: https://character.ai/
+    description: |
+      הוא צ'אט בוט מונע בינה מלאכותית המאפשר למשתמשים ליצור ולהתחבר עם מגוון דמויות AI.
+      משתמשים יכולים לעצב דמויות, לנהל שיחות, לשחק משחקי תפקידים ולפתח קשרים אישיים עם היצירות שלהם. הפלטפורמה מושכת קהל מגוון, כולל אנשים המחפשים חברות, תמיכה רגשית או מוצא יצירתי.
+      Character.AI מציע חוויה ייחודית שבה אנשים יכולים ליצור קשרים משמעותיים עם דמויות AI, מה שהופך אותו לפופולרי בקרב אנשים המחפשים אינטראקציה חברתית בצורה חדשה וחדשנית.
