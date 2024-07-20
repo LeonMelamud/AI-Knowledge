@@ -4,18 +4,27 @@ let lastLoadTime = 0;
 
 async function loadData() {
     try {
-        const response = await fetch('/data');
+        let data;
+        let response =null;
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            // Local development: fetch from Express server
+             response = await fetch('/data');
+            data = await response.json();
+        } else {
+            // Production: fetch from static JSON file
+             response = await fetch('data.json');
+            data = await response.json();
+        }
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = await response.json();
-        
         console.log('Received data:', data);
-
-        linksData = data.links;
+        if (!linksData || data.timestamp > lastLoadTime) {
+            linksData = data.links;
         conceptsData = data.concepts.concepts; // Access the nested 'concepts' array
         lastLoadTime = data.timestamp || Date.now();
-        
+            console.log('Data reloaded');
+        }
         if (!Array.isArray(conceptsData)) {
             console.error('conceptsData is not an array:', conceptsData);
             conceptsData = []; // Fallback to empty array to prevent errors
