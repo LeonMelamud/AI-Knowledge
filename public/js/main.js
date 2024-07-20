@@ -29,6 +29,15 @@ async function loadData() {
         buildNavigation();
         handleRoute();
         console.log('Data reloaded successfully');
+
+        if (typeof initRSSFeed === 'function') {
+            initRSSFeed();
+        } else {
+            console.error('initRSSFeed function not found. Make sure rss.js is loaded correctly.');
+        }
+        
+        console.log('Data loaded and RSS feed initialized');
+
     } catch (error) {
         console.error('Error fetching data:', error);
         document.getElementById('mainContent').innerHTML = `<p>Error loading data: ${error.message}. Please check the console for more details and refresh the page.</p>`;
@@ -58,12 +67,10 @@ function buildNavigation() {
         });
     }
 
-    // Add special sections
-    navUl.innerHTML += `
-        <li><a href="#/useful-links">לינקים שימושיים</a></li>
-        <li><a href="#/text-generation">יצירת פרומטים וקול</a></li>
-    `;
-
+   // Add special sections
+   navUl.innerHTML += `
+   <li><a href="#/text-generation">יצירת פרומטים וקול</a></li>
+`;
     // Add event listeners for navigation links
     document.querySelectorAll('nav a').forEach(link => {
         link.addEventListener('click', function(e) {
@@ -216,8 +223,66 @@ function attachEventListeners() {
     // Add event listeners for text generation if it's present
     const generateButton = document.getElementById('generate-button');
     if (generateButton) {
-        generateButton.addEventListener('click', handleGenerateText);
+        if (typeof handleGenerateText === 'function') {
+            generateButton.addEventListener('click', handleGenerateText);
+        } else {
+            console.warn('handleGenerateText function is not defined');
+            generateButton.addEventListener('click', () => alert('Text generation is not available at the moment.'));
+        }
     }
+}
+
+async function handleGenerateText() {
+    const apiKey = document.getElementById('api-key').value;
+    const prompt = document.getElementById('prompt-input').value;
+    const spinner = document.getElementById('spinner');
+    const conversationHistory = document.getElementById('conversation-history');
+    const tokenUsage = document.getElementById('token-usage');
+
+    if (!apiKey || !prompt) {
+        alert('Please enter both API key and prompt.');
+        return;
+    }
+
+    spinner.style.display = 'block';
+    try {
+        const response = await fetch('/generate-text', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ apiKey, prompt })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        // Add the new message to the conversation history
+        conversationHistory.innerHTML += `
+            <div class="message user-message">${prompt}</div>
+            <div class="message assistant-message">${data.text}</div>
+        `;
+
+        // Update token usage information
+        tokenUsage.textContent = `Tokens used: ${data.usage.total_tokens} (Prompt: ${data.usage.prompt_tokens}, Completion: ${data.usage.completion_tokens})`;
+
+        // Clear the prompt input
+        document.getElementById('prompt-input').value = '';
+
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while generating text. Please check the console for more details.');
+    } finally {
+        spinner.style.display = 'none';
+    }
+}
+
+function insertContent(content) {
+    const mainContent = document.getElementById('mainContent');
+    mainContent.innerHTML = `<div class="full-width">${content}</div>`;
 }
 
 document.addEventListener('DOMContentLoaded', loadData);

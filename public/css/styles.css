@@ -7,19 +7,77 @@ body {
     padding: 0;
     background: #f0f0f0 url('./Gemini_AI.jpeg') center center fixed;
     background-size: cover;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .container {
-    width: 90%;
+    width: 100%;
     max-width: 1200px;
-    margin: auto;
-    overflow: hidden;
+    margin: 20px auto;
+    padding: 0;
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+.main-content {
+    width: 100%;
+    min-height: 500px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Remove any float properties */
+.main-content,
+.sidebar {
+    float: none;
+}
+
+.main-content section {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+/* Ensure all direct children of main-content take full width */
+.main-content > * {
+    width: 100%;
+    box-sizing: border-box;
+}
+/* Clearfix */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .container {
+        width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 0px;
+    }
+    
+    .main-content {
+        padding: 0px;
+    }
+}
+.main-content {
+    overflow-x: hidden;
+}
+
+.main-content img,
+.main-content pre,
+.main-content code {
+    max-width: 100%;
+    height: auto;
 }
 
 /* Header styles */
@@ -75,7 +133,6 @@ nav a {
 nav a:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
-
 
 
 
@@ -150,11 +207,10 @@ input[type="text"],
     box-shadow: 0 0 15px rgba(0, 119, 181, 0.5);
 }
 
-
+/* Additional info styles */
 .company-name {
     font-style: italic;
     font-size: 0.9em;
-    flex: 1;
     text-align: center;
     padding: 0 10px;
     white-space: nowrap;
@@ -238,29 +294,7 @@ input[type="text"],
     white-space: pre-wrap;
 }
 
-/* Responsive styles */
-
-@media (max-width: 767px) {
-    header h1 {
-        font-size: 1.5em;
-    }
-    
-    nav li {
-        margin: 5px;
-    }
-    
-    nav a {
-        font-size: 14px;
-    }
-
-
-
-@media (max-width: 480px) {
-    .tool-name, .company-name {
-        font-size: 14px;
-    }
-}
-
+/* Code block styles */
 .code-block {
     background-color: #f5f5f5;
     border: 1px solid #ccc;
@@ -274,6 +308,8 @@ input[type="text"],
     white-space: pre-wrap;
     word-wrap: break-word;
 }
+
+/* Concept styles */
 .concept-name {
     color: #0066cc;
     text-decoration: none;
@@ -305,4 +341,82 @@ input[type="text"],
     margin-bottom: 20px;
     border: 0;
     border-top: 1px solid #eee;
+}
+
+/* Responsive styles */
+@media (max-width: 767px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+    
+    nav li {
+        margin: 5px;
+    }
+    
+    nav a {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tool-name, .company-name {
+        font-size: 14px;
+    }
+}
+
+
+
+/* RSS  */
+#sidebar {
+    background-color: #ffffff;
+    color: #333333;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    direction: ltr; /* Ensure left-to-right text direction */
+    text-align: left; /* Align text to the left */
+    border-left: 1px solid #e0e0e0;  /* Adding a subtle border */
+}
+
+
+#sidebar h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #000000;  /* Black title */
+    border-bottom: 2px solid #ffa500;  /* Orange underline for the title */
+    padding-bottom: 10px;
+}
+
+.rss-feed {
+    list-style-type: none;
+    padding: 0;
+}
+
+.rss-feed li {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;  /* Separator between items */
+}
+
+.rss-feed li:last-child {
+    border-bottom: none;  /* Remove border from last item */
+}
+
+.rss-feed a {
+    color: #0066cc;  /* Blue color for links */
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.rss-feed a:hover {
+    color: #004499;  /* Darker blue on hover */
+    text-decoration: underline;
+}
+
+.pub-date {
+    font-size: 12px;
+    color: #666666;
+    display: block;
 }
