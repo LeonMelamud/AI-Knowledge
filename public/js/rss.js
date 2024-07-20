@@ -1,7 +1,17 @@
+import { config } from './config.js';
 // Function to fetch and parse RSS feed
 async function fetchRSSFeed(url) {
     try {
-        const response = await fetch(`/proxy-rss?url=${encodeURIComponent(url)}`);
+        let fetchUrl;
+        if (config.isLocal) {
+            fetchUrl = `${config.proxyUrl}?url=${encodeURIComponent(url)}`;
+        } else if (config.isGitHubPages) {
+            fetchUrl = `${config.proxyUrl}${url}`;
+        } else {
+            fetchUrl = `${config.proxyUrl}?url=${encodeURIComponent(url)}`;
+        }
+
+        const response = await fetch(fetchUrl);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -48,12 +58,13 @@ function renderRSSFeed(xmlDoc) {
 
 
 // Function to initialize RSS feed
-async function initRSSFeed() {
+export function initRSSFeed() {
     const rssUrl = 'https://www.nasdaq.com/feed/rssoutbound?category=Artificial+Intelligence';
-    const xmlDoc = await fetchRSSFeed(rssUrl);
-    if (xmlDoc) {
-        renderRSSFeed(xmlDoc);
-    }
+    return fetchRSSFeed(rssUrl).then(xmlDoc => {
+        if (xmlDoc) {
+            renderRSSFeed(xmlDoc);
+        }
+    });
 }
 
 // Make initRSSFeed available globally
