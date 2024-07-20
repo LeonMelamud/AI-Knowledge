@@ -1,3 +1,4 @@
+
 let linksData;
 let conceptsData;
 let lastLoadTime = 0;
@@ -39,13 +40,10 @@ async function loadData() {
         handleRoute();
         console.log('Data reloaded successfully');
 
-        if (typeof initRSSFeed === 'function') {
-            initRSSFeed();
-        } else {
-            console.error('initRSSFeed function not found. Make sure rss.js is loaded correctly.');
-        }
-        
+        // Initialize RSS feed
+        await initRSSFeed();
         console.log('Data loaded and RSS feed initialized');
+        
 
     } catch (error) {
         console.error('Error fetching data:', error);

@@ -1,10 +1,23 @@
 const express = require('express');
 const fs = require('fs').promises;
+const cors = require('cors');  // Add this line to import cors
+
 const yaml = require('js-yaml');
 const path = require('path');
 const app = express();
 const port = process.env.PORT || 8085;
+const allowedOrigins = ['http://localhost:8085', 'https://leonmelamud.github.io'];
 
+app.use(cors({
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
 app.use(express.static('public'));
 
 app.get('/data', async (req, res) => {
@@ -40,6 +53,7 @@ app.get('/data', async (req, res) => {
         res.status(500).json({ error: 'Failed to load data', details: error.message });
     }
 });
+
 app.get('/proxy-rss', async (req, res) => {
     try {
         const url = req.query.url;
