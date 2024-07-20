@@ -40,6 +40,21 @@ app.get('/data', async (req, res) => {
         res.status(500).json({ error: 'Failed to load data', details: error.message });
     }
 });
+app.get('/proxy-rss', async (req, res) => {
+    try {
+        const url = req.query.url;
+        if (!url) {
+            return res.status(400).send('URL parameter is required');
+        }
+        const response = await fetch(url);
+        const text = await response.text();
+        res.set('Content-Type', 'text/xml');
+        res.send(text);
+    } catch (error) {
+        console.error('Error fetching RSS feed:', error);
+        res.status(500).send('Error fetching RSS feed');
+    }
+});
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

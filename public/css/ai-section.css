@@ -400,3 +400,29 @@ label[for="voice-select"] {
         margin: 5px 0;
     }
 }
+
+
+#text-generation-section {
+    direction: ltr;
+    text-align: left;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+/* Ensure all elements inside take full width */
+#text-generation-section > * {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.full-width {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
