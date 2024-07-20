@@ -9,17 +9,20 @@ async function createDataJson() {
 
         console.log('Reading YAML files from:', publicDir);
 
+        // Read YAML files
         const [linksYaml, conceptsYaml] = await Promise.all([
             fs.readFile(path.join(publicDir, 'links.yaml'), 'utf8'),
             fs.readFile(path.join(publicDir, 'concepts.yaml'), 'utf8')
         ]);
 
+        // Create data.json
         const data = {
             links: yaml.load(linksYaml),
             concepts: yaml.load(conceptsYaml),
             timestamp: Date.now()
         };
 
+        // Write data.json
         const outputPath = path.join(publicDir, 'data.json');
         await fs.writeFile(outputPath, JSON.stringify(data, null, 2));
         console.log('data.json created successfully at:', outputPath);

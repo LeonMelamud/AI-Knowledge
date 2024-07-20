@@ -15,20 +15,31 @@ document.addEventListener('DOMContentLoaded', function() {
     let isGenerating = false;
     let lastGeneratedText = "";
 
+    /**
+     * Handles the click event on the generate button.
+     * Prevents double-clicking by checking if the generating flag is set.
+     * If the API key or prompt is missing, it displays an alert and returns.
+     * Otherwise, it calls the generateText function with the API key and prompt.
+     */
     function handleGenerateText() {
-        if (isGenerating) return; // Prevent double-click
-
+        // Prevent double-clicking
+        if (isGenerating) return;
+        
+        // Get the API key and prompt from the input fields
         const apiKey = apiKeyInput?.value;
         const promptText = promptInput?.value;
         
+        // Check if the API key or prompt is missing
         if (!apiKey || !promptText) {
+            // Display an alert and return
             alert("Please enter your API key and a prompt.");
             return;
         }
         
+        // Call the generateText function with the API key and prompt
         generateText(apiKey, promptText);
     }
-
+    
     if (generateButton) {
         generateButton.addEventListener("click", handleGenerateText);
     }

@@ -5,40 +5,42 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 8085;
 
-const publicDir = path.join(__dirname, 'public');
-
-app.use(express.static(publicDir));
+app.use(express.static('public'));
 
 app.get('/data', async (req, res) => {
     try {
-        const linksPath = path.join(publicDir, 'links.yaml');
-        const conceptsPath = path.join(publicDir, 'concepts.yaml');
+        const conceptsPath = path.join(__dirname, 'public', 'concepts.yaml');
+        const linksPath = path.join(__dirname, 'public', 'links.yaml');
 
-        console.log('Attempting to read from:', linksPath);
-        console.log('Attempting to read from:', conceptsPath);
+        console.log('Attempting to read:', conceptsPath);
+        console.log('Attempting to read:', linksPath);
 
-        const [linksYaml, conceptsYaml] = await Promise.all([
-            fs.readFile(linksPath, 'utf8'),
-            fs.readFile(conceptsPath, 'utf8')
+        const [conceptsYaml, linksYaml] = await Promise.all([
+            fs.readFile(conceptsPath, 'utf8'),
+            fs.readFile(linksPath, 'utf8')
         ]);
-        
+
+        console.log('YAML files read successfully');
+
+        const concepts = yaml.load(conceptsYaml);
+        const links = yaml.load(linksYaml);
+
+ 
+
         const data = {
-            links: yaml.load(linksYaml),
-            concepts: yaml.load(conceptsYaml),
+            concepts: concepts,
+            links: links,
             timestamp: Date.now()
         };
-        
+
+
         res.json(data);
     } catch (error) {
-        console.error('Error loading data:', error);
-        if (error.code === 'ENOENT') {
-            console.error('File not found:', error.path);
-        }
+        console.error('Detailed error in /data route:', error);
         res.status(500).json({ error: 'Failed to load data', details: error.message });
     }
 });
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
-    console.log('Public directory:', publicDir);
 });

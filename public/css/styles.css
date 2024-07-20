@@ -76,22 +76,8 @@ nav a:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Main content and sidebar layout */
-main {
-    padding: 20px 0;
-}
 
-.sidebar {
-    width: 100%;
-    margin-top: 20px;
-}
 
-.main-content {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    min-height: 100vh;
-}
 
 /* Button styles */
 .button, 
@@ -164,32 +150,6 @@ input[type="text"],
     box-shadow: 0 0 15px rgba(0, 119, 181, 0.5);
 }
 
-/* Sidebar tool link styles */
-.useful-links {
-    margin-top: 20px;
-}
-
-.tool-link {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-.tool-main-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.tool-name {
-    font-weight: bold;
-    text-decoration: none;
-    color: #0066cc;
-    flex: 1;
-    text-align: start;
-}
 
 .company-name {
     font-style: italic;
@@ -279,22 +239,6 @@ input[type="text"],
 }
 
 /* Responsive styles */
-@media (min-width: 768px) {
-    .sidebar {
-        float: left;
-        width: 30%;
-    }
-    
-    .main-content {
-        float: right;
-        width: 65%;
-    }
-
-    #profile-picture {
-        width: 60px;
-        height: 60px;
-    }
-}
 
 @media (max-width: 767px) {
     header h1 {
@@ -309,50 +253,7 @@ input[type="text"],
         font-size: 14px;
     }
 
-    .sidebar {
-        width: 100%;
-        margin-top: 20px;
-    }
 
-    .sidebar .tool-link {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .sidebar .tool-main-info {
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .sidebar .tool-name,
-    .sidebar .company-name,
-    .sidebar .info-button {
-        width: 100%;
-        text-align: left;
-        margin-bottom: 5px;
-    }
-
-    .sidebar .info-button {
-        padding: 8px;
-        font-size: 14px;
-    }
-
-    .sidebar .additional-info {
-        width: 100%;
-    }
-
-    .main-content {
-        width: 100%;
-        padding: 10px;
-    }
-
-    .container {
-        width: 95%;
-        padding: 10px;
-    }
-}
 
 @media (max-width: 480px) {
     .tool-name, .company-name {

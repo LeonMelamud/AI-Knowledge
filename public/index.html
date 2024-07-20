@@ -21,12 +21,8 @@
     </header>
     
     <nav>
-        <ul>
-            <li><a href="#basics">יסודות</a></li>
-            <li><a href="#advanced-concepts">מושגים מתקדמים</a></li>
-            <li><a href="#libraries">ספריות וכלים</a></li>
-            <li><a href="#techniques">טכניקות מתקדמות</a></li>
-            <li><a href="#text-generation-section"> יצירת פרומטים וקול </a></li>
+        <ul id="main-nav">
+            <!-- Navigation items will be dynamically inserted here -->
         </ul>
     </nav>
 
@@ -35,42 +31,8 @@
             <!-- Content will be dynamically inserted here -->
         </main>
 
-        <aside class="sidebar" id="sidebar">
-            <h2>לינקים שימושיים</h2>
-            <!-- Sidebar content will be dynamically inserted here -->
-        </aside>
     </div>
-   
-    <div lang="en" dir="ltr">
-        <div id="text-generation-section" class="container clearfix">
-            <h2>GPT-3.5 Text Generator</h2>
-            <div class="input-group">
-                <input type="text" id="api-key" placeholder="Enter your API key">
-            </div>
-            <div class="input-group">
-                <input type="text" id="prompt-input" placeholder="Enter your prompt">
-            </div>
-            <div class="button-container">
-                <button id="generate-button">Generate Text</button>
-            </div>
-            <div id="conversation-history" class="conversation-box"></div>
-            <div id="spinner" class="spinner" style="display: none;"></div>
-            <audio id="tts-audio" controls style="display: none;"></audio>
-            <div id="voice-selection" style="display: none;">
-                <label for="voice-select">Select Voice:</label>
-                <select id="voice-select">
-                    <option value="alloy">Alloy</option>
-                    <option value="echo">Echo</option>
-                    <option value="fable">Fable</option>
-                    <option value="onyx">Onyx</option>
-                    <option value="nova">Nova</option>
-                    <option value="shimmer">Shimmer</option>
-                </select>
-            </div>
-            <div id="token-usage" class="token-usage"></div>
-        </div>
-    </div>
-    
+
     <footer>
         <p>&copy; 2024 המדריך המקיף לבינה מלאכותית. כל הזכויות שמורות.</p>
     </footer>
