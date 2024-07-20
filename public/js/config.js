@@ -2,10 +2,9 @@ const isLocal = window.location.hostname === 'localhost' || window.location.host
 const isGitHubPages = window.location.hostname === 'leonmelamud.github.io';
 
 export const config = {
-  apiUrl:  'https://o0rmue7xt0.execute-api.il-central-1.amazonaws.com/dev',
-  proxyUrl: isLocal
-    ? 'http://localhost:8085/proxy-rss'
-    : 'https://cors-anywhere.herokuapp.com/',
+  apiUrl:  'https://www.nasdaq.com/feed/rssoutbound?category=Artificial+Intelligence',
+  proxyUrl:  'http://localhost:8085/proxy-rss'
+    ,
   isLocal: isLocal,
   isGitHubPages: isGitHubPages
 };
