@@ -4,111 +4,182 @@ let lastLoadTime = 0;
 
 async function loadData() {
     try {
-        let data;
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            // Local development: fetch from Express server
-            const response = await fetch('/data');
-            data = await response.json();
-        } else {
-            // Production: fetch from static JSON file
-            const response = await fetch('data.json');
-            data = await response.json();
+        const response = await fetch('/data');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        
+        console.log('Received data:', data);
+
+        linksData = data.links;
+        conceptsData = data.concepts.concepts; // Access the nested 'concepts' array
+        lastLoadTime = data.timestamp || Date.now();
+        
+        if (!Array.isArray(conceptsData)) {
+            console.error('conceptsData is not an array:', conceptsData);
+            conceptsData = []; // Fallback to empty array to prevent errors
         }
         
-        if (!linksData || data.timestamp > lastLoadTime) {
-            linksData = data.links;
-            conceptsData = data.concepts;
-            lastLoadTime = data.timestamp;
-            buildContent();
-            console.log('Data reloaded');
+        if (!Array.isArray(linksData?.tools)) {
+            console.error('linksData.tools is not an array:', linksData?.tools);
+            linksData = { tools: [] }; // Fallback to empty array to prevent errors
         }
+        
+        buildNavigation();
+        handleRoute();
+        console.log('Data reloaded successfully');
     } catch (error) {
         console.error('Error fetching data:', error);
+        document.getElementById('mainContent').innerHTML = `<p>Error loading data: ${error.message}. Please check the console for more details and refresh the page.</p>`;
     }
 }
 
-document.addEventListener('DOMContentLoaded', async function() {
-    try {
-        await loadData();
-        attachEventListeners();
-    } catch (error) {
-        console.error('Error during DOMContentLoaded:', error);
-    }
-});
 
-function buildContent() {
-    const sidebar = document.getElementById('sidebar');
+function buildNavigation() {
+    const navUl = document.getElementById('main-nav');
+    navUl.innerHTML = ''; // Clear existing navigation
+
+    // Add concepts to navigation
+    if (Array.isArray(conceptsData)) {
+        conceptsData.forEach(concept => {
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="#/${concept.id}">${concept.title}</a>`;
+            navUl.appendChild(li);
+        });
+    }
+
+    // Add links to navigation
+    if (Array.isArray(linksData?.tools)) {
+        linksData.tools.forEach(tool => {
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="#/${tool.id}">${tool.title}</a>`;
+            navUl.appendChild(li);
+        });
+    }
+
+    // Add special sections
+    navUl.innerHTML += `
+        <li><a href="#/useful-links">לינקים שימושיים</a></li>
+        <li><a href="#/text-generation">יצירת פרומטים וקול</a></li>
+    `;
+
+    // Add event listeners for navigation links
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const route = this.getAttribute('href').slice(2); // Remove '#/' from href
+            window.location.hash = '/' + route;
+        });
+    });
+}
+
+
+function handleRoute() {
+    const hash = window.location.hash.slice(2) || 'ai-basics';
+    updateContent(hash);
+}
+
+function updateContent(route) {
     const mainContent = document.getElementById('mainContent');
-    
-    if (sidebar && linksData && linksData.tools) {
-        sidebar.innerHTML = buildToolLinks(linksData.tools);
+    mainContent.innerHTML = '';
+
+    let content = '';
+
+    if (route === 'useful-links') {
+        content = buildContentSection(linksData.tools, 'tool');
+    } else {
+        const concept = conceptsData.find(c => c.id === route);
+        const tool = linksData.tools.find(t => t.id === route);
+        
+        if (concept) {
+            content = buildContentSection([concept], 'concept');
+        } else if (tool) {
+            content = buildContentSection([tool], 'tool');
+        } else if (route === 'text-generation') {
+            content = buildTextGenerationSection();
+        } else {
+            content = '<p>לא נמצא תוכן מתאים.</p>';
+        }
     }
 
-    if (mainContent && conceptsData && conceptsData.concepts) {
-        mainContent.innerHTML = buildConcepts(conceptsData.concepts);
-    }
-
-    // Initialize Prism.js after content is built
+    mainContent.innerHTML = content;
     Prism.highlightAll();
+    attachEventListeners();
 }
 
-function buildToolLinks(tools) {
-    return tools.map(tool => `
-        <section id="${tool.id}">
-        <h3>${tool.title}</h3>
-        <div class="useful-links">
-            ${tool.items.map(tool => `
-                <div class="tool-link">
-                    <div class="tool-main-info">
-                        <a href="${tool.url}" target="_blank" class="tool-name">${tool.name}</a>
-                        <span class="company-name">${tool.company}</span>
-                        <div class="info-button-container">
-                            <button class="info-button">מידע נוסף</button>
+function buildContentSection(items, type) {
+    return `
+        ${items.map(item => `
+            <section id="${item.id}">
+                <h2>${item.title}</h2>
+                <div class="${type === 'tool' ? 'useful-links' : 'concepts'}">
+                    ${item.items.map(subItem => `
+                        <div class="${type}-link">
+                            <div class="${type}-main-info">
+                                ${type === 'tool' 
+                                    ? `<a href="${subItem.url}" target="_blank" class="${type}-name">${subItem.name}</a>
+                                       <span class="company-name">${subItem.company}</span>`
+                                    : `<h3>${subItem.name}</h3>
+                                       <p>${subItem.shortDescription}</p>`
+                                }
+                                <button class="info-button">מידע נוסף</button>
+                            </div>
+                            <div class="additional-info" style="display: none;">
+                                ${formatFullDescription(type === 'tool' ? subItem.description : subItem.fullDescription)}
+                                ${type === 'tool' && subItem.recentUpdates 
+                                    ? `<div>${formatFullDescription(subItem.recentUpdates)}</div>` 
+                                    : ''}
+                                ${type === 'concept' && subItem.imageUrl 
+                                    ? `<img src="${subItem.imageUrl}" alt="${subItem.name}" class="concept-image">` 
+                                    : ''}
+                                ${type === 'concept' && subItem.codeExample 
+                                    ? `<h4>דוגמת קוד:</h4>
+                                       <pre><code class="language-python">${escapeHtml(subItem.codeExample)}</code></pre>` 
+                                    : ''}
+                            </div>
                         </div>
-                    </div>
-                    <div class="additional-info" style="display: none;">
-                    ${formatFullDescription(tool.description)}
-                    <div>${formatFullDescription(tool.recentUpdates)} </div>
-                    </div>
+                    `).join('')}
                 </div>
-            `).join('')}
+            </section>
+        `).join('')}
+    `;
+}
+
+function buildTextGenerationSection() {
+    return `
+        <h2>יצירת פרומטים וקול</h2>
+        <div id="text-generation-section">
+            <h3>GPT-3.5 Text Generator</h3>
+            <div class="input-group">
+                <input type="text" id="api-key" placeholder="Enter your API key">
+            </div>
+            <div class="input-group">
+                <input type="text" id="prompt-input" placeholder="Enter your prompt">
+            </div>
+            <div class="button-container">
+                <button id="generate-button">Generate Text</button>
+            </div>
+            <div id="conversation-history" class="conversation-box"></div>
+            <div id="spinner" class="spinner" style="display: none;"></div>
+            <audio id="tts-audio" controls style="display: none;"></audio>
+            <div id="voice-selection" style="display: none;">
+                <label for="voice-select">Select Voice:</label>
+                <select id="voice-select">
+                    <option value="alloy">Alloy</option>
+                    <option value="echo">Echo</option>
+                    <option value="fable">Fable</option>
+                    <option value="onyx">Onyx</option>
+                    <option value="nova">Nova</option>
+                    <option value="shimmer">Shimmer</option>
+                </select>
+            </div>
+            <div id="token-usage" class="token-usage"></div>
         </div>
-    `).join('');
+    `;
 }
-
-
-
-function buildConcepts(concepts) {
-    return concepts.map(concept => `
-        <section id="${concept.id}">
-            <h2>${concept.title}</h2>
-            ${concept.items.map(item => `
-                <div class="concept">
-                    <h3>
-                        ${item.url 
-                            ? `<a href="${escapeHtml(item.url)}" target="_blank" class="concept-name">${escapeHtml(item.name)}</a>`
-                            : escapeHtml(item.name)}
-                    </h3>
-                    <p>${item.shortDescription}</p>
-                    <button class="info-button">הצג מידע מורחב</button>
-                    <div class="additional-info" style="display: none;">
-                        ${formatFullDescription(item.fullDescription)}
-                        ${item.imageUrl ? `<div class="image-container"><img src="${escapeHtml(item.imageUrl)}" alt="${escapeHtml(item.name)}" class="concept-image"></div>` : ''}
-                        ${item.codeExample ? `
-                            <h4>דוגמת קוד:</h4>
-                            <pre class="code-block"><code class="language-python">${escapeHtml(item.codeExample)}</code></pre>
-                        ` : ''}
-                        <hr class="info-separator">
-                    </div>
-                </div>
-            `).join('')}
-        </section>
-    `).join('');
-}
-
 function formatFullDescription(description) {
-    if(description === undefined)
-        return '';
+    if(description === undefined) return '';
     return description.split('\n').map(line => `<p>${line}</p>`).join('');
 }
 
@@ -121,21 +192,33 @@ function escapeHtml(unsafe) {
          .replace(/'/g, "&#039;");
 }
 
+
 function attachEventListeners() {
-    document.querySelectorAll('.info-button').forEach(button => {
+    const infoButtons = document.querySelectorAll('.info-button');
+    infoButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const additionalInfo = this.closest('.tool-link, .concept').querySelector('.additional-info');
-            if (additionalInfo.style.display === 'none' || additionalInfo.style.display === '') {
-                additionalInfo.style.display = 'block';
-                this.textContent = 'הסתר מידע';
-            } else {
-                additionalInfo.style.display = 'none';
-                if (this.closest('.concept')) {
-                    this.textContent = 'הצג מידע מורחב';
-                } else {
-                    this.textContent = 'מידע נוסף';
+            const parentElement = this.closest('.tool-link, .concept-link');
+            if (parentElement) {
+                const additionalInfo = parentElement.querySelector('.additional-info');
+                if (additionalInfo) {
+                    if (additionalInfo.style.display === 'none' || additionalInfo.style.display === '') {
+                        additionalInfo.style.display = 'block';
+                        this.textContent = 'הסתר מידע';
+                    } else {
+                        additionalInfo.style.display = 'none';
+                        this.textContent = parentElement.classList.contains('concept-link') ? 'הצג מידע מורחב' : 'מידע נוסף';
+                    }
                 }
             }
         });
     });
+
+    // Add event listeners for text generation if it's present
+    const generateButton = document.getElementById('generate-button');
+    if (generateButton) {
+        generateButton.addEventListener('click', handleGenerateText);
+    }
 }
+
+document.addEventListener('DOMContentLoaded', loadData);
+window.addEventListener('hashchange', handleRoute);
