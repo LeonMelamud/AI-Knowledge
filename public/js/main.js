@@ -1,4 +1,5 @@
-
+import { config } from './config.js';
+import { initRSSFeed } from './rss.js';
 let linksData;
 let conceptsData;
 let lastLoadTime = 0;
