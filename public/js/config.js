@@ -2,6 +2,8 @@ const isLocal = window.location.hostname === 'localhost' || window.location.host
 
 export const config = {
   apiUrl: 'https://www.nasdaq.com/feed/rssoutbound?category=Artificial+Intelligence',
-  proxyUrl: isLocal ? 'http://localhost:8085/proxy-rss' : '',
+  proxyUrl: isLocal 
+    ? 'http://localhost:8085/proxy-rss' 
+    : 'https://corsproxy.io/?',
   isLocal: isLocal
 };
