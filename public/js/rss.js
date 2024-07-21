@@ -19,13 +19,16 @@ async function initParser() {
 }
 
 // Function to fetch and parse RSS feed
-async function fetchRSSFeed(url) {
+async function fetchRSSFeed() {
     try {
         await initParser();
-        let fetchUrl = config.isLocal ? `${config.proxyUrl}?url=${encodeURIComponent(url)}` : url;
+        let url = config.isLocal 
+            ? `${config.proxyUrl}?url=${encodeURIComponent(config.apiUrl)}`
+            : `${config.proxyUrl}${encodeURIComponent(config.apiUrl)}`;
         
-        let feed = await parser.parseURL(fetchUrl);
-        return feed;
+        const response = await fetch(url);
+        const text = await response.text();
+        return parser.parseString(text);
     } catch (error) {
         console.error('Error fetching RSS feed:', error);
         return null;
