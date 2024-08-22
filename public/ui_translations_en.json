@@ -1,0 +1,17 @@
+{
+  "moreInfo": "More Info",
+  "hideInfo": "Hide Info",
+  "showMoreInfo": "Show More Info",
+  "generatePromptsAndVoice": "Generate Prompts and Voice",
+  "noMatchingContent": "No matching content found.",
+  "codeExample": "Code Example:",
+  "enterApiKey": "Enter your API key",
+  "enterPrompt": "Enter your prompt",
+  "generateText": "Generate Text",
+  "selectVoice": "Select Voice:",
+  "enterApiKeyAndPrompt": "Please enter both API key and prompt.",
+  "tokensUsed": "Tokens used: {total} (Prompt: {prompt}, Completion: {completion})",
+  "textGenerationError": "An error occurred while generating text. Please check the console for more details.",
+  "textGenerationUnavailable": "Text generation is not available at the moment.",
+  "heroTitle": "The AI Knowledge Base"
+}

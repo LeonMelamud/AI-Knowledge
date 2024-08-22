@@ -1,0 +1,17 @@
+{
+  "moreInfo": "מידע נוסף",
+  "hideInfo": "הסתר מידע",
+  "showMoreInfo": "הצג מידע מורחב",
+  "generatePromptsAndVoice": "יצירת פרומטים וקול",
+  "noMatchingContent": "לא נמצא תוכן מתאים.",
+  "codeExample": "דוגמת קוד:",
+  "enterApiKey": "הכנס את מפתח ה-API שלך",
+  "enterPrompt": "הכנס את הפרומפט שלך",
+  "generateText": "צור טקסט",
+  "selectVoice": "בחר קול:",
+  "enterApiKeyAndPrompt": "אנא הכנס גם מפתח API וגם פרומפט.",
+  "tokensUsed": "אסימונים בשימוש: {total} (פרומפט: {prompt}, השלמה: {completion})",
+  "textGenerationError": "אירעה שגיאה בעת יצירת הטקסט. אנא בדוק את הקונסול לפרטים נוספים.",
+  "textGenerationUnavailable": "יצירת טקסט אינה זמינה כרגע.",
+  "heroTitle": "המדריך המקיף לבינה מלאכותית"
+}

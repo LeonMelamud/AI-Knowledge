@@ -19,14 +19,17 @@ body {
     background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     box-sizing: border-box;
+    position: relative;
+    z-index: 1;
 }
 
 .main-content {
     width: 100%;
     min-height: 500px;
-    background-color: #f9f9f9;
+    background-color: rgba(249, 249, 249, 0.9);
     padding: 20px;
     box-sizing: border-box;
+    position: relative;
 }
 
 /* Remove any float properties */
@@ -40,11 +43,13 @@ body {
     padding: 0;
     margin: 0;
 }
+
 /* Ensure all direct children of main-content take full width */
 .main-content > * {
     width: 100%;
     box-sizing: border-box;
 }
+
 /* Clearfix */
 .clearfix::after {
     content: "";
@@ -66,9 +71,28 @@ body {
     }
     
     .main-content {
-        padding: 0px;
+        padding: 10px;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-left: none;
+        padding: 10px;
+    }
+
+    #sidebar h2 {
+        font-size: 20px;
+    }
+
+    .rss-feed a {
+        font-size: 14px;
+    }
+
+    .pub-date {
+        font-size: 10px;
     }
 }
+
 .main-content {
     overflow-x: hidden;
 }
@@ -80,32 +104,41 @@ body {
     height: auto;
 }
 
-/* Header styles */
-header {
+/* Hero section styles */
+.hero-section {
     background: url('./3.jpg') no-repeat center center;
     background-size: cover;
     color: #ffffff;
-    padding: 20px 0;
-    height: auto;
-    min-height: 150px;
-    position: relative;
+    padding: 100px 0;
     text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
 }
 
-header h1 {
+.hero-section::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero-section h1 {
+    position: relative;
+    z-index: 2;
     margin: 0;
-    font-size: 2em;
+    font-size: 3em;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    padding: 20px;
 }
 
 /* Navigation styles */
 nav {
     background: rgba(146, 147, 149, 0.9);
     padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 nav ul {
@@ -133,8 +166,6 @@ nav a {
 nav a:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
-
-
 
 /* Button styles */
 .button, 
@@ -233,9 +264,36 @@ input[type="text"],
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: rgba(249, 249, 249, 0.9);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+#text-generation-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #f3f3f3, #e6e6e6);
+    opacity: 0.5;
+    z-index: -1;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .conversation-box {
@@ -245,7 +303,7 @@ input[type="text"],
     border-radius: 4px;
     padding: 10px;
     margin-bottom: 15px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .message {
@@ -255,11 +313,11 @@ input[type="text"],
 }
 
 .user-message {
-    background-color: #e6f3ff;
+    background-color: rgba(230, 243, 255, 0.8);
 }
 
 .assistant-message {
-    background-color: #f0f0f0;
+    background-color: rgba(240, 240, 240, 0.8);
 }
 
 #tts-audio {
@@ -287,7 +345,7 @@ input[type="text"],
 .token-usage {
     margin-top: 20px;
     padding: 10px;
-    background-color: #f0f0f0;
+    background-color: rgba(240, 240, 240, 0.8);
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 14px;
@@ -296,7 +354,7 @@ input[type="text"],
 
 /* Code block styles */
 .code-block {
-    background-color: #f5f5f5;
+    background-color: rgba(245, 245, 245, 0.9);
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 1em;
@@ -345,8 +403,8 @@ input[type="text"],
 
 /* Responsive styles */
 @media (max-width: 767px) {
-    header h1 {
-        font-size: 1.5em;
+    .hero-section h1 {
+        font-size: 2em;
     }
     
     nav li {
@@ -364,11 +422,9 @@ input[type="text"],
     }
 }
 
-
-
 /* RSS  */
 #sidebar {
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.9);
     color: #333333;
     padding: 20px;
     font-family: Arial, sans-serif;
@@ -376,7 +432,6 @@ input[type="text"],
     text-align: left; /* Align text to the left */
     border-left: 1px solid #e0e0e0;  /* Adding a subtle border */
 }
-
 
 #sidebar h2 {
     font-size: 24px;
@@ -419,4 +474,42 @@ input[type="text"],
     font-size: 12px;
     color: #666666;
     display: block;
+}
+
+/* Responsive layout for sidebar */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .main-content,
+    .sidebar {
+        width: 100%;
+    }
+
+    #sidebar {
+        border-left: none;
+        border-top: 1px solid #e0e0e0;
+        margin-top: 20px;
+        padding-top: 20px;
+    }
+}
+
+/* Additional responsive adjustments */
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 1.5em;
+    }
+
+    #sidebar h2 {
+        font-size: 18px;
+    }
+
+    .rss-feed a {
+        font-size: 14px;
+    }
+
+    .pub-date {
+        font-size: 10px;
+    }
 }

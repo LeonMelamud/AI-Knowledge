@@ -3,18 +3,20 @@ import { initRSSFeed } from './rss.js';
 let linksData;
 let conceptsData;
 let lastLoadTime = 0;
+let currentLanguage = 'en'; // Default language set to English
+let uiTranslations = {};
 
 async function loadData() {
     try {
         let data;
-        let response =null;
+        let response = null;
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
             // Local development: fetch from Express server
-             response = await fetch('/data');
+            response = await fetch('/data');
             data = await response.json();
         } else {
             // Production: fetch from static JSON file
-             response = await fetch('data.json');
+            response = await fetch('data.json');
             data = await response.json();
         }
         if (!response.ok) {
@@ -23,8 +25,8 @@ async function loadData() {
         console.log('Received data:', data);
         if (!linksData || data.timestamp > lastLoadTime) {
             linksData = data.links;
-        conceptsData = data.concepts.concepts; // Access the nested 'concepts' array
-        lastLoadTime = data.timestamp || Date.now();
+            conceptsData = data.concepts.concepts; // Access the nested 'concepts' array
+            lastLoadTime = data.timestamp || Date.now();
             console.log('Data reloaded');
         }
         if (!Array.isArray(conceptsData)) {
@@ -37,21 +39,60 @@ async function loadData() {
             linksData = { tools: [] }; // Fallback to empty array to prevent errors
         }
         
-        buildNavigation();
-        handleRoute();
-        console.log('Data reloaded successfully');
-
-        // Initialize RSS feed
-        await initRSSFeed();
+        await loadLanguageData(currentLanguage);
         console.log('Data loaded and RSS feed initialized');
-        
-
     } catch (error) {
         console.error('Error fetching data:', error);
         document.getElementById('mainContent').innerHTML = `<p>Error loading data: ${error.message}. Please check the console for more details and refresh the page.</p>`;
     }
 }
 
+async function loadLanguageData(lang) {
+    try {
+        const [conceptsResponse, translationsResponse, linksResponse ] = await Promise.all([
+            fetch(`/concepts_${lang}.yaml`),
+            fetch(`/ui_translations_${lang}.json`),
+            fetch(`/links_${lang}.yaml`)
+        ]);
+
+        if (!conceptsResponse.ok || !translationsResponse.ok || !linksResponse.ok) {
+            throw new Error(`HTTP error! Concepts status: ${conceptsResponse.status}, Translations status: ${translationsResponse.status} Links status: ${linksResponse.status}`);
+        }
+
+        const conceptsYaml = await conceptsResponse.text();
+        const linksYaml = await linksResponse.text();
+        conceptsData = jsyaml.load(conceptsYaml).concepts;
+        linksData = jsyaml.load(linksYaml).tools;
+
+        uiTranslations = await translationsResponse.json();
+
+        currentLanguage = lang;
+
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
+
+
+        buildNavigation();
+        handleRoute();
+
+        console.log('Data reloaded successfully');
+
+        // Initialize RSS feed
+        await initRSSFeed();
+        updatePageContent();
+    } catch (error) {
+        console.error('Error loading language data:', error);
+    }
+}
+
+function updatePageContent() {
+    // Update static text elements
+    document.querySelector('.hero-section h1').textContent = uiTranslations.heroTitle;
+    document.querySelector('footer p').textContent = uiTranslations.footerText;
+    
+    // Update dynamic content
+    handleRoute();
+}
 
 function buildNavigation() {
     const navUl = document.getElementById('main-nav');
@@ -77,7 +118,7 @@ function buildNavigation() {
 
    // Add special sections
    navUl.innerHTML += `
-   <li><a href="#/text-generation">יצירת פרומטים וקול</a></li>
+   <li><a href="#/text-generation">${uiTranslations.generatePromptsAndVoice}</a></li>
 `;
     // Add event listeners for navigation links
     document.querySelectorAll('nav a').forEach(link => {
@@ -88,7 +129,6 @@ function buildNavigation() {
         });
     });
 }
-
 
 function handleRoute() {
     const hash = window.location.hash.slice(2) || 'ai-basics';
@@ -102,10 +142,10 @@ function updateContent(route) {
     let content = '';
 
     if (route === 'useful-links') {
-        content = buildContentSection(linksData.tools, 'tool');
+        content = buildContentSection(linksData, 'tool');
     } else {
         const concept = conceptsData.find(c => c.id === route);
-        const tool = linksData.tools.find(t => t.id === route);
+        const tool = linksData.find(t => t.id === route);
         
         if (concept) {
             content = buildContentSection([concept], 'concept');
@@ -114,7 +154,7 @@ function updateContent(route) {
         } else if (route === 'text-generation') {
             content = buildTextGenerationSection();
         } else {
-            content = '<p>לא נמצא תוכן מתאים.</p>';
+            content = `<p>${uiTranslations.noMatchingContent}</p>`;
         }
     }
 
@@ -138,7 +178,7 @@ function buildContentSection(items, type) {
                                     : `<h3>${subItem.name}</h3>
                                        <p>${subItem.shortDescription}</p>`
                                 }
-                                <button class="info-button">מידע נוסף</button>
+                                <button class="info-button">${uiTranslations.moreInfo}</button>
                             </div>
                             <div class="additional-info" style="display: none;">
                                 ${formatFullDescription(type === 'tool' ? subItem.description : subItem.fullDescription)}
@@ -149,7 +189,7 @@ function buildContentSection(items, type) {
                                     ? `<img src="${subItem.imageUrl}" alt="${subItem.name}" class="concept-image">` 
                                     : ''}
                                 ${type === 'concept' && subItem.codeExample 
-                                    ? `<h4>דוגמת קוד:</h4>
+                                    ? `<h4>${uiTranslations.codeExample}</h4>
                                        <pre><code class="language-python">${escapeHtml(subItem.codeExample)}</code></pre>` 
                                     : ''}
                             </div>
@@ -163,23 +203,23 @@ function buildContentSection(items, type) {
 
 function buildTextGenerationSection() {
     return `
-        <h2>יצירת פרומטים וקול</h2>
+        <h2>${uiTranslations.generatePromptsAndVoice}</h2>
         <div id="text-generation-section">
             <h3>GPT-3.5 Text Generator</h3>
             <div class="input-group">
-                <input type="text" id="api-key" placeholder="Enter your API key">
+                <input type="text" id="api-key" placeholder="${uiTranslations.enterApiKey}">
             </div>
             <div class="input-group">
-                <input type="text" id="prompt-input" placeholder="Enter your prompt">
+                <input type="text" id="prompt-input" placeholder="${uiTranslations.enterPrompt}">
             </div>
             <div class="button-container">
-                <button id="generate-button">Generate Text</button>
+                <button id="generate-button">${uiTranslations.generateText}</button>
             </div>
             <div id="conversation-history" class="conversation-box"></div>
             <div id="spinner" class="spinner" style="display: none;"></div>
             <audio id="tts-audio" controls style="display: none;"></audio>
             <div id="voice-selection" style="display: none;">
-                <label for="voice-select">Select Voice:</label>
+                <label for="voice-select">${uiTranslations.selectVoice}</label>
                 <select id="voice-select">
                     <option value="alloy">Alloy</option>
                     <option value="echo">Echo</option>
@@ -193,6 +233,7 @@ function buildTextGenerationSection() {
         </div>
     `;
 }
+
 function formatFullDescription(description) {
     if(description === undefined) return '';
     return description.split('\n').map(line => `<p>${line}</p>`).join('');
@@ -207,7 +248,6 @@ function escapeHtml(unsafe) {
          .replace(/'/g, "&#039;");
 }
 
-
 function attachEventListeners() {
     const infoButtons = document.querySelectorAll('.info-button');
     infoButtons.forEach(button => {
@@ -218,10 +258,12 @@ function attachEventListeners() {
                 if (additionalInfo) {
                     if (additionalInfo.style.display === 'none' || additionalInfo.style.display === '') {
                         additionalInfo.style.display = 'block';
-                        this.textContent = 'הסתר מידע';
+                        this.textContent = uiTranslations.hideInfo;
                     } else {
                         additionalInfo.style.display = 'none';
-                        this.textContent = parentElement.classList.contains('concept-link') ? 'הצג מידע מורחב' : 'מידע נוסף';
+                        this.textContent = parentElement.classList.contains('concept-link') 
+                            ? uiTranslations.showMoreInfo
+                            : uiTranslations.moreInfo;
                     }
                 }
             }
@@ -235,8 +277,16 @@ function attachEventListeners() {
             generateButton.addEventListener('click', handleGenerateText);
         } else {
             console.warn('handleGenerateText function is not defined');
-            generateButton.addEventListener('click', () => alert('Text generation is not available at the moment.'));
+            generateButton.addEventListener('click', () => alert(uiTranslations.textGenerationUnavailable));
         }
+    }
+
+    // Add event listener for language selector
+    const languageSelector = document.getElementById('language-selector');
+    if (languageSelector) {
+        languageSelector.addEventListener('change', function() {
+            loadLanguageData(this.value);
+        });
     }
 }
 
@@ -248,7 +298,7 @@ async function handleGenerateText() {
     const tokenUsage = document.getElementById('token-usage');
 
     if (!apiKey || !prompt) {
-        alert('Please enter both API key and prompt.');
+        alert(uiTranslations.enterApiKeyAndPrompt);
         return;
     }
 
@@ -275,17 +325,25 @@ async function handleGenerateText() {
         `;
 
         // Update token usage information
-        tokenUsage.textContent = `Tokens used: ${data.usage.total_tokens} (Prompt: ${data.usage.prompt_tokens}, Completion: ${data.usage.completion_tokens})`;
+        tokenUsage.textContent = formatString(uiTranslations.tokensUsed, {
+            total: data.usage.total_tokens,
+            prompt: data.usage.prompt_tokens,
+            completion: data.usage.completion_tokens
+        });
 
         // Clear the prompt input
         document.getElementById('prompt-input').value = '';
 
     } catch (error) {
         console.error('Error:', error);
-        alert('An error occurred while generating text. Please check the console for more details.');
+        alert(uiTranslations.textGenerationError);
     } finally {
         spinner.style.display = 'none';
     }
+}
+
+function formatString(template, values) {
+    return template.replace(/{(\w+)}/g, (_, key) => values[key] || '');
 }
 
 function insertContent(content) {
@@ -293,5 +351,17 @@ function insertContent(content) {
     mainContent.innerHTML = `<div class="full-width">${content}</div>`;
 }
 
-document.addEventListener('DOMContentLoaded', loadData);
+document.addEventListener('DOMContentLoaded', () => {
+    loadData();
+    
+    // Add event listener for language selector
+    const languageSelector = document.getElementById('language-selector');
+    if (languageSelector) {
+        languageSelector.value = currentLanguage;
+        languageSelector.addEventListener('change', function() {
+            loadLanguageData(this.value);
+        });
+    }
+});
+
 window.addEventListener('hashchange', handleRoute);
