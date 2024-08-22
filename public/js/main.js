@@ -48,7 +48,7 @@ async function loadData() {
 
     } catch (error) {
         console.error('Error fetching data:', error);
-        document.getElementById('mainContent').innerText = `<p>Error loading data: ${error.message}. Please check the console for more details and refresh the page.</p>`;
+        document.getElementById('mainContent').innerHTML = `<p>Error loading data: ${error.message}. Please check the console for more details and refresh the page.</p>`;
     }
 }
 
@@ -61,7 +61,7 @@ function buildNavigation() {
     if (Array.isArray(conceptsData)) {
         conceptsData.forEach(concept => {
             const li = document.createElement('li');
-            li.innerText = `<a href="#/${concept.id}">${concept.title}</a>`;
+            li.innerHTML = `<a href="#/${concept.id}">${concept.title}</a>`;
             navUl.appendChild(li);
         });
     }
@@ -70,7 +70,7 @@ function buildNavigation() {
     if (Array.isArray(linksData?.tools)) {
         linksData.tools.forEach(tool => {
             const li = document.createElement('li');
-            li.innerText = `<a href="#/${tool.id}">${tool.title}</a>`;
+            li.innerHTML = `<a href="#/${tool.id}">${tool.title}</a>`;
             navUl.appendChild(li);
         });
     }
@@ -78,7 +78,6 @@ function buildNavigation() {
    // Add special sections
    navUl.innerHTML += `
    <li><a href="#/text-generation">יצירת פרומטים וקול</a></li>
-   <li><a href="#/ rag-docs">שאל שאלות לגבי המסמכים שלך</a></li>    
 `;
     // Add event listeners for navigation links
     document.querySelectorAll('nav a').forEach(link => {
@@ -119,7 +118,7 @@ function updateContent(route) {
         }
     }
 
-    mainContent.innerText = content;
+    mainContent.innerHTML = content;
     Prism.highlightAll();
     attachEventListeners();
 }
@@ -270,7 +269,7 @@ async function handleGenerateText() {
         const data = await response.json();
         
         // Add the new message to the conversation history
-        conversationHistory.innerText += `
+        conversationHistory.innerHTML += `
             <div class="message user-message">${prompt}</div>
             <div class="message assistant-message">${data.text}</div>
         `;
