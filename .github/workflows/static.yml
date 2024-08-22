@@ -41,8 +41,8 @@ jobs:
       - name: Debug - List node_modules
         run: ls -la node_modules
 
-      - name: Create data.json
-        run: node build.js
+      # - name: Create data.json
+      #   run: node build.js
 
       - name: Debug - List public directory
         run: ls -la public
