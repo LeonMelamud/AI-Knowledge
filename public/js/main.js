@@ -1,4 +1,3 @@
-import { config } from './config.js';
 import { initRSSFeed } from './rss.js';
 let linksData;
 let conceptsData;
@@ -6,21 +5,10 @@ let lastLoadTime = 0;
 let currentLanguage = 'en'; // Default language set to English
 let uiTranslations = {};
 
-async function loadData() {
+async function loadInitialData() {
     try {
-        await loadLanguageData(currentLanguage,'.');
-        // if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        //     // Local development: fetch from Express server
-        //     // response = await fetch('/data');
-        //     // data = await response.json();
-        //     await loadLanguageData(currentLanguage);
-        // } else {
-        //     await loadLanguageData(currentLanguage,'/public');
-        //     // Production: fetch from static JSON file
-        //     // response = await fetch('data.json');
-        //     // data = await response.json();
-        // }       
-        
+        await loadLanguageData(currentLanguage,'.');      
+        console.log('Initial data loaded successfully');
     } catch (error) {
         console.error('Error fetching data:', error);
         document.getElementById('mainContent').innerHTML = `<p>Error loading data: ${error.message}. Please check the console for more details and refresh the page.</p>`;
@@ -53,14 +41,13 @@ async function loadLanguageData(lang, path = '.') {
 
 
         buildNavigation();
-        handleRoute();
-
         console.log('Data reloaded successfully');
 
         // Initialize RSS feed
         await initRSSFeed();
         console.log('Data loaded and RSS feed initialized');
         updatePageContent();
+        handleRoute();
     } catch (error) {
         console.error('Error loading language data:', error);
     }
@@ -71,8 +58,6 @@ function updatePageContent() {
     document.querySelector('.hero-section h1').textContent = uiTranslations.heroTitle;
     document.querySelector('footer p').textContent = uiTranslations.footerText;
     
-    // Update dynamic content
-    handleRoute();
 }
 
 function buildNavigation() {
@@ -333,14 +318,15 @@ function insertContent(content) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadData();
-    
+    loadInitialData();
     // Add event listener for language selector
     const languageSelector = document.getElementById('language-selector');
     if (languageSelector) {
         languageSelector.value = currentLanguage;
         languageSelector.addEventListener('change', function() {
-            loadLanguageData(this.value);
+            if (newLanguage !== currentLanguage) {
+                loadLanguageData(newLanguage);
+            }
         });
     }
 });
