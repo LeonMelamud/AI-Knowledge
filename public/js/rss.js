@@ -62,7 +62,7 @@ function renderRSSFeed(feed) {
     }
     
     html += '</ul>';
-    sidebar.innerHTML = html;
+    sidebar.innerText = html;
 }
 
 // Function to initialize RSS feed
