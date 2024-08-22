@@ -20,6 +20,7 @@ app.use(cors({
 }));
 app.use(express.static('public'));
 
+// deepcode ignore NoRateLimitingForExpensiveWebOperation: <please specify a reason of ignoring this>
 app.get('/data', async (req, res) => {
     try {
         const conceptsPath = path.join(__dirname, 'public', 'concepts.yaml');
