@@ -8,51 +8,30 @@ let uiTranslations = {};
 
 async function loadData() {
     try {
-        let data;
-        let response = null;
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
             // Local development: fetch from Express server
-            response = await fetch('/data');
-            data = await response.json();
+            // response = await fetch('/data');
+            // data = await response.json();
+            await loadLanguageData(currentLanguage);
         } else {
+            await loadLanguageData(currentLanguage,'/public');
             // Production: fetch from static JSON file
-            response = await fetch('data.json');
-            data = await response.json();
-        }
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        console.log('Received data:', data);
-        if (!linksData || data.timestamp > lastLoadTime) {
-            linksData = data.links;
-            conceptsData = data.concepts.concepts; // Access the nested 'concepts' array
-            lastLoadTime = data.timestamp || Date.now();
-            console.log('Data reloaded');
-        }
-        if (!Array.isArray(conceptsData)) {
-            console.error('conceptsData is not an array:', conceptsData);
-            conceptsData = []; // Fallback to empty array to prevent errors
-        }
+            // response = await fetch('data.json');
+            // data = await response.json();
+        }       
         
-        if (!Array.isArray(linksData?.tools)) {
-            console.error('linksData.tools is not an array:', linksData?.tools);
-            linksData = { tools: [] }; // Fallback to empty array to prevent errors
-        }
-        
-        await loadLanguageData(currentLanguage);
-        console.log('Data loaded and RSS feed initialized');
     } catch (error) {
         console.error('Error fetching data:', error);
         document.getElementById('mainContent').innerHTML = `<p>Error loading data: ${error.message}. Please check the console for more details and refresh the page.</p>`;
     }
 }
 
-async function loadLanguageData(lang) {
+async function loadLanguageData(lang, path = '.') {
     try {
         const [conceptsResponse, translationsResponse, linksResponse ] = await Promise.all([
-            fetch(`/concepts_${lang}.yaml`),
-            fetch(`/ui_translations_${lang}.json`),
-            fetch(`/links_${lang}.yaml`)
+            fetch(`${path}/concepts_${lang}.yaml`),
+            fetch(`${path}/ui_translations_${lang}.json`),
+            fetch(`${path}/links_${lang}.yaml`)
         ]);
 
         if (!conceptsResponse.ok || !translationsResponse.ok || !linksResponse.ok) {
@@ -79,6 +58,7 @@ async function loadLanguageData(lang) {
 
         // Initialize RSS feed
         await initRSSFeed();
+        console.log('Data loaded and RSS feed initialized');
         updatePageContent();
     } catch (error) {
         console.error('Error loading language data:', error);

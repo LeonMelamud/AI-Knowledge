@@ -18,41 +18,41 @@ app.use(cors({
     return callback(null, true);
   }
 }));
-app.use(express.static('public'));
+app.use(express.static('./public'));
 
-app.get('/data', async (req, res) => {
-    try {
-        const conceptsPath = path.join(__dirname, 'public', 'concepts_en.yaml');
-        const linksPath = path.join(__dirname, 'public', 'links_en.yaml');
+// app.get('/data', async (req, res) => {
+//     try {
+//         const conceptsPath = path.join(__dirname, 'public', 'concepts_en.yaml');
+//         const linksPath = path.join(__dirname, 'public', 'links_en.yaml');
 
-        console.log('Attempting to read:', conceptsPath);
-        console.log('Attempting to read:', linksPath);
+//         console.log('Attempting to read:', conceptsPath);
+//         console.log('Attempting to read:', linksPath);
 
-        const [conceptsYaml, linksYaml] = await Promise.all([
-            fs.readFile(conceptsPath, 'utf8'),
-            fs.readFile(linksPath, 'utf8')
-        ]);
+//         const [conceptsYaml, linksYaml] = await Promise.all([
+//             fs.readFile(conceptsPath, 'utf8'),
+//             fs.readFile(linksPath, 'utf8')
+//         ]);
 
-        console.log('YAML files read successfully');
+//         console.log('YAML files read successfully');
 
-        const concepts = yaml.load(conceptsYaml);
-        const links = yaml.load(linksYaml);
+//         const concepts = yaml.load(conceptsYaml);
+//         const links = yaml.load(linksYaml);
 
  
 
-        const data = {
-            concepts: concepts,
-            links: links,
-            timestamp: Date.now()
-        };
+//         const data = {
+//             concepts: concepts,
+//             links: links,
+//             timestamp: Date.now()
+//         };
 
 
-        res.json(data);
-    } catch (error) {
-        console.error('Detailed error in /data route:', error);
-        res.status(500).json({ error: 'Failed to load data', details: error.message });
-    }
-});
+//         res.json(data);
+//     } catch (error) {
+//         console.error('Detailed error in /data route:', error);
+//         res.status(500).json({ error: 'Failed to load data', details: error.message });
+//     }
+// });
 
 app.get('/proxy-rss', async (req, res) => {
     try {
