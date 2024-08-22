@@ -1,0 +1,193 @@
+tools:
+- id: chat-tools
+  title: Language Tools
+  items:
+  - name: ChatGPT
+    company: OpenAI
+    url: https://chatgpt.com/
+    description: |
+      ChatGPT is a natural language processing model by OpenAI, capable of understanding and producing human-like text in a wide range of applications, including answering questions, writing texts, and language translation.
+  - name: Claude
+    company: Anthropic
+    url: https://claude.ai/new
+    description: |
+      Claude is a natural language processing tool by Anthropic, providing advanced solutions for textual communication, text classification, and natural language analysis.
+  - name: Gemini
+    company: Google
+    url: https://gemini.google.com/
+    description: |
+      Gemini is a natural language processing tool by Google, providing solutions to improve human-computer communication through text analysis and enhancement.
+
+- id: libraries
+  title: Tool Libraries
+  items:
+  - name: TensorFlow
+    company: Google
+    url: https://www.tensorflow.org
+    description: |
+      TensorFlow is an open-source library for numerical computation and machine learning. It provides a wide range of tools, libraries, and community resources
+      that help researchers accelerate innovative ML and AI, and allows developers to easily build and deploy ML-based applications.
+      It supports a wide variety of applications, with a special focus on training and inference of deep neural networks.
+    recentUpdates: |
+      Recently, TensorFlow added support for TensorFlow.js, allowing model execution in the browser, and TensorFlow Lite for mobile devices.
+
+  - name: PyTorch
+    company: Meta
+    url: https://pytorch.org
+    description: |
+      PyTorch is an open-source deep learning library that provides flexible and fast data flow from GPU.
+      It enables fast computation, automatic optimization of derivatives, and deep API interfaces for signal processing, computer vision, and natural language processing.
+      PyTorch is known for its intuitive Python interface and the flexibility it offers for deep learning research.
+    recentUpdates: |
+      PyTorch 2.0 was recently released, bringing significant performance improvements and support for dynamic graphics.
+
+  - name: Scikit-learn
+    company: Open Source Project
+    url: https://scikit-learn.org
+    description: |
+      Scikit-learn is a machine learning library for Python. It offers simple and efficient tools for data analysis and machine learning,
+      accessible to everyone and useful in various contexts. It's built on NumPy, SciPy, and matplotlib, and provides a wide range
+      of algorithms for classification, regression, clustering, dimensionality reduction, model selection, and preprocessing.
+    recentUpdates: |
+      Version 1.0 of Scikit-learn was recently released, bringing improvements in new algorithms and support for parallelism.
+
+  - name: Keras
+    company: TensorFlow (Google)
+    url: https://keras.io
+    description: |
+      Keras is a high-level interface for building and training deep learning models. It is designed to be modular,
+      fast, and user-friendly. It allows for quick prototyping and supports both convolutional networks
+      and recurrent networks, as well as combinations of the two.
+    recentUpdates: |
+      Keras is fully integrated with TensorFlow and supports Keras Tuner for hyperparameter optimization.
+
+  - name: Hugging Face Transformers
+    company: Hugging Face
+    url: https://huggingface.co/transformers/
+    description: |
+      Hugging Face Transformers is a library for advanced language models, providing easy access to pre-trained models.
+      It includes leading architectures for natural language processing (NLP) such as BERT, GPT-2, RoBERTa, XLM, and more.
+      The library allows easy use of these models for tasks such as text classification, entity recognition, question answering, and more.
+    recentUpdates: |
+      Recently, support for Transformers.js was added for running models in the browser and Transformers Tuner for model optimization.
+
+  - name: LangChain
+    company: LangChain
+    url: https://www.langchain.com/
+    description: |
+      LangChain is a framework for developing applications based on large language models (LLMs).
+      LangChain provides tools for creating complex applications that combine LLMs with external information sources and enables
+      the creation of chains of complex actions. It supports the implementation of techniques such as RAG and allows
+      easy integration of LLMs with existing systems.
+    recentUpdates: |
+      LangChain is adding new tools for working with generative models and creating LLM-based chains.
+
+  - name: LangGraph
+    company: LangChain
+    url: https://github.com/langchain-ai/langgraph
+    description: |
+      LangGraph is a Python library that extends the capabilities of LangChain for building complex LLM-based applications.
+      It allows the creation of information flow and control graphs, composed of various components such as LLMs, tools, and external information sources.
+      LangGraph provides a framework for describing and implementing complex, multi-stage processes such as planning, problem-solving, and decision-making.
+    recentUpdates: |
+      LangGraph is a relatively new library launched in late 2023. Recent updates include improvements in support
+      for different types of graphs, enhanced tools for debugging and visualizing processes, and tighter integration with LangChain components.
+
+  - name: LlamaIndex
+    company: Open Source Project
+    url: https://www.llamaindex.ai/
+    description: |
+      LlamaIndex is a library specializing in efficient indexing and information retrieval for large language models.
+      LlamaIndex provides tools for organizing and managing structured and unstructured information, and enables efficient access to this information
+      for LLMs. It offers a variety of indexing and retrieval methods, and supports efficient implementation of techniques such as RAG.
+    recentUpdates: |
+      Recently, support for real-time retrieval and integration with additional data sources was added.
+
+  - name: OpenAI Gym
+    company: OpenAI
+    url: https://github.com/topics/openai-gym
+    description: |
+      OpenAI Gym is a toolkit for developing and comparing reinforcement learning algorithms.
+      Gym provides a standard interface for a wide range of learning environments, from simple problems to complex video games
+      and robot control. It allows developers to create, compare, and share reinforcement learning algorithms
+      in an easy and uniform way.
+    recentUpdates: |
+      Gym has added support for new environments and improvements in reinforcement learning infrastructure.
+
+  - name: Pandas
+    company: Open Source Project
+    url: https://pandas.pydata.org/
+    description: |
+      Pandas is a Python library for data analysis and manipulation. It provides fast, flexible,
+      and expressive data structures designed to make working with "structured" or "labeled" data easy and intuitive.
+      It allows performing complex operations on data easily, including merging, reshaping, selecting,
+      and cleaning data.
+    recentUpdates: |
+      Pandas version 1.4 was recently released, bringing performance improvements and support for new features such as custom data types.
+
+- id: graphics
+  title: Graphics Tools
+  items:
+  - name: Krea
+    company: Krea
+    url: https://www.krea.ai/home
+    description: |
+      The tool allows you to create images, videos, graphic designs, and more, using text only.
+
+  - name: Luma
+    company: lumalabs
+    url: https://lumalabs.ai/dream-machine
+    description: |
+      A tool that allows you to create professional, high-quality videos from text quickly and easily.
+
+  - name: Pika ai
+    company: Pika ai
+    url: https://pika.art/home
+    description: |
+      An AI-based platform that allows users to create video easily and quickly, both from text and still images.
+
+  - name: Sora ai
+    company: openai
+    url: https://openai.com/index/sora/
+    description: |
+      The tool is capable of animating images, expanding existing videos, and even filling in missing frames, while maintaining accuracy and details.
+
+  - name: Runway(Gen-3)
+    company: Runway ai
+    url: https://runwayml.com/
+    description: |
+      Tools for real-time video processing and advanced visual content creation using AI.
+
+  - name: LivePortrait
+    company: open source
+    url: https://huggingface.co/spaces/KwaiVGI/LivePortrait
+    description: |
+      Image and video processing, mimicking facial movements from video into a static image.
+
+  - name: Play AI
+    company: PlayAI
+    url: https://play.ai/
+    description: |
+      Simulates voice for customer service or any business.
+      Record a short conversation with the voice and it prepares an agent.
+
+      my voice: https://play.ai/agent/YOUR-AI-CLONE-mUU6LGsosIX-ra3-jxn_-
+
+  - name: Character AI
+    company: Character.AI
+    url: https://character.ai/
+    description: |
+      It is an AI-driven chatbot that allows users to create and connect with a variety of AI characters.
+      Users can design characters, have conversations, play role-playing games, and develop personal relationships with their creations.
+      The platform attracts a diverse audience, including people seeking friendship, emotional support, or creative outlet.
+      Character.AI offers a unique experience where people can form meaningful connections with AI characters,
+      making it popular among those seeking social interaction in a new and innovative way.
+
+  - name: Flux
+    company: Black Forest Labs
+    url: https://blackforestlabs.com/
+    description: |
+      Flux is an advanced AI image generation model that now supports training of LoRA models.
+      This feature allows users to create customized models by uploading 10-15 high-quality images.
+      The streamlined process facilitates the creation of personalized AI images, offering new possibilities for creativity and customization.
+      Flux caters to a diverse audience, from enthusiasts to professionals, seeking innovative image solutions.

@@ -11,8 +11,8 @@ async function createDataJson() {
 
         // Read YAML files
         const [linksYaml, conceptsYaml] = await Promise.all([
-            fs.readFile(path.join(publicDir, 'links.yaml'), 'utf8'),
-            fs.readFile(path.join(publicDir, 'concepts.yaml'), 'utf8')
+            fs.readFile(path.join(publicDir, 'links_en.yaml'), 'utf8'),
+            fs.readFile(path.join(publicDir, 'concepts_en.yaml'), 'utf8')
         ]);
 
         // Create data.json

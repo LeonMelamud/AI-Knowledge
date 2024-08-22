@@ -22,8 +22,8 @@ app.use(express.static('public'));
 
 app.get('/data', async (req, res) => {
     try {
-        const conceptsPath = path.join(__dirname, 'public', 'concepts.yaml');
-        const linksPath = path.join(__dirname, 'public', 'links.yaml');
+        const conceptsPath = path.join(__dirname, 'public', 'concepts_en.yaml');
+        const linksPath = path.join(__dirname, 'public', 'links_en.yaml');
 
         console.log('Attempting to read:', conceptsPath);
         console.log('Attempting to read:', linksPath);

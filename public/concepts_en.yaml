@@ -1,0 +1,484 @@
+concepts:
+- id: ai-basics
+  title: Fundamentals of Artificial Intelligence
+  items:
+  - name: Artificial Intelligence (AI)
+    shortDescription: A field of computer science focused on creating intelligent systems capable of performing tasks that typically require human intelligence.
+    fullDescription: |
+      Artificial Intelligence refers to the creation of computer systems capable of performing tasks that require human intelligence. 
+      This includes areas such as:
+      - Natural Language Processing
+      - Computer Vision
+      - Decision Making
+      - Complex Problem Solving
+      AI combines a variety of techniques, including machine learning, natural language processing, and logical reasoning.
+
+  - name: Machine Learning
+    shortDescription: A branch of AI that focuses on algorithms that improve automatically through experience.
+    fullDescription: |
+      Machine Learning is a field of artificial intelligence that focuses on algorithms and statistical models 
+      that computer systems use to perform a task without using explicit instructions, 
+      relying on patterns and inference instead. It is the foundation for most modern AI applications.
+
+  - name: Neural Networks
+    shortDescription: Mathematical models based on the structure of the human brain.
+    fullDescription: |
+      Neural networks are mathematical models based on the structure and function of the human brain. 
+      They consist of layers of artificial "neurons" connected to each other. 
+      Each connection has a weight that is adjusted during the learning process. 
+      Neural networks can learn to identify complex patterns in data and are used in a wide range of AI applications.
+    codeExample: |
+      import tensorflow as tf
+
+  - name: Deep Learning
+    shortDescription: A subset of machine learning that uses neural networks with many layers.
+    fullDescription: |
+      Deep Learning is a subset of machine learning that focuses on neural networks with a large number of hidden layers. 
+      This technique allows models to learn complex representations of data in a hierarchical manner. 
+      Deep learning is behind significant advancements in areas such as natural language processing, 
+      computer vision, speech recognition, and more.
+
+  - name: Unsupervised Learning
+    shortDescription: Methods for finding patterns in data without pre-existing labels.
+    fullDescription: |
+      Unsupervised learning is a type of machine learning where the model tries to find patterns or structures in data
+      without pre-existing labels or external guidance. Common methods include:
+      - Clustering: Grouping similar data points together.
+      - Dimensionality Reduction: Reducing the number of features in data while preserving important information.
+      - Anomaly Detection: Finding unusual data points.
+      Unsupervised learning is particularly useful when there are no available labels or when looking for new insights in data.
+
+  - name: Supervised Learning
+    shortDescription: Learning methods based on labeled data for prediction or classification.
+    fullDescription: |
+      Supervised learning is one of the central approaches in machine learning, where the model learns from labeled data:
+
+      - Operating Principle:
+      - The model receives known input (features) and output (labels).
+      - The goal of the model is to learn a function that accurately maps between input and output.
+      - After training, the model can predict results for new, unseen data.
+
+      - Main Types:
+      1. Classification: Predicting a category or label for the input (e.g., spam detection).
+      2. Regression: Predicting a continuous numerical value (e.g., house price).
+
+      - Supervised Learning Stages:
+      1. Data Collection and Labeling: Creating a labeled dataset.
+      2. Model Selection: Choosing an appropriate algorithm (like neural network, decision tree).
+      3. Model Training: Using training data to adjust model parameters.
+      4. Evaluation: Testing model performance on unseen data.
+      5. Tuning: Improving the model by adjusting hyperparameters or changing architecture.
+
+      - Advantages:
+      - Very accurate when there is sufficient labeled data.
+      - Relatively easy to understand and interpret results.
+      - Suitable for a wide range of practical problems.
+
+      - Challenges:
+      - Requires a large amount of labeled data, which can be expensive or difficult to obtain.
+      - May suffer from overfitting if the model is too complex relative to the amount of data.
+      - May struggle to generalize to scenarios very different from the training data.
+
+      - Examples of Applications:
+      - Image recognition and facial recognition
+      - Stock or real estate price prediction
+      - Medical diagnosis based on symptoms or test results
+      - Sentiment analysis in text
+      - Customer behavior prediction in marketing
+
+      Supervised learning is the basis for a wide range of artificial intelligence applications and is used in many industries to solve complex problems and make data-driven decisions.
+
+  - name: Reinforcement Learning
+    shortDescription: A learning method based on interaction with an environment and feedback.
+    fullDescription: |
+      Reinforcement learning is a machine learning approach where an agent learns to make decisions through interaction with an environment:
+
+      - Operating Principle:
+      - The agent performs actions in the environment and receives rewards or penalties accordingly.
+      - The agent's goal is to maximize cumulative reward over time.
+      - Learning occurs through trial and error and continuous improvement of strategy.
+
+      - Key Components:
+      1. Agent: The entity that makes decisions and learns.
+      2. Environment: The state or world in which the agent operates.
+      3. Actions: The options available to the agent in each state.
+      4. Policy: The strategy the agent uses to choose actions.
+      5. Reward: The feedback the agent receives after each action.
+
+      - Applications:
+      - Computer games and robotics
+      - Autonomous navigation
+      - Optimization of complex systems (like power grids)
+      - Algorithmic trading in the stock market
+
+  - name: Semi-Supervised Learning
+    shortDescription: A learning method combining labeled and unlabeled data.
+    fullDescription: |
+      Semi-supervised learning is an approach that combines elements of supervised and unsupervised learning:
+
+      - Operating Principle:
+      - Uses a small amount of labeled data along with a large amount of unlabeled data.
+      - Leverages the structure of unlabeled data to improve performance.
+
+      - Advantages:
+      - Reduces the need for large amounts of labeled data, which can be expensive to obtain.
+      - Can improve accuracy compared to regular supervised learning in certain cases.
+
+      - Common Methods:
+      1. Self-training: The model uses its predictions on unlabeled data for self-improvement.
+      2. Co-training: Using multiple models that teach each other.
+      3. Generative models: Using models that attempt to recreate the data distribution.
+
+      - Applications:
+      - Object detection in images
+      - Text classification
+      - Speech recognition
+
+- id: advanced_concepts
+  title: Advanced Concepts
+  items:
+
+  - name: Weights and Bias
+    shortDescription: Adjustable parameters in neural networks that affect learning and predictions.
+    imageUrl: ./css/Weights_and_bias.png
+    fullDescription: |
+      Weights and Bias are central parameters in neural networks and machine learning models:
+
+      - Weights:
+      - Represent the strength of connections between neurons in the network.
+      - Are updated during the training process to improve the model's accuracy.
+      - High values indicate high importance of a particular input, low values indicate low importance.
+      - Proper initialization of weights is important for fast and efficient network convergence.
+
+      - Bias:
+      - Allows the network to learn and represent more complex functions.
+      - Shifts the activation function left or right, allowing the network to better fit the data.
+      - Helps the network deal with situations where all inputs are zero.
+      - Serves as an "initial value" or "threshold" that the input needs to exceed for a "neuron" to activate.
+
+      Importance and Challenges:
+      - Learning: Weights and biases are updated during training to minimize the loss function.
+      - Representational Power: They allow the network to learn and represent a wide range of functions.
+      - Initialization Challenges: Choosing appropriate initial values for weights and biases is important for convergence.
+      - Vanishing/Exploding Gradients: Inappropriate weights can cause problems in gradient flow.
+      - Overfitting: Excessively large weights can lead to overfitting to the training data.
+
+      Optimization techniques like Gradient Descent, Adam, and RMSprop focus on efficient updating of weights and biases 
+      to improve model performance.
+
+      Image Explanation:
+      The image demonstrates the basic structure of a single neuron in a neural network:
+      - Inputs (x₁, x₂, x₃, ..., xₘ) are represented by blue circles on the left side.
+      - Weights (w₁, w₂, w₃, ..., wₘ) are represented by gray arrows connecting the inputs to the neuron.
+      - The neuron itself (the green circle) performs a weighted sum of the inputs and adds the bias: Σ(wᵢxᵢ) + bias.
+      - The activation function (the pink rectangle) applies a non-linear transformation to the weighted sum.
+      - The output (ŷ) is represented by the orange circle on the right side.
+
+      The image illustrates how weights and bias influence the processing of information in a neuron, and how the activation function introduces non-linearity to the model, allowing the network to learn and represent complex functions.
+
+  - name: Generative AI
+    shortDescription: Models capable of creating new content (text, images, sound).
+    fullDescription: |
+      Generative AI refers to models and algorithms that can create new and original content. This includes:
+      - Text generation (like GPT)
+      - Image generation (like DALL-E, Stable Diffusion)
+      - Music generation
+      - Video generation
+      These models learn the structure and patterns of existing data and use this knowledge to create new content that is similar to the training data but not a copy of it.
+
+  - name: AI Ethics
+    shortDescription: Discussion of ethical issues related to the development and use of AI technologies.
+    fullDescription: |
+      AI Ethics deals with the moral and social questions arising from the development and application of AI technologies. Key topics include:
+      - Fairness and non-discrimination in models
+      - Privacy and data security
+      - Transparency and explainability of AI decisions
+      - Impacts on employment and economy
+      - Responsibility and accountability in autonomous systems
+      - Long-term effects on society and culture
+      The goal of ethical discussion is to ensure that AI development is done responsibly and for the benefit of humanity.
+
+  - name: Generative Adversarial Networks (GANs)
+    shortDescription: Competing neural networks for creating new and convincing content.
+    fullDescription: |
+      GANs are a deep learning architecture consisting of two neural networks:
+      - Generator: produces artificial data.
+      - Discriminator: tries to distinguish between real and artificial data.
+      The two networks compete with each other, with the Generator improving in creating realistic data and the Discriminator improving in detecting fakes.
+      GANs are used to create images, video, and even realistic text.
+
+  - name: Gradient Descent
+    shortDescription: A common optimization algorithm in machine learning.
+    fullDescription: |
+      Gradient Descent is an iterative algorithm for finding the minimum of a cost function. It operates as follows:
+      1. Starts from a random point.
+      2. Computes the gradient (direction of steepest slope) of the cost function.
+      3. Moves in the opposite direction to the gradient (i.e., "descends" downhill).
+      4. Repeats the process until convergence.
+      There are various versions such as Stochastic Gradient Descent and Mini-batch Gradient Descent.
+
+  - name: Backpropagation
+    shortDescription: An algorithm for computing the gradient in neural networks.
+    fullDescription: |
+      Backpropagation is an efficient algorithm for computing the gradients of the cost function with respect to each weight in a neural network. It operates as follows:
+      1. Performs a "forward pass" through the network to compute the output.
+      2. Computes the error in the output layer.
+      3. Moves backward through the network, computing the contribution of each weight to the final error.
+      4. Updates the weights accordingly.
+      This is a critical algorithm for training deep neural networks.
+
+  - name: Activation Functions
+    shortDescription: Functions that introduce non-linearity into neural networks.
+    fullDescription: |
+      Activation functions introduce non-linearity into neural networks, allowing them to learn complex models. Common functions include:
+      - ReLU (Rectified Linear Unit): returns 0 for negative values, and the value itself for positive ones.
+      - Sigmoid: maps values to a range between 0 and 1, useful in binary classification.
+      - Tanh: similar to Sigmoid but maps to a range between -1 and 1.
+      - Softmax: used in the output layer for multi-class classification.
+
+  - name: Overfitting and Underfitting
+    shortDescription: Conditions of over-learning or under-learning from training data.
+    fullDescription: |
+      Overfitting and Underfitting are two central challenges in machine learning:
+
+      - Overfitting:
+        - The model "learns" too much from the training data, including noise and outliers.
+        - Manifests in excellent performance on training data, but poor performance on new data.
+        - Reason: The model "memorizes" the training data instead of learning general rules.
+
+      - Underfitting:
+        - The model is too simple and fails to learn the complexity of the data.
+        - Manifests in poor performance on both training data and new data.
+        - Reason: The model is unable to capture the complexity of the problem.
+
+      Techniques to address these issues:
+      - For Overfitting:
+        1. Increasing the dataset size
+        2. Regularization (L1, L2)
+        3. Dropout (in deep learning)
+        4. Early Stopping
+        5. Cross-validation
+
+      - For Underfitting:
+        1. Increasing model complexity
+        2. Feature engineering
+        3. Reducing regularization
+        4. Training for a longer time
+
+      The right balance between Overfitting and Underfitting is key to creating models that generalize well to new data.
+
+- id: techniques
+  title: Advanced Techniques
+  items:
+  - name: Transfer Learning
+    shortDescription: Using a model trained on one task as a starting point for another task.
+    fullDescription: |
+      Transfer Learning is a technique where a model trained on one task is used as a starting point for a model on another, related task. 
+      This saves time and resources in training and is especially effective when there's little data for the new task. 
+      For example, a model trained to identify cats can be used as a base for a model that identifies dogs.
+
+  - name: Few-shot Learning
+    shortDescription: The ability of a model to learn from a small number of examples.
+    fullDescription: |
+      Few-shot Learning refers to the ability of a model to learn a new task from a very small number of labeled examples. 
+      This is important in situations where it's difficult to obtain large amounts of labeled data. 
+      Few-shot Learning techniques include approaches such as Metric Learning and Meta-Learning.
+
+  - name: RAG (Retrieval-Augmented Generation)
+    shortDescription: A technique that combines information retrieval with text generation to improve the accuracy and relevance of answers.
+    fullDescription: |
+      RAG combines an information retrieval mechanism with a large language model. When the model receives a query:
+      1. The retrieval mechanism finds relevant documents from a knowledge base.
+      2. The retrieved information is combined with the original query.
+      3. The model uses the combined information to generate an answer.
+      This allows the model to provide more accurate and up-to-date answers, relying on external sources of information.
+
+  - name: Prompt Engineering
+    shortDescription: Precise design of instructions for a model to obtain desired results.
+    fullDescription: |
+      Prompt Engineering is the art and science of designing input to a large language model to get the desired output. 
+      This includes precise phrasing of the question or instruction, providing relevant examples, and defining the desired format for the answer. 
+      Effective Prompt Engineering can significantly improve the performance of a model without the need for retraining.
+
+  - name: Fine-tuning
+    shortDescription: Fine adjustment of an existing model for a specific task.
+    fullDescription: |
+      Fine-tuning is the process of taking a pre-trained model (e.g., BERT or GPT) and adapting it to a specific task 
+      through additional training on a smaller, more focused dataset. This allows large and complex models 
+      to be adapted to specific tasks efficiently, while preserving the general knowledge the model acquired in its original training.
+
+  - name: Explainable AI (XAI)
+    shortDescription: Approaches to understanding and analyzing decisions of complex models.
+    fullDescription: |
+      Explainable AI focuses on developing methods and techniques for understanding and analyzing the decisions and predictions of complex AI models. XAI goals include:
+      - Transparency: Understanding how the model arrives at decisions.
+      - Trust: Building trust in AI systems by explaining their decisions.
+      - Regulatory Compliance: Meeting legal requirements for transparency in automated decision-making.
+      - Model Improvement: Identifying and addressing biases or issues in models.
+      XAI techniques include SHAP (SHapley Additive exPlanations), LIME (Local Interpretable Model-agnostic Explanations), and heat maps for highlighting important areas in images.
+
+  - name: AutoML (Automated Machine Learning)
+    shortDescription: Techniques for automating the process of model selection and hyperparameter tuning.
+    fullDescription: |
+      AutoML refers to a range of techniques and processes aimed at automating machine learning processes, including:
+      - Feature selection
+      - Model architecture selection
+      - Hyperparameter optimization
+      - Model evaluation
+      The goal of AutoML is to make machine learning technologies accessible to developers and scientists without deep expertise in the field, and to accelerate the model development process.
+
+- id: evaluation_metrics
+  title: Evaluation Metrics
+  items:
+  - name: Important Terms in Data Science and Machine Learning
+    shortDescription: Key metrics and concepts for evaluating model performance and working with data.
+    fullDescription: |
+      These terms are used for analyzing the performance of machine learning models and working with common tools and libraries:
+
+      - Precision:
+        Out of all the positive predictions the model made, how many were actually correct.
+        Formula: TP / (TP + FP), where TP are true positives and FP are false positives.
+
+      - Recall:
+        Out of all the actual positive cases, how many did the model correctly identify.
+        Formula: TP / (TP + FN), where FN are false negatives.
+
+      - F1 Score:
+        The harmonic mean of Precision and Recall, providing a balanced measure of the model's performance.
+        Formula: 2 * (Precision * Recall) / (Precision + Recall)
+
+      - Accuracy:
+        The ratio of all correct predictions (both positive and negative) to the total number of predictions.
+        Formula: (TP + TN) / (TP + TN + FP + FN), where TN are true negatives.
+
+      - Confusion Matrix:
+        A table that displays the performance of a classification model by comparing predicted results to actual results.
+        Allows you to see at a glance how many predictions were correct and how many were incorrect, broken down by type of error.
+
+      - Area Under Curve (AUC):
+        A metric used to evaluate the performance of a binary classification model. Represents the area under the ROC (Receiver Operating Characteristic) curve.
+        An AUC value of 1 represents a perfect model, while 0.5 represents a model that predicts randomly.
+
+      A deep understanding of these metrics is essential for developing, evaluating, and improving models in machine learning and data science.
+
+- id: tools_and_libraries
+  title: Tools and Libraries
+  items:
+  - name: TensorFlow
+    shortDescription: An open-source library for numerical computation and machine learning, developed by Google.
+    fullDescription: |
+      TensorFlow is a comprehensive platform for machine learning and artificial intelligence. Key features:
+      - Support for deep learning and complex neural networks.
+      - Ability to work on various hardware platforms, including CPU, GPU, and TPU.
+      - Tools for visualizing learning processes (TensorBoard).
+      - Support for deploying models on edge devices, servers, and cloud.
+      - Rich ecosystem of tools and add-ons.
+
+  - name: PyTorch
+    shortDescription: An open deep learning library, especially popular in research.
+    fullDescription: |
+      PyTorch is a deep learning library developed by Facebook. Its advantages include:
+      - Flexibility and ease of use, especially for developing complex models.
+      - Support for dynamic computation, allowing network structure changes at runtime.
+      - Good integration with the Python ecosystem.
+      - Large user community and extensive support.
+      - Excellent performance, especially in research and development of innovative models.
+
+  - name: Keras
+    shortDescription: A high-level interface for building neural networks, works on top of TensorFlow.
+    fullDescription: |
+      Keras is a Python library for building neural networks, offering:
+      - A simple and intuitive interface for building complex models.
+      - Support for a wide range of built-in layers and algorithms.
+      - Ability to work on top of different backend engines (mainly TensorFlow).
+      - Options for extension and writing custom layers and algorithms.
+      Keras is designed to accelerate the experimentation and development process of deep learning models.
+
+- id: applications
+  title: Key Applications of Artificial Intelligence
+  items:
+  - name: AI in Healthcare
+    shortDescription: AI applications in healthcare for diagnosis, treatment, and medical research.
+    fullDescription: |
+      AI is applied in various areas of healthcare:
+      - Diagnosis of diseases from medical images (X-ray, CT, MRI).
+      - Drug development and discovery of new drugs.
+      - Analysis of health data to identify trends and prevent diseases.
+      - Robots for precise surgeries.
+      - Decision support systems for doctors.
+      - Patient health monitoring through wearable devices.
+
+  - name: AI in Finance
+    shortDescription: AI applications in financial markets, banking, and risk management.
+    fullDescription: |
+      AI is transforming the finance industry in several ways:
+      - Algorithms for automated trading in capital markets.
+      - Systems for fraud detection and risk management.
+      - AI-based customer service (chatbots).
+      - Market trend analysis and economic forecasting.
+      - Automation of loan approval and insurance processes.
+      - Personalized investment advice (robo-advisors).
+
+  - name: AI in Transportation
+    shortDescription: AI applications in the automotive industry, public transportation, and logistics.
+    fullDescription: |
+      AI serves as an engine of innovation in the field of transportation:
+      - Development of autonomous vehicles.
+      - Optimization of public transportation systems.
+      - Fleet management and efficient route planning.
+      - Prediction and prevention of faults in vehicles and transportation infrastructure.
+      - Improving driving safety through advanced warning systems.
+      - Smart traffic management in cities.
+
+- id: future_trends
+  title: Future Trends in Artificial Intelligence
+  items:
+  - name: Artificial General Intelligence (AGI)
+    shortDescription: Development of AI systems with cognitive abilities similar to humans.
+    fullDescription: |
+      Artificial General Intelligence (AGI) refers to AI systems that can perform any intellectual task that humans are capable of. While this is still a distant goal, research in this field focuses on:
+      - Developing models with a deeper understanding of the world.
+      - Improving reasoning abilities and knowledge transfer between different domains.
+      - Creating systems with continuous learning capabilities and multi-task abilities.
+      - Addressing ethical and safety challenges of AGI.
+
+  - name: AI and Quantum Computing
+    shortDescription: Integration of quantum computing and artificial intelligence.
+    fullDescription: |
+      The intersection of quantum computing and artificial intelligence promises significant advancements:
+      - Quantum machine learning algorithms that can solve complex problems at high speed.
+      - Improvements in optimization capabilities and solving combinatorial problems.
+      - Development of new machine learning models that exploit quantum properties.
+      - Improvements in data security and secure communication through quantum cryptography.
+
+  - name: AI and Human Interaction
+    shortDescription: Improving interaction between humans and AI systems.
+    fullDescription: |
+      The future holds significant improvements in how we interact with AI systems:
+      - More natural user interfaces, including advanced natural language processing and gesture recognition.
+      - Smarter personal assistants capable of understanding context and emotions.
+      - Integration of AI in augmented reality and virtual reality to create rich interactive experiences.
+      - Development of social robots capable of complex interactions with humans.
+      - Improvement in the explainability of AI models, which will increase trust and transparency in their use.
+
+  - name: AI for Sustainability and Environment
+    shortDescription: Application of AI technologies to solve environmental challenges.
+    fullDescription: |
+      Artificial intelligence is expected to play a central role in addressing environmental challenges:
+      - Models for predicting and monitoring climate change.
+      - Optimization of energy use and development of renewable energy sources.
+      - Management of natural resources and smart agriculture.
+      - Identification and treatment of environmental pollutants.
+      - Planning of smart and sustainable cities.
+      - Improvement of recycling systems and development of environmentally friendly materials.
+
+  - name: AI Ethics and Regulation
+    shortDescription: Development in ethical and regulatory approaches to AI development and use.
+    fullDescription: |
+      As technology advances, a parallel development is expected in the field of ethics and regulation:
+      - Development of international standards for responsible AI development and use.
+      - Increased emphasis on transparency and explainability of AI systems.
+      - Addressing privacy and data security issues in the AI era.
+      - Development of mechanisms to ensure fairness and prevent discrimination in AI systems.
+      - Public discussion and policy regarding the social and economic impacts of AI.
+      - Addressing ethical issues in advanced AI development, such as AGI.

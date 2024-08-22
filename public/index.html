@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <div class="header-background"></div>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/ai-section.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <style>
+        #language-selector-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        #language-selector {
+            padding: 5px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
     <div id="linkedin-profile">
@@ -16,10 +27,19 @@
             <img src="https://media.licdn.com/dms/image/D4D03AQF1r6hbdiYyCA/profile-displayphoto-shrink_200_200/0/1718693861077?e=1726099200&v=beta&t=wAPolpJrvMQzQOchmF-97QZ2H1UcsYKBR8H8Xhh7LUM" alt="Leon Melamud LinkedIn Profile" id="profile-picture">
         </a>
     </div>
-    <header>
-        <h1>המדריך המקיף לבינה מלאכותית</h1>
-    </header>
     
+   
+
+    <div class="hero-section">
+        <h1>המדריך המקיף לבינה מלאכותית</h1>
+    </div>
+    
+    <div id="language-selector-container">
+        <select id="language-selector">
+            <option value="he">🇮🇱 עברית</option>
+            <option value="en">🇺🇸 English</option>
+        </select>
+    </div>
     <nav>
         <ul id="main-nav">
             <!-- Navigation items will be dynamically inserted here -->
@@ -47,6 +67,21 @@
 
     <!-- New chatbot script -->
     <script defer src="https://app.fastbots.ai/embed.js" data-bot-id="clzitjbre0qqhr9bagsfwnq3m"></script>
-
+    <script>
+        function adjustSidebarClass() {
+          var sidebar = document.getElementById('sidebar');
+          if (window.innerWidth <= 768) { // Typical breakpoint for phones
+            sidebar.classList.add('main-content');
+          } else {
+            sidebar.classList.remove('main-content');
+          }
+        }
+        
+        // Run on page load
+        adjustSidebarClass();
+        
+        // Run on window resize
+        window.addEventListener('resize', adjustSidebarClass);
+    </script>
 </body>
 </html>
