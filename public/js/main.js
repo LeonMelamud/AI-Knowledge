@@ -8,17 +8,18 @@ let uiTranslations = {};
 
 async function loadData() {
     try {
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            // Local development: fetch from Express server
-            // response = await fetch('/data');
-            // data = await response.json();
-            await loadLanguageData(currentLanguage);
-        } else {
-            await loadLanguageData(currentLanguage,'/public');
-            // Production: fetch from static JSON file
-            // response = await fetch('data.json');
-            // data = await response.json();
-        }       
+        await loadLanguageData(currentLanguage,'.');
+        // if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        //     // Local development: fetch from Express server
+        //     // response = await fetch('/data');
+        //     // data = await response.json();
+        //     await loadLanguageData(currentLanguage);
+        // } else {
+        //     await loadLanguageData(currentLanguage,'/public');
+        //     // Production: fetch from static JSON file
+        //     // response = await fetch('data.json');
+        //     // data = await response.json();
+        // }       
         
     } catch (error) {
         console.error('Error fetching data:', error);
