@@ -5,10 +5,15 @@ let lastLoadTime = 0;
 let currentLanguage = 'en'; // Default language set to English
 let uiTranslations = {};
 
+document.addEventListener('DOMContentLoaded', () => {
+    loadInitialData();
+});
+
 async function loadInitialData() {
     try {
         await loadLanguageData(currentLanguage,'.');      
         console.log('Initial data loaded successfully');
+        buildNavigation(); // קריאה לבניית התפריט רק לאחר טעינת הנתונים
     } catch (error) {
         console.error('Error fetching data:', error);
         document.getElementById('mainContent').innerHTML = `<p>Error loading data: ${error.message}. Please check the console for more details and refresh the page.</p>`;
@@ -29,16 +34,20 @@ async function loadLanguageData(lang, path = '.') {
 
         const conceptsYaml = await conceptsResponse.text();
         const linksYaml = await linksResponse.text();
+        if (!linksYaml.trim()) {
+            console.error('Links YAML is empty');
+            return;
+        }
         conceptsData = jsyaml.load(conceptsYaml).concepts;
-        linksData = jsyaml.load(linksYaml).tools;
-
+        linksData = jsyaml.load(linksYaml);
+        
         uiTranslations = await translationsResponse.json();
 
         currentLanguage = lang;
 
         document.documentElement.lang = lang;
         document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
-
+        
 
         buildNavigation();
         console.log('Data reloaded successfully');
@@ -62,30 +71,57 @@ function updatePageContent() {
 
 function buildNavigation() {
     const navUl = document.getElementById('main-nav');
+    if (!navUl) {
+        console.error('האלמנט main-nav לא נמצא בדף');
+        return; // יציאה מהפונקציה אם האלמנט לא קיים
+    }
     navUl.innerHTML = ''; // Clear existing navigation
 
-    // Add concepts to navigation
+    // Create knowledge category
+    const knowledgeCategory = document.createElement('div');
+    knowledgeCategory.className = 'nav-category';
+    knowledgeCategory.innerHTML = `<h3>${uiTranslations.knowledge}</h3>`;
+    const knowledgeUl = document.createElement('ul');
+
+    // Add concepts to knowledge category
     if (Array.isArray(conceptsData)) {
         conceptsData.forEach(concept => {
             const li = document.createElement('li');
             li.innerHTML = `<a href="#/${concept.id}">${concept.title}</a>`;
-            navUl.appendChild(li);
+            knowledgeUl.appendChild(li);
         });
     }
+    knowledgeCategory.appendChild(knowledgeUl);
+    navUl.appendChild(knowledgeCategory);
 
-    // Add links to navigation
+    // Create links category
+    const linksCategory = document.createElement('div');
+    linksCategory.className = 'nav-category';
+    linksCategory.innerHTML = `<h3>${uiTranslations.links}</h3>`;
+    const linksUl = document.createElement('ul');
+
+    // Add links to links category
     if (Array.isArray(linksData?.tools)) {
         linksData.tools.forEach(tool => {
             const li = document.createElement('li');
             li.innerHTML = `<a href="#/${tool.id}">${tool.title}</a>`;
-            navUl.appendChild(li);
+            linksUl.appendChild(li);
         });
     }
+    linksCategory.appendChild(linksUl);
+    navUl.appendChild(linksCategory);
 
-   // Add special sections
-   navUl.innerHTML += `
-   <li><a href="#/text-generation">${uiTranslations.generatePromptsAndVoice}</a></li>
-`;
+    // Add special sections
+    const specialSection = document.createElement('div');
+    specialSection.className = 'nav-category';
+    specialSection.innerHTML = `
+        <h3>${uiTranslations.specialSections}</h3>
+        <ul>
+            <li><a href="#/text-generation">${uiTranslations.generatePromptsAndVoice}</a></li>
+        </ul>
+    `;
+    navUl.appendChild(specialSection);
+
     // Add event listeners for navigation links
     document.querySelectorAll('nav a').forEach(link => {
         link.addEventListener('click', function(e) {
@@ -111,7 +147,7 @@ function updateContent(route) {
         content = buildContentSection(linksData, 'tool');
     } else {
         const concept = conceptsData.find(c => c.id === route);
-        const tool = linksData.find(t => t.id === route);
+        const tool = linksData.tools.find(t => t.id === route);
         
         if (concept) {
             content = buildContentSection([concept], 'concept');
@@ -151,8 +187,12 @@ function buildContentSection(items, type) {
                                 ${type === 'tool' && subItem.recentUpdates 
                                     ? `<div>${formatFullDescription(subItem.recentUpdates)}</div>` 
                                     : ''}
-                                ${type === 'concept' && subItem.imageUrl 
-                                    ? `<img src="${subItem.imageUrl}" alt="${subItem.name}" class="concept-image">` 
+                                ${type === 'concept' && subItem.images && subItem.images.length > 0 
+                                    ? subItem.images.map((image, index) => `
+                                        <div class="concept-image-container" id="image-container-${index}">
+                                            <img src="${image.url}" alt="${image.alt}" class="concept-image">
+                                        </div>
+                                    `).join('') 
                                     : ''}
                                 ${type === 'concept' && subItem.codeExample 
                                     ? `<h4>${uiTranslations.codeExample}</h4>
@@ -251,9 +291,23 @@ function attachEventListeners() {
     const languageSelector = document.getElementById('language-selector');
     if (languageSelector) {
         languageSelector.addEventListener('change', function() {
-            loadLanguageData(this.value);
+            const newLanguage = this.value; // הוסף שורה זו
+            if (newLanguage !== currentLanguage) {
+                loadLanguageData(newLanguage);
+            }
         });
     }
+
+    // Add event listeners for hide image buttons
+    const hideImageButtons = document.querySelectorAll('.hide-image-button');
+    hideImageButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const imageContainer = this.closest('.concept-image-container');
+            if (imageContainer) {
+                imageContainer.style.display = 'none';
+            }
+        });
+    });
 }
 
 async function handleGenerateText() {
@@ -324,6 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (languageSelector) {
         languageSelector.value = currentLanguage;
         languageSelector.addEventListener('change', function() {
+            const newLanguage = this.value; // הוסף שורה זו
             if (newLanguage !== currentLanguage) {
                 loadLanguageData(newLanguage);
             }
@@ -332,3 +387,25 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addEventListener('hashchange', handleRoute);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navContent = document.querySelector('.nav-content');
+
+    menuToggle.addEventListener('click', function() {
+        navContent.classList.toggle('active');
+    });
+});
+
+function toggleImage(index, button) {
+    const imageContainer = document.getElementById(`image-container-${index}`);
+    const image = imageContainer.querySelector('.concept-image');
+    
+    if (image.style.display === 'none') {
+        image.style.display = 'block';
+        button.textContent = '${uiTranslations.hideImage}';
+    } else {
+        image.style.display = 'none';
+        button.textContent = '${uiTranslations.showImage}';
+    }
+}

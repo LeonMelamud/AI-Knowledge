@@ -19,7 +19,7 @@ tools:
       Gemini is a natural language processing tool by Google, providing solutions to improve human-computer communication through text analysis and enhancement.
 
 - id: libraries
-  title: Tool Libraries
+  title: Open-Source Libraries
   items:
   - name: TensorFlow
     company: Google

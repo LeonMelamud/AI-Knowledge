@@ -1,7 +1,7 @@
 {
   "moreInfo": "More Info",
   "hideInfo": "Hide Info",
-  "showMoreInfo": "Show More Info",
+  "showMoreInfo": "Show More and Image",
   "generatePromptsAndVoice": "Generate Prompts and Voice",
   "noMatchingContent": "No matching content found.",
   "codeExample": "Code Example:",
@@ -13,5 +13,10 @@
   "tokensUsed": "Tokens used: {total} (Prompt: {prompt}, Completion: {completion})",
   "textGenerationError": "An error occurred while generating text. Please check the console for more details.",
   "textGenerationUnavailable": "Text generation is not available at the moment.",
-  "heroTitle": "The AI Knowledge Base"
+  "heroTitle": "The AI Knowledge Base",
+  "knowledge": "Knowledge",
+  "links": "Links",
+  "specialSections": "Special Sections",
+  "hideImage": "Hide Image",
+  "showImage": "Show Image"
 }

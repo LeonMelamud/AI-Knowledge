@@ -140,7 +140,15 @@ concepts:
 
   - name: Weights and Bias
     shortDescription: Adjustable parameters in neural networks that affect learning and predictions.
-    imageUrl: ./css/Weights_and_bias.png
+    images:
+      - url: ./css/images/Weights_and_bias.png
+        alt: Weights and Bias Diagram
+      - url: ./css/images/1.gif
+        alt: Neural Network Animation
+      - url: ./css/images/working-of-hyperparameter-tuning.gif
+        alt: Hyperparameter Tuning Process
+      - url: ./css/images/4.gif
+        alt: Fine Tuning Process
     fullDescription: |
       Weights and Bias are central parameters in neural networks and machine learning models:
 
