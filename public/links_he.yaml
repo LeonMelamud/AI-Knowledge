@@ -19,7 +19,7 @@ tools:
       Gemini הוא כלי של עיבוד שפה טבעית מבית Google, המספק פתרונות לשיפור התקשורת בין אדם למחשב באמצעות ניתוח ושיפור טקסטים.
 
 - id: libraries
-  title: ספריות של כלים
+  title: Open-Source Libraries
   items:
   - name: TensorFlow
     company: Google
