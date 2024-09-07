@@ -24,9 +24,9 @@ async function loadInitialData() {
 async function loadLanguageData(lang) {
     try {
         const [conceptsResponse, translationsResponse, linksResponse ] = await Promise.all([
-            fetch(`/data/concepts_${lang}.yaml`),
-            fetch(`/data/ui_translations_${lang}.json`),
-            fetch(`/data/links_${lang}.yaml`)
+            fetch(`./data/concepts_${lang}.yaml`),
+            fetch(`./data/ui_translations_${lang}.json`),
+            fetch(`./data/links_${lang}.yaml`)
         ]);
 
         if (!conceptsResponse.ok || !translationsResponse.ok || !linksResponse.ok) {
