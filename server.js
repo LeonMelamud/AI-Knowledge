@@ -58,7 +58,7 @@ app.get('/assert-test', (req, res) => {
         res.json({ success: true, numTokens });
     } catch (error) {
             res.status(500).json({ success: false, message: error.message });
-        
+      
     }
 });
 
