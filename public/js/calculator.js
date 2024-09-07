@@ -12,19 +12,27 @@ export function buildCalculatorSection(uiTranslations) {
 }
 
 export function setupCalculator(uiTranslations) {
+    const calculateButton = document.getElementById('calculate-button');
+    const inputField = document.getElementById('input-field');
+    const resultField = document.getElementById('result-field');
 
-        const calculateButton = document.getElementById('calculate-button');
-        const inputField = document.getElementById('input-field');
-        const resultField = document.getElementById('result-field');
+    if (calculateButton) {
+        calculateButton.addEventListener('click', async function() {
+            const inputText = inputField.value;
+            console.log('Input text:', inputText);
+            try {
+                console.log('Fetching data from server...');
+                const response = await fetch(`${window.location.origin}/assert-test?input=${encodeURIComponent(inputText)}`);
+                console.log('Response received');
+                
+                if (!response.ok) {
+                    resultField.textContent = `Error: ${response.status} ${response.statusText}`;
+                    console.log(`Error: ${response.status} ${response.statusText}`);
+                    return;
+                }
 
-        if (calculateButton) {
-            calculateButton.addEventListener('click', async function() {
-                const inputText = inputField.value;
-                console.log('Input text:', inputText);
-                try {
-                    console.log('Fetching data from server...');
-                    const response = await fetch(`${window.location.origin}/assert-test?input=${encodeURIComponent(inputText)}`);
-                    console.log('Response received');
+                const contentType = response.headers.get('content-type');
+                if (contentType && contentType.includes('application/json')) {
                     const result = await response.json();
                     if (result.success && result.numTokens !== undefined) {
                         resultField.textContent = `${uiTranslations.numberOfTokens}: ${result.numTokens}`;
@@ -33,13 +41,16 @@ export function setupCalculator(uiTranslations) {
                         resultField.textContent = `Error: ${result.message || 'Unknown error'}`;
                         console.log('Error:', result.message);
                     }
-                } catch (error) {
-                    resultField.textContent = `Error: ${error.message}`;
-                    console.log('Error:', error.message);
+                } else {
+                    resultField.textContent = 'Error: Server returned non-JSON response';
+                    console.log('Error: Server returned non-JSON response');
                 }
-            });
-        } else {
-            console.log('Calculate button not found');
-        }
-
+            } catch (error) {
+                resultField.textContent = `Error: ${error.message}`;
+                console.log('Error:', error.message);
+            }
+        });
+    } else {
+        console.log('Calculate button not found');
+    }
 }
