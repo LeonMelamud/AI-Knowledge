@@ -44,8 +44,6 @@ jobs:
       - name: Debug - List node_modules
         run: ls -la node_modules
 
-      # - name: Create data.json
-      #   run: node build.js
 
       - name: Debug - List dist directory
         run: ls -la dist  # עדכון הנתיב לתיקיית dist

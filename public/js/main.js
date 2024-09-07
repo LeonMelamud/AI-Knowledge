@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadInitialData() {
     try {
-        await loadLanguageData(currentLanguage,'.');      
+        await loadLanguageData(currentLanguage);      
         console.log('Initial data loaded successfully');
         buildNavigation(); // קריאה לבניית התפריט רק לאחר טעינת הנתונים
     } catch (error) {
@@ -21,12 +21,12 @@ async function loadInitialData() {
     }
 }
 
-async function loadLanguageData(lang, path = '.') {
+async function loadLanguageData(lang) {
     try {
         const [conceptsResponse, translationsResponse, linksResponse ] = await Promise.all([
-            fetch(`${path}/concepts_${lang}.yaml`),
-            fetch(`${path}/ui_translations_${lang}.json`),
-            fetch(`${path}/links_${lang}.yaml`)
+            fetch(`/data/concepts_${lang}.yaml`),
+            fetch(`/data/ui_translations_${lang}.json`),
+            fetch(`/data/links_${lang}.yaml`)
         ]);
 
         if (!conceptsResponse.ok || !translationsResponse.ok || !linksResponse.ok) {

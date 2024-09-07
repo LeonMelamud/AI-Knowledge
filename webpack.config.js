@@ -44,7 +44,7 @@ module.exports = {
             patterns: [
                 { from: 'public/css', to: 'css' },
                 { from: 'public/js', to: 'js' },
-                { from: 'public/data.json', to: 'data.json' }
+                { from: 'public/data', to: 'data' } // העתקת כל הקבצים בתיקיית data
             ]
         })
     ],
