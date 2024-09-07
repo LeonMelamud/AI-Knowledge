@@ -23,7 +23,7 @@ export function setupCalculator(uiTranslations) {
                 console.log('Input text:', inputText);
                 try {
                     console.log('Fetching data from server...');
-                    const response = await fetch(`/assert-test?input=${encodeURIComponent(inputText)}`);
+                    const response = await fetch(`${window.location.origin}/assert-test?input=${encodeURIComponent(inputText)}`);
                     console.log('Response received');
                     const result = await response.json();
                     if (result.success && result.numTokens !== undefined) {
