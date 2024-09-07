@@ -57,11 +57,8 @@ app.get('/assert-test', (req, res) => {
         console.log(`Number of tokens for "${input}": ${numTokens}`); // הדפסה ללוג
         res.json({ success: true, numTokens });
     } catch (error) {
-        if (!res.headersSent) {
             res.status(500).json({ success: false, message: error.message });
-        } else {
-            console.error('Error after headers sent:', error);
-        }
+        
     }
 });
 
