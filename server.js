@@ -21,7 +21,12 @@ app.use(cors({
     return callback(null, true);
   }
 }));
-app.use(express.static('./public'));
+
+// הגדרת הנתיב לתיקיית הקבצים הסטטיים בהתאם לסביבה
+const staticPath = process.env.NODE_ENV === 'production' ? 'dist' : 'public';
+app.use(express.static(path.join(__dirname, staticPath)));
+
+app.use(express.json()); // Add this line to parse JSON bodies
 
 const assert = require('assert');
 
@@ -57,6 +62,31 @@ app.get('/assert-test', (req, res) => {
         } else {
             console.error('Error after headers sent:', error);
         }
+    }
+});
+
+// Add this route to handle POST requests to /generate-text
+app.post('/generate-text', async (req, res) => {
+    try {
+        const { apiKey, prompt } = req.body;
+        if (!apiKey || !prompt) {
+            return res.status(400).json({ success: false, message: 'API key and prompt are required' });
+        }
+
+        // Simulate text generation (replace this with actual text generation logic)
+        const generatedText = `Generated text for prompt: ${prompt}`;
+
+        // Simulate token usage (replace this with actual token usage calculation)
+        const usage = {
+            total_tokens: prompt.length + generatedText.length,
+            prompt_tokens: prompt.length,
+            completion_tokens: generatedText.length
+        };
+
+        res.json({ success: true, text: generatedText, usage });
+    } catch (error) {
+        console.error('Error generating text:', error);
+        res.status(500).json({ success: false, message: error.message });
     }
 });
 
