@@ -1,4 +1,5 @@
 import { initRSSFeed } from './rss.js';
+import { buildCalculatorSection, setupCalculator } from './calculator.js';
 let linksData;
 let conceptsData;
 let lastLoadTime = 0;
@@ -118,6 +119,7 @@ function buildNavigation() {
         <h3>${uiTranslations.specialSections}</h3>
         <ul>
             <li><a href="#/text-generation">${uiTranslations.generatePromptsAndVoice}</a></li>
+            <li><a href="#/calculator">${uiTranslations.tokenCalculator}</a></li>
         </ul>
     `;
     navUl.appendChild(specialSection);
@@ -143,6 +145,8 @@ function updateContent(route) {
 
     let content = '';
 
+    console.log('Current route:', route); // הוספת לוג
+
     if (route === 'useful-links') {
         content = buildContentSection(linksData, 'tool');
     } else {
@@ -155,6 +159,8 @@ function updateContent(route) {
             content = buildContentSection([tool], 'tool');
         } else if (route === 'text-generation') {
             content = buildTextGenerationSection();
+        } else if (route === 'calculator') {
+            content = buildCalculatorSection(uiTranslations);
         } else {
             content = `<p>${uiTranslations.noMatchingContent}</p>`;
         }
@@ -191,6 +197,7 @@ function buildContentSection(items, type) {
                                     ? subItem.images.map((image, index) => `
                                         <div class="concept-image-container" id="image-container-${index}">
                                             <img src="${image.url}" alt="${image.alt}" class="concept-image">
+                                            <button class="hide-image-button" onclick="toggleImage(${index}, this)">${uiTranslations.hideImage}</button>
                                         </div>
                                     `).join('') 
                                     : ''}
@@ -287,16 +294,17 @@ function attachEventListeners() {
         }
     }
 
-    // Add event listener for language selector
-    const languageSelector = document.getElementById('language-selector');
-    if (languageSelector) {
-        languageSelector.addEventListener('change', function() {
-            const newLanguage = this.value; // הוסף שורה זו
-            if (newLanguage !== currentLanguage) {
-                loadLanguageData(newLanguage);
-            }
-        });
+    const calcButton = document.getElementById('calculate-button');
+    if (calcButton) {
+        if (typeof setupCalculator === 'function') {
+            calcButton.addEventListener('click', setupCalculator(uiTranslations));
+        } else {
+            console.warn('setupCalculator function is not defined');
+            calcButton.addEventListener('click', () => alert("calculator not available "));
+        }
     }
+
+
 
     // Add event listeners for hide image buttons
     const hideImageButtons = document.querySelectorAll('.hide-image-button');
@@ -371,6 +379,20 @@ function insertContent(content) {
     mainContent.innerHTML = `<div class="full-width">${content}</div>`;
 }
 
+
+
+window.addEventListener('hashchange', handleRoute);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navContent = document.querySelector('.nav-content');
+
+    menuToggle.addEventListener('click', function() {
+        navContent.classList.toggle('active');
+    });
+});
+
+
 document.addEventListener('DOMContentLoaded', () => {
     loadInitialData();
     // Add event listener for language selector
@@ -385,27 +407,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
-window.addEventListener('hashchange', handleRoute);
-
-document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navContent = document.querySelector('.nav-content');
-
-    menuToggle.addEventListener('click', function() {
-        navContent.classList.toggle('active');
-    });
-});
-
-function toggleImage(index, button) {
-    const imageContainer = document.getElementById(`image-container-${index}`);
-    const image = imageContainer.querySelector('.concept-image');
-    
-    if (image.style.display === 'none') {
-        image.style.display = 'block';
-        button.textContent = '${uiTranslations.hideImage}';
-    } else {
-        image.style.display = 'none';
-        button.textContent = '${uiTranslations.showImage}';
-    }
-}

@@ -5,7 +5,6 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
-    background: #f0f0f0 url('./Gemini_AI.jpeg') center center fixed;
     background-size: cover;
     width: 100%;
     overflow-x: hidden;
@@ -653,4 +652,38 @@ input[type="text"],
     .pub-date {
         font-size: 10px;
     }
+}
+
+#calculator-section {
+    direction: ltr;
+    text-align: left;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(249, 249, 249, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#calculate-button {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.1s;
+    text-align: center;
+    display: inline-block;
+    margin: 5px;
+}
+
+#calculate-button:hover {
+    background-color: #005f7f;
+    transform: translateY(-2px);
+}
+
+#calculate-button:active {
+    transform: translateY(1px);
 }

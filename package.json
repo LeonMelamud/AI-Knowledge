@@ -8,6 +8,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
+    "js-tiktoken": "^1.0.14",
     "js-yaml": "^4.1.0",
     "rss-parser": "^3.13.0"
   }

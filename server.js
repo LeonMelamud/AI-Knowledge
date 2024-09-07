@@ -8,6 +8,9 @@ const app = express();
 const port = process.env.PORT || 8085;
 const allowedOrigins = ['http://localhost:8085', 'https://leonmelamud.github.io'];
 
+// ייבוא הספריה js-tiktoken
+const { getEncoding } = require('js-tiktoken');
+
 app.use(cors({
   origin: function(origin, callback) {
     if (!origin) return callback(null, true);
@@ -19,6 +22,8 @@ app.use(cors({
   }
 }));
 app.use(express.static('./public'));
+
+const assert = require('assert');
 
 app.get('/proxy-rss', async (req, res) => {
     try {
@@ -33,6 +38,25 @@ app.get('/proxy-rss', async (req, res) => {
     } catch (error) {
         console.error('Error fetching RSS feed:', error);
         res.status(500).send('Error fetching RSS feed');
+    }
+});
+
+app.get('/assert-test', (req, res) => {
+    try {
+        const input = req.query.input || 'hello world';
+
+        // קבלת האנקודר עבור המודל gpt3
+        const enc = getEncoding("gpt2");
+        const tokens = enc.encode(input);
+        const numTokens = tokens.length;
+        console.log(`Number of tokens for "${input}": ${numTokens}`); // הדפסה ללוג
+        res.json({ success: true, numTokens });
+    } catch (error) {
+        if (!res.headersSent) {
+            res.status(500).json({ success: false, message: error.message });
+        } else {
+            console.error('Error after headers sent:', error);
+        }
     }
 });
 

@@ -18,5 +18,10 @@
   "links": "Links",
   "specialSections": "Special Sections",
   "hideImage": "Hide Image",
-  "showImage": "Show Image"
+  "showImage": "Show Image",
+  "tokenCalculator": "Token Calculator",
+  "enterText": "Enter text",
+  "calculateTokens": "Calculate Tokens",
+  "numberOfTokens": "Number of tokens",
+  "tokenExplanation": "Large Language Models like GPT-4 use tokens instead of words to represent text more efficiently. Words are split into smaller units called tokens, which allow the model to better capture patterns and relationships in the data. Tokens are optimized for these models and provide a more compact representation of the text.\n\nThe getEncoding('gpt2') function from the js-tiktoken library provides an encoder specifically designed for the GPT model, which is a powerful language model trained by OpenAI. This encoder converts the input text into a sequence of tokens that can be processed by the GPT model."
 }
