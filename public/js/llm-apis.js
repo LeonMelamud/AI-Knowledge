@@ -6,7 +6,7 @@
     let isGenerating = false;
     let lastGeneratedText = "";
     let promptInput;
-    
+
     export async function handleGenerateText() {
         console.log("handleGenerateText function called");
         const apiKeyInput = document.getElementById('api-key');
@@ -52,7 +52,7 @@
             updateConversationDisplay();
 
             console.log("Sending request to server");
-            const response = await fetch('/generate-text', {
+            const response = await fetch(`${config.serverUrl}/generate-text`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

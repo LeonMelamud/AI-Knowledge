@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy static content to Pages
 
 on:
   push:
@@ -23,39 +23,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'
-
-      - name: Debug - List directory contents
-        run: ls -la
-
-      - name: Debug - Display package.json contents
-        run: cat package.json
-
+          node-version: '18'
       - name: Install dependencies
-        run: npm install
-
-      - name: Build with Webpack
-        run: npm run build  # assuming your build script is named "build" in package.json
-
-      - name: Debug - List node_modules
-        run: ls -la node_modules
-
-
-      - name: Debug - List dist directory
-        run: ls -la dist  # עדכון הנתיב לתיקיית dist
-
+        run: npm ci
+      - name: Build
+        run: npm run build
       - name: Setup Pages
-        uses: actions/configure-pages@v5
-
+        uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'  # עדכון הנתיב לתיקיית dist
-
+          path: |
+            ./dist
+            ./server.js
+            ./package.json
+            ./package-lock.json
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
