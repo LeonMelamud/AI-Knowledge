@@ -37,29 +37,20 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
-      - name: Build with Webpack
-        run: npm run build  # assuming your build script is named "build" in package.json
-
+        
       - name: Debug - List node_modules
         run: ls -la node_modules
 
       - name: Debug - List dist directory
-        run: ls -la dist  # עדכון הנתיב לתיקיית dist
+        run: ls -la public
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Prepare artifact
-        run: |
-          mkdir -p ./artifact
-          cp -r ./dist/* ./artifact/
-          cp server.js package.json package-lock.json ./artifact/ || true
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './artifact'
+          path: './public'
 
       - name: Deploy to GitHub Pages
         id: deployment
