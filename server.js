@@ -62,25 +62,40 @@ app.get('/assert-test', (req, res) => {
     }
 });
 
-// Add this route to handle POST requests to /generate-text
 app.post('/generate-text', async (req, res) => {
+    console.log("Received POST request to /generate-text");
     try {
         const { apiKey, prompt } = req.body;
         if (!apiKey || !prompt) {
             return res.status(400).json({ success: false, message: 'API key and prompt are required' });
         }
 
-        // Simulate text generation (replace this with actual text generation logic)
-        const generatedText = `Generated text for prompt: ${prompt}`;
+        console.log("Forwarding request to OpenAI API");
+        const openaiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+                model: "gpt-4o-mini",
+                messages: [{ role: "user", content: prompt }],
+                temperature: 0.7
+            })
+        });
 
-        // Simulate token usage (replace this with actual token usage calculation)
-        const usage = {
-            total_tokens: prompt.length + generatedText.length,
-            prompt_tokens: prompt.length,
-            completion_tokens: generatedText.length
-        };
+        if (!openaiResponse.ok) {
+            throw new Error(`OpenAI API error! status: ${openaiResponse.status}`);
+        }
 
-        res.json({ success: true, text: generatedText, usage });
+        const data = await openaiResponse.json();
+        console.log("Response received from OpenAI API");
+
+        res.json({
+            success: true,
+            text: data.choices[0].message.content,
+            usage: data.usage
+        });
     } catch (error) {
         console.error('Error generating text:', error);
         res.status(500).json({ success: false, message: error.message });

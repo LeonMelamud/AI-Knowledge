@@ -5,5 +5,8 @@ export const config = {
   proxyUrl: isLocal 
     ? 'http://localhost:8085/proxy-rss' 
     : 'https://corsproxy.io/?',
-  isLocal: isLocal
+  isLocal: isLocal,
+  serverUrl: isLocal
+    ? window.location.origin
+    : 'https://leonmelamud.github.io' 
 };

@@ -1,5 +1,6 @@
 import { initRSSFeed } from './rss.js';
 import { buildCalculatorSection, setupCalculator } from './calculator.js';
+import { handleGenerateText } from './llm-apis.js';
 let linksData;
 let conceptsData;
 let lastLoadTime = 0;
@@ -218,7 +219,7 @@ function buildTextGenerationSection() {
     return `
         <h2>${uiTranslations.generatePromptsAndVoice}</h2>
         <div id="text-generation-section">
-            <h3>GPT-3.5 Text Generator</h3>
+            <h3>GPT-4o-mini Text Generator</h3>
             <div class="input-group">
                 <input type="text" id="api-key" placeholder="${uiTranslations.enterApiKey}">
             </div>
@@ -283,15 +284,17 @@ function attachEventListeners() {
         });
     });
 
-    // Add event listeners for text generation if it's present
     const generateButton = document.getElementById('generate-button');
     if (generateButton) {
-        if (typeof handleGenerateText === 'function') {
-            generateButton.addEventListener('click', handleGenerateText);
-        } else {
-            console.warn('handleGenerateText function is not defined');
-            generateButton.addEventListener('click', () => alert(uiTranslations.textGenerationUnavailable));
-        }
+        generateButton.addEventListener('click', function() {
+            if (typeof handleGenerateText === 'function') {
+                handleGenerateText();
+            } else {
+                console.error('handleGenerateText function not found. Make sure llm-apis.js is loaded correctly.');
+            }
+        });
+    } else {
+        console.warn('Generate Text button not found in main.js');
     }
 
     const calcButton = document.getElementById('calculate-button');
@@ -318,57 +321,6 @@ function attachEventListeners() {
     });
 }
 
-async function handleGenerateText() {
-    const apiKey = document.getElementById('api-key').value;
-    const prompt = document.getElementById('prompt-input').value;
-    const spinner = document.getElementById('spinner');
-    const conversationHistory = document.getElementById('conversation-history');
-    const tokenUsage = document.getElementById('token-usage');
-
-    if (!apiKey || !prompt) {
-        alert(uiTranslations.enterApiKeyAndPrompt);
-        return;
-    }
-
-    spinner.style.display = 'block';
-    try {
-        const response = await fetch('/generate-text', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ apiKey, prompt })
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        
-        // Add the new message to the conversation history
-        conversationHistory.innerHTML += `
-            <div class="message user-message">${prompt}</div>
-            <div class="message assistant-message">${data.text}</div>
-        `;
-
-        // Update token usage information
-        tokenUsage.textContent = formatString(uiTranslations.tokensUsed, {
-            total: data.usage.total_tokens,
-            prompt: data.usage.prompt_tokens,
-            completion: data.usage.completion_tokens
-        });
-
-        // Clear the prompt input
-        document.getElementById('prompt-input').value = '';
-
-    } catch (error) {
-        console.error('Error:', error);
-        alert(uiTranslations.textGenerationError);
-    } finally {
-        spinner.style.display = 'none';
-    }
-}
 
 function formatString(template, values) {
     return template.replace(/{(\w+)}/g, (_, key) => values[key] || '');
