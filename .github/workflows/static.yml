@@ -37,10 +37,10 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: |
-            ./dist
-            ./server.js
-            ./package.json
-            ./package-lock.json
+            dist
+            server.js
+            package.json
+            package-lock.json
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
