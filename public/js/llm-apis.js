@@ -1,3 +1,4 @@
+import { config } from './config.js';
 
     let messages = [
         {role: "system", content: "You are a helpful assistant."}
