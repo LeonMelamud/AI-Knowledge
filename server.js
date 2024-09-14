@@ -23,7 +23,7 @@ app.use(cors({
 }));
 
 // הגדרת הנתיב לתיקיית הקבצים הסטטיים בהתאם לסביבה
-const staticPath = process.env.NODE_ENV === 'production' ? 'dist' : 'public';
+const staticPath = 'public';
 app.use(express.static(path.join(__dirname, staticPath)));
 
 app.use(express.json()); // Add this line to parse JSON bodies
