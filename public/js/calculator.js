@@ -2,6 +2,15 @@ import { config } from './config.js';
 
 
 export function buildCalculatorSection(uiTranslations) {
+   
+    if (window.location.hostname != 'localhost' && window.location.hostname != '127.0.0.1') {
+        return `
+            <div class="maintenance-message">
+                ${uiTranslations.maintenanceMessage || 'Server is under maintenance for new future LLM services, fork the project from git to play with it locally.'} 
+                <a href="https://github.com/LeonMelamud/AI-Knowledge" target="_blank">https://github.com/LeonMelamud/AI-Knowledge</a>
+            </div>
+        `;
+    }
     const content = `
         <h2>${uiTranslations.tokenCalculator}</h2>
         <p>${uiTranslations.tokenExplanation}</p>

@@ -1,0 +1,26 @@
+hot_news:
+  - section: "Open Source LLMs"
+    topics:
+      - title: "Alibaba Qwen 2.5 models drop"
+        images:
+          - "qwen2.5-coder.jpg"
+        description: "Qwen 2.5 Math and Qwen 2.5 Code"
+
+  - section: "Big CO LLMs + APIs"
+    topics:
+      - title: "OpenAI O1 results from LMsys"
+        images:
+          - "o1.jpg"
+        description: "New KING LLM in town, vibe checks confirm"
+        links:
+          - name: "Thread"
+            url: "https://x.com/OpenAI/status/1836846202182131776"
+  - section: "Vision & Video"
+    topics:
+      - title: "Text-2-video over API announcements"
+        description: "Runway, DreamMachine & Kling announce text-2-video over API"
+        links:
+          - name: "Runway"
+            url: "https://x.com/runwayml/status/1835670564825944265"
+          - name: "DreamMachine"
+            url: " https://x.com/LumaLabsAI/status/1835742651662139529"
