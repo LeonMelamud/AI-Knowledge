@@ -4,17 +4,19 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build": "webpack --mode production",
-    "dev": "webpack serve --mode development"
+    "test": "mocha server/test/**/*.test.js",
+    "test:hot-news": "mocha server/test/hot-news-api.test.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "js-tiktoken": "^1.0.14",
     "js-yaml": "^4.1.0",
-    "rss-parser": "^3.13.0"
+    "rss-parser": "^3.13.0",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
+    "mocha": "^9.1.3",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "babel-loader": "^8.2.2",
@@ -30,5 +32,28 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^5.1.0",
     "webpack-node-externals": "^2.5.2"
-  }
+  },
+  "keywords": [
+    "ai",
+    "knowledge-base",
+    "express",
+    "rss",
+    "news-api",
+    "node",
+    "javascript",
+    "api",
+    "server",
+    "information-retrieval",
+    "data-aggregation",
+    "content-management",
+    "nlp",
+    "machine-learning",
+    "web-application",
+    "real-time-updates",
+    "data-processing",
+    "tiktoken",
+    "yaml"
+  ],
+  "author": "Leon Melamud",
+  "license": "ISC"
 }

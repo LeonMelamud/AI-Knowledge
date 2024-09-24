@@ -1,15 +1,14 @@
 import { initRSSFeed } from './rss.js';
 import { buildCalculatorSection, setupCalculator } from './calculator.js';
 import { handleGenerateText } from './llm-apis.js';
+import { buildHotNewsSection } from './hot-news.js'; // Add this import
 let linksData;
 let conceptsData;
 let lastLoadTime = 0;
-let currentLanguage = 'en'; // Default language set to English
+export let currentLanguage = 'en'; // Default language set to English
+export let hotNewsData = {};
 let uiTranslations = {};
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadInitialData();
-});
 
 async function loadInitialData() {
     try {
@@ -24,25 +23,30 @@ async function loadInitialData() {
 
 async function loadLanguageData(lang) {
     try {
-        const [conceptsResponse, translationsResponse, linksResponse ] = await Promise.all([
+        const [conceptsResponse, translationsResponse, linksResponse, hotNewsResponse ] = await Promise.all([
             fetch(`./data/concepts_${lang}.yaml`),
             fetch(`./data/ui_translations_${lang}.json`),
-            fetch(`./data/links_${lang}.yaml`)
+            fetch(`./data/links_${lang}.yaml`),
+            fetch(`./data/news_${lang}.yaml`)
         ]);
 
-        if (!conceptsResponse.ok || !translationsResponse.ok || !linksResponse.ok) {
-            throw new Error(`HTTP error! Concepts status: ${conceptsResponse.status}, Translations status: ${translationsResponse.status} Links status: ${linksResponse.status}`);
-        }
+        if (!conceptsResponse.ok || !translationsResponse.ok || !linksResponse.ok || !hotNewsResponse.ok) {
+             new Error(`HTTP error! Concepts status: ${conceptsResponse.status}, Translations status: ${translationsResponse.status}, Links status: ${linksResponse.status}, Hot News status: ${hotNewsResponse.status}`);
+            return;
+            }
 
         const conceptsYaml = await conceptsResponse.text();
         const linksYaml = await linksResponse.text();
+        const hotNewsYaml = await hotNewsResponse.text();
+
         if (!linksYaml.trim()) {
             console.error('Links YAML is empty');
             return;
         }
         conceptsData = jsyaml.load(conceptsYaml).concepts;
         linksData = jsyaml.load(linksYaml);
-        
+        hotNewsData = jsyaml.load(hotNewsYaml);
+
         uiTranslations = await translationsResponse.json();
 
         currentLanguage = lang;
@@ -123,6 +127,7 @@ function buildNavigation() {
             <li><a href="#/calculator">${uiTranslations.tokenCalculator}</a></li>
         </ul>
     `;
+
     navUl.appendChild(specialSection);
 
     // Add event listeners for navigation links
@@ -133,6 +138,16 @@ function buildNavigation() {
             window.location.hash = '/' + route;
         });
     });
+
+    const hotNewsSection = document.createElement('div');
+    hotNewsSection.className = 'nav-category';
+    hotNewsSection.innerHTML = `
+        <h3>${uiTranslations.hotNews}</h3>
+        <ul>
+            <li><a href="#/hot-news">${uiTranslations.viewHotNews}</a></li>
+        </ul>
+    `;
+    navUl.appendChild(hotNewsSection);
 }
 
 function handleRoute() {
@@ -162,6 +177,8 @@ function updateContent(route) {
             content = buildTextGenerationSection();
         } else if (route === 'calculator') {
             content = buildCalculatorSection(uiTranslations);
+        } else if (route === 'hot-news') {
+            content = buildHotNewsSection(uiTranslations);
         } else {
             content = `<p>${uiTranslations.noMatchingContent}</p>`;
         }
@@ -216,6 +233,15 @@ function buildContentSection(items, type) {
 }
 
 function buildTextGenerationSection() {
+
+    if (window.location.hostname != 'localhost' && window.location.hostname != '127.0.0.1') {
+        return `
+            <div class="maintenance-message">
+                ${uiTranslations.maintenanceMessage || 'Server is under maintenance for new future LLM services, fork the project from git to play with it locally.'} 
+                <a href="https://github.com/LeonMelamud/AI-Knowledge" target="_blank">https://github.com/LeonMelamud/AI-Knowledge</a>
+            </div>
+        `;
+    }
     return `
         <h2>${uiTranslations.generatePromptsAndVoice}</h2>
         <div id="text-generation-section">
@@ -307,8 +333,6 @@ function attachEventListeners() {
         }
     }
 
-
-
     // Add event listeners for hide image buttons
     const hideImageButtons = document.querySelectorAll('.hide-image-button');
     hideImageButtons.forEach(button => {
@@ -321,15 +345,6 @@ function attachEventListeners() {
     });
 }
 
-
-function formatString(template, values) {
-    return template.replace(/{(\w+)}/g, (_, key) => values[key] || '');
-}
-
-function insertContent(content) {
-    const mainContent = document.getElementById('mainContent');
-    mainContent.innerHTML = `<div class="full-width">${content}</div>`;
-}
 
 
 
@@ -344,9 +359,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+function isValidUrl(string) {
+    try {
+        new URL(string);
+        return true;
+    } catch (_) {
+        return false;
+    }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     loadInitialData();
+
     // Add event listener for language selector
     const languageSelector = document.getElementById('language-selector');
     if (languageSelector) {
@@ -358,4 +382,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    const hotNewsContainer = document.getElementById('hot-news-container');
+    if (hotNewsContainer) {
+        hotNewsContainer.innerHTML = buildHotNewsSection(uiTranslations);
+    }
+
+    // Add event listener for news links
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('news-link')) {
+            const url = event.target.getAttribute('data-href');
+            if (url && isValidUrl(url)) {
+                window.open(url, '_blank');
+            } else {
+                console.warn(`Invalid URL: ${url}`);
+            }
+        }
+    });
 });

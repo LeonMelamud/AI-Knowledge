@@ -1,0 +1,136 @@
+hot_news:
+  - section: "Open Source LLMs"
+    topics:
+      - title: "Alibaba Qwen 2.5 models drop"
+        images:
+          - "path/to/qwen_image1.jpg"
+          - "path/to/qwen_image2.jpg"
+        description: "Qwen 2.5 Math and Qwen 2.5 Code"
+        links:
+          - name: "X"
+            url: "#"
+          - name: "HF"
+            url: "#"
+          - name: "Blog"
+            url: "#"
+          - name: "Try It"
+            url: "#"
+      - title: "Qwen 2.5 Coder 1.5B running on a 4 year old phone"
+        images:
+          - "1.gif"
+        description: "By Nisten"
+        links: []
+      - title: "KyutAI open sources Moshi & Mimi"
+        images:
+          - "path/to/kyutai_image1.jpg"
+          - "path/to/kyutai_image2.jpg"
+        description: "End to end voice chat model (Moshiko & Moshika)"
+        links:
+          - name: "X"
+            url: "#"
+          - name: "HF"
+            url: "#"
+          - name: "Paper"
+            url: "#"
+      - title: "Microsoft releases GRIN-MoE"
+        images:
+          - "path/to/grin_moe_image1.jpg"
+        description: "Tiny (6.6B active) MoE with 79.4 MMLU"
+        links:
+          - name: "X"
+            url: "#"
+          - name: "HF"
+            url: "#"
+          - name: "GitHub"
+            url: "#"
+      - title: "Nvidia announces NVLM 1.0"
+        images:
+          - "path/to/nvlm_image1.jpg"
+        description: "Frontier class multimodal LLMs (no weights yet)"
+        links:
+          - name: "X"
+            url: "#"
+
+  - section: "Big CO LLMs + APIs"
+    topics:
+      - title: "OpenAI O1 results from LMsys"
+        images:
+          - "path/to/openai_o1_image1.jpg"
+          - "path/to/openai_o1_image2.jpg"
+        description: "New KING LLM in town, vibe checks confirm"
+        links:
+          - name: "Thread"
+            url: "#"
+      - title: "NousResearch announces Forge in waitlist"
+        images:
+          - "path/to/nousresearch_forge_image1.jpg"
+        description: "MCTS enabled inference product"
+        links:
+          - name: "X"
+            url: "#"
+
+  - section: "This week's Buzz"
+    topics:
+      - title: "Judgement Day hackathon"
+        images:
+          - "path/to/judgement_day_image1.jpg"
+          - "path/to/judgement_day_image2.jpg"
+        description: "In 2 days! Still places to come hack with us"
+        links:
+          - name: "Sign up"
+            url: "#"
+      - title: "New RAG Course is live"
+        images:
+          - "path/to/rag_course_image1.jpg"
+        description: "Learn all about advanced RAG from WandB, Cohere and Weaviate"
+        links:
+          - name: "Sign up for free"
+            url: "#"
+
+  - section: "Vision & Video"
+    topics:
+      - title: "Youtube announces DreamScreen"
+        images:
+          - "path/to/dreamscreen_image1.jpg"
+          - "path/to/dreamscreen_image2.jpg"
+        description: "Generative AI image and video in youtube shorts"
+        links:
+          - name: "Blog"
+            url: "#"
+      - title: "CogVideoX-5B-I2V"
+        images:
+          - "path/to/cogvideox_image1.jpg"
+        description: "Leading open source img2video model"
+        links:
+          - name: "X"
+            url: "#"
+          - name: "HF"
+            url: "#"
+      - title: "Text-2-video over API announcements"
+        images:
+          - "path/to/text2video_api_image1.jpg"
+          - "path/to/text2video_api_image2.jpg"
+        description: "Runway, DreamMachine & Kling announce text-2-video over API"
+        links:
+          - name: "Runway"
+            url: "#"
+          - name: "DreamMachine"
+            url: "#"
+      - title: "Runway announces video 2 video model"
+        images:
+          - "path/to/runway_v2v_image1.jpg"
+        description: ""
+        links:
+          - name: "X"
+            url: "#"
+
+  - section: "Tools"
+    topics:
+      - title: "Snap announces XR glasses"
+        images:
+          - "path/to/snap_xr_glasses_image1.jpg"
+          - "path/to/snap_xr_glasses_image2.jpg"
+        description: "Have hand tracking and AI features"
+        links:
+          - name: "X"
+            url: "#"

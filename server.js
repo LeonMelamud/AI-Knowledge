@@ -102,6 +102,54 @@ app.post('/generate-text', async (req, res) => {
     }
 });
 
+
+// API endpoint to add new content to the news YAML
+app.post('/api/hot-news/:lang', express.json(), async (req, res) => {
+    const lang = req.params.lang;
+    if (lang !== 'en' && lang !== 'he') {
+        return res.status(400).json({ error: 'Invalid language. Use "en" or "he".' });
+    }
+
+    try {
+        const { sections } = req.body;
+        if (!Array.isArray(sections) || sections.length === 0) {
+            return res.status(400).json({ error: 'Sections array is required and must not be empty' });
+        }
+
+        const newsFilePath = path.join(__dirname, `public/data/news_${lang}.yaml`);
+        const newsData = await fs.readFile(newsFilePath, 'utf8');
+        const parsedNews = yaml.load(newsData);
+
+        sections.forEach(({ section, topics }) => {
+            if (!section || !Array.isArray(topics) || topics.length === 0) {
+                throw new Error('Each section must have a name and a non-empty topics array');
+            }
+
+            const sectionIndex = parsedNews.hot_news.findIndex(s => s.section === section);
+            if (sectionIndex === -1) {
+                // If the section doesn't exist, create a new one
+                parsedNews.hot_news.push({ section, topics });
+            } else {
+                // If the section exists, append new topics
+                parsedNews.hot_news[sectionIndex].topics.push(...topics);
+            }
+        });
+
+        await fs.writeFile(newsFilePath, yaml.dump(parsedNews), 'utf8');
+        res.json({ message: `News items added successfully to ${lang} news` });
+    } catch (error) {
+        console.error(`Error adding news items to ${lang} news:`, error);
+        res.status(500).json({ error: `Error adding news items to ${lang} news: ${error.message}` });
+    }
+});
+
+
+
+
+
+
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
+
+
