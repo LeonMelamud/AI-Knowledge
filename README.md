@@ -1,6 +1,19 @@
-# Your Site Name
+# AI Knowledge Base
 
-Brief description of your site and its purpose.
+## About This Site
+
+The AI Knowledge Base is a comprehensive resource for artificial intelligence enthusiasts, students, and professionals. Our purpose is to provide up-to-date information, explanations, and resources on various AI topics, tools, and concepts.
+
+Key features of this site include:
+
+- Hot News: Stay informed about the latest developments in AI, including breakthroughs in language models, computer vision, and more.
+- AI Concepts: Detailed explanations of fundamental and advanced AI concepts, from machine learning basics to cutting-edge techniques.
+- Tools and Resources: Curated links to popular AI tools, libraries, and platforms, along with brief descriptions of their capabilities.
+- Interactive Elements: Engage with features like token calculators and potentially AI-powered chat interfaces (if implemented).
+
+This site serves as a centralized hub for AI knowledge, helping users navigate the rapidly evolving field of artificial intelligence. Whether you're looking to understand basic concepts, explore advanced techniques, or stay updated on the latest AI news, our AI Knowledge Base has you covered.
+
+We continuously update our content to reflect the latest advancements in AI, ensuring that our users have access to the most current and relevant information in the field.
 
 ## Running Locally
 
