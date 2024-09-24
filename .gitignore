@@ -3,3 +3,5 @@ node_modules/
 output.txt
 .history
 dist/
+ .DS_Store
+ ai_back_end/
