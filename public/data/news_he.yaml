@@ -1,136 +1,52 @@
 hot_news:
-  - section: "Open Source LLMs"
+  - section: "מעבדות היער השחור - Flux 1.1 Pro"
     topics:
-      - title: "Alibaba Qwen 2.5 models drop"
+      - title: "מעבדות היער השחור מציגות Flux 1.1 Pro"
         images:
-          - "path/to/qwen_image1.jpg"
-          - "path/to/qwen_image2.jpg"
-        description: "Qwen 2.5 Math and Qwen 2.5 Code"
+          - "flux1.1pro_0.jpg"
+          - "flux1.1pro_1.jpg"
+        description: "מעבדות היער השחור הוציאו Flux 1.1 Pro, שדרוג משמעותי למודל הטקסט-לתמונה שלהם. המודל החדש הזה מציע יצירת תמונות מהירה פי שישה בהשוואה לקודמו, Flux 1.0 Pro, תוך שיפור איכות התמונה, התאמת הפרומפט והגיוון. Flux 1.1 Pro מקודם 'blueberry' ונבדק כדי להתעלות על מודלים אחרים בלוח המובילים של Artificial Analysis. הוא זמין דרך פלטפורמות שונות כולל Fal, Together, Replicate, ו-Freepik, ודרך API של מעבדות היער השחור במחיר תחרותי של 4 סנטים לכל יצירת תמונה."
         links:
-          - name: "X"
-            url: "#"
-          - name: "HF"
-            url: "#"
-          - name: "Blog"
-            url: "#"
-          - name: "Try It"
-            url: "#"
-      - title: "Qwen 2.5 Coder 1.5B running on a 4 year old phone"
-        images:
-          - "1.gif"
-        description: "By Nisten"
-        links: []
-      - title: "KyutAI open sources Moshi & Mimi"
-        images:
-          - "path/to/kyutai_image1.jpg"
-          - "path/to/kyutai_image2.jpg"
-        description: "End to end voice chat model (Moshiko & Moshika)"
-        links:
-          - name: "X"
-            url: "#"
-          - name: "HF"
-            url: "#"
-          - name: "Paper"
-            url: "#"
-      - title: "Microsoft releases GRIN-MoE"
-        images:
-          - "path/to/grin_moe_image1.jpg"
-        description: "Tiny (6.6B active) MoE with 79.4 MMLU"
-        links:
-          - name: "X"
-            url: "#"
-          - name: "HF"
-            url: "#"
-          - name: "GitHub"
-            url: "#"
-      - title: "Nvidia announces NVLM 1.0"
-        images:
-          - "path/to/nvlm_image1.jpg"
-        description: "Frontier class multimodal LLMs (no weights yet)"
-        links:
-          - name: "X"
-            url: "#"
+          - name: "הודעה"
+            url: "https://blackforestlabs.ai/announcing-flux-1-1-pro-and-the-bfl-api/"
+          - name: "נסו ב-Replicate"
+            url: "https://replicate.com/"
+          - name: "נסו ב-Fal"
+            url: "https://fal.ai/dashboard"
 
-  - section: "Big CO LLMs + APIs"
+  - section: "OpenAI ChatGPT Canvas"
     topics:
-      - title: "OpenAI O1 results from LMsys"
+      - title: "OpenAI ChatGPT Canvas - דרך חדשה לתקשר עם ChatGPT"
         images:
-          - "path/to/openai_o1_image1.jpg"
-          - "path/to/openai_o1_image2.jpg"
-        description: "New KING LLM in town, vibe checks confirm"
+          - "canvan-open-ai.jpg"
+        description: "ChatGPT Canvas של OpenAI הוא ממשק מהפכני שהופך את ChatGPT לשותף יצירתי לפרויקטים של כתיבה וקוד. הוא מציע מרחב עבודה חזותי מוקדש שבו משתמשים יכולים לערוך טקסט או קוד ישירות, לקבל משוב בתוך הטקסט, ולהשתמש בקיצורי דרך למשימות כמו התאמת אורך, ניפוי קוד והוספת פוליש. מאומן עם נתונים סינתטיים, המודל GPT-4o ב-Canvas משפר את הדיוק ב-30%. כרגע בבטא, Canvas עומד למהפכת שיתוף הפעולה של AI."
         links:
-          - name: "Thread"
-            url: "#"
-      - title: "NousResearch announces Forge in waitlist"
-        images:
-          - "path/to/nousresearch_forge_image1.jpg"
-        description: "MCTS enabled inference product"
-        links:
-          - name: "X"
-            url: "#"
+          - name: "הודעה"
+            url: "https://openai.com/blog/chatgpt-canvas"
 
-  - section: "This week's Buzz"
+  - section: "LLMs מקור פתוח"
     topics:
-      - title: "Judgement Day hackathon"
+      - title: "שחרור מודלים Qwen 2.5"
         images:
-          - "path/to/judgement_day_image1.jpg"
-          - "path/to/judgement_day_image2.jpg"
-        description: "In 2 days! Still places to come hack with us"
-        links:
-          - name: "Sign up"
-            url: "#"
-      - title: "New RAG Course is live"
-        images:
-          - "path/to/rag_course_image1.jpg"
-        description: "Learn all about advanced RAG from WandB, Cohere and Weaviate"
-        links:
-          - name: "Sign up for free"
-            url: "#"
+          - "qwen2.5-coder.jpg"
+        description: "Qwen 2.5 Math ו-Qwen 2.5 Code"
 
-  - section: "Vision & Video"
+  - section: "LLMs גדולות + APIs"
     topics:
-      - title: "Youtube announces DreamScreen"
+      - title: "תוצאות OpenAI O1 מ-LMsys"
         images:
-          - "path/to/dreamscreen_image1.jpg"
-          - "path/to/dreamscreen_image2.jpg"
-        description: "Generative AI image and video in youtube shorts"
+          - "o1.jpg"
+        description: "KING LLM חדש בעיר, בדיקות ויב וודאיות"
         links:
-          - name: "Blog"
-            url: "#"
-      - title: "CogVideoX-5B-I2V"
-        images:
-          - "path/to/cogvideox_image1.jpg"
-        description: "Leading open source img2video model"
-        links:
-          - name: "X"
-            url: "#"
-          - name: "HF"
-            url: "#"
-      - title: "Text-2-video over API announcements"
-        images:
-          - "path/to/text2video_api_image1.jpg"
-          - "path/to/text2video_api_image2.jpg"
-        description: "Runway, DreamMachine & Kling announce text-2-video over API"
+          - name: "תרד"
+            url: "https://x.com/OpenAI/status/1836846202182131776"
+
+  - section: "חזון ווידאו"
+    topics:
+      - title: "הודעות על text-2-video דרך API"
+        description: "Runway, DreamMachine & Kling מכריזים על text-2-video דרך API"
         links:
           - name: "Runway"
-            url: "#"
+            url: "https://x.com/runwayml/status/1835670564825944265"
           - name: "DreamMachine"
-            url: "#"
-      - title: "Runway announces video 2 video model"
-        images:
-          - "path/to/runway_v2v_image1.jpg"
-        description: ""
-        links:
-          - name: "X"
-            url: "#"
-
-  - section: "Tools"
-    topics:
-      - title: "Snap announces XR glasses"
-        images:
-          - "path/to/snap_xr_glasses_image1.jpg"
-          - "path/to/snap_xr_glasses_image2.jpg"
-        description: "Have hand tracking and AI features"
-        links:
-          - name: "X"
-            url: "#"
+            url: "https://x.com/LumaLabsAI/status/1835742651662139529"

@@ -80,8 +80,46 @@ body {
     }
 
     #sidebar h2 {
-        font-size: 20px;
+        /* ... existing styles ... */
+        position: relative;
+        text-align: center;
+        display: inline-block;
+        padding: 10px 50px; /* Add padding to accommodate the GIFs */
+        background-color: #f0f8ff; /* Light background for contrast */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        font-weight: bold;
+        color: #006400; /* Dark green for a money theme */
     }
+    
+    #sidebar h2::before,
+    #sidebar h2::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 30px; /* Adjust based on your GIF size */
+        height: 30px; /* Adjust based on your GIF size */
+    
+        background-size: contain;
+        background-repeat: no-repeat;
+        transform: translateY(-50%);
+    }
+    
+    #sidebar h2::before {
+        left: 10px; /* Adjust as needed */
+    }
+    
+    #sidebar h2::after {
+        right: 10px; /* Adjust as needed */
+    }
+
+#sidebar h2::before {
+    left: -15px; /* Adjust as needed */
+}
+
+#sidebar h2::after {
+    right: -15px; /* Adjust as needed */
+}
 
     .rss-feed a {
         font-size: 14px;
@@ -812,3 +850,37 @@ input[type="text"],
     text-align: center;
     margin-top: 10px;
 }
+
+.hot-news-title {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: #fff;
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fire 3s ease-in-out infinite;
+    text-shadow: 0 0 10px rgba(255, 115, 0, 0.5);
+}
+
+@keyframes fire {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.hot-news-title::before {
+    content: '🔥';
+    margin-right: 10px;
+}
+
+.hot-news-title::after {
+    content: '🔥';
+    margin-left: 10px;
+}
+

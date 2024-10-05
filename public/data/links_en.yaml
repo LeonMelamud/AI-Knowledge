@@ -18,8 +18,40 @@ tools:
     description: |
       Gemini is a natural language processing tool by Google, providing solutions to improve human-computer communication through text analysis and enhancement.
 
+  - name: Storm Genie
+    company: Stanford University
+    url: https://storm.genie.stanford.edu/
+    description: |
+      Storm Genie is a tool developed by Stanford University, providing advanced solutions for AI and machine learning research.
+      It offers a platform for developing, testing, and deploying AI models with a focus on innovation and efficiency.
+
+  - name: FinChat
+    company: Stratosphere Technology Inc.
+    url: https://finchat.io/
+    description: |
+      FinChat is an AI-powered platform designed for investment research, providing institutional-quality data verified by human equity analysts. It offers tools for summarizing financial data, building models, and visualizing information, helping investors make informed decisions quickly and efficiently.
+      
+  - name: Google AI Studio
+    company: Google
+    url: https://aistudio.google.com/app/prompts/new_chat
+    description: |
+      Google AI Studio provides a platform for creating and managing AI-driven applications, offering tools for prompt engineering and model interaction.
+
+  - name: DeepSeek
+    company: DeepSeek, Inc.
+    url: https://platform.deepseek.com/api-docs/
+    description: |
+      DeepSeek offers a powerful API for conversational AI and code generation, featuring the DeepSeek V2.5 model. It provides robust capabilities for integrating AI into applications, supporting both chat and coding functionalities.
+      
+
+  - name: OpenRouter
+    company: OpenRouter, LLC
+    url: https://openrouter.ai/
+    description: |
+      OpenRouter offers a unified interface for managing and interacting with various large language models (LLMs). It helps users find the best models and prices for their prompts, enhancing productivity in tasks like chat, transcription, and translation.
+
 - id: libraries
-  title: Open-Source Libraries
+  title: Open-Source Libraries/Tools
   items:
   - name: TensorFlow
     company: Google
@@ -125,6 +157,42 @@ tools:
     recentUpdates: |
       Pandas version 1.4 was recently released, bringing performance improvements and support for new features such as custom data types.
 
+  - name: Swimm
+    company: Swimm
+    url: https://swimm.io/
+    description: |
+      Swimm is an AI-augmented development and testing platform that automates code documentation, ensuring it stays up-to-date with every code change. It enhances developer productivity by providing instant documentation coverage and seamless integration with existing tools and workflows.
+
+  - name: Datadog
+    company: Datadog, Inc.
+    url: https://app.datadoghq.com/
+    description: |
+      Datadog is a monitoring and analytics platform that provides comprehensive visibility into application performance and infrastructure. It helps teams monitor, troubleshoot, and optimize their systems, enhancing productivity and operational efficiency.
+    
+  - name: Label Studio
+    company: HumanSignal, Inc.
+    url: https://labelstud.io/
+    description: |
+      Label Studio is an open-source data labeling platform that supports a wide range of data types, including images, audio, text, and video. It offers flexible and configurable layouts, integrates with ML/AI pipelines, and provides ML-assisted labeling to enhance productivity in preparing training data and validating AI models.
+
+  - name: Deepchecks
+    company: Deepchecks AI
+    url: https://www.deepchecks.com/
+    description: |
+      Deepchecks provides comprehensive solutions for LLM evaluation, ML monitoring, and open-source testing. It helps teams ensure high-quality LLM applications by automating evaluation processes and continuously validating models and data. Deepchecks is widely used for its robust open-source ML testing capabilities.
+
+  - name: Giskard
+    company: Giskard AI
+    url: https://www.giskard.ai/
+    description: |
+      Giskard is an open-source testing framework for AI models, focusing on quality, security, and compliance. It helps teams automatically detect performance, bias, and security issues in AI models, ensuring compliance with regulations like the EU AI Act. Giskard facilitates collaboration between data scientists and business stakeholders, enhancing the reliability and fairness of AI systems.
+
+  - name: MLflow
+  company: MLflow Project
+  url: https://mlflow.org/
+  description: |
+    MLflow is an open-source platform for managing the end-to-end machine learning lifecycle. It supports experiment tracking, model management, and deployment, and integrates with popular ML libraries and platforms. MLflow is designed to streamline the development and deployment of both traditional ML and generative AI applications.
+
 - id: graphics
   title: Graphics Tools
   items:
@@ -183,11 +251,161 @@ tools:
       Character.AI offers a unique experience where people can form meaningful connections with AI characters,
       making it popular among those seeking social interaction in a new and innovative way.
 
-  - name: Flux
+  - name: Flux 1.1 Pro
     company: Black Forest Labs
-    url: https://blackforestlabs.com/
+    url: https://fal.ai/dashboard
     description: |
       Flux is an advanced AI image generation model that now supports training of LoRA models.
       This feature allows users to create customized models by uploading 10-15 high-quality images.
       The streamlined process facilitates the creation of personalized AI images, offering new possibilities for creativity and customization.
       Flux caters to a diverse audience, from enthusiasts to professionals, seeking innovative image solutions.
+
+  - name: Astria
+    company: Astria
+    url: https://www.astria.ai/
+    description: |
+      Astria offers a fine-tuning API for generative imaging, allowing for customized and personalized image creation. It provides tools for AI photoshoots, mobile apps, filters, product shots, and more, with a focus on high-quality, generative image models.
+
+  - name: Midjourney
+    company: Midjourney, Inc.
+    url: https://www.midjourney.com/
+    description: |
+      Midjourney is an AI-powered tool that generates high-quality images from text prompts. It is widely used for creative projects, enabling artists and designers to quickly visualize concepts and explore new artistic possibilities.
+
+  - name: Hotshot
+    company: Hotshot Inc.
+    url: https://hotshot.co/
+    description: |
+      Hotshot is an AI-powered platform that offers a wide range of creative tools for capturing and enhancing visual content. It supports various categories such as food, animals, workplace, and more, enabling users to explore and express their creativity through AI-driven visual effects and enhancements.
+
+  - name: Tensor.Art
+    company: Tensor.Art
+    url: https://tensor.art/
+    description: |
+      Tensor.Art is a creative platform that leverages AI to enable users to generate and share digital art. It offers tools for creating various styles, including anime, realistic, and sci-fi, and supports workflows for model hosting and online training, making it a versatile tool for artists and designers.
+
+- id: articles
+  title: Articles
+  items:
+  - name: LLM System Architecture
+    company: Software Architecture Blog
+    url: https://softwarearchiblog.co.il/2024/08/%d7%90%d7%a8%d7%9b%d7%99%d7%98%d7%a7%d7%98%d7%95%d7%a8%d7%aa-%d7%9e%d7%a2%d7%a8%d7%9b%d7%95%d7%aa-llm-%d7%90%d7%91%d7%a0%d7%99-%d7%94%d7%99%d7%a1%d7%95%d7%93.html
+    description: |
+      An insightful article on the foundational elements of LLM system architecture, discussing common structures and engineering practices for building systems that heavily utilize large language models.
+
+  - name: Open Source AI Deep Dive
+    company: Open Source Initiative
+    url: https://opensource.org/deepdive
+    description: |
+      The Open Source AI Deep Dive is an initiative by the Open Source Initiative to define and promote Open Source AI. It involves a multi-stakeholder process to establish principles that ensure AI systems are open, transparent, and collaborative, similar to traditional open-source software.
+
+  - name: Generative AI Commons
+    company: LF AI & Data Foundation
+    url: https://genaicommons.org/
+    description: |
+      The Generative AI Commons is dedicated to fostering the democratization, advancement, and adoption of efficient, secure, reliable, and ethical Generative AI open source innovations. It provides a neutral governance platform for collaboration, education, and the development of open-source AI models, datasets, and applications.
+
+- id: educational-resources
+  title: Educational Resources
+  items:
+
+  - name: GenAI Agents
+    company: NirDiamant
+    url: https://github.com/NirDiamant/GenAI_Agents
+    description: |
+      This repository provides tutorials and implementations for various Generative AI Agent techniques, from basic to advanced. It serves as a comprehensive guide for building intelligent, interactive AI systems.
+
+  - name: Understanding & Building LLM Applications
+    company: LinkedIn Pulse
+    url: https://www.linkedin.com/pulse/understanding-building-llm-applications-pavan-belagatti-lakvc/
+    description: |
+      An article by Pavan Belagatti discussing the architecture and development of applications using large language models (LLMs), including insights into their components, training, and practical applications.
+
+  - name: Prompt Engineering with W&B
+    company: Weights & Biases
+    url: https://colab.research.google.com/github/wandb/edu/blob/main/prompting/prompt_engineering.ipynb#scrollTo=ImDxqf2JbuZy
+    description: |
+      A comprehensive guide on prompt engineering using Weights & Biases, providing practical insights and examples for optimizing prompts in AI models.
+
+  - name: Amazon Bedrock Workshop
+    company: AWS Samples
+    url: https://github.com/aws-samples/amazon-bedrock-workshop
+    description: |
+      This workshop is designed for developers and solution builders to leverage foundation models through Amazon Bedrock. It provides hands-on experience with text and image generation, model customization, and integration with open-source packages like LangChain and FAISS.
+
+  - name: LLM Fine-Tuning Course
+    company: Weights & Biases
+    url: https://colab.research.google.com/github/wandb/edu/blob/main/llm-training-course/colab/finetuning.ipynb#scrollTo=d5754789-2e15-4bc9-800c-01f8ffc625e8
+    description: |
+      A comprehensive course on fine-tuning large language models using Weights & Biases, providing practical insights and examples for optimizing model performance.
+
+  - name: Parlance Labs
+    company: Parlance Labs
+    url: https://parlance-labs.com/
+    description: |
+      Parlance Labs provides AI-driven solutions for enhancing communication and productivity. Their tools focus on automating and optimizing customer interactions, enabling businesses to improve efficiency and customer satisfaction through advanced natural language processing technologies.
+
+  - name: LF AI & Data Foundation Interactive Landscape
+    company: LF AI & Data Foundation
+    url: https://landscape.lfai.foundation/
+    description: |
+      The LF AI & Data Foundation Interactive Landscape provides a comprehensive overview of open-source AI and data projects. It is modeled after the CNCF landscape and offers insights into various tools and platforms across machine learning, deep learning, data processing, and more, helping users navigate the open-source AI ecosystem.
+
+  - name: DLI Learning Journey
+    company: NVIDIA
+    url: https://nvdam.widen.net/s/brxsxxtskb/dli-learning-journey-2009000-r5-web
+    description: |
+      The DLI Learning Journey by NVIDIA provides a comprehensive guide for developers and data scientists to enhance their skills in deep learning and AI. It offers structured learning paths, resources, and tools to facilitate the development and deployment of AI models, improving productivity and expertise in the field.
+
+- id: productivity
+  title: Productivity Tools
+  items:
+  - name: Cursor
+    company: Anysphere
+    url: https://www.cursor.com/
+    description: |
+      Cursor is an AI-powered code editor designed to enhance developer productivity. It integrates seamlessly with your codebase, predicts your next edits, and allows you to write and update code using natural language instructions. Cursor supports importing extensions, themes, and keybindings, and prioritizes privacy and security with SOC 2 certification.
+      
+  - name: Continue
+    company: Continue, Inc.
+    url: https://www.continue.dev/
+    description: |
+      Continue is an open-source AI code assistant that enhances developer productivity by providing custom autocomplete and chat experiences within the IDE. It supports integration with various models and contexts, allowing developers to remain in flow while coding and accelerating development with a plug-and-play system.
+
+  - name: NotebookLM
+    company: Google
+    url: https://notebooklm.google/
+    description: |
+      NotebookLM is an AI-powered tool by Google designed to enhance productivity by integrating machine learning capabilities into digital note-taking. It helps users organize, search, and analyze their notes more efficiently, providing insights and recommendations based on the content.
+ 
+  - name: "Gamma, presentation AI tool"
+    company: Gamma
+    url: https://gamma.app/docs/Exploring-AI-From-Basics-to-Advanced-Applications-zlgxrgm775737rn?mode=doc
+    description: |
+      A comprehensive guide exploring AI from foundational concepts to advanced applications, providing insights and practical examples for learners at all levels. This is a presentation AI tool.      
+
+  - name: Otter.ai
+    company: Otter.ai
+    url: https://otter.ai/
+    description: |
+      Otter.ai provides automatic transcription services, allowing users to convert spoken content into written text efficiently, enhancing productivity in meetings and lectures.
+
+
+  - name: Grammarly
+    company: Grammarly Inc.
+    url: https://www.grammarly.com/
+    description: |
+      Grammarly is an AI-powered writing assistant that helps users improve their writing by providing suggestions for grammar, spelling, style, and tone.
+
+  - name: Jasper
+    company: Jasper AI
+    url: https://www.jasper.ai/
+    description: |
+      Jasper is an AI content creation tool that assists in writing blog posts, social media content, and more, helping users to create high-quality content faster.
+
+  - name: Replika
+    company: Luka, Inc.
+    url: https://replika.ai/
+    description: |
+      Replika is an AI companion designed to chat with users, providing emotional support and helping with mental wellness through conversation.
+

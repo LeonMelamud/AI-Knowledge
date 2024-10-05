@@ -1,4 +1,28 @@
 hot_news:
+
+  - section: "Black Forest Labs - Flux 1.1 Pro"
+    topics:
+      - title: "Black Forest Labs Introduces Flux 1.1 Pro"
+        images:
+          - "flux1.1pro_0.jpg"
+          - "flux1.1pro_1.jpg"
+        description: "Black Forest Labs has released Flux 1.1 Pro, a significant upgrade to their text-to-image model. This new model offers six times faster image generation compared to its predecessor, Flux 1.0 Pro, while also enhancing image quality, prompt adherence, and diversity. Flux 1.1 Pro is codenamed 'blueberry' and has been tested to outperform other models on the Artificial Analysis image arena leaderboard. It is available through various platforms including Fal, Together, Replicate, and Freepik, and via the Black Forest Labs API at a competitive pricing of 4 cents per image generation."
+        links:
+          - name: "Announcement"
+            url: "https://blackforestlabs.ai/announcing-flux-1-1-pro-and-the-bfl-api/"
+          - name: "Try on Replicate"
+            url: "https://replicate.com/"
+          - name: "Try on Fal"
+            url: "https://fal.ai/dashboard"
+  - section: "OpenAI ChatGPT Canvas"
+    topics:
+      - title: "OpenAI ChatGPT Canvas - A New Way to Interact with ChatGPT"
+        images:
+          - "canvan-open-ai.jpg"
+        description: "OpenAI's ChatGPT Canvas is a groundbreaking interface that transforms ChatGPT into a creative partner for writing and coding projects. It offers a dedicated, visual workspace where users can edit text or code directly, receive inline feedback, and use shortcuts for tasks like adjusting length, debugging code, and adding polish. Trained with synthetic data, the GPT-4o model in Canvas improves accuracy by 30%. Currently in beta, Canvas is set to revolutionize AI collaboration."
+        links:
+          - name: "Announcement"
+            url: "https://openai.com/blog/chatgpt-canvas"
   - section: "Open Source LLMs"
     topics:
       - title: "Alibaba Qwen 2.5 models drop"

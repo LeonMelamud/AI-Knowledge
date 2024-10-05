@@ -27,5 +27,6 @@
   "hotNews": "Hot News",
   "viewHotNews": "View Hot News",
   "maintenanceMessage": "Server is under maintenance for cloud LLM services, fork the project from git to play with it locally.",
-  "hotNewsDisclaimer": "Information sourced from ThursdAI or similar AI-powered news aggregators."
+  "hotNewsDisclaimer": "Information sourced from ThursdAI or similar AI-powered news aggregators.",
+  "hotNewsTitle": "Hot News"
 }

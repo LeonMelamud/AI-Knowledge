@@ -39,7 +39,7 @@ async function fetchRSSFeed() {
 function renderRSSFeed(feed) {
     const sidebar = document.getElementById('sidebar');
     let html = `
-        <h2>AI Articles</h2>
+        <h2>Nasdaq AI Articles</h2>
         <ul class="rss-feed">
     `;
     

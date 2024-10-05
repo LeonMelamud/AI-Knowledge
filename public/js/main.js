@@ -14,7 +14,7 @@ async function loadInitialData() {
     try {
         await loadLanguageData(currentLanguage);      
         console.log('Initial data loaded successfully');
-        buildNavigation(); // קריאה לבניית התפריט רק לאחר טעינת הנתונים
+        buildNavigation(); 
     } catch (error) {
         console.error('Error fetching data:', error);
         document.getElementById('mainContent').innerHTML = `<p>Error loading data: ${error.message}. Please check the console for more details and refresh the page.</p>`;
@@ -79,7 +79,7 @@ function buildNavigation() {
     const navUl = document.getElementById('main-nav');
     if (!navUl) {
         console.error('האלמנט main-nav לא נמצא בדף');
-        return; // יציאה מהפונקציה אם האלמנט לא קיים
+        return; 
     }
     navUl.innerHTML = ''; // Clear existing navigation
 
@@ -134,7 +134,7 @@ function buildNavigation() {
     document.querySelectorAll('nav a').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            const route = this.getAttribute('href').slice(2); // Remove '#/' from href
+            const route = this.getAttribute('href').slice(2); 
             window.location.hash = '/' + route;
         });
     });
@@ -151,7 +151,7 @@ function buildNavigation() {
 }
 
 function handleRoute() {
-    const hash = window.location.hash.slice(2) || 'ai-basics';
+    const hash = window.location.hash.slice(2) || 'hot-news';
     updateContent(hash);
 }
 
@@ -161,7 +161,7 @@ function updateContent(route) {
 
     let content = '';
 
-    console.log('Current route:', route); // הוספת לוג
+    console.log('Current route:', route);
 
     if (route === 'useful-links') {
         content = buildContentSection(linksData, 'tool');
@@ -319,8 +319,6 @@ function attachEventListeners() {
                 console.error('handleGenerateText function not found. Make sure llm-apis.js is loaded correctly.');
             }
         });
-    } else {
-        console.warn('Generate Text button not found in main.js');
     }
 
     const calcButton = document.getElementById('calculate-button');
@@ -371,12 +369,16 @@ function isValidUrl(string) {
 document.addEventListener('DOMContentLoaded', () => {
     loadInitialData();
 
+    if (!window.location.hash) {
+        window.location.hash = '#/hot-news';
+    }
+
     // Add event listener for language selector
     const languageSelector = document.getElementById('language-selector');
     if (languageSelector) {
         languageSelector.value = currentLanguage;
         languageSelector.addEventListener('change', function() {
-            const newLanguage = this.value; // הוסף שורה זו
+            const newLanguage = this.value;
             if (newLanguage !== currentLanguage) {
                 loadLanguageData(newLanguage);
             }
