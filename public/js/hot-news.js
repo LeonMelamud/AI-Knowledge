@@ -9,6 +9,7 @@ export function buildHotNewsSection(uiTranslations) {
     }
 
     let content = '<div class="hot-news-container">';
+    content += `<h2 class="hot-news-title">${uiTranslations.hotNewsTitle || 'Hot News'}</h2>`;
 
     newsData.hot_news.forEach(section => {
         if (section.section) {
