@@ -8,14 +8,15 @@ body {
     background-size: cover;
     width: 100%;
     overflow-x: hidden;
+    background-color: #f0f8ff; /* Changed to a light sky blue */
 }
 
 .container {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly brighter white */
     width: 100%;
     max-width: 1200px;
     margin: 20px auto;
     padding: 0;
-    background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     box-sizing: border-box;
     position: relative;
@@ -23,9 +24,9 @@ body {
 }
 
 .main-content {
+    background-color: rgba(255, 255, 255, 0.95); /* Brighter background */
     width: 100%;
     min-height: 500px;
-    background-color: rgba(249, 249, 249, 0.9);
     padding: 20px;
     box-sizing: border-box;
     position: relative;
@@ -68,7 +69,7 @@ body {
         width: 100%;
         padding: 0px;
     }
-    
+
     .main-content {
         padding: 10px;
     }
@@ -78,40 +79,40 @@ body {
         border-left: none;
         padding: 10px;
     }
+}
 
-    #sidebar h2 {
-        /* ... existing styles ... */
-        position: relative;
-        text-align: center;
-        display: inline-block;
-        padding: 10px 50px; /* Add padding to accommodate the GIFs */
-        background-color: #f0f8ff; /* Light background for contrast */
-        border-radius: 8px; /* Rounded corners */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-        font-weight: bold;
-        color: #006400; /* Dark green for a money theme */
-    }
-    
-    #sidebar h2::before,
-    #sidebar h2::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        width: 30px; /* Adjust based on your GIF size */
-        height: 30px; /* Adjust based on your GIF size */
-    
-        background-size: contain;
-        background-repeat: no-repeat;
-        transform: translateY(-50%);
-    }
-    
-    #sidebar h2::before {
-        left: 10px; /* Adjust as needed */
-    }
-    
-    #sidebar h2::after {
-        right: 10px; /* Adjust as needed */
-    }
+#sidebar h2 {
+    /* ... existing styles ... */
+    position: relative;
+    text-align: center;
+    display: inline-block;
+    padding: 10px 50px; /* Add padding to accommodate the GIFs */
+    background-color: #f0f8ff; /* Light background for contrast */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    font-weight: bold;
+    color: #006400; /* Dark green for a money theme */
+}
+
+#sidebar h2::before,
+#sidebar h2::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30px; /* Adjust based on your GIF size */
+    height: 30px; /* Adjust based on your GIF size */
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translateY(-50%);
+}
+
+#sidebar h2::before {
+    left: 10px; /* Adjust as needed */
+}
+
+#sidebar h2::after {
+    right: 10px; /* Adjust as needed */
+}
 
 #sidebar h2::before {
     left: -15px; /* Adjust as needed */
@@ -121,13 +122,12 @@ body {
     right: -15px; /* Adjust as needed */
 }
 
-    .rss-feed a {
-        font-size: 14px;
-    }
+.rss-feed a {
+    font-size: 14px;
+}
 
-    .pub-date {
-        font-size: 10px;
-    }
+.pub-date {
+    font-size: 10px;
 }
 
 .main-content {
@@ -175,11 +175,12 @@ body {
 
 /* Navigation styles */
 nav {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 10px 0;
+    background: rgba(15, 23, 42, 0.9); /* Darker blue-gray background */
+    padding: 15px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
+    backdrop-filter: blur(10px);
 }
 
 .nav-container {
@@ -242,15 +243,27 @@ nav li {
 }
 
 nav a {
-    color: #ddd;
+    color: #94a3b8; /* Soft blue-gray for text */
     text-decoration: none;
     font-size: 0.9em;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     white-space: nowrap;
+    padding: 8px 12px;
+    border-radius: 5px;
+    background-color: rgba(30, 41, 59, 0.5); /* Slightly lighter blue-gray background */
 }
 
 nav a:hover {
-    color: #fff;
+    color: #f1f5f9; /* Very light blue-gray on hover */
+    background-color: rgba(51, 65, 85, 0.7); /* Darker blue-gray on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav a.active {
+    background-color: rgba(59, 130, 246, 0.5); /* Bright blue for active state */
+    color: #ffffff;
+    font-weight: bold;
 }
 
 .links-section, .special-sections {
@@ -328,12 +341,13 @@ nav a:hover {
 }
 
 /* Button styles */
-.button, 
+.button,
 #generate-button,
 #tts-button,
 .expand-btn,
-.info-button {
-    background-color: #008CBA;
+.info-button,
+#calculate-button {
+    background-color: #4a90e2; /* Softer blue */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -346,20 +360,23 @@ nav a:hover {
     margin: 5px;
 }
 
-.button:hover, 
+.button:hover,
 #generate-button:hover,
 #tts-button:hover,
 .expand-btn:hover,
-.info-button:hover {
-    background-color: #005f7f;
+.info-button:hover,
+#calculate-button:hover {
+    background-color: #3a7bd5; /* Slightly darker soft blue on hover */
     transform: translateY(-2px);
 }
 
-.button:active, 
+.button:active,
 #generate-button:active,
 #tts-button:active,
 .expand-btn:active,
-.info-button:active {
+.info-button:active,
+#calculate-button:active {
+    background-color: #2d6bc7; /* Even darker soft blue when active */
     transform: translateY(1px);
 }
 
@@ -749,7 +766,7 @@ input[type="text"],
     color: #004080;
 }
 
-/* Hot News Styles */
+    /* Hot News Styles */
 .hot-news-container {
     background-color: #f9f9f9;
     padding: 20px;
@@ -787,14 +804,14 @@ input[type="text"],
 .news-title {
     font-size: 1.2em;
     margin: 15px;
-    color: #008CBA;
+    color: #4a90e2; /* Updated to softer blue */
 }
 
 .news-images {
     display: flex;
     overflow-x: auto;
     scrollbar-width: thin;
-    scrollbar-color: #008CBA #f0f0f0;
+    scrollbar-color: #4a90e2 #f0f0f0; /* Updated to softer blue */
 }
 
 .news-image {
@@ -815,10 +832,11 @@ input[type="text"],
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    background-color: #f0f8ff; /* Updated to light sky blue */
 }
 
 .news-link {
-    background-color: #008CBA;
+    background-color: #4a90e2; /* Updated to softer blue */
     color: white;
     padding: 5px 10px;
     border-radius: 5px;
@@ -828,7 +846,7 @@ input[type="text"],
 }
 
 .news-link:hover {
-    background-color: #005f7f;
+    background-color: #3a7bd5; /* Slightly darker soft blue on hover */
 }
 
 /* Responsive adjustments */
@@ -841,7 +859,6 @@ input[type="text"],
         margin-bottom: 20px;
     }
 }
-
 
 .disclaimer {
     font-size: 0.8em;
@@ -874,13 +891,31 @@ input[type="text"],
     }
 }
 
-.hot-news-title::before {
-    content: '🔥';
-    margin-right: 10px;
-}
-
+.hot-news-title::before,
 .hot-news-title::after {
     content: '🔥';
-    margin-left: 10px;
+    margin: 0 10px;
+    font-size: 1.2em; /* Slightly larger than the text */
 }
+@media screen and (max-width: 768px) {
+    .hot-news-title {
+        font-size: 1.2rem;
+    }
 
+    .hot-news-title::before,
+    .hot-news-title::after {
+        font-size: 1em;
+        margin: 0 5px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .hot-news-title {
+        font-size: 1rem;
+    }
+
+    .hot-news-title::before,
+    .hot-news-title::after {
+        font-size: 0.9em;
+        margin: 0 3px;
+    }
+}

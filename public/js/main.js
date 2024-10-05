@@ -78,11 +78,10 @@ function updatePageContent() {
 function buildNavigation() {
     const navUl = document.getElementById('main-nav');
     if (!navUl) {
-        console.error('האלמנט main-nav לא נמצא בדף');
+        console.error('msin nav not found');
         return; 
     }
     navUl.innerHTML = ''; // Clear existing navigation
-
     // Create knowledge category
     const knowledgeCategory = document.createElement('div');
     knowledgeCategory.className = 'nav-category';
@@ -149,6 +148,7 @@ function buildNavigation() {
     `;
     navUl.appendChild(hotNewsSection);
 }
+
 
 function handleRoute() {
     const hash = window.location.hash.slice(2) || 'hot-news';
