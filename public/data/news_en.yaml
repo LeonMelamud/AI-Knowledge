@@ -1,5 +1,31 @@
 hot_news:
-
+  - section: "Historic Nobel Prizes in AI"
+    topics:
+      - title: "Geoffrey Hinton and John Hopfield Awarded Nobel Prize in Physics"
+        images:
+          - "hinton-hopfield-nobel.jpg"
+        description: "In a historic week for AI, Geoffrey Hinton and John Hopfield were awarded the Nobel Prize in Physics for their foundational work on neural networks. Hinton, often called the 'grandfather of modern AI,' and Hopfield were recognized for their contributions that paved the way for modern deep learning, including concepts like back propagation and Boltzmann machines. This marks the first time that AI researchers have been awarded a Nobel Prize, signifying the field's growing importance and impact on science and society."
+        links:
+          - name: "Nobel Prize Announcement"
+            url: "https://www.nobelprize.org/prizes/physics/2024/summary/"
+  
+  - section: "Meta's MovieGen: A Leap in AI-Generated Video"
+    topics:
+      - title: "Meta Unveils MovieGen: Advanced AI Video Generation"
+        images:
+          - "meta-moviegen.jpg"
+        description: "Meta has introduced MovieGen, a groundbreaking AI model for video generation. This 30B parameter model can create long, high-definition videos with various aspect ratios, personalized elements, and accompanying audio, all from text and image prompts. Notable features include impressive audio generation and personalization capabilities. While not yet publicly released, MovieGen represents a significant advancement in AI-generated content, potentially rivaling OpenAI's SORA."
+        links:
+          - name: "Meta AI Blog Post"
+            url: "https://ai.meta.com/blog/"
+          - name: "MovieGen"
+            url: "https://ai.meta.com/research/movie-gen/"
+        key_points:
+          - "30B parameter model for advanced video generation"
+          - "Generates high-quality audio to accompany videos"
+          - "Personalization feature for realistic character insertion"
+          - "Not yet publicly released or widely available"
+          - "Potential ethical concerns regarding misuse and deepfake creation"
   - section: "Black Forest Labs - Flux 1.1 Pro"
     topics:
       - title: "Black Forest Labs Introduces Flux 1.1 Pro"
