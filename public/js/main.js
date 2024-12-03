@@ -371,6 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!window.location.hash) {
         window.location.hash = '#/hot-news';
+        handleRoute(); // Ensure the route is handled after setting the default hash
     }
 
     // Add event listener for language selector
