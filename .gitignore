@@ -5,3 +5,5 @@ output.txt
 dist/
  .DS_Store
  ai_back_end/
+.aider*
+.env

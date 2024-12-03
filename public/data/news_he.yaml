@@ -1,4 +1,54 @@
 hot_news:
+  - section: "פריצות דרך בקוד פתוח בבינה מלאכותית"
+    topics:
+      - title: "מודלים מהפכניים בקוד פתוח מאתגרים את ענקי התעשייה"
+        images:
+          - "open-source-reasoning.jpg"
+        description: "התפתחות פורצת דרך בבינה מלאכותית בקוד פתוח עם המודל הראשון להיסק שניתן להריץ מקומית, המתעלה על מודל 405B ומתקרב למדדי O1 בתחומים מסוימים. בנוסף, הגישה ההיברידית החדשנית של Nvidia, Hymba 1.5B, מדגימה ביצועים עדיפים על פני Qwen 1.5B עם 6-12 פחות אימון. השחרור של Olmo 2 על ידי Allen AI קבע סטנדרט חדש כ-LLM הטוב ביותר בקוד פתוח, כולל שחרור נתונים למרות היעדר יומני WandB."
+        links:
+          - name: "בלוג Olmo 2"
+            url: "https://blog.allenai.org/olmo-2"
+          - name: "Olmo 2 בהאגינגפייס"
+            url: "https://huggingface.co/allenai/olmo-2"
+
+  - section: "חזרתו של Gemini"
+    topics:
+      - title: "Gemini Exp 1121 של גוגל משיב לעצמו את המקום הראשון"
+        images:
+          - "gemini-exp-1121.jpg"
+        description: "בתפנית דרמטית, המודל הניסיוני Gemini Exp 1121 של גוגל או השיב לעצמו או חולק את המקום הראשון בדירוגי הבינה המלאכותית, רק יום אחרי ש-ChatGPT תפס את ההובלה מהגרסה הקודמת של Gemini."
+
+  - section: "כלי האמנות המהפכניים של BFL"
+    topics:
+      - title: "Black Forest Labs משיקה את חבילת Flux.1 Creative"
+        images:
+          - "flux-tools.jpg"
+        description: "Black Forest Labs חשפה את Flux.1 Tools, חבילה מקיפה לאמני בינה מלאכותית הכוללת את FLUX.1 Fill לציור פנים/חוץ, FLUX.1 Depth/Canny להנחיה מבנית באמצעות מפות עומק או קצוות canny, ו-FLUX.1 Redux לווריאציות ועיצוב מחדש של תמונות. בעוד שמושגים אלה אינם חדשים לקהילת אמנות הבינה המלאכותית, היישום של BFL מייצג התקדמות משמעותית, משיג תוצאות מובילות במדדי השוואת תמונות. כלים אלה, שבעבר הותאמו ממודלים כמו SDXL, שופרו כדי לספק ביצועים מעולים."
+
+  - section: "השבוע הגדול של Claude"
+    topics:
+      - title: "השבוע הגדול של Claude: שליטה במחשב, קסמי קוד, והOpus הנעלם"
+        images:
+          - "claude-big-week.jpg"
+        description: "Anthropic שלטה בכותרות עם עדכונים והכרזות, כולל Claude Sonnet 3.5 החדש. המודל מציג תוצאות מרשימות במדדי קוד, עולה על O1 Preview של OpenAI בחלק מהמבחנים. עם חלון הקשר כפול מ-4K ל-8K, הוא מצטיין במיוחד במשימות קוד למרות תוצאות מעורבות בחשיבה מדעית ומשימות כתיבה."
+        links:
+          - name: "הניתוח של סיימון וויליסון"
+            url: "https://simonwillison.net/2024/Mar/19/claude-sonnet/"
+
+  - section: "ביצועי Claude Sonnet"
+    topics:
+      - title: "Claude Sonnet 3.5: גאון קידוד או שובר מדדים?"
+        images:
+          - "claude-sonnet-benchmarks.jpg"
+        description: "המודל Sonnet החדש מדגים ביצועים יוצאי דופן במדדי קוד כמו Aider ו-Swe-bench. בעוד שהוא מציג תוצאות מעורבות במדדים אחרים, הוא שולט במיוחד במשימות קוד, ומציג יכולות מרשימות בעריכת קוד ומדדי רפקטורינג."
+
+  - section: "עדכוני Anthropic"
+    topics:
+      - title: "Haiku 3.5 וה-Opus הנעלם: הרמזים המסתוריים של Anthropic"
+        images:
+          - "claude-haiku-opus.jpg"
+        description: "Anthropic הכריזה על Claude 3.5 Haiku עם זמינות מובטחת עד סוף החודש. בינתיים, מודל ה-Opus המצופה נעלם מהאתר שלהם, מה שמוביל לספקולציות האם Sonnet עשוי להיות Opus ממותג מחדש."
+
   - section: "פרסי נובל היסטוריים בתחום הבינה המלאכותית"
     topics:
       - title: "ג'פרי הינטון וג'ון הופילד זכו בפרס נובל לפיזיקה"
@@ -8,7 +58,7 @@ hot_news:
         links:
           - name: "הכרזת פרס נובל"
             url: "https://www.nobelprize.org/prizes/physics/2024/summary/"
-  
+
   - section: "MovieGen של מטא: קפיצת דרך בייצור וידאו מבוסס בינה מלאכותית"
     topics:
       - title: "מטא חושפת את MovieGen: ייצור וידאו מתקדם באמצעות בינה מלאכותית"
@@ -26,7 +76,7 @@ hot_news:
           - "תכונת התאמה אישית להכנסת דמויות ריאליסטיות"
           - "טרם שוחרר לציבור או זמין באופן נרחב"
           - "חששות אתיים פוטנציאליים לגבי שימוש לרעה ויצירת דיפ-פייק"
-          
+
   - section: "מעבדות היער השחור - Flux 1.1 Pro"
     topics:
       - title: "מעבדות היער השחור מציגות Flux 1.1 Pro"

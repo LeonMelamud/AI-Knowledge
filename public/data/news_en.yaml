@@ -1,4 +1,54 @@
 hot_news:
+  - section: "Open Source AI Breakthroughs"
+    topics:
+      - title: "Revolutionary Open Source Models Challenge Industry Giants"
+        images:
+          - "open-source-reasoning.jpg"
+        description: "A groundbreaking development in open source AI as the first reasoning model that can run locally outperforms a 405B model and approaches O1 metrics in some areas. Additionally, Nvidia's innovative Hymba 1.5B hybrid approach demonstrates superior performance over Qwen 1.5B with 6-12x less training. Allen AI's release of Olmo 2 has set a new standard as the best fully open source LLM, complete with data release despite absence of WandB logs."
+        links:
+          - name: "Olmo 2 Blog"
+            url: "https://blog.allenai.org/olmo-2"
+          - name: "Olmo 2 HuggingFace"
+            url: "https://huggingface.co/allenai/olmo-2"
+
+  - section: "Gemini's Comeback"
+    topics:
+      - title: "Google's Gemini Exp 1121 Reclaims Top Position"
+        images:
+          - "gemini-exp-1121.jpg"
+        description: "In a dramatic turn of events, Google's experimental model Gemini Exp 1121 has either reclaimed or shared the #1 position in AI rankings, just a day after ChatGPT had taken the lead from the previous Gemini version."
+
+  - section: "BFL's Revolutionary Art Tools"
+    topics:
+      - title: "Black Forest Labs Launches Flux.1 Creative Suite"
+        images:
+          - "flux-tools.jpg"
+        description: "Black Forest Labs has unveiled Flux.1 Tools, a comprehensive suite for AI artists including FLUX.1 Fill for In/Out painting, FLUX.1 Depth/Canny for structural guidance using depth maps or canny edges, and FLUX.1 Redux for image variation and restyling. While these concepts aren't new to the AI art community, BFL's implementation represents a significant advancement, achieving state-of-the-art results on image variation benchmarks. These tools, previously adapted from models like SDXL, have been refined to deliver superior performance."
+
+  - section: "Claude's Big Week"
+    topics:
+      - title: "Claude's Big Week: Computer Control, Code Wizardry, and the Missing Opus"
+        images:
+          - "claude-big-week.jpg"
+        description: "Anthropic dominated the headlines with updates and announcements, including the new Claude Sonnet 3.5. The model shows impressive results on coding benchmarks, surpassing OpenAI's O1 preview on some tests. With a doubled context window from 4K to 8K, it particularly excels in code tasks despite mixed results in scientific reasoning and writing tasks."
+        links:
+          - name: "Simon Willison's Analysis"
+            url: "https://simonwillison.net/2024/Mar/19/claude-sonnet/"
+
+  - section: "Claude Sonnet Performance"
+    topics:
+      - title: "Claude Sonnet 3.5: Coding Prodigy or Benchmark Buster?"
+        images:
+          - "claude-sonnet-benchmarks.jpg"
+        description: "The new Sonnet model demonstrates exceptional performance on coding benchmarks like Aider and Swe-bench. While showing mixed results on other benchmarks, it particularly dominates in code tasks, showcasing impressive capabilities in code editing and refactoring benchmarks."
+
+  - section: "Anthropic Updates"
+    topics:
+      - title: "Haiku 3.5 and the Vanishing Opus: Anthropic's Cryptic Clues"
+        images:
+          - "claude-haiku-opus.jpg"
+        description: "Anthropic announced Claude 3.5 Haiku with availability promised by month-end. Meanwhile, the anticipated Opus model has disappeared from their website, leading to speculation about whether Sonnet might be a rebranded Opus."
+
   - section: "Historic Nobel Prizes in AI"
     topics:
       - title: "Geoffrey Hinton and John Hopfield Awarded Nobel Prize in Physics"

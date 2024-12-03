@@ -27,5 +27,8 @@
   "hotNews": "חדשות חמות",
   "viewHotNews": "צפה בחדשות חמות",
   "maintenanceMessage": "השרת תחת שיפורים לשירותי ענן. תפתחו בגיט ותשתמשו בו לוקלית. ",
-  "hotNewsTitle": "חדשות חמות"
+  "hotNewsTitle": "חדשות חמות",
+  "imageGeneration": "ייצור תמונה",
+  "enterImagePrompt": "הכנס תמונה בקשה",
+  "generateImage": "ייצור תמונה"
 }
