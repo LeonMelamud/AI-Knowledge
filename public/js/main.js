@@ -163,11 +163,11 @@ function updateContent(route) {
 
     console.log('Current route:', route);
 
-    if (route === 'useful-links') {
+    if (route === 'useful-links' && linksData) {
         content = buildContentSection(linksData, 'tool');
     } else {
-        const concept = conceptsData.find(c => c.id === route);
-        const tool = linksData.tools.find(t => t.id === route);
+        const concept = conceptsData && conceptsData.find(c => c.id === route);
+        const tool = linksData && linksData.tools && linksData.tools.find(t => t.id === route);
         
         if (concept) {
             content = buildContentSection([concept], 'concept');
