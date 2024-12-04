@@ -4,7 +4,7 @@ export const config = {
   apiUrl: 'https://www.nasdaq.com/feed/rssoutbound?category=Artificial+Intelligence',
   proxyUrl: isLocal 
     ? 'http://localhost:8085/proxy-rss' 
-    : 'https://api.allorigins.win/get?url=',
+    : 'https://cors-proxy.fringe.zone/',
   isLocal: isLocal,
   serverUrl: isLocal
     ? window.location.origin

@@ -24,14 +24,71 @@ async function fetchRSSFeed() {
         await initParser();
         let url = config.isLocal 
             ? `${config.proxyUrl}?url=${encodeURIComponent(config.apiUrl)}`
-            : `${config.proxyUrl}${encodeURIComponent(config.apiUrl)}`;
+            : `${config.proxyUrl}${config.apiUrl}`;
         
-        const response = await fetch(url);
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+
+        const response = await fetch(url, {
+            signal: controller.signal,
+            headers: {
+                'Origin': window.location.origin
+            }
+        });
+
+        clearTimeout(timeout);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const text = await response.text();
+        
+        // Basic XML validation before parsing
+        if (!text.trim().startsWith('<?xml') && !text.trim().startsWith('<rss')) {
+            console.warn('Invalid RSS feed format, falling back to alternative feed');
+            return fetchAlternativeFeed();
+        }
+        
         return parser.parseString(text);
     } catch (error) {
         console.error('Error fetching RSS feed:', error);
-        return null;
+        return fetchAlternativeFeed();
+    }
+}
+
+async function fetchAlternativeFeed() {
+    try {
+        const url = 'https://cors-proxy.fringe.zone/https://feeds.bbci.co.uk/news/technology/rss.xml';
+        
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 30000);
+
+        const response = await fetch(url, {
+            signal: controller.signal,
+            headers: {
+                'Origin': window.location.origin
+            }
+        });
+
+        clearTimeout(timeout);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const text = await response.text();
+        return parser.parseString(text);
+    } catch (error) {
+        console.error('Error fetching alternative feed:', error);
+        // Return empty feed structure as last resort
+        return {
+            rss: {
+                channel: [{
+                    item: []
+                }]
+            }
+        };
     }
 }
 

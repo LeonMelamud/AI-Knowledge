@@ -151,7 +151,7 @@ function buildNavigation() {
 
 
 function handleRoute() {
-    const hash = window.location.hash.slice(2) || 'hot-news';
+    const hash = window.location.hash.slice(2) || 'ai-basics';
     updateContent(hash);
 }
 
@@ -370,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadInitialData();
 
     if (!window.location.hash) {
-        window.location.hash = '#/hot-news';
+        window.location.hash = '#/ai-basics';
         handleRoute(); // Ensure the route is handled after setting the default hash
     }
 
