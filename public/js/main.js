@@ -43,9 +43,17 @@ async function loadLanguageData(lang) {
             console.error('Links YAML is empty');
             return;
         }
+
+        if (!hotNewsYaml.trim()) {
+            console.error('Hot News YAML is empty');
+            return;
+        }
+
         conceptsData = jsyaml.load(conceptsYaml).concepts;
         linksData = jsyaml.load(linksYaml);
         hotNewsData = jsyaml.load(hotNewsYaml);
+
+        console.log('Loaded hot news data:', hotNewsData);
 
         uiTranslations = await translationsResponse.json();
 
@@ -166,8 +174,8 @@ function updateContent(route) {
     if (route === 'useful-links') {
         content = buildContentSection(linksData, 'tool');
     } else {
-        const concept = conceptsData.find(c => c.id === route);
-        const tool = linksData.tools.find(t => t.id === route);
+        const concept = conceptsData?.find(c => c.id === route);
+        const tool = linksData?.tools?.find(t => t.id === route);
         
         if (concept) {
             content = buildContentSection([concept], 'concept');
@@ -370,8 +378,8 @@ document.addEventListener('DOMContentLoaded', () => {
     loadInitialData();
 
     if (!window.location.hash) {
-        window.location.hash = '#/ai-basics';
-        handleRoute(); // Ensure the route is handled after setting the default hash
+        window.location.hash = '#/hot-news';
+        handleRoute();
     }
 
     // Add event listener for language selector
@@ -384,11 +392,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 loadLanguageData(newLanguage);
             }
         });
-    }
-
-    const hotNewsContainer = document.getElementById('hot-news-container');
-    if (hotNewsContainer) {
-        hotNewsContainer.innerHTML = buildHotNewsSection(uiTranslations);
     }
 
     // Add event listener for news links

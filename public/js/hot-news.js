@@ -4,8 +4,8 @@ export function buildHotNewsSection(uiTranslations) {
     const newsData = hotNewsData;
 
     if (!newsData || !newsData.hot_news) {
-        console.error(`No hot news data available for language: ${currentLanguage}`);
-        return '<p>Error loading hot news. Please try again later.</p>';
+        console.warn(`loading hot news...`);
+        return 'loading ...';
     }
 
     let content = '<div class="hot-news-container">';
