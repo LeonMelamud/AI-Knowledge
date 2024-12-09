@@ -1,4 +1,30 @@
 hot_news:
+  - section: "OpenAI's Latest Innovations"
+    topics:
+      - title: "OpenAI O1 & Pro Tier Launch"
+        images:
+          - "openai-o1-pro.jpg"
+        description: "O1 is out of preview, now smarter, faster, multimodal, and integrated into ChatGPT. For heavy usage, ChatGPT Pro ($200/month) offers unlimited calls and O1 Pro Mode for harder reasoning tasks."
+
+  - section: "Open Source AI Advancements"
+    topics:
+      - title: "Video & Audio Open Source Breakthrough"
+        images:
+          - "tencent-hyvideo.jpg"
+        description: "Tencent's HYVideo outperforms Runway and Luma, bringing high-quality video generation to open source. Fishspeech 1.5 challenges top TTS providers, making near-human voice available for free research."
+      
+      - title: "Decentralized LLM Training Success"
+        images:
+          - "decentralized-llm.jpg"
+        description: "Nous Research's DiStRo (15B) and Prime Intellect's INTELLECT-1 (10B) prove you can train giant LLMs across decentralized nodes globally. Performance is on par with centralized setups."
+
+  - section: "Google's AI Breakthroughs"
+    topics:
+      - title: "Genie 2 & WorldLabs Revolution"
+        images:
+          - "google-genie-worldlabs.jpg"
+        description: "Generating fully interactive 3D worlds from a single image, pushing boundaries in embodied AI and simulation. Google's GenCast also sets a new standard in weather prediction, beating supercomputers in accuracy and speed."
+
   - section: "Open Source AI Breakthroughs"
     topics:
       - title: "Revolutionary Open Source Models Challenge Industry Giants"

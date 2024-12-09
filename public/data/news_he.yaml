@@ -1,4 +1,29 @@
 hot_news:
+  - section: "חידושים אחרונים של OpenAI"
+    topics:
+      - title: "השקת OpenAI O1 ותוכנית Pro"
+        images:
+          - "openai-o1-pro.jpg"
+        description: "O1 יצא משלב הבטא, כעת חכם יותר, מהיר יותר, מולטימודלי ומשולב ב-ChatGPT. לשימוש כבד, ChatGPT Pro (200$ לחודש) מציע שיחות בלתי מוגבלות ומצב O1 Pro למשימות היסק מורכבות."
+
+  - section: "התקדמויות בקוד פתוח בבינה מלאכותית"
+    topics:
+      - title: "פריצת דרך בווידאו ואודיו בקוד פתוח"
+        images:
+          - "tencent-hyvideo.jpg"
+        description: "HYVideo של Tencent עולה על Runway ו-Luma, מביא יצירת וידאו באיכות גבוהה לקוד פתוח. Fishspeech 1.5 מאתגר את ספקי TTS המובילים, מאפשר קול דמוי אנושי למחקר חופשי."
+      
+      - title: "הצלחה באימון מבוזר של מודלי שפה גדולים"
+        images:
+          - "decentralized-llm.jpg"
+        description: "DiStRo (15B) של Nous Research ו-INTELLECT-1 (10B) של Prime Intellect מוכיחים שניתן לאמן מודלי שפה ענקיים על פני צמתים מבוזרים גלובלית. הביצועים שווים למערכות מרוכזות."
+
+  - section: "פריצות דרך של Google"
+    topics:
+      - title: "מהפכת Genie 2 ו-WorldLabs"
+        images:
+          - "google-genie-worldlabs.jpg"
+        description: "יצירת עולמות תלת-ממדיים אינטראקטיביים מתמונה בודדת, דוחף את גבולות הבינה המלאכותית המגולמת וסימולציה. GenCast של Google קובע סטנדרט חדש בחיזוי מזג אוויר, עולה על מחשבי-על בדיוק ובמהירות."
   - section: "פריצות דרך בקוד פתוח בבינה מלאכותית"
     topics:
       - title: "מודלים מהפכניים בקוד פתוח מאתגרים את ענקי התעשייה"
