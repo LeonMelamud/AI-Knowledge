@@ -1,4 +1,13 @@
 hot_news:
+  - section: "השקת Gemini 2.0 של גוגל"
+    topics:
+      - title: "מציגים את Gemini 2.0: מודל הבינה המלאכותית החדש לעידן האגנטי"
+        images:
+          - "gemini-2-launch.jpg"
+        description: "גוגל חשפה את Gemini 2.0, המסמן קפיצת דרך משמעותית ביכולות בינה מלאכותית המתמקדת בהתנהגות אגנטית. המודל החדש מדגים יכולות משופרות בהיסק, תכנון וקבלת החלטות אוטונומית. התכונות המרכזיות כוללות הבנת הקשר משופרת, תכנון משימות טוב יותר, וביצוע אמין יותר של פעולות מורכבות מרובות שלבים. Gemini 2.0 מראה חוזק מיוחד בפתרון בעיות אוטונומי ותרחישי למידה אדפטיבית."
+        links:
+          - name: "השקת Gemini 2.0 הרשמית"
+            url: "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/#ceo-message"
   - section: "חידושים אחרונים של OpenAI"
     topics:
       - title: "השקת OpenAI O1 ותוכנית Pro"
@@ -34,7 +43,7 @@ hot_news:
           - name: "בלוג Olmo 2"
             url: "https://blog.allenai.org/olmo-2"
           - name: "Olmo 2 בהאגינגפייס"
-            url: "https://huggingface.co/allenai/olmo-2"
+            url: "https://huggingface.co/allenai/OLMo-2-1124-7B-SFT"
 
   - section: "חזרתו של Gemini"
     topics:
@@ -56,9 +65,6 @@ hot_news:
         images:
           - "claude-big-week.jpg"
         description: "Anthropic שלטה בכותרות עם עדכונים והכרזות, כולל Claude Sonnet 3.5 החדש. המודל מציג תוצאות מרשימות במדדי קוד, עולה על O1 Preview של OpenAI בחלק מהמבחנים. עם חלון הקשר כפול מ-4K ל-8K, הוא מצטיין במיוחד במשימות קוד למרות תוצאות מעורבות בחשיבה מדעית ומשימות כתיבה."
-        links:
-          - name: "הניתוח של סיימון וויליסון"
-            url: "https://simonwillison.net/2024/Mar/19/claude-sonnet/"
 
   - section: "ביצועי Claude Sonnet"
     topics:
@@ -153,3 +159,5 @@ hot_news:
             url: "https://x.com/runwayml/status/1835670564825944265"
           - name: "DreamMachine"
             url: "https://x.com/LumaLabsAI/status/1835742651662139529"
+
+

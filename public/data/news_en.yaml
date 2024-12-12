@@ -1,4 +1,13 @@
 hot_news:
+  - section: "Google's Gemini 2.0 Launch"
+    topics:
+      - title: "Introducing Gemini 2.0: The New AI Model for the Agentic Era"
+        images:
+          - "gemini-2-launch.jpg"
+        description: "Google has unveiled Gemini 2.0, marking a significant leap in AI capabilities focused on agentic behavior. The new model demonstrates enhanced reasoning, planning, and autonomous decision-making abilities. Key features include improved context understanding, better task planning, and more reliable execution of complex multi-step operations. Gemini 2.0 shows particular strength in autonomous problem-solving and adaptive learning scenarios."
+        links:
+          - name: "Gemini 2.0 Official Launch"
+            url: "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/#ceo-message"
   - section: "OpenAI's Latest Innovations"
     topics:
       - title: "OpenAI O1 & Pro Tier Launch"
@@ -35,7 +44,7 @@ hot_news:
           - name: "Olmo 2 Blog"
             url: "https://blog.allenai.org/olmo-2"
           - name: "Olmo 2 HuggingFace"
-            url: "https://huggingface.co/allenai/olmo-2"
+            url: "https://huggingface.co/allenai/OLMo-2-1124-7B-SFT"
 
   - section: "Gemini's Comeback"
     topics:
@@ -57,9 +66,6 @@ hot_news:
         images:
           - "claude-big-week.jpg"
         description: "Anthropic dominated the headlines with updates and announcements, including the new Claude Sonnet 3.5. The model shows impressive results on coding benchmarks, surpassing OpenAI's O1 preview on some tests. With a doubled context window from 4K to 8K, it particularly excels in code tasks despite mixed results in scientific reasoning and writing tasks."
-        links:
-          - name: "Simon Willison's Analysis"
-            url: "https://simonwillison.net/2024/Mar/19/claude-sonnet/"
 
   - section: "Claude Sonnet Performance"
     topics:
@@ -150,3 +156,4 @@ hot_news:
             url: "https://x.com/runwayml/status/1835670564825944265"
           - name: "DreamMachine"
             url: " https://x.com/LumaLabsAI/status/1835742651662139529"
+
