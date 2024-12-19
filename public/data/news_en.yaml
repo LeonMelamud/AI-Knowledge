@@ -1,4 +1,89 @@
 hot_news:
+  - section: "Gemini 2.0 Flash Thinking Experimental"
+    topics:
+      - title: "Gemini 2.0 Flash Thinking Experimental"
+        description: "Google introduces Gemini 2.0 Flash Thinking Experimental model with advanced capabilities including multimodal understanding, reasoning, and coding. Features include: Input/Output pricing ($0.00 for <128K tokens), best for multimodal understanding, reasoning, and coding tasks. The model excels at reasoning over complex problems and showing the thinking process. Knowledge cutoff: Aug 2024, Rate limits: 10 RPM, Latency: Medium."
+        images:
+          - "2.0-flash-TE.jpg"
+  - section: "Big CO LLMs + APIs"
+    topics:
+      - title: "OpenAI releases new o1 + API access"
+        description: "OpenAI has released their new o1 model with API access."
+        links:
+          - name: "OpenAI"
+            url: "https://openai.com/index/o1-and-new-tools-for-developers/"
+      - title: "Microsoft makes CoPilot Free!"
+        images:
+          - "copilot-free-header.jpg"
+        description: "Microsoft announces that CoPilot is now available for free."
+        links:
+          - name: "copilot-free"
+            url: "https://github.blog/news-insights/product-news/github-copilot-in-vscode-free/"
+  - section: "Open Source LLMs"
+    topics:
+      - title: "Meta Apollo 7B - LMM w/ SOTA video understanding"
+        links:
+          - name: "HF"
+            url: "https://huggingface.co/FreedomIntelligence/Apollo-7B"
+          - name: "HF"
+        description: "Meta releases Apollo 7B, a multimodal LLM with state-of-the-art video understanding capabilities"
+
+      - title: "Microsoft Phi-4 - 14B SLM"
+        links:
+          - name: "Blog"
+            url: "https://techcommunity.microsoft.com/blog/aiplatformblog/introducing-phi-4-microsoft%E2%80%99s-newest-small-language-model-specializing-in-comple/4357090"
+        description: "Microsoft releases Phi-4, a 14B parameter small language model"
+      - title: "Cohere Command R 7B"
+        links:
+          - name: "Blog"
+            url: "https://cohere.com/blog/command-r7b"
+        description: "Cohere releases Command R, a 7B parameter model"
+      - title: "Falcon 3 - series of models"
+        links:
+          - name: "HF"
+            url: "https://huggingface.co/blog/falcon3"
+        description: "TII releases Falcon 3 series of models"
+
+  - section: "Voice & Audio"
+    topics:
+      - title: "OpenAI realtime audio improvements"
+        images:
+          - "docs"
+        description: "OpenAI has made significant improvements to their realtime audio processing capabilities."
+        links:
+          - name: "docs"
+            url: "https://platform.openai.com/docs/guides/speech-to-text"
+      
+      - title: "11labs new Flash 2.5 model - 75ms generation"
+        description: "11labs has released their new Flash 2.5 model with ultra-fast 75ms generation time."
+        links:
+          - name: "X"
+            url: "https://twitter.com/elevenlabsio"
+
+  - section: "IBM Updates"
+    topics:
+      - title: "IBM updates Granite 3.1 + embedding models"
+        description: "IBM has updated Granite 3.1 and their embedding models with significant improvements."
+        links:
+          - name: "HF"
+            url: "https://www.ibm.com/new/announcements/ibm-granite-3-1-powerful-performance-long-context-and-more"
+  - section: "Vision & Video"
+    topics:
+      - title: "Google releases Veo 2 - beating SORA by most accounts"
+        description: "Google's Veo 2 outperforms OpenAI's SORA in most benchmarks."
+
+      - title: "HunyuanVideo distilled with FastHunyuan down to 6 steps"
+        description: "HunyuanVideo has been optimized with FastHunyuan, reducing the process to just 6 steps."
+        links:
+          - name: "Git"
+            url: "https://github.com/Tencent/HunyuanVideo"
+
+      - title: "Kling 1.6"
+        description: "Kling releases version 1.6 with improved capabilities."
+        links:
+          - name: "X"
+            url: "https://x.com/Kling_ai?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+
   - section: "Google's Gemini 2.0 Launch"
     topics:
       - title: "Introducing Gemini 2.0: The New AI Model for the Agentic Era"
@@ -156,4 +241,3 @@ hot_news:
             url: "https://x.com/runwayml/status/1835670564825944265"
           - name: "DreamMachine"
             url: " https://x.com/LumaLabsAI/status/1835742651662139529"
-

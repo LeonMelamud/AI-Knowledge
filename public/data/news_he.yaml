@@ -1,4 +1,77 @@
 hot_news:
+  - section: "Gemini 2.0 חשיבה מהירה ניסיונית"
+    topics:
+      - title: "Gemini 2.0 חשיבה מהירה ניסיונית"
+        description: "גוגל מציגה את מודל Gemini 2.0 Flash Thinking Experimental עם יכולות מתקדמות כולל הבנה מולטימודלית, היסק ותכנות. התכונות כוללות: מחירי קלט/פלט (0.00$ עבור <128K טוקנים), מיטבי להבנה מולטימודלית, משימות היסק ותכנות. המודל מצטיין בהיסק על בעיות מורכבות והצגת תהליך החשיבה. חתך ידע: אוגוסט 2024, מגבלות קצב: 10 בקשות לדקה, השהיה: בינונית."
+        images:
+          - "2.0-flash-TE.jpg"
+
+  - section: "LLMs גדולים + APIs"
+    topics:
+      - title: "OpenAI משחררת את o1 החדש + גישת API"
+        description: "OpenAI שחררה את מודל o1 החדש שלהם עם גישת API."
+        links:
+          - name: "OpenAI"
+            url: "https://openai.com/index/o1-and-new-tools-for-developers/"
+      - title: "מיקרוסופט הופכת את CoPilot לחינמי!"
+        images:
+          - "copilot-free-header.jpg"
+        description: "מיקרוסופט מכריזה שCoPilot זמין כעת בחינם."
+        links:
+          - name: "copilot-free"
+            url: "https://github.blog/news-insights/product-news/github-copilot-in-vscode-free/"
+
+  - section: "LLMs קוד פתוח"
+    topics:
+      - title: "Meta Apollo 7B - LMM עם הבנת וידאו מובילה"
+        links:
+          - name: "HF"
+            url: "https://huggingface.co/FreedomIntelligence/Apollo-7B"
+          - name: "HF"
+        description: "מטא משחררת את Apollo 7B, מודל שפה מולטימודלי עם יכולות הבנת וידאו מובילות בתחום"
+
+      - title: "Microsoft Phi-4 - מודל שפה קטן 14B"
+        links:
+          - name: "בלוג"
+            url: "https://techcommunity.microsoft.com/blog/aiplatformblog/introducing-phi-4-microsoft%E2%80%99s-newest-small-language-model-specializing-in-comple/4357090"
+        description: "מיקרוסופט משחררת את Phi-4, מודל שפה קטן בעל 14 מיליארד פרמטרים"
+
+      - title: "Cohere Command R 7B"
+        links:
+          - name: "בלוג"
+            url: "https://cohere.com/blog/command-r7b"
+        description: "Cohere משחררת את Command R, מודל בעל 7 מיליארד פרמטרים"
+
+      - title: "Falcon 3 - סדרת מודלים"
+        links:
+          - name: "HF"
+            url: "https://huggingface.co/blog/falcon3"
+        description: "TII משחררת את סדרת מודלי Falcon 3"
+
+  - section: "קול ואודיו"
+    topics:
+      - title: "שיפורי אודיו בזמן אמת של OpenAI"
+        images:
+          - "docs"
+        description: "OpenAI ביצעה שיפורים משמעותיים ביכולות עיבוד האודיו בזמן אמת שלה."
+        links:
+          - name: "תיעוד"
+            url: "https://platform.openai.com/docs/guides/speech-to-text"
+      
+      - title: "מודל Flash 2.5 החדש של 11labs - יצירה ב-75ms"
+        description: "11labs שחררה את מודל Flash 2.5 החדש שלה עם זמן יצירה מהיר במיוחד של 75 אלפיות השנייה."
+        links:
+          - name: "X"
+            url: "https://twitter.com/elevenlabsio"
+
+  - section: "עדכוני IBM"
+    topics:
+      - title: "IBM מעדכנת את Granite 3.1 + מודלי הטמעה"
+        description: "IBM עדכנה את Granite 3.1 ואת מודלי ההטמעה שלה עם שיפורים משמעותיים."
+        links:
+          - name: "HF"
+            url: "https://www.ibm.com/new/announcements/ibm-granite-3-1-powerful-performance-long-context-and-more"
+
   - section: "השקת Gemini 2.0 של גוגל"
     topics:
       - title: "מציגים את Gemini 2.0: מודל הבינה המלאכותית החדש לעידן האגנטי"
@@ -8,6 +81,7 @@ hot_news:
         links:
           - name: "השקת Gemini 2.0 הרשמית"
             url: "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/#ceo-message"
+
   - section: "חידושים אחרונים של OpenAI"
     topics:
       - title: "השקת OpenAI O1 ותוכנית Pro"
@@ -33,6 +107,7 @@ hot_news:
         images:
           - "google-genie-worldlabs.jpg"
         description: "יצירת עולמות תלת-ממדיים אינטראקטיביים מתמונה בודדת, דוחף את גבולות הבינה המלאכותית המגולמת וסימולציה. GenCast של Google קובע סטנדרט חדש בחיזוי מזג אוויר, עולה על מחשבי-על בדיוק ובמהירות."
+
   - section: "פריצות דרך בקוד פתוח בבינה מלאכותית"
     topics:
       - title: "מודלים מהפכניים בקוד פתוח מאתגרים את ענקי התעשייה"
@@ -140,7 +215,7 @@ hot_news:
           - "qwen2.5-coder.jpg"
         description: "Qwen 2.5 Math ו-Qwen 2.5 Code"
 
-  - section: "LLMs גדולות + APIs"
+  - section: "LLMs גדולים + APIs"
     topics:
       - title: "תוצאות OpenAI O1 מ-LMsys"
         images:
@@ -159,5 +234,3 @@ hot_news:
             url: "https://x.com/runwayml/status/1835670564825944265"
           - name: "DreamMachine"
             url: "https://x.com/LumaLabsAI/status/1835742651662139529"
-
-
