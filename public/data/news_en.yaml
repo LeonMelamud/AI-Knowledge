@@ -1,11 +1,55 @@
 hot_news:
+  - section: "LLMs"
+    topics:
+        - title: "Sam Altman releases an ASI blog, multiple OpenAI people switch from AGI to ASI"
+          description: "Sam Altman, CEO of OpenAI, published a blog post titled \"Reflections,\" discussing the company's progress towards Artificial General Intelligence (AGI) and their new focus on Artificial Superintelligence (ASI)."
+          links:
+            - name: "SAM ALTMAN'S BLOG"
+              url: "https://blog.samaltman.com/reflections?utm_source=chatgpt.com"
+          images:
+            - "asi.jpg"
+        - title: "NVIDIA updates from CES"
+          description: "At CES 2025, NVIDIA made several announcements, including the introduction of the GeForce RTX 50 Series GPUs powered by the new Blackwell architecture, advancements in AI models for robotics and autonomous vehicles, and the unveiling of Project Digits, a compact AI supercomputer."
+          links:
+            - name: "AP NEWS"
+              url: "https://apnews.com/article/nvidia-ces-2025-blackwell-ai-chips-fadab7fc10c1a3e306c0a16448559ad8?utm_source=chatgpt.com"
+          images:
+            - "nvidia-ces.jpg"
+        - title: "XAI - released Grok as a standalone app in iOS + Grok 3 finished pre-training"
+          description: "XAI has released Grok as a standalone app on iOS, and Grok 3 has completed its pre-training phase."
+          links:
+            - name: "X"
+              url: "https://x.com/elonmusk/status/1875357350393246114"
+          images:
+            - "grok3.jpg"
+  - section: "Sound & Video"
+    topics:
+      - title: "NVIDIA Cosmos - World Foundation Models"
+        description: "NVIDIA introduced Cosmos, a platform featuring World Foundation Models aimed at advancing autonomous mobility and robotics."
+        links:
+          - name: "Nvidia"
+            url: "https://www.nvidia.com/en-eu/ai/cosmos/"
+      - title: "Kokoro - #1 TTS with Apache 2 license"
+        description: "Kokoro has been recognized as the leading Text-to-Speech (TTS) system available under the Apache 2 license."
+      - title: "Baidu - Hallo 3 - generative portraits"
+        description: "Baidu has introduced Hallo 3, a model capable of generating portraits."
+      - title: "ByteDance - LatentSync lip syncing model"
+        description: "ByteDance has developed LatentSync, a model designed for lip-syncing applications."
+
+      - title: "Stability - SPAR3D: Stable Point-Aware Reconstruction of 3D Objects from Single Images"
+        description: "Stability AI has released SPAR3D, a model for stable point-aware reconstruction of 3D objects from single images."
+        links:
+          - name: "github"
+            url: "https://github.com/Stability-AI/stable-point-aware-3d"
+        images:
+          - "turntable.gif"
   - section: "Gemini 2.0 Flash Thinking Experimental"
     topics:
       - title: "Gemini 2.0 Flash Thinking Experimental"
         description: "Google introduces Gemini 2.0 Flash Thinking Experimental model with advanced capabilities including multimodal understanding, reasoning, and coding. Features include: Input/Output pricing ($0.00 for <128K tokens), best for multimodal understanding, reasoning, and coding tasks. The model excels at reasoning over complex problems and showing the thinking process. Knowledge cutoff: Aug 2024, Rate limits: 10 RPM, Latency: Medium."
         images:
           - "2.0-flash-TE.jpg"
-  - section: "Big CO LLMs + APIs"
+  - section: "LLMs"
     topics:
       - title: "OpenAI releases new o1 + API access"
         description: "OpenAI has released their new o1 model with API access."
@@ -27,7 +71,7 @@ hot_news:
             url: "https://huggingface.co/FreedomIntelligence/Apollo-7B"
           - name: "HF"
         description: "Meta releases Apollo 7B, a multimodal LLM with state-of-the-art video understanding capabilities"
-
+        
       - title: "Microsoft Phi-4 - 14B SLM"
         links:
           - name: "Blog"

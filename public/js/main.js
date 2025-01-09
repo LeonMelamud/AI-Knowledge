@@ -1,14 +1,13 @@
 import { initRSSFeed } from './rss.js';
 import { buildCalculatorSection, setupCalculator } from './calculator.js';
 import { handleGenerateText } from './llm-apis.js';
-import { buildHotNewsSection } from './hot-news.js'; // Add this import
+import { buildHotNewsSection } from './hot-news.js';
 let linksData;
 let conceptsData;
 let lastLoadTime = 0;
-export let currentLanguage = 'en'; // Default language set to English
+export let currentLanguage = 'en';
 export let hotNewsData = {};
 let uiTranslations = {};
-
 
 async function loadInitialData() {
     try {
@@ -33,7 +32,7 @@ async function loadLanguageData(lang) {
         if (!conceptsResponse.ok || !translationsResponse.ok || !linksResponse.ok || !hotNewsResponse.ok) {
              new Error(`HTTP error! Concepts status: ${conceptsResponse.status}, Translations status: ${translationsResponse.status}, Links status: ${linksResponse.status}, Hot News status: ${hotNewsResponse.status}`);
             return;
-            }
+        }
 
         const conceptsYaml = await conceptsResponse.text();
         const linksYaml = await linksResponse.text();
@@ -61,12 +60,10 @@ async function loadLanguageData(lang) {
 
         document.documentElement.lang = lang;
         document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
-        
 
         buildNavigation();
         console.log('Data reloaded successfully');
 
-        // Initialize RSS feed
         await initRSSFeed();
         console.log('Data loaded and RSS feed initialized');
         updatePageContent();
@@ -77,26 +74,23 @@ async function loadLanguageData(lang) {
 }
 
 function updatePageContent() {
-    // Update static text elements
     document.querySelector('.hero-section h1').textContent = uiTranslations.heroTitle;
     document.querySelector('footer p').textContent = uiTranslations.footerText;
-    
 }
 
 function buildNavigation() {
     const navUl = document.getElementById('main-nav');
     if (!navUl) {
-        console.error('msin nav not found');
+        console.error('main nav not found');
         return; 
     }
-    navUl.innerHTML = ''; // Clear existing navigation
-    // Create knowledge category
+    navUl.innerHTML = '';
+
     const knowledgeCategory = document.createElement('div');
     knowledgeCategory.className = 'nav-category';
     knowledgeCategory.innerHTML = `<h3>${uiTranslations.knowledge}</h3>`;
     const knowledgeUl = document.createElement('ul');
 
-    // Add concepts to knowledge category
     if (Array.isArray(conceptsData)) {
         conceptsData.forEach(concept => {
             const li = document.createElement('li');
@@ -107,13 +101,11 @@ function buildNavigation() {
     knowledgeCategory.appendChild(knowledgeUl);
     navUl.appendChild(knowledgeCategory);
 
-    // Create links category
     const linksCategory = document.createElement('div');
     linksCategory.className = 'nav-category';
     linksCategory.innerHTML = `<h3>${uiTranslations.links}</h3>`;
     const linksUl = document.createElement('ul');
 
-    // Add links to links category
     if (Array.isArray(linksData?.tools)) {
         linksData.tools.forEach(tool => {
             const li = document.createElement('li');
@@ -124,7 +116,6 @@ function buildNavigation() {
     linksCategory.appendChild(linksUl);
     navUl.appendChild(linksCategory);
 
-    // Add special sections
     const specialSection = document.createElement('div');
     specialSection.className = 'nav-category';
     specialSection.innerHTML = `
@@ -134,17 +125,7 @@ function buildNavigation() {
             <li><a href="#/calculator">${uiTranslations.tokenCalculator}</a></li>
         </ul>
     `;
-
     navUl.appendChild(specialSection);
-
-    // Add event listeners for navigation links
-    document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const route = this.getAttribute('href').slice(2); 
-            window.location.hash = '/' + route;
-        });
-    });
 
     const hotNewsSection = document.createElement('div');
     hotNewsSection.className = 'nav-category';
@@ -155,8 +136,25 @@ function buildNavigation() {
         </ul>
     `;
     navUl.appendChild(hotNewsSection);
-}
 
+    // Add event listeners for navigation links
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const route = this.getAttribute('href').slice(2);
+            window.location.hash = '/' + route;
+            
+            // Close mobile nav if open
+            const navContent = document.querySelector('.nav-content');
+            const menuToggle = document.querySelector('.menu-toggle');
+            if (navContent && navContent.classList.contains('active')) {
+                navContent.classList.remove('active');
+                document.body.classList.remove('nav-open');
+                menuToggle.classList.remove('active'); // Remove active class from menu toggle
+            }
+        });
+    });
+}
 
 function handleRoute() {
     const hash = window.location.hash.slice(2) || 'ai-basics';
@@ -241,7 +239,6 @@ function buildContentSection(items, type) {
 }
 
 function buildTextGenerationSection() {
-
     if (window.location.hostname != 'localhost' && window.location.hostname != '127.0.0.1') {
         return `
             <div class="maintenance-message">
@@ -339,7 +336,6 @@ function attachEventListeners() {
         }
     }
 
-    // Add event listeners for hide image buttons
     const hideImageButtons = document.querySelectorAll('.hide-image-button');
     hideImageButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -351,19 +347,7 @@ function attachEventListeners() {
     });
 }
 
-
-
-
 window.addEventListener('hashchange', handleRoute);
-
-document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navContent = document.querySelector('.nav-content');
-
-    menuToggle.addEventListener('click', function() {
-        navContent.classList.toggle('active');
-    });
-});
 
 function isValidUrl(string) {
     try {
@@ -374,15 +358,44 @@ function isValidUrl(string) {
     }
 }
 
+// Initialize mobile menu functionality
+function initializeMobileMenu() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navContent = document.querySelector('.nav-content');
+
+    function closeNav() {
+        navContent.classList.remove('active');
+        document.body.classList.remove('nav-open');
+    }
+
+    menuToggle.addEventListener('click', function() {
+        navContent.classList.toggle('active');
+        document.body.classList.toggle('nav-open');
+        this.classList.toggle('active');
+    });
+
+    // Close nav when clicking outside
+    document.addEventListener('click', function(e) {
+        if (navContent.classList.contains('active') && 
+            !navContent.contains(e.target) && 
+            !menuToggle.contains(e.target)) {
+            navContent.classList.remove('active');
+            document.body.classList.remove('nav-open');
+            menuToggle.classList.remove('active');
+        }
+    });
+
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     loadInitialData();
+    initializeMobileMenu();
 
     if (!window.location.hash) {
         window.location.hash = '#/hot-news';
         handleRoute();
     }
 
-    // Add event listener for language selector
     const languageSelector = document.getElementById('language-selector');
     if (languageSelector) {
         languageSelector.value = currentLanguage;
@@ -394,7 +407,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Add event listener for news links
     document.addEventListener('click', function(event) {
         if (event.target.classList.contains('news-link')) {
             const url = event.target.getAttribute('data-href');

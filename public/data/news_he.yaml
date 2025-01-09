@@ -1,4 +1,48 @@
 hot_news:
+  - section: "LLMs"
+    topics:
+        - title: "סם אלטמן מפרסם בלוג על ASI, אנשי OpenAI רבים עוברים מ-AGI ל-ASI"
+          description: "סם אלטמן, מנכ״ל OpenAI, פרסם פוסט בבלוג בשם \"הרהורים\", בו דן בהתקדמות החברה לקראת בינה מלאכותית כללית (AGI) והמיקוד החדש שלהם בבינה מלאכותית על-אנושית (ASI)."
+          links:
+            - name: "הבלוג של סם אלטמן"
+              url: "https://blog.samaltman.com/reflections?utm_source=chatgpt.com"
+          images:
+            - "asi.jpg"
+        - title: "עדכוני NVIDIA מ-CES"
+          description: "ב-CES 2025, NVIDIA הכריזה על מספר חידושים, כולל השקת כרטיסי מסך מסדרת GeForce RTX 50 המופעלים על ידי ארכיטקטורת Blackwell החדשה, התקדמות במודלים של בינה מלאכותית לרובוטיקה ורכבים אוטונומיים, וחשיפת Project Digits, מחשב-על קומפקטי לבינה מלאכותית."
+          links:
+            - name: "AP NEWS"
+              url: "https://apnews.com/article/nvidia-ces-2025-blackwell-ai-chips-fadab7fc10c1a3e306c0a16448559ad8?utm_source=chatgpt.com"
+          images:
+            - "nvidia-ces.jpg"
+        - title: "XAI - שחררה את Grok כאפליקציה עצמאית ב-iOS + Grok 3 סיים אימון מקדים"
+          description: "XAI שחררה את Grok כאפליקציה עצמאית ב-iOS, ו-Grok 3 השלים את שלב האימון המקדים שלו."
+          links:
+            - name: "X"
+              url: "https://x.com/elonmusk/status/1875357350393246114"
+          images:
+            - "grok3.jpg"
+  - section: "קול ווידאו"
+    topics:
+      - title: "NVIDIA Cosmos - מודלי יסוד עולמיים"
+        description: "NVIDIA הציגה את Cosmos, פלטפורמה המציגה מודלי יסוד עולמיים שמטרתם לקדם ניידות אוטונומית ורובוטיקה."
+        links:
+          - name: "Nvidia"
+            url: "https://www.nvidia.com/en-eu/ai/cosmos/"
+      - title: "Kokoro - מערכת TTS מובילה עם רישיון Apache 2"
+        description: "Kokoro הוכרה כמערכת המובילה להמרת טקסט לדיבור (TTS) הזמינה תחת רישיון Apache 2."
+      - title: "Baidu - Hallo 3 - יצירת פורטרטים"
+        description: "Baidu הציגה את Hallo 3, מודל המסוגל ליצור פורטרטים."
+      - title: "ByteDance - מודל סנכרון שפתיים LatentSync"
+        description: "ByteDance פיתחה את LatentSync, מודל המיועד ליישומי סנכרון שפתיים."
+      - title: "Stability - SPAR3D: שחזור יציב מודע-נקודות של אובייקטים תלת-ממדיים מתמונות בודדות"
+        description: "Stability AI שחררה את SPAR3D, מודל לשחזור יציב מודע-נקודות של אובייקטים תלת-ממדיים מתמונות בודדות."
+        links:
+          - name: "github"
+            url: "https://github.com/Stability-AI/stable-point-aware-3d"
+        images:
+          - "turntable.gif"
+
   - section: "Gemini 2.0 חשיבה מהירה ניסיונית"
     topics:
       - title: "Gemini 2.0 חשיבה מהירה ניסיונית"
