@@ -1,5 +1,29 @@
 import { currentLanguage, hotNewsData } from './main.js';
 
+// Initialize Intersection Observer
+const observeImages = () => {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    observer.unobserve(img);
+                }
+            }
+        });
+    }, {
+        rootMargin: '50px 0px', // Start loading images 50px before they enter viewport
+        threshold: 0.1
+    });
+
+    // Observe all lazy images
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+};
+
 export function buildHotNewsSection(uiTranslations) {
     const newsData = hotNewsData;
 
@@ -26,10 +50,12 @@ export function buildHotNewsSection(uiTranslations) {
                 topic.images.forEach(img => {
                     const imgPath = `css/images/${img}`;
                     content += `
-                        <img src="${imgPath}" 
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                             data-src="${imgPath}" 
                              alt="${topic.title || 'News image'}" 
-                             class="news-image" 
+                             class="news-image lazy" 
                              onerror="this.style.display='none'"
+                             loading="lazy"
                         >
                     `;
                 });
@@ -54,5 +80,9 @@ export function buildHotNewsSection(uiTranslations) {
 
     content += '</div>'; // Close hot-news-container
     content += `<p class="disclaimer">${uiTranslations.hotNewsDisclaimer || 'Information sourced from AI-powered news aggregators.'}</p>`;
+    
+    // Schedule observer initialization after the content is added to DOM
+    setTimeout(() => observeImages(), 0);
+    
     return content;
 }
