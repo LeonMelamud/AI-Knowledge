@@ -95,8 +95,6 @@ hot_news:
   - section: "קול ואודיו"
     topics:
       - title: "שיפורי אודיו בזמן אמת של OpenAI"
-        images:
-          - "docs"
         description: "OpenAI ביצעה שיפורים משמעותיים ביכולות עיבוד האודיו בזמן אמת שלה."
         links:
           - name: "תיעוד"
