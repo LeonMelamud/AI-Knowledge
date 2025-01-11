@@ -9,6 +9,102 @@ export let currentLanguage = 'en';
 export let hotNewsData = {};
 let uiTranslations = {};
 
+// Enhanced lazy loading utility with error handling and progressive loading
+function setupLazyLoading(imgElement, src, alt) {
+    // Set low-quality image placeholder or blur-up placeholder
+    imgElement.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+    imgElement.setAttribute('data-src', src);
+    imgElement.alt = alt || '';
+    imgElement.classList.add('lazy-image');
+    
+    // Add loading indicator
+    imgElement.style.opacity = '0.5';
+    imgElement.style.transition = 'opacity 0.3s ease-in-out';
+    
+
+    // Preload critical images that are close to viewport
+    const preloadIfNeeded = (entry) => {
+        const rect = entry.boundingClientRect;
+        if (rect.top < window.innerHeight * 2) { // If image is within 2 viewport heights
+            const preloadLink = document.createElement('link');
+            preloadLink.rel = 'preload';
+            preloadLink.as = 'image';
+            preloadLink.href = src;
+            document.head.appendChild(preloadLink);
+        }
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                
+                // Load the image
+                const tempImage = new Image();
+                tempImage.onload = () => {
+                    img.src = img.getAttribute('data-src');
+                    img.style.opacity = '1';
+                    img.classList.add('loaded');
+                    
+                    // Add fade-in effect
+                    requestAnimationFrame(() => {
+                        img.style.opacity = '1';
+                    });
+                };
+                
+                tempImage.onerror = () => {
+                    console.error(`Failed to load image: ${src}`);
+                    img.style.opacity = '1';
+                    img.classList.add('error');
+                    img.setAttribute('aria-label', 'Image failed to load');
+                    
+                    // Add fallback/error image or message
+                    const errorContainer = document.createElement('div');
+                    errorContainer.className = 'image-error';
+                    errorContainer.textContent = 'Image failed to load';
+                    img.parentNode.insertBefore(errorContainer, img.nextSibling);
+                };
+                
+                tempImage.src = img.getAttribute('data-src');
+                
+                // Start preloading check
+                preloadIfNeeded(entry);
+                
+                observer.unobserve(img);
+            }
+        });
+    }, {
+        rootMargin: '50px 0px', // Load images 50px before they enter viewport
+        threshold: [0, 0.5, 1], // Track multiple visibility thresholds
+        trackVisibility: true, // Enable visibility tracking
+        delay: 100 // Minimum time between notifications
+    });
+
+    observer.observe(imgElement);
+    return imgElement;
+}
+
+// Performance monitoring function
+function monitorImagePerformance() {
+    if ('PerformanceObserver' in window) {
+        const observer = new PerformanceObserver((list) => {
+            list.getEntries().forEach((entry) => {
+                if (entry.entryType === 'largest-contentful-paint') {
+                    console.log(`LCP: ${entry.startTime}ms`);
+                }
+                if (entry.entryType === 'layout-shift') {
+                    console.log(`CLS: ${entry.value}`);
+                }
+            });
+        });
+        
+        observer.observe({ entryTypes: ['largest-contentful-paint', 'layout-shift'] });
+    }
+}
+
+// Initialize performance monitoring
+monitorImagePerformance();
+
 async function loadInitialData() {
     try {
         await loadLanguageData(currentLanguage);      
@@ -150,7 +246,7 @@ function buildNavigation() {
             if (navContent && navContent.classList.contains('active')) {
                 navContent.classList.remove('active');
                 document.body.classList.remove('nav-open');
-                menuToggle.classList.remove('active'); // Remove active class from menu toggle
+                menuToggle.classList.remove('active');
             }
         });
     });
@@ -219,9 +315,8 @@ function buildContentSection(items, type) {
                                     : ''}
                                 ${type === 'concept' && subItem.images && subItem.images.length > 0 
                                     ? subItem.images.map((image, index) => `
-                                        <div class="concept-image-container" id="image-container-${index}">
-                                            <img src="${image.url}" alt="${image.alt}" class="concept-image">
-                                            <button class="hide-image-button" onclick="toggleImage(${index}, this)">${uiTranslations.hideImage}</button>
+                                        <div class="concept-image-container">
+                                            <img class="concept-image lazy-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="${image.url}" alt="${image.alt}" style="max-width: 400px; margin: 10px;">
                                         </div>
                                     `).join('') 
                                     : ''}
@@ -304,6 +399,12 @@ function attachEventListeners() {
                     if (additionalInfo.style.display === 'none' || additionalInfo.style.display === '') {
                         additionalInfo.style.display = 'block';
                         this.textContent = uiTranslations.hideInfo;
+                        // Initialize lazy loading for newly visible images
+                        additionalInfo.querySelectorAll('img.lazy-image').forEach(img => {
+                            if (!img.classList.contains('loaded')) {
+                                setupLazyLoading(img, img.getAttribute('data-src'), img.alt);
+                            }
+                        });
                     } else {
                         additionalInfo.style.display = 'none';
                         this.textContent = parentElement.classList.contains('concept-link') 
@@ -341,9 +442,16 @@ function attachEventListeners() {
         button.addEventListener('click', function() {
             const imageContainer = this.closest('.concept-image-container');
             if (imageContainer) {
-                imageContainer.style.display = 'none';
+                const isHidden = imageContainer.style.display === 'none';
+                imageContainer.style.display = isHidden ? 'block' : 'none';
+                this.textContent = isHidden ? uiTranslations.hideImage : uiTranslations.showImage;
             }
         });
+    });
+
+    // Initialize lazy loading for all lazy-image elements
+    document.querySelectorAll('img.lazy-image:not(.loaded)').forEach(img => {
+        setupLazyLoading(img, img.getAttribute('data-src'), img.alt);
     });
 }
 
@@ -384,10 +492,18 @@ function initializeMobileMenu() {
             menuToggle.classList.remove('active');
         }
     });
-
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Immediately load the LinkedIn profile image
+    const profilePicture = document.getElementById('profile-picture');
+    if (profilePicture && profilePicture.hasAttribute('data-src')) {
+        const src = profilePicture.getAttribute('data-src');
+        profilePicture.src = src;
+        profilePicture.classList.add('loaded');
+        profilePicture.style.opacity = '1';
+    }
+
     loadInitialData();
     initializeMobileMenu();
 
