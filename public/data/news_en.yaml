@@ -1,27 +1,73 @@
 hot_news:
   - section: "LLMs"
     topics:
-        - title: "Sam Altman releases an ASI blog, multiple OpenAI people switch from AGI to ASI"
-          description: "Sam Altman, CEO of OpenAI, published a blog post titled \"Reflections,\" discussing the company's progress towards Artificial General Intelligence (AGI) and their new focus on Artificial Superintelligence (ASI)."
-          links:
-            - name: "SAM ALTMAN'S BLOG"
-              url: "https://blog.samaltman.com/reflections?utm_source=chatgpt.com"
-          images:
-            - "asi.jpg"
-        - title: "NVIDIA updates from CES"
-          description: "At CES 2025, NVIDIA made several announcements, including the introduction of the GeForce RTX 50 Series GPUs powered by the new Blackwell architecture, advancements in AI models for robotics and autonomous vehicles, and the unveiling of Project Digits, a compact AI supercomputer."
-          links:
-            - name: "AP NEWS"
-              url: "https://apnews.com/article/nvidia-ces-2025-blackwell-ai-chips-fadab7fc10c1a3e306c0a16448559ad8?utm_source=chatgpt.com"
-          images:
-            - "nvidia-ces.jpg"
-        - title: "XAI - released Grok as a standalone app in iOS + Grok 3 finished pre-training"
-          description: "XAI has released Grok as a standalone app on iOS, and Grok 3 has completed its pre-training phase."
-          links:
-            - name: "X"
-              url: "https://x.com/elonmusk/status/1875357350393246114"
-          images:
-            - "grok3.jpg"
+      - title: "MiniMax-01: 4 Million Context, 456 Billion Parameters, and Lightning Attention"
+        description: |
+          This came absolutely from the left field, given that we've seen no prior LLMs from Haulio, the company previously releasing video models with consistent characters. Dropping a massive 456B mixture of experts model (45B active parameters) with such a long context support in open weights, but also with very significant benchmarks that compete with Gpt-4o, Claude and DeekSeek v3 (75.7 MMLU-pro, 89 IFEval, 54.4 GPQA)
+          They have trained the model on up to 1M context window and then extended it to 4M with ROPE scaling methods (our coverage of RoPE) during Inference. MiniMax-Text-01 adopts a hybrid architecture that combines Lightning Attention, Softmax Attention and Mixture-of-Experts (MoE) with 45B active parameters.
+        images:
+          - "minimax01.jpg"
+      - title: "Vision, API and Browsing - Minimax-VL-01"
+        description: |
+          It feels like such a well rounded and complete release, that it highlights just how mature company that is behind it. They have also released a vision version of this model, that includes a 300M param Vision Transformer on top (trained with 512B vision language tokens) that features dynamic resolution and boasts very high DocVQA and ChartQA scores.
+          Not only did these two models were released in open weights, they also launched as a unified API endpoint (supporting up to 1M tokens) and it's cheap! $0.2/1M input and $1.1/1M output tokens! AFAIK this is only the 3rd API that supports this much context, after Gemini at 2M and Qwen Turbo that supports 1M as well.
+        images:
+          - "minimaxvl01.jpg"
+  - section: "Voice & Audio"
+    topics:
+      - title: "Kokoro.js - run the SOTA open TTS now in your browser"
+        description: |
+          we now have kokoro.js, or npm -i kokoro-js if you will.
+          This allows you to install and run Kokoro, the best tiny TTS model, completely within your browser, with a tiny 90MB download and it sounds really good
+        links:
+          - name: "kokoro-web"
+            url: "https://huggingface.co/spaces/webml-community/kokoro-web"
+            
+      - title: "Hailuo T2A - Emotional text to speech + API"
+        description: |
+          Hailuo didn't rest on their laurels of releasing a huge context window LLM, they also released a new voice framework (tho not open sourced) this week, and it sounds remarkably good (competing with 11labs)
+          They have all the standard features like Voice Cloning, but claim to have a way to preserve the emotional undertones of a voice. They also have 300 voices to choose from and professional effects applied on the fly, like acoustics or telephone filters. (Remember, they have a video model as well, so assuming that some of this is to for the holistic video production)
+  - section: "Big Companies & APIs"
+    topics:
+      - title: "OpenAI adds chatGPT tasks - first agentic feature with more to come!"
+        description: |
+          We finally get a glimpse of an agentic chatGPT, in the form of scheduled tasks! Deployed to all users, it is now possible to select gpt-4o with tasks, and schedule tasks in the future.
+          You can schedule them in natural language, and then will execute a chat (and maybe perform a search or do a calculation) and then send you a notification (and an email!) when the task is done!
+          A bit underwhelming at first, as I didn't really find a good use for this yet, I don't doubt that this is just a building block for something more Agentic to come that can connect to my email or calendar and do actual tasks for me, not just... save me from typing the chatGPT query at "that time"
+        images:
+          - "agentic.jpg"
+      - title: "Mistral CodeStral 25.01 - a new #1 coding assistant model"
+        description: |
+          An updated Codestral was released at the beginning of the week, and TBH I've never seen the vibes split this fast on a model.
+          While it's super exciting that Mistral is placing a coding model at #1 on the LMArena CoPilot's arena, near Claude 3.5 and DeepSeek, the fact that this new model is not released weights is really a bummer (especially as a reference to the paragraph I mentioned on top)
+          We seem to be closing down on OpenSource in the west, while the Chinese labs are absolutely crushing it (while also releasing in the open, including Weights, Technical papers).
+          Mistral has released this model in API and via a collab with the Continue dot dev coding agent, but they used to be the darling of the open source community by releasing great models!
+          Also notable, a very quick new benchmark post release was dropped that showed a significant difference between their reported benchmarks and how it performs on Aider polyglot
+        images:
+          - "mistral_code.jpg"
+  - section: "LLMs"
+    topics:
+      - title: "Sam Altman releases an ASI blog, multiple OpenAI people switch from AGI to ASI"
+        description: "Sam Altman, CEO of OpenAI, published a blog post titled \"Reflections,\" discussing the company's progress towards Artificial General Intelligence (AGI) and their new focus on Artificial Superintelligence (ASI)."
+        links:
+          - name: "SAM ALTMAN'S BLOG"
+            url: "https://blog.samaltman.com/reflections?utm_source=chatgpt.com"
+        images:
+          - "asi.jpg"
+      - title: "NVIDIA updates from CES"
+        description: "At CES 2025, NVIDIA made several announcements, including the introduction of the GeForce RTX 50 Series GPUs powered by the new Blackwell architecture, advancements in AI models for robotics and autonomous vehicles, and the unveiling of Project Digits, a compact AI supercomputer."
+        links:
+          - name: "AP NEWS"
+            url: "https://apnews.com/article/nvidia-ces-2025-blackwell-ai-chips-fadab7fc10c1a3e306c0a16448559ad8?utm_source=chatgpt.com"
+        images:
+          - "nvidia-ces.jpg"
+      - title: "XAI - released Grok as a standalone app in iOS + Grok 3 finished pre-training"
+        description: "XAI has released Grok as a standalone app on iOS, and Grok 3 has completed its pre-training phase."
+        links:
+          - name: "X"
+            url: "https://x.com/elonmusk/status/1875357350393246114"
+        images:
+          - "grok3.jpg"
   - section: "Sound & Video"
     topics:
       - title: "NVIDIA Cosmos - World Foundation Models"
