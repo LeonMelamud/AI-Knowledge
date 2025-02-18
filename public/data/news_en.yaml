@@ -1,4 +1,42 @@
 hot_news:
+  - section: "Grok 3"
+    topics:
+      - title: "Grok-3 Takes #1 Spot in Chatbot Arena with Historic 1400+ Score"
+        description: |
+          XAI's Grok-3 (codename "chocolate") has made history by becoming the first model to break the 1400 score barrier in Chatbot Arena, achieving 1402 points. The model shows exceptional performance across all categories including math (AIME'24), science (GPQA), and coding (LCB).
+          
+          Key achievements:
+          - First model to surpass 1400 score in Arena
+          - #1 across all benchmark categories
+          - Outperforms competitors like Gemini-2.0-Pro (1385) and GPT-4o (1377)
+          - Built on xAI's custom supercomputer with 100,000+ H100 GPUs
+        images:
+          - "grok3-arena.jpg"
+          - "grok-3-benchmark-1.jpg"
+        links:
+          - name: "Analytics Vidhya"
+            url: "https://www.analyticsvidhya.com/blog/2025/02/grok-3-is-now-1-in-chatbot-arena/"
+  - section: "DeepScaler 1.5B"
+    topics:
+      - title: "Agentica DeepScaler 1.5B Outperforms o1-preview on Math"
+        description: |
+          Agentica's DeepScaler 1.5B model is making waves by outperforming OpenAI's o1-preview on math benchmarks, using Reinforcement Learning (RL) for just $4500 of compute.
+
+          Key achievements:
+          - 37.1% Pass@1 on AIME 2025, surpassing o1-preview
+          - 42% Pass@1 on AIME 2024
+          - Trained using RL for only $4500
+          - Open-sourced dataset, code, and training logs
+          - More token-efficient in generating correct answers
+
+          Vu Chan, an AI enthusiast who evaluated the model, notes: "It achieves 42% pass at one on AIME 24, which basically means if you give the model only one chance at every problem, it will solve 42% of them."
+        images:
+          - "agentica-deepscaler.jpg"
+        links:
+          - name: "Hugging Face"
+            url: "https://huggingface.co/agentica-org/DeepScaleR-1.5B-Preview"
+          - name: "X Announcement"
+            url: "https://x.com/Yuchenj_UW/status/18893875820664014610"
   - section: "LLMs"
     topics:
       - title: "MiniMax-01: 4 Million Context, 456 Billion Parameters, and Lightning Attention"

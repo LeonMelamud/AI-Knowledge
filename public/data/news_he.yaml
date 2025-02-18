@@ -1,4 +1,44 @@
 hot_news:
+  - section: "גרוק 3"
+    topics:
+      - title: "גרוק-3 תופס את המקום הראשון בזירת הצ'טבוטים עם ציון היסטורי של מעל 1400"
+        description: |
+          גרוק-3 של xAI (בשם הקוד "chocolate") עשה היסטוריה כשהפך למודל הראשון ששבר את מחסום ה-1400 נקודות בזירת הצ'טבוטים, עם השגת 1402 נקודות. המודל מציג ביצועים יוצאי דופן בכל הקטגוריות כולל מתמטיקה (AIME'24), מדע (GPQA), ותכנות (LCB).
+          
+          הישגים מרכזיים:
+          - המודל הראשון שעבר 1400 נקודות בזירה
+          - מקום ראשון בכל קטגוריות הבנצ'מרק
+          - עולה על מתחרים כמו Gemini-2.0-Pro (1385) ו-GPT-4o (1377)
+          - נבנה על מחשב-העל המותאם של xAI עם מעל 100,000 כרטיסי H100
+        images:
+          - "grok3-arena.jpg"
+          - "grok-3-benchmark-1.jpg"
+        links:
+          - name: "Analytics Vidhya"
+            url: "https://www.analyticsvidhya.com/blog/2025/02/grok-3-is-now-1-in-chatbot-arena/"
+
+  - section: "DeepScaler 1.5B"
+    topics:
+      - title: "Agentica DeepScaler 1.5B עולה על o1-preview במתמטיקה"
+        description: |
+          מודל DeepScaler 1.5B של Agentica מעורר גלים בכך שהוא עולה על o1-preview של OpenAI במדדי מתמטיקה, תוך שימוש בלמידה מחיזוקים (RL) בעלות של 4,500$ בלבד.
+
+          הישגים מרכזיים:
+          - 37.1% Pass@1 ב-AIME 2025, עולה על o1-preview
+          - 42% Pass@1 ב-AIME 2024
+          - אומן באמצעות RL בעלות של 4,500$ בלבד
+          - שחרר בקוד פתוח את מסד הנתונים, הקוד ויומני האימון
+          - יעיל יותר בטוקנים בייצור תשובות נכונות
+
+          וו צ'אן, מומחה בינה מלאכותית שבחן את המודל, מציין: "הוא משיג 42% הצלחה בניסיון ראשון ב-AIME 24, מה שבעצם אומר שאם נותנים למודל הזדמנות אחת בלבד לכל בעיה, הוא יפתור 42% מהן."
+        images:
+          - "agentica-deepscaler.jpg"
+        links:
+          - name: "Hugging Face"
+            url: "https://huggingface.co/agentica-org/DeepScaleR-1.5B-Preview"
+          - name: "X Announcement"
+            url: "https://x.com/Yuchenj_UW/status/18893875820664014610"
+
   - section: "מודלים לשוניים גדולים"
     topics:
       - title: "MiniMax-01: 4 מיליון הקשר, 456 מיליארד פרמטרים, ותשומת לב מהירה"
