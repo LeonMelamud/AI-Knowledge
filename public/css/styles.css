@@ -362,10 +362,27 @@ input[type="text"],
 
 /* LinkedIn profile styles */
 #linkedin-profile {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
     position: absolute;
     top: 10px;
     left: 10px;
     z-index: 1000;
+}
+
+#linkedin-profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #0077B5; /* LinkedIn blue color border */
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+#linkedin-profile img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 119, 181, 0.5);
 }
 
 #profile-picture {

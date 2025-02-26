@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide to AI</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/ai-section.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <link rel="stylesheet" href="css/lightbox.css">
     <style>
         #language-selector-container {
             position: absolute;
@@ -24,8 +26,8 @@
 </head>
 <body>
         <div id="linkedin-profile">
-            <a href="https://www.linkedin.com/in/leon-melamud/" target="_blank" rel="noopener noreferrer">
-                <img class="lazy-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="https://media.licdn.com/dms/image/v2/D4D03AQGey6YzJoa5AQ/profile-displayphoto-shrink_400_400/B4DZPPAduQGUAg-/0/1734344826335?e=1740009600&v=beta&t=XN4vkDnY7amJTCj-dW9oK4jG2nYgDCI0BY7T9JRLAcM" alt="Leon Melamud LinkedIn Profile" id="profile-picture">
+            <a href="https://www.linkedin.com/your-profile" class="social-link linkedin">
+                <img src="css/images/linkedin_profile.jpeg" alt="LinkedIn Profile">
             </a>
         </div>
         
@@ -59,7 +61,7 @@
         </div>
 
         <footer>
-            <p> 2024 The Comprehensive Guide to Artificial Intelligence. All rights reserved.</p>
+            <p> 2025 The Comprehensive Guide to Artificial Intelligence. All rights reserved.</p>
         </footer>
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -86,5 +88,14 @@
         // Run on window resize
         window.addEventListener('resize', adjustSidebarClass);
     </script>
+
+    <!-- Image Lightbox Modal -->
+    <div id="imageLightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightboxImage">
+        <div id="lightboxCaption"></div>
+    </div>
+
+    <script src="js/lightbox.js"></script>
 </body>
 </html>

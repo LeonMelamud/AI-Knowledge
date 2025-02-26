@@ -1,4 +1,25 @@
 hot_news:
+  - section: "Claude 3.7"
+    topics:
+      - title: "Anthropic Launches Claude 3.7: New State-of-the-Art AI Model"
+        description: |
+          Anthropic has launched Claude 3.7, their most advanced AI model to date, setting new benchmarks across reasoning, coding, and multimodal tasks. The new model significantly outperforms previous versions and competitors in key areas.
+          
+          Key features:
+          - Superior performance on complex reasoning benchmarks
+          - Enhanced coding capabilities with better debugging and optimization
+          - Advanced multimodal understanding with improved image analysis
+          - 200K token context window, double the previous models
+          - Reduced hallucination rates and improved factual accuracy
+          - New API pricing structure with competitive rates
+          
+          Early users report substantial improvements in Claude's ability to follow complex instructions and maintain reasoning coherence across long conversations. The model is available immediately through Anthropic's API and Claude web interface.
+        images:
+          - "claude-3-7-launch.jpg"
+          - "claude-3-7-benchmarks.jpg"
+        links:
+          - name: "Anthropic Announcement"
+            url: "https://www.anthropic.com/news/claude-3-7-sonnet"
   - section: "Grok 3"
     topics:
       - title: "Grok-3 Takes #1 Spot in Chatbot Arena with Historic 1400+ Score"
@@ -43,8 +64,6 @@ hot_news:
         description: |
           This came absolutely from the left field, given that we've seen no prior LLMs from Haulio, the company previously releasing video models with consistent characters. Dropping a massive 456B mixture of experts model (45B active parameters) with such a long context support in open weights, but also with very significant benchmarks that compete with Gpt-4o, Claude and DeekSeek v3 (75.7 MMLU-pro, 89 IFEval, 54.4 GPQA)
           They have trained the model on up to 1M context window and then extended it to 4M with ROPE scaling methods (our coverage of RoPE) during Inference. MiniMax-Text-01 adopts a hybrid architecture that combines Lightning Attention, Softmax Attention and Mixture-of-Experts (MoE) with 45B active parameters.
-        images:
-          - "minimax01.jpg"
       - title: "Vision, API and Browsing - Minimax-VL-01"
         description: |
           It feels like such a well rounded and complete release, that it highlights just how mature company that is behind it. They have also released a vision version of this model, that includes a 300M param Vision Transformer on top (trained with 512B vision language tokens) that features dynamic resolution and boasts very high DocVQA and ChartQA scores.
