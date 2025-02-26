@@ -2,6 +2,19 @@ import { config } from './config.js';
 
 let parser;
 
+// Detect if we're in production environment
+const isProduction = window.location.hostname === 'ai-know.org' || 
+                     !window.location.hostname.includes('localhost');
+
+// List of public CORS proxies we can try in production - prioritizing the one that works
+const publicProxies = [
+  'https://api.allorigins.win/raw?url=', // This one works based on testing
+  'https://thingproxy.freeboard.io/fetch/', // Alternative option
+  'https://api.codetabs.com/v1/proxy?quest=', // Another alternative
+  'https://corsproxy.io/?', // Not working currently, but keep as last resort
+  'https://cors-anywhere.herokuapp.com/' // Requires registration, last resort
+];
+
 async function initParser() {
     if (!parser) {
         // Load the browser version of rss-parser
@@ -24,6 +37,70 @@ const MAX_RETRY_ATTEMPTS = 2;
 const RETRY_DELAY = 3000; // 3 seconds
 
 /**
+ * Constructs appropriate URL based on environment
+ * @param {string} feedUrl - The original RSS feed URL
+ * @returns {string} - The proxied URL
+ */
+function getProxyUrl(feedUrl) {
+    if (!isProduction) {
+        // Use local proxy in development
+        return `/proxy-rss?url=${encodeURIComponent(feedUrl)}`;
+    } else {
+        // In production, try public CORS proxies
+        // Start with the first proxy, will try others on failure
+        return `${publicProxies[0]}${encodeURIComponent(feedUrl)}`;
+    }
+}
+
+/**
+ * Attempts to fetch using different proxies in production
+ * @param {string} feedUrl - The original RSS feed URL
+ * @param {number} proxyIndex - Index of the proxy to try
+ * @returns {Promise<Object>} - The parsed RSS feed
+ */
+async function fetchWithProxy(feedUrl, proxyIndex = 0) {
+    if (proxyIndex >= publicProxies.length) {
+        throw new Error('All proxies failed');
+    }
+    
+    try {
+        const proxyUrl = isProduction
+            ? `${publicProxies[proxyIndex]}${encodeURIComponent(feedUrl)}`
+            : `/proxy-rss?url=${encodeURIComponent(feedUrl)}`;
+        
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000);
+        
+        const response = await fetch(proxyUrl, { 
+            signal: controller.signal 
+        });
+        
+        clearTimeout(timeoutId);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.text();
+        return parseRSSFeed(data);
+    } catch (error) {
+        console.warn(`Proxy ${proxyIndex} failed: ${error.message}`);
+        
+        if (isProduction && proxyIndex < publicProxies.length - 1) {
+            // Try the next proxy in production with small staggered delay
+            console.log(`Trying next proxy (${proxyIndex + 1}/${publicProxies.length})`);
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(fetchWithProxy(feedUrl, proxyIndex + 1));
+                }, 500 * proxyIndex); // Increase delay with each retry
+            });
+        }
+        
+        throw error; // Let the caller handle the final failure
+    }
+}
+
+/**
  * Fetches RSS feed with error handling and timeout
  * @param {string} url - The RSS feed URL
  * @returns {Promise<Object>} - The parsed RSS feed or empty feed object
@@ -36,25 +113,9 @@ async function fetchRSSFeed(url) {
     }
     
     try {
-        // Use the server proxy endpoint to avoid CORS issues
-        const proxyUrl = `/proxy-rss?url=${encodeURIComponent(url)}`;
-        
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
-        
-        const response = await fetch(proxyUrl, { 
-            signal: controller.signal
-        });
-        
-        clearTimeout(timeoutId);
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.text();
+        const feed = await fetchWithProxy(url);
         rssFailureCount = 0; // Reset failure count on success
-        return parseRSSFeed(data);
+        return feed;
     } catch (error) {
         rssFailureCount++;
         console.warn(`Error fetching RSS feed (attempt ${rssFailureCount}): ${error.message}`);
@@ -63,9 +124,9 @@ async function fetchRSSFeed(url) {
             console.warn('RSS feed request timed out');
         }
         
-        // If we haven't reached max retries, try again after delay
+        // If we haven't reached max retries, try alternative feed
         if (rssFailureCount < MAX_RETRY_ATTEMPTS) {
-            console.log(`Retrying RSS feed in ${RETRY_DELAY/1000} seconds...`);
+            console.log(`Trying alternative feed in ${RETRY_DELAY/1000} seconds...`);
             return new Promise(resolve => {
                 setTimeout(async () => {
                     resolve(await fetchAlternativeFeed());
@@ -83,30 +144,28 @@ async function fetchRSSFeed(url) {
  */
 async function fetchAlternativeFeed() {
     try {
-        // Attempt to fetch a more reliable alternative feed
-        const alternativeFeedUrl = 'https://techcrunch.com/feed/';
-        const proxyUrl = `/proxy-rss?url=${encodeURIComponent(alternativeFeedUrl)}`;
+        // Try these alternative feeds that might be more reliable
+        const alternativeFeedUrls = [
+            'https://techcrunch.com/feed/',
+            'https://news.google.com/rss/search?q=technology',
+            'https://www.wired.com/feed/rss'
+        ];
         
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 5000);
-        
-        const response = await fetch(proxyUrl, { 
-            signal: controller.signal
-        });
-        
-        clearTimeout(timeoutId);
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error with alternative feed! status: ${response.status}`);
+        // Try each alternative feed in sequence
+        for (let i = 0; i < alternativeFeedUrls.length; i++) {
+            try {
+                const feed = await fetchWithProxy(alternativeFeedUrls[i]);
+                return feed;
+            } catch (err) {
+                console.warn(`Alternative feed ${i+1} failed: ${err.message}`);
+                // Continue to next feed
+            }
         }
         
-        const data = await response.text();
-        rssFailureCount = 0; // Reset failure count on success with alternative
-        return parseRSSFeed(data);
+        throw new Error('All alternative feeds failed');
     } catch (error) {
-        console.warn(`Alternative feed also failed: ${error.message}`);
-        // Return empty but valid feed structure
-        return { items: [] };
+        console.warn(`All alternative feeds failed: ${error.message}`);
+        return { items: [] }; // Return empty but valid feed structure
     }
 }
 
@@ -155,25 +214,46 @@ function getElementText(parent, selector) {
 // Function to render RSS feed items in the sidebar
 function renderRSSFeed(feed) {
     const sidebar = document.getElementById('sidebar');
+    if (!sidebar) {
+        console.warn('Sidebar element not found for RSS feed');
+        return;
+    }
+    
+    // Handle empty feed gracefully
+    if (!feed || !feed.items || !Array.isArray(feed.items) || feed.items.length === 0) {
+        sidebar.innerHTML = `
+            <h2>Tech News</h2>
+            <p class="feed-error">News feed temporarily unavailable.</p>
+        `;
+        return;
+    }
+    
     let html = `
-        <h2>Nasdaq AI Articles</h2>
+        <h2>Tech News</h2>
         <ul class="rss-feed">
     `;
     
     for (let i = 0; i < Math.min(feed.items.length, 5); i++) {
         const item = feed.items[i];
-        const title = item.title;
-        const link = item.link;
+        const title = item.title || 'No title';
+        const link = item.link || '#';
         const pubDate = item.pubDate;
         
-        // Parse and format the date
-        const date = new Date(pubDate);
-        const formattedDate = date.toLocaleDateString('en-US', { weekday: 'short', day: 'numeric', month: 'short' });
+        // Parse and format the date, safely
+        let formattedDate = '';
+        try {
+            const date = new Date(pubDate);
+            formattedDate = !isNaN(date.getTime()) 
+                ? date.toLocaleDateString('en-US', { weekday: 'short', day: 'numeric', month: 'short' })
+                : '';
+        } catch (e) {
+            console.warn('Date parsing error:', e);
+        }
         
         html += `
             <li>
                 <a href="${link}" target="_blank">${title}</a>
-                <span class="pub-date">${formattedDate}</span>
+                ${formattedDate ? `<span class="pub-date">${formattedDate}</span>` : ''}
             </li>
         `;
     }
@@ -184,31 +264,43 @@ function renderRSSFeed(feed) {
 
 // Function to initialize RSS feed
 export async function initRSSFeed() {
-    // First try to show cached feed if available
-    const cachedFeed = sessionStorage.getItem('rssFeedCache');
-    const cacheTimestamp = sessionStorage.getItem('rssFeedCacheTime');
-    
-    if (cachedFeed && cacheTimestamp) {
-        const now = new Date().getTime();
-        const cacheTime = parseInt(cacheTimestamp, 10);
+    try {
+        // First try to show cached feed if available
+        const cachedFeed = sessionStorage.getItem('rssFeedCache');
+        const cacheTimestamp = sessionStorage.getItem('rssFeedCacheTime');
         
-        // Use cache if it's less than 30 minutes old
-        if (now - cacheTime < 30 * 60 * 1000) {
-            try {
-                renderRSSFeed(JSON.parse(cachedFeed));
-                console.log('Rendered RSS feed from cache');
-                // Refresh in background after rendering cached version
-                setTimeout(() => refreshRSSFeed(), 1000);
-                return;
-            } catch (e) {
-                console.warn('Error rendering cached feed:', e);
-                // Fall through to fetch fresh feed
+        if (cachedFeed && cacheTimestamp) {
+            const now = new Date().getTime();
+            const cacheTime = parseInt(cacheTimestamp, 10);
+            
+            // Use cache if it's less than 30 minutes old
+            if (now - cacheTime < 30 * 60 * 1000) {
+                try {
+                    renderRSSFeed(JSON.parse(cachedFeed));
+                    console.log('Rendered RSS feed from cache');
+                    // Refresh in background after rendering cached version
+                    setTimeout(() => refreshRSSFeed(), 1000);
+                    return;
+                } catch (e) {
+                    console.warn('Error rendering cached feed:', e);
+                    // Fall through to fetch fresh feed
+                }
             }
         }
+        
+        // No valid cache, fetch fresh but don't block the app
+        setTimeout(() => refreshRSSFeed(), 100);
+    } catch (error) {
+        console.warn('RSS feed initialization error:', error);
+        // Don't block the app, just show empty state
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar) {
+            sidebar.innerHTML = `
+                <h2>Tech News</h2>
+                <p class="feed-error">News feed temporarily unavailable.</p>
+            `;
+        }
     }
-    
-    // No valid cache, fetch fresh
-    refreshRSSFeed();
 }
 
 /**
@@ -233,9 +325,12 @@ async function refreshRSSFeed() {
     } catch (error) {
         console.warn('RSS feed refresh failed, but site continues:', error.message);
         
-        const feedContainer = document.getElementById('rss-feed');
-        if (feedContainer) {
-            feedContainer.innerHTML = '<p class="feed-error">News feed temporarily unavailable.</p>';
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar) {
+            sidebar.innerHTML = `
+                <h2>Tech News</h2>
+                <p class="feed-error">News feed temporarily unavailable.</p>
+            `;
         }
     }
 }
