@@ -494,6 +494,46 @@ function initializeMobileMenu() {
     });
 }
 
+function checkRSSAvailability() {
+    // Check if we're in production where RSS fails
+    const isProduction = window.location.hostname === 'ai-know.org' || 
+                        !window.location.hostname.includes('localhost');
+    
+    // Check for any cached RSS data
+    const cachedFeed = sessionStorage.getItem('rssFeedCache');
+    const cacheTimestamp = sessionStorage.getItem('rssFeedCacheTime');
+    
+    // If we're in production and have no cache, preemptively adjust layout
+    if (isProduction && (!cachedFeed || !cacheTimestamp)) {
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar) {
+            console.log('Preemptively removing RSS section in production environment');
+            
+            // Add a class to the body to indicate no sidebar
+            document.body.classList.add('no-sidebar-layout');
+            
+            // Remove the sidebar completely
+            sidebar.remove();
+            
+            // Find and adjust the container
+            const container = document.querySelector('.container') || document.querySelector('.main-container');
+            if (container) {
+                container.classList.remove('with-sidebar');
+                container.classList.add('no-sidebar');
+            }
+            
+            // Adjust the main content
+            const mainContent = document.getElementById('mainContent');
+            if (mainContent) {
+                mainContent.classList.add('full-width');
+                mainContent.style.width = '100%';
+                mainContent.style.maxWidth = '1200px';
+                mainContent.style.margin = '0 auto';
+            }
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Immediately load the LinkedIn profile image
     const profilePicture = document.getElementById('profile-picture');
@@ -533,4 +573,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    // Check RSS availability immediately
+    checkRSSAvailability();
 });

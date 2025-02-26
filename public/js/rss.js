@@ -229,7 +229,10 @@ function renderRSSFeed(feed) {
     }
     
     let html = `
-        <h2>Tech News</h2>
+        <div class="sidebar-header">
+            <h2>Tech News</h2>
+            <button id="close-rss-btn" class="close-rss-btn" title="Hide news section">✕</button>
+        </div>
         <ul class="rss-feed">
     `;
     
@@ -260,6 +263,124 @@ function renderRSSFeed(feed) {
     
     html += '</ul>';
     sidebar.innerHTML = html;
+    
+    // Add event listener to the close button
+    const closeBtn = document.getElementById('close-rss-btn');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            console.log('Manually hiding RSS section');
+            hideRSSSection();
+        });
+    }
+}
+
+/**
+ * Refresh RSS feed data in the background
+ */
+async function refreshRSSFeed() {
+    try {
+        const feedUrl = 'https://feeds.bbci.co.uk/news/technology/rss.xml';
+        const feed = await fetchRSSFeed(feedUrl);
+        
+        // Only render the feed if we have items
+        if (feed && feed.items && feed.items.length > 0) {
+            renderRSSFeed(feed);
+            
+            // Cache the feed for faster loading next time
+            try {
+                sessionStorage.setItem('rssFeedCache', JSON.stringify(feed));
+                sessionStorage.setItem('rssFeedCacheTime', new Date().getTime().toString());
+            } catch (e) {
+                console.warn('Failed to cache RSS feed:', e);
+            }
+        } else {
+            // Hide the sidebar element if feed is empty
+            hideRSSSection();
+        }
+    } catch (error) {
+        console.warn('RSS feed refresh failed, site will continue without news section:', error.message);
+        hideRSSSection();
+    }
+}
+
+/**
+ * Hide the RSS feed section completely and adjust layout
+ */
+function hideRSSSection() {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) {
+        // Remove the sidebar completely from DOM instead of just hiding it
+        sidebar.remove();
+        
+        // Find the container that holds the layout
+        const container = document.querySelector('.container') || document.querySelector('.main-container');
+        if (container) {
+            // Remove the grid or flex layout classes
+            container.classList.remove('with-sidebar');
+            container.classList.add('no-sidebar');
+        }
+        
+        // Adjust the main content
+        const mainContent = document.getElementById('mainContent');
+        if (mainContent) {
+            // Remove any width constraints
+            mainContent.classList.add('full-width');
+            
+            // Direct style adjustments
+            mainContent.style.gridColumn = '1 / -1'; // Span all grid columns if using grid
+            mainContent.style.width = '100%';
+            mainContent.style.maxWidth = '1200px';
+            mainContent.style.margin = '0 auto';
+            mainContent.style.padding = '0 20px';
+        }
+        
+        // Add CSS to handle the layout adjustment
+        const styleEl = document.createElement('style');
+        styleEl.textContent = `
+            /* Override grid/flex layouts when sidebar is removed */
+            .no-sidebar {
+                display: block !important;
+                grid-template-columns: 1fr !important;
+            }
+            
+            .full-width {
+                grid-column: 1 / -1 !important;
+                width: 100% !important;
+                max-width: 1200px !important;
+                margin: 0 auto !important;
+            }
+            
+            @media (max-width: 768px) {
+                .full-width {
+                    padding: 0 15px !important;
+                }
+            }
+        `;
+        document.head.appendChild(styleEl);
+        
+        // Add a class to the body to track RSS removal
+        document.body.classList.add('rss-removed');
+        
+        // Add a restore button for testing purposes
+        const restoreBtn = document.createElement('button');
+        restoreBtn.className = 'restore-rss-btn';
+        restoreBtn.textContent = 'Restore News';
+        restoreBtn.title = 'Restore news feed';
+
+        // Set direct inline styles to ensure positioning
+        restoreBtn.style.position = 'fixed';
+        restoreBtn.style.left = '20px';
+        restoreBtn.style.right = 'auto'; // Override any 'right' property
+        restoreBtn.style.top = '50%';
+        restoreBtn.style.transform = 'translateY(-50%)';
+        restoreBtn.style.zIndex = '999';
+
+        restoreBtn.addEventListener('click', function() {
+            // Reload the page to restore original layout
+            window.location.reload();
+        });
+        document.body.appendChild(restoreBtn);
+    }
 }
 
 // Function to initialize RSS feed
@@ -273,14 +394,18 @@ export async function initRSSFeed() {
             const now = new Date().getTime();
             const cacheTime = parseInt(cacheTimestamp, 10);
             
-            // Use cache if it's less than 30 minutes old
-            if (now - cacheTime < 30 * 60 * 1000) {
+            // Use cache if it's less than 2 hours old (extended cache time)
+            if (now - cacheTime < 2 * 60 * 60 * 1000) {
                 try {
-                    renderRSSFeed(JSON.parse(cachedFeed));
-                    console.log('Rendered RSS feed from cache');
-                    // Refresh in background after rendering cached version
-                    setTimeout(() => refreshRSSFeed(), 1000);
-                    return;
+                    const parsedFeed = JSON.parse(cachedFeed);
+                    if (parsedFeed && parsedFeed.items && parsedFeed.items.length > 0) {
+                        renderRSSFeed(parsedFeed);
+                        console.log('Rendered RSS feed from cache');
+                        
+                        // Refresh in background after rendering cached version
+                        setTimeout(() => refreshRSSFeed(), 1000);
+                        return;
+                    }
                 } catch (e) {
                     console.warn('Error rendering cached feed:', e);
                     // Fall through to fetch fresh feed
@@ -292,46 +417,8 @@ export async function initRSSFeed() {
         setTimeout(() => refreshRSSFeed(), 100);
     } catch (error) {
         console.warn('RSS feed initialization error:', error);
-        // Don't block the app, just show empty state
-        const sidebar = document.getElementById('sidebar');
-        if (sidebar) {
-            sidebar.innerHTML = `
-                <h2>Tech News</h2>
-                <p class="feed-error">News feed temporarily unavailable.</p>
-            `;
-        }
-    }
-}
-
-/**
- * Refresh RSS feed data in the background
- */
-async function refreshRSSFeed() {
-    try {
-        const feedUrl = 'https://feeds.bbci.co.uk/news/technology/rss.xml';
-        const feed = await fetchRSSFeed(feedUrl);
-        
-        renderRSSFeed(feed);
-        
-        // Cache the feed for faster loading next time
-        if (feed && feed.items && feed.items.length > 0) {
-            try {
-                sessionStorage.setItem('rssFeedCache', JSON.stringify(feed));
-                sessionStorage.setItem('rssFeedCacheTime', new Date().getTime().toString());
-            } catch (e) {
-                console.warn('Failed to cache RSS feed:', e);
-            }
-        }
-    } catch (error) {
-        console.warn('RSS feed refresh failed, but site continues:', error.message);
-        
-        const sidebar = document.getElementById('sidebar');
-        if (sidebar) {
-            sidebar.innerHTML = `
-                <h2>Tech News</h2>
-                <p class="feed-error">News feed temporarily unavailable.</p>
-            `;
-        }
+        // Don't show error messages, just hide the section completely
+        hideRSSSection();
     }
 }
 
