@@ -107,4 +107,76 @@ body.rss-removed .restore-rss-btn {
     content: "↻";
     margin-right: 6px;
     font-size: 16px;
+}
+
+/* More comprehensive fix for layout issues */
+body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Dynamic layout approach for profile pictures */
+.profile-picture,
+.avatar,
+.user-profile,
+img.profile,
+[class*="profile"],
+[class*="avatar"] {
+    display: block;
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+/* Profile container styling */
+.profile-container, 
+div:has(> img.profile),
+div:has(> .avatar) {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto 30px auto; /* Add space below profile container */
+    height: auto;
+    overflow: visible;
+}
+
+/* Hero section - positioned relative to document flow */
+.hero-section {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 0; /* Reset margin-top */
+    clear: both; /* Clear any floats */
+}
+
+.hero-section h1 {
+    margin: 0;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: inline-block; /* Only take up necessary space */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-picture,
+    .avatar,
+    .user-profile,
+    img.profile {
+        max-width: 150px; /* Smaller on mobile */
+        margin-bottom: 20px;
+    }
+    
+    .hero-section {
+        padding: 0.5rem;
+    }
+    
+    .hero-section h1 {
+        font-size: 1.5rem; /* Smaller font on mobile */
+        padding: 0.75rem;
+    }
 } 
