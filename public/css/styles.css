@@ -372,17 +372,15 @@ input[type="text"],
 }
 
 #linkedin-profile img {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    border: 2px solid #0077B5; /* LinkedIn blue color border */
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 #linkedin-profile img:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(0, 119, 181, 0.5);
 }
 
 #profile-picture {
