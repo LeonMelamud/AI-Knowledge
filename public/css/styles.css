@@ -1021,3 +1021,292 @@ input[type="text"],
         margin: 0 3px;
     }
 }
+
+/* AEO (Answer Engine Optimization) Styles */
+.aeo-question {
+    font-weight: 600;
+    color: #333;
+    margin-top: 1.8em;
+    margin-bottom: 0.7em;
+    font-size: 1.1em;
+    border-left: 3px solid #2c7ae0;
+    padding: 0.5em 0.8em;
+    background-color: rgba(44, 122, 224, 0.05);
+    border-radius: 0 4px 4px 0;
+}
+
+.aeo-answer {
+    margin-bottom: 1.5em;
+    color: #444;
+    padding-left: 1.5em;
+    padding-right: 0.8em;
+    border-left: 1px solid #e0e0e0;
+    margin-left: 0.5em;
+}
+
+.aeo-heading {
+    color: #2c7ae0;
+    margin-top: 1.8em;
+    margin-bottom: 1em;
+    padding-bottom: 0.4em;
+    border-bottom: 1px solid rgba(44, 122, 224, 0.2);
+}
+
+.aeo-summary {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #333;
+    margin: 1em 0 1.5em;
+    padding: 1em;
+    max-width: 80ch; /* Optimal reading length */
+    background-color: #f8f9fa;
+    border-left: 4px solid #2c7ae0;
+    border-radius: 0 4px 4px 0;
+}
+
+.aeo-section {
+    margin-bottom: 3em;
+    padding-bottom: 2em;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.aeo-item {
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+    padding: 1.5em;
+    margin-bottom: 1.5em;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.aeo-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Lists in AEO content */
+.aeo-answer ul, 
+.aeo-answer ol {
+    padding-left: 1.5em;
+    margin: 0.8em 0 1.2em;
+}
+
+.aeo-answer li {
+    margin-bottom: 0.7em;
+    line-height: 1.6;
+}
+
+/* Code examples */
+pre code {
+    border-radius: 8px;
+    padding: 1.2em;
+    margin: 1.2em 0;
+    background-color: #f5f5f5 !important;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Table styles for structured data */
+.aeo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.aeo-table th, 
+.aeo-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.aeo-table th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+}
+
+.aeo-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Fix for nested content in the additional info section */
+.additional-info h1,
+.additional-info h2,
+.additional-info h3,
+.additional-info h4,
+.additional-info h5,
+.additional-info h6 {
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+}
+
+.additional-info p {
+    margin: 0.8em 0;
+    line-height: 1.6;
+}
+
+.additional-info ul, 
+.additional-info ol {
+    padding-left: 1.5em;
+    margin: 1em 0;
+}
+
+.additional-info li {
+    margin-bottom: 0.5em;
+}
+
+/* Indent content for better hierarchy */
+.concept-link .additional-info,
+.tool-link .additional-info {
+    padding: 1.2em;
+    background-color: #fafafa;
+    border-radius: 0 0 8px 8px;
+    margin-top: 0.5em;
+}
+
+/* Style for different heading levels */
+.additional-info h1 {font-size: 1.8em;}
+.additional-info h2 {font-size: 1.5em;}
+.additional-info h3 {font-size: 1.3em;}
+.additional-info h4 {font-size: 1.1em;}
+.additional-info h5 {font-size: 1em;}
+.additional-info h6 {font-size: 0.9em;}
+
+/* Better paragraph spacing */
+.additional-info p + p {
+    margin-top: 1em;
+}
+
+/* Enhanced AEO Layout Styles */
+.content-wrapper {
+    padding: 0 0.5em;
+}
+
+.concept-intro {
+    margin-bottom: 1.5em;
+}
+
+.faq-section, 
+.code-section, 
+.images-section,
+.updates-section,
+.related-concepts {
+    margin-top: 2em;
+    padding-top: 1.5em;
+    border-top: 1px solid #eaeaea;
+}
+
+.faq-section h4, 
+.code-section h4, 
+.images-section h4,
+.updates-section h4,
+.related-concepts h4 {
+    color: #2c7ae0;
+    margin-bottom: 1em;
+    font-size: 1.2em;
+}
+
+.faq-item {
+    margin-bottom: 1.5em;
+}
+
+.faq-item:last-child {
+    margin-bottom: 0;
+}
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+}
+
+.concept-image-container {
+    display: inline-block;
+    margin: 0.5em;
+    text-align: center;
+    max-width: 400px;
+    background-color: #f9f9f9;
+    padding: 0.5em;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.image-caption {
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    color: #666;
+    font-style: italic;
+}
+
+.related-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    padding-left: 0;
+    list-style: none;
+}
+
+.related-link {
+    display: inline-block;
+    padding: 0.4em 0.8em;
+    background-color: #f0f7ff;
+    border-radius: 4px;
+    color: #2c7ae0;
+    text-decoration: none;
+    font-size: 0.9em;
+    text-transform: capitalize;
+    transition: all 0.2s ease;
+}
+
+.related-link:hover {
+    background-color: #2c7ae0;
+    color: white;
+}
+
+.content-spacer {
+    height: 0.5em;
+}
+
+/* Improve list spacing */
+ul, ol {
+    margin: 1em 0;
+}
+
+li p {
+    margin: 0.3em 0;
+}
+
+/* Better spacing for headings within content */
+.aeo-subheading {
+    color: #444;
+    font-size: 1.2em;
+    margin: 1.5em 0 0.8em;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 0.3em;
+}
+
+/* Style code blocks properly */
+pre {
+    position: relative;
+}
+
+.language-python {
+    position: relative;
+}
+
+.language-python::before {
+    content: 'Python';
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #2c7ae0;
+    color: white;
+    padding: 2px 8px;
+    font-size: 12px;
+    border-radius: 0 4px 0 4px;
+}
+
+/* Fix button margin */
+.info-button {
+    margin: 1em 0;
+}

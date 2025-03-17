@@ -5,111 +5,613 @@ concepts:
   - name: Artificial Intelligence (AI)
     shortDescription: A field of computer science focused on creating intelligent systems capable of performing tasks that typically require human intelligence.
     fullDescription: |
-      Artificial Intelligence refers to the creation of computer systems capable of performing tasks that require human intelligence. 
-      This includes areas such as:
-      - Natural Language Processing
-      - Computer Vision
-      - Decision Making
-      - Complex Problem Solving
-      AI combines a variety of techniques, including machine learning, natural language processing, and logical reasoning.
+      # What is Artificial Intelligence?
+      
+      Artificial Intelligence refers to the creation of computer systems capable of performing tasks that require human intelligence. These systems can analyze data, recognize patterns, and make decisions with minimal human intervention.
+      
+      # Key Areas of Artificial Intelligence
+      
+      AI encompasses several important areas:
+      - Natural Language Processing: Enabling computers to understand and generate human language
+      - Computer Vision: Allowing machines to interpret and understand visual information
+      - Decision Making: Creating systems that can make intelligent choices based on available data
+      - Complex Problem Solving: Developing solutions to complicated problems through computational methods
+      
+      # How Does Artificial Intelligence Work?
+      
+      AI combines various techniques to simulate intelligent behavior. Most modern AI applications leverage machine learning, neural networks, and other data-driven approaches to learn from examples rather than following explicit programming rules.
+      
+      # Common Types of Artificial Intelligence
+      
+      1. Narrow/Weak AI: Systems designed for specific tasks (e.g., virtual assistants, recommendation engines)
+      2. General AI: Hypothetical systems with human-like intelligence across all domains
+      3. Superintelligent AI: Theoretical systems that would surpass human capabilities
+      
+      # Everyday Applications of AI
+      
+      AI is increasingly present in daily life through:
+      - Voice assistants (Siri, Alexa, Google Assistant)
+      - Content recommendation systems (Netflix, YouTube, Spotify)
+      - Fraud detection in banking and finance
+      - Smart home devices and automation
+      - Navigation systems with traffic prediction
+      
+      AI combines a variety of techniques, including machine learning, natural language processing, and logical reasoning to create systems that can perform complex tasks without explicit programming.
+    commonQuestions:
+      - question: "What is Artificial Intelligence?"
+        answer: "Artificial Intelligence is a field of computer science that creates systems capable of performing tasks that typically require human intelligence, such as visual perception, speech recognition, decision-making, and language translation."
+      - question: "How is AI used in everyday life?"
+        answer: "AI is used in everyday life through virtual assistants (like Siri and Alexa), recommendation systems (Netflix, Amazon), fraud detection in banking, smart home devices, and navigation apps that predict traffic patterns."
+      - question: "What are the main types of AI?"
+        answer: "The main types of AI include narrow/weak AI (designed for specific tasks), general AI (hypothetical systems with human-like intelligence across domains), and superintelligent AI (systems that would surpass human intelligence)."
+    relatedConcepts:
+      - machine-learning
+      - neural-networks
+      - deep-learning
+    schema:
+      type: "TechArticle"
+      keywords: ["artificial intelligence", "AI", "machine intelligence", "computer intelligence", "AI systems"]
 
   - name: Machine Learning
-    shortDescription: A branch of AI that focuses on algorithms that improve automatically through experience.
+    shortDescription: A branch of AI that focuses on algorithms that improve automatically through experience, enabling systems to learn without explicit programming.
     fullDescription: |
-      Machine Learning is a field of artificial intelligence that focuses on algorithms and statistical models 
-      that computer systems use to perform a task without using explicit instructions, 
-      relying on patterns and inference instead. It is the foundation for most modern AI applications.
+      # What is Machine Learning?
+      
+      Machine Learning is a field of artificial intelligence that enables systems to learn and improve from experience without being explicitly programmed. Instead of following hand-coded rules, ML systems identify patterns in data and develop their own logic.
+      
+      # How is Machine Learning Different from Traditional Programming?
+      
+      In traditional programming, developers write specific rules for computers to follow:
+      ```
+      IF condition THEN action
+      ```
+      
+      In machine learning, developers instead:
+      1. Provide data to algorithms
+      2. Let the algorithms find patterns
+      3. Allow systems to make decisions based on these patterns
+      
+      This fundamental difference enables ML systems to adapt and improve without constant human intervention.
+      
+      # Main Types of Machine Learning
+      
+      ## Supervised Learning
+      Algorithms learn from labeled training data to make predictions or decisions. Examples include:
+      - Classification (spam detection, image recognition)
+      - Regression (price prediction, weather forecasting)
+      
+      ## Unsupervised Learning
+      Algorithms find patterns in unlabeled data. Applications include:
+      - Clustering (customer segmentation)
+      - Dimensionality reduction (feature extraction)
+      
+      ## Reinforcement Learning
+      Algorithms learn optimal actions through trial and error with rewards/penalties. Used in:
+      - Game playing (AlphaGo, chess engines)
+      - Autonomous vehicles
+      - Robotics
+      
+      # Common Applications of Machine Learning
+      
+      Machine learning powers many everyday technologies:
+      - Recommendation systems (product suggestions, content recommendations)
+      - Fraud detection in financial transactions
+      - Medical diagnosis and image analysis
+      - Natural language processing for chatbots and virtual assistants
+      - Predictive maintenance in manufacturing and infrastructure
+      
+      Machine learning serves as the foundation for most modern AI applications by enabling systems to improve through experience rather than explicit programming.
 
   - name: Neural Networks
-    shortDescription: Mathematical models based on the structure of the human brain.
+    shortDescription: Mathematical models inspired by the human brain's structure that process information through interconnected nodes to recognize patterns and solve complex problems.
     fullDescription: |
-      Neural networks are mathematical models based on the structure and function of the human brain. 
-      They consist of layers of artificial "neurons" connected to each other. 
-      Each connection has a weight that is adjusted during the learning process. 
-      Neural networks can learn to identify complex patterns in data and are used in a wide range of AI applications.
+      # What are Neural Networks?
+      
+      Neural networks are computational models inspired by the structure and function of the human brain. They consist of interconnected artificial neurons that process and transmit information, enabling the system to learn from data and make predictions.
+      
+      # How Do Neural Networks Work?
+      
+      Neural networks process information through layers of connected nodes:
+      
+      1. **Input Layer**: Receives initial data (e.g., pixel values for images)
+      2. **Hidden Layers**: Process information through weighted connections
+      3. **Output Layer**: Produces the final result (e.g., classification)
+      
+      Each connection between neurons has a weight that is adjusted during training. The network learns by:
+      - Processing training examples
+      - Comparing outputs to desired results
+      - Adjusting weights to minimize errors (backpropagation)
+      
+      # Key Components of Neural Networks
+      
+      ## Neurons (Nodes)
+      Each artificial neuron:
+      - Receives inputs from previous layers
+      - Applies weights to each input
+      - Sums the weighted inputs
+      - Applies an activation function to produce output
+      
+      ## Activation Functions
+      These introduce non-linearity, allowing networks to learn complex patterns:
+      - ReLU (Rectified Linear Unit)
+      - Sigmoid
+      - Tanh (Hyperbolic Tangent)
+      
+      ## Weights and Biases
+      - Weights determine the strength of connections between neurons
+      - Biases allow networks to represent functions more flexibly
+      
+      # Types of Neural Networks
+      
+      - **Feedforward Neural Networks**: Information flows in one direction
+      - **Convolutional Neural Networks (CNNs)**: Specialized for image processing
+      - **Recurrent Neural Networks (RNNs)**: Handle sequential data with memory
+      - **Long Short-Term Memory (LSTM)**: Advanced RNNs for longer sequences
+      
+      # Applications of Neural Networks
+      
+      Neural networks power numerous applications:
+      - Image and facial recognition
+      - Natural language processing
+      - Speech recognition and generation
+      - Autonomous driving
+      - Game playing (chess, Go)
+      - Medical diagnosis
+    
     codeExample: |
+      # Simple neural network in TensorFlow
       import tensorflow as tf
+      
+      # Create a sequential model
+      model = tf.keras.Sequential([
+          # Input layer with 784 neurons (28x28 pixel images)
+          tf.keras.layers.Flatten(input_shape=(28, 28)),
+          
+          # Hidden layer with 128 neurons and ReLU activation
+          tf.keras.layers.Dense(128, activation='relu'),
+          
+          # Output layer with 10 neurons (for 10 classes) and softmax activation
+          tf.keras.layers.Dense(10, activation='softmax')
+      ])
+      
+      # Compile the model
+      model.compile(
+          optimizer='adam',
+          loss='sparse_categorical_crossentropy',
+          metrics=['accuracy']
+      )
 
   - name: Deep Learning
-    shortDescription: A subset of machine learning that uses neural networks with many layers.
+    shortDescription: A subset of machine learning using neural networks with many layers to progressively extract higher-level features from raw input data.
     fullDescription: |
-      Deep Learning is a subset of machine learning that focuses on neural networks with a large number of hidden layers. 
-      This technique allows models to learn complex representations of data in a hierarchical manner. 
-      Deep learning is behind significant advancements in areas such as natural language processing, 
-      computer vision, speech recognition, and more.
+      # What is Deep Learning?
+      
+      Deep Learning is a specialized branch of machine learning that uses neural networks with multiple hidden layers. These "deep" neural networks can automatically discover and learn hierarchical representations of data, from simple features to complex concepts.
+      
+      # How is Deep Learning Different from Traditional Machine Learning?
+      
+      While traditional machine learning often requires manual feature engineering, deep learning:
+      - Automatically extracts relevant features from raw data
+      - Scales effectively with increasing data volume
+      - Handles unstructured data (images, text, audio) naturally
+      - Can achieve state-of-the-art performance on complex tasks
+      
+      This ability to learn representations directly from raw data has revolutionized fields like computer vision and natural language processing.
+      
+      # Key Components of Deep Learning
+      
+      ## Deep Neural Networks
+      Neural networks with multiple hidden layers between input and output:
+      - Each layer learns increasingly abstract representations
+      - Early layers detect simple patterns (edges, textures)
+      - Deeper layers combine these to recognize complex objects or concepts
+      
+      ## Backpropagation
+      The algorithm that enables training by:
+      - Calculating error at the output layer
+      - Propagating error backward through the network
+      - Adjusting weights to minimize error
+      
+      ## Optimization Algorithms
+      Methods to efficiently update network weights:
+      - Stochastic Gradient Descent (SGD)
+      - Adam
+      - RMSprop
+      
+      # Popular Deep Learning Architectures
+      
+      - **Convolutional Neural Networks (CNNs)**: Specialized for spatial data like images
+      - **Recurrent Neural Networks (RNNs)**: Process sequential data like text or time series
+      - **Transformers**: Recent architecture excelling at natural language tasks
+      - **Generative Adversarial Networks (GANs)**: Create new data similar to training examples
+      - **Autoencoders**: Learn efficient data encodings unsupervised
+      
+      # Breakthrough Applications of Deep Learning
+      
+      Deep learning has enabled remarkable advances in:
+      - Computer vision (object detection, image segmentation)
+      - Natural language processing (translation, sentiment analysis)
+      - Speech recognition and synthesis
+      - Game playing (defeating human champions in chess, Go, StarCraft)
+      - Healthcare (disease diagnosis from medical images)
+      - Autonomous vehicles (perception and decision-making)
+      
+      # Requirements for Deep Learning
+      
+      Deep learning typically requires:
+      - Large amounts of training data
+      - Significant computational resources (GPUs/TPUs)
+      - Specialized frameworks (TensorFlow, PyTorch)
+      
+      Despite these requirements, deep learning continues to achieve unprecedented results across diverse fields, making it a cornerstone of modern artificial intelligence.
 
   - name: Unsupervised Learning
-    shortDescription: Methods for finding patterns in data without pre-existing labels.
+    shortDescription: Methods for finding patterns in data without pre-existing labels or explicit guidance.
     fullDescription: |
-      Unsupervised learning is a type of machine learning where the model tries to find patterns or structures in data
-      without pre-existing labels or external guidance. Common methods include:
-      - Clustering: Grouping similar data points together.
-      - Dimensionality Reduction: Reducing the number of features in data while preserving important information.
-      - Anomaly Detection: Finding unusual data points.
-      Unsupervised learning is particularly useful when there are no available labels or when looking for new insights in data.
+      # What is Unsupervised Learning?
+      
+      Unsupervised learning is a type of machine learning where algorithms find patterns, structures, and relationships in data without labeled examples or explicit guidance. The system learns from the inherent structure of the data itself rather than from correct "answers."
+      
+      # How Does Unsupervised Learning Work?
+      
+      Unsupervised learning algorithms identify patterns by:
+      - Analyzing the similarities and differences between data points
+      - Grouping data based on detected patterns
+      - Reducing complexity while preserving important information
+      - Finding relationships and dependencies among variables
+      
+      Since there are no labeled examples, the system must determine what features are important and how data should be organized on its own.
+      
+      # Key Types of Unsupervised Learning
+      
+      ## Clustering
+      
+      Clustering algorithms group similar data points together based on feature similarity:
+      - K-means: Divides data into k clusters based on distance from cluster centers
+      - Hierarchical clustering: Creates a tree of clusters without requiring a pre-specified number
+      - DBSCAN: Identifies clusters of arbitrary shape based on density
+      
+      Applications include customer segmentation, anomaly detection, and identifying subgroups in biological data.
+      
+      ## Dimensionality Reduction
+      
+      These techniques reduce the number of variables in data while preserving essential information:
+      - Principal Component Analysis (PCA): Transforms data to highlight the most important patterns
+      - t-SNE: Visualizes high-dimensional data in lower dimensions while preserving relationships
+      - Autoencoders: Neural networks that compress data then recreate it, learning efficient representations
+      
+      Dimensionality reduction helps with visualization, faster processing, and removing noise.
+      
+      ## Association Rule Learning
+      
+      These algorithms discover interesting relationships between variables:
+      - Apriori algorithm: Finds frequent item combinations in transaction data
+      - FP-growth: An efficient approach for discovering frequent patterns
+      
+      Commonly used in market basket analysis to understand purchasing patterns.
+      
+      ## Anomaly Detection
+      
+      These techniques identify unusual patterns that don't conform to expected behavior:
+      - Isolation Forest: Isolates anomalies by randomly partitioning data
+      - One-class SVM: Learns the boundary of normal data
+      - Autoencoders: Detect anomalies by measuring reconstruction error
+      
+      Used for fraud detection, network security, and system health monitoring.
+      
+      # When to Use Unsupervised Learning
+      
+      Unsupervised learning is particularly valuable when:
+      - You don't have labeled data or creating labeled data is expensive
+      - You want to discover hidden patterns or structures
+      - You need to reduce data complexity before applying other algorithms
+      - You're exploring data to generate new hypotheses
+      - You're looking for anomalies or outliers
+      
+      # Challenges in Unsupervised Learning
+      
+      The main challenges include:
+      - Evaluating results can be difficult without ground truth
+      - Determining the optimal number of clusters
+      - Identifying meaningful patterns from noise
+      - Interpreting the discovered patterns
+      - Computational complexity with large datasets
+      
+      # Real-World Applications
+      
+      Unsupervised learning powers many practical applications:
+      - Customer segmentation for targeted marketing
+      - Recommendation systems (discovering similar products or content)
+      - Anomaly detection in financial transactions
+      - Image and text categorization
+      - Network analysis and community detection
+      - Genomic sequence analysis
+      
+      Unsupervised learning continues to be an active area of research, with new methods being developed to extract meaningful insights from unlabeled data.
 
   - name: Supervised Learning
-    shortDescription: Learning methods based on labeled data for prediction or classification.
+    shortDescription: A machine learning approach where algorithms learn from labeled examples to make predictions or classifications on new data.
     fullDescription: |
-      Supervised learning is one of the central approaches in machine learning, where the model learns from labeled data:
-
-      - Operating Principle:
-      - The model receives known input (features) and output (labels).
-      - The goal of the model is to learn a function that accurately maps between input and output.
-      - After training, the model can predict results for new, unseen data.
-
-      - Main Types:
-      1. Classification: Predicting a category or label for the input (e.g., spam detection).
-      2. Regression: Predicting a continuous numerical value (e.g., house price).
-
-      - Supervised Learning Stages:
-      1. Data Collection and Labeling: Creating a labeled dataset.
-      2. Model Selection: Choosing an appropriate algorithm (like neural network, decision tree).
-      3. Model Training: Using training data to adjust model parameters.
-      4. Evaluation: Testing model performance on unseen data.
-      5. Tuning: Improving the model by adjusting hyperparameters or changing architecture.
-
-      - Advantages:
-      - Very accurate when there is sufficient labeled data.
-      - Relatively easy to understand and interpret results.
-      - Suitable for a wide range of practical problems.
-
-      - Challenges:
-      - Requires a large amount of labeled data, which can be expensive or difficult to obtain.
-      - May suffer from overfitting if the model is too complex relative to the amount of data.
-      - May struggle to generalize to scenarios very different from the training data.
-
-      - Examples of Applications:
-      - Image recognition and facial recognition
-      - Stock or real estate price prediction
-      - Medical diagnosis based on symptoms or test results
-      - Sentiment analysis in text
-      - Customer behavior prediction in marketing
-
-      Supervised learning is the basis for a wide range of artificial intelligence applications and is used in many industries to solve complex problems and make data-driven decisions.
+      # What is Supervised Learning?
+      
+      Supervised learning is a major approach in machine learning where algorithms learn from labeled training data to make predictions or decisions. The algorithm receives input-output pairs and learns a function that maps inputs to outputs, which it can then apply to new, unseen data.
+      
+      # How Does Supervised Learning Work?
+      
+      The supervised learning process follows these key steps:
+      
+      1. Data Collection and Preparation: Gathering labeled data where inputs are paired with correct outputs
+      2. Model Selection: Choosing an appropriate algorithm based on the problem type
+      3. Training: Feeding the model with training data to adjust its parameters
+      4. Evaluation: Testing the model on unseen data to assess performance
+      5. Tuning: Refining the model to improve accuracy and generalization
+      6. Prediction: Using the trained model to make predictions on new data
+      
+      The "supervision" comes from providing the correct answers (labels) during training, allowing the algorithm to measure its accuracy and adjust accordingly.
+      
+      # Types of Supervised Learning Problems
+      
+      ## Classification
+      
+      Classification involves predicting a category or class label:
+      - Binary Classification: Two possible outcomes (e.g., spam or not spam)
+      - Multi-class Classification: Multiple possible categories (e.g., classifying images as cats, dogs, or birds)
+      - Multi-label Classification: Each instance can belong to multiple classes simultaneously
+      
+      Common applications include:
+      - Email spam filtering
+      - Medical diagnosis
+      - Image and speech recognition
+      - Customer churn prediction
+      
+      ## Regression
+      
+      Regression predicts continuous numerical values:
+      - Linear Regression: Models linear relationships between inputs and outputs
+      - Polynomial Regression: Captures non-linear relationships using polynomial functions
+      - Multiple Regression: Uses multiple input variables to predict the output
+      
+      Common applications include:
+      - Price prediction (homes, stocks)
+      - Sales forecasting
+      - Temperature prediction
+      - Age estimation from images
+      
+      # Common Supervised Learning Algorithms
+      
+      Several powerful algorithms form the foundation of supervised learning:
+      
+      - Linear and Logistic Regression: Simple but effective models for linear relationships
+      - Decision Trees: Tree-structured models that make decisions based on feature values
+      - Random Forests: Ensembles of decision trees for improved accuracy
+      - Support Vector Machines: Find optimal boundaries between classes
+      - K-Nearest Neighbors: Classify based on similarity to known examples
+      - Neural Networks: Multi-layered models that can capture complex patterns
+      - Naive Bayes: Probabilistic classifiers based on Bayes' theorem
+      - Gradient Boosting: Sequential ensemble methods that combine weak learners
+      
+      # Supervised Learning Process
+      
+      ## Data Collection and Labeling
+      
+      The first crucial step involves:
+      - Gathering representative data for the problem domain
+      - Ensuring data quality and handling missing values
+      - Creating accurate labels (often the most time-consuming part)
+      - Splitting data into training, validation, and test sets
+      
+      ## Model Selection
+      
+      Choosing the right algorithm depends on:
+      - The type of problem (classification vs. regression)
+      - Data characteristics (size, dimensionality, noise)
+      - Interpretability requirements
+      - Computational constraints
+      
+      ## Model Training
+      
+      During training, the model:
+      - Makes predictions on training data
+      - Compares predictions to the actual labels
+      - Calculates error using a loss function
+      - Adjusts parameters to minimize the error
+      - Repeats until convergence or a set number of iterations
+      
+      ## Evaluation
+      
+      Model performance is assessed using:
+      - Accuracy, precision, recall, F1-score (for classification)
+      - Mean squared error, mean absolute error (for regression)
+      - Confusion matrices to visualize performance
+      - Cross-validation to ensure generalization
+      
+      ## Hyperparameter Tuning
+      
+      Improving model performance through:
+      - Grid search or random search over possible parameter values
+      - Cross-validation to find optimal configurations
+      - Regularization to prevent overfitting
+      
+      # Advantages of Supervised Learning
+      
+      Supervised learning offers several benefits:
+      - High accuracy when sufficient labeled data is available
+      - Clear evaluation metrics to measure performance
+      - Well-established theoretical foundations
+      - Wide range of algorithms for different problem types
+      - Interpretable models available when needed
+      
+      # Challenges in Supervised Learning
+      
+      Key challenges include:
+      - Requiring large amounts of labeled data, which can be expensive or time-consuming to obtain
+      - Overfitting when models become too complex relative to the available data
+      - Difficulty generalizing to scenarios different from the training data
+      - Feature selection and engineering requirements
+      - Class imbalance affecting model performance
+      
+      # Real-World Applications
+      
+      Supervised learning powers countless applications:
+      - Image and face recognition
+      - Natural language processing
+      - Medical diagnosis and prognosis
+      - Financial forecasting and risk assessment
+      - Autonomous vehicles
+      - Recommendation systems
+      - Fraud detection
+      
+      Supervised learning remains one of the most widely used approaches in machine learning, providing the foundation for many AI applications across industries.
 
   - name: Reinforcement Learning
-    shortDescription: A learning method based on interaction with an environment and feedback.
+    shortDescription: A learning method where agents learn optimal behaviors through trial-and-error interactions with an environment and feedback in the form of rewards or penalties.
     fullDescription: |
-      Reinforcement learning is a machine learning approach where an agent learns to make decisions through interaction with an environment:
-
-      - Operating Principle:
-      - The agent performs actions in the environment and receives rewards or penalties accordingly.
-      - The agent's goal is to maximize cumulative reward over time.
-      - Learning occurs through trial and error and continuous improvement of strategy.
-
-      - Key Components:
-      1. Agent: The entity that makes decisions and learns.
-      2. Environment: The state or world in which the agent operates.
-      3. Actions: The options available to the agent in each state.
-      4. Policy: The strategy the agent uses to choose actions.
-      5. Reward: The feedback the agent receives after each action.
-
-      - Applications:
-      - Computer games and robotics
-      - Autonomous navigation
-      - Optimization of complex systems (like power grids)
-      - Algorithmic trading in the stock market
+      # What is Reinforcement Learning?
+      
+      Reinforcement learning (RL) is a machine learning approach where an agent learns to make decisions by taking actions in an environment to maximize cumulative rewards. Unlike supervised learning, the agent isn't explicitly told which actions to take but must discover which actions yield the highest rewards through trial and error.
+      
+      # How Does Reinforcement Learning Work?
+      
+      Reinforcement learning operates through a continuous interaction cycle:
+      
+      1. The agent observes the current state of the environment
+      2. Based on this state, the agent selects an action according to its policy
+      3. The environment transitions to a new state based on the action
+      4. The agent receives a reward or penalty based on the action and new state
+      5. The agent updates its knowledge and policy to improve future decisions
+      6. The cycle repeats as the agent aims to maximize cumulative rewards
+      
+      This process enables the agent to learn optimal behavior through experience rather than explicit instruction.
+      
+      # Key Components of Reinforcement Learning
+      
+      ## Agent
+      
+      The entity making decisions and learning:
+      - Observes environment states
+      - Selects actions based on a policy
+      - Receives rewards or penalties
+      - Updates its knowledge and strategy
+      
+      ## Environment
+      
+      The world or system the agent operates in:
+      - Defines the possible states and transitions
+      - Responds to agent actions
+      - Provides feedback through rewards
+      - Can be deterministic or stochastic
+      
+      ## State
+      
+      A representation of the current situation:
+      - Contains all relevant information for decision-making
+      - Can be fully or partially observable
+      - May be discrete or continuous
+      
+      ## Action
+      
+      Choices available to the agent:
+      - Can be discrete (finite set of actions) or continuous
+      - Affects the environment and leads to state transitions
+      - Determines rewards received
+      
+      ## Reward Signal
+      
+      Feedback that guides learning:
+      - Immediate numerical value received after actions
+      - Defines the goal of the learning problem
+      - Can be sparse (infrequent) or dense (frequent)
+      - Properly designing the reward function is crucial
+      
+      ## Policy
+      
+      The strategy the agent follows:
+      - Maps states to actions (what to do in each situation)
+      - Can be deterministic or stochastic
+      - The ultimate goal is finding the optimal policy
+      
+      ## Value Function
+      
+      Estimates the expected future rewards:
+      - State value function (V): Expected return from a state
+      - Action value function (Q): Expected return from taking an action in a state
+      - Helps evaluate different courses of action
+      
+      # Main Approaches in Reinforcement Learning
+      
+      ## Value-Based Methods
+      
+      These methods learn the value of states or state-action pairs:
+      - Q-Learning: Learns action values without a model of the environment
+      - Deep Q-Networks (DQN): Combines Q-learning with deep neural networks
+      - SARSA: On-policy method that updates values based on the policy being followed
+      
+      ## Policy-Based Methods
+      
+      These methods directly optimize the policy:
+      - Policy Gradient: Updates policy parameters to maximize expected rewards
+      - REINFORCE: Monte Carlo policy gradient approach
+      - Actor-Critic: Combines value and policy-based approaches
+      
+      ## Model-Based Methods
+      
+      These methods learn a model of the environment:
+      - Build a representation of state transitions and rewards
+      - Use planning algorithms with the learned model
+      - Can be more sample-efficient but add complexity
+      
+      # Advanced Reinforcement Learning Concepts
+      
+      ## Exploration vs. Exploitation
+      
+      Balancing between:
+      - Exploration: Trying new actions to discover better strategies
+      - Exploitation: Using known good actions to maximize rewards
+      
+      Common strategies include:
+      - ε-greedy: Choose best-known action with probability 1-ε, random action with probability ε
+      - Boltzmann exploration: Probabilistic selection based on estimated values
+      - Upper Confidence Bound (UCB): Favoring less-explored actions with potential
+      
+      ## Deep Reinforcement Learning
+      
+      Combining deep learning with RL:
+      - Uses neural networks to approximate value functions or policies
+      - Can handle high-dimensional state spaces (like images)
+      - Enables end-to-end learning from raw inputs
+      - Examples include DQN, A3C, and PPO algorithms
+      
+      ## Multi-Agent Reinforcement Learning
+      
+      Extending RL to multiple interacting agents:
+      - Agents may cooperate, compete, or both
+      - Introduces additional complexity and non-stationarity
+      - Applications in games, traffic management, and robotics
+      
+      # Real-World Applications
+      
+      Reinforcement learning has achieved remarkable successes:
+      
+      - Game playing: Mastering chess, Go (AlphaGo), poker, and video games
+      - Robotics: Learning dexterous manipulation and locomotion
+      - Resource management: Optimizing data center cooling and power usage
+      - Autonomous vehicles: Navigation and decision-making
+      - Recommendation systems: Personalizing content delivery
+      - Trading and finance: Portfolio optimization and algorithmic trading
+      - Healthcare: Treatment optimization and personalized medicine
+      
+      # Challenges in Reinforcement Learning
+      
+      Key challenges include:
+      
+      - Sample efficiency: Requiring many interactions to learn effectively
+      - Exploration in large state spaces: Finding good strategies in complex environments
+      - Credit assignment: Determining which actions led to delayed rewards
+      - Reward design: Creating reward functions that lead to desired behavior
+      - Generalization: Transferring knowledge to new situations
+      - Stability and reproducibility: Ensuring consistent learning
+      
+      Despite these challenges, reinforcement learning continues to advance rapidly, enabling agents to solve increasingly complex problems through the powerful paradigm of learning from interaction.
 
   - name: Semi-Supervised Learning
     shortDescription: A learning method combining labeled and unlabeled data.
@@ -185,55 +687,955 @@ concepts:
       The image illustrates how weights and bias influence the processing of information in a neuron, and how the activation function introduces non-linearity to the model, allowing the network to learn and represent complex functions.
 
   - name: Generative AI
-    shortDescription: Models capable of creating new content (text, images, sound).
+    shortDescription: AI systems capable of creating new, original content such as images, text, audio, video, or code that resembles human-created work.
     fullDescription: |
-      Generative AI refers to models and algorithms that can create new and original content. This includes:
-      - Text generation (like GPT)
-      - Image generation (like DALL-E, Stable Diffusion)
-      - Music generation
-      - Video generation
-      These models learn the structure and patterns of existing data and use this knowledge to create new content that is similar to the training data but not a copy of it.
+      # What is Generative AI?
+      
+      Generative AI refers to artificial intelligence systems capable of creating new, original content that wasn't explicitly programmed. These systems learn patterns and structures from existing data, then generate novel outputs that maintain similar characteristics to the training data while being unique and previously unseen.
+      
+      # How Does Generative AI Work?
+      
+      Generative AI operates through several fundamental mechanisms:
+      
+      1. Learning data distributions: The models capture the statistical patterns and relationships in the training data
+      2. Sampling from learned distributions: New content is created by sampling from these learned patterns
+      3. Guided generation: The process can be steered through prompts, conditions, or constraints
+      4. Iterative refinement: Many systems improve outputs through multiple passes or feedback
+      
+      The core principle involves mapping from a simple distribution (like random noise) to a complex distribution (like images or text) by learning the underlying structure of data.
+      
+      # Key Generative AI Technologies
+      
+      ## Large Language Models (LLMs)
+      
+      Text generation systems like:
+      - GPT (Generative Pre-trained Transformer) models from OpenAI
+      - LLaMA and OPT from Meta
+      - Claude from Anthropic
+      - Gemini from Google
+      
+      These models can:
+      - Generate human-like text across diverse topics and styles
+      - Complete prompts with relevant continuations
+      - Answer questions and provide explanations
+      - Translate between languages
+      - Summarize lengthy documents
+      - Write creative content like stories and poetry
+      
+      ## Image Generation Models
+      
+      Visual content creation systems like:
+      - DALL-E and Midjourney: Text-to-image models
+      - Stable Diffusion: Open-source diffusion model
+      - GAN-based systems: StyleGAN and BigGAN
+      
+      These models can:
+      - Create photorealistic or stylized images from text descriptions
+      - Edit and modify existing images
+      - Generate variations of input images
+      - Translate sketches into rendered images
+      
+      ## Audio and Music Generation
+      
+      Sound creation systems like:
+      - MusicLM and AudioLM from Google
+      - Jukebox from OpenAI
+      - MPEG Neural Music Synthesis
+      
+      Applications include:
+      - Speech synthesis and voice cloning
+      - Music composition in various styles
+      - Sound effect generation
+      - Audio enhancement and restoration
+      
+      ## Video Generation
+      
+      Moving image creation systems like:
+      - Sora from OpenAI
+      - Gen-2 from Runway
+      - Phenaki from Google
+      - Make-A-Video from Meta
+      
+      These can:
+      - Generate videos from text descriptions
+      - Extend clips with new content
+      - Transform still images into motion
+      - Create animated sequences
+      
+      ## 3D Content Generation
+      
+      Three-dimensional asset creation:
+      - Point-E and DALL-E 3D from OpenAI
+      - GET3D from NVIDIA
+      - DreamFusion from Google
+      
+      Applications include:
+      - 3D model generation from text or images
+      - Virtual environment creation
+      - Game asset development
+      - Product design and visualization
+      
+      # Generative AI Architectures
+      
+      ## Generative Adversarial Networks (GANs)
+      
+      A pioneering approach involving:
+      - Generator: Creates candidate samples
+      - Discriminator: Evaluates samples against real data
+      - Adversarial training: The two networks compete, improving each other
+      
+      ## Variational Autoencoders (VAEs)
+      
+      Probabilistic models that:
+      - Encode inputs to a latent space
+      - Learn a distribution over that space
+      - Generate new samples by decoding from the latent space
+      
+      ## Diffusion Models
+      
+      A newer approach that:
+      - Gradually adds noise to data in the forward process
+      - Learns to reverse this process to generate new samples
+      - Typically produces high-quality results with stable training
+      
+      ## Transformer-Based Models
+      
+      Architecture that:
+      - Uses attention mechanisms to capture relationships
+      - Scales effectively to large datasets
+      - Dominates text generation and increasingly other modalities
+      
+      # Applications of Generative AI
+      
+      ## Creative Tools
+      
+      Empowering creativity through:
+      - Art generation and augmentation
+      - Music composition and remixing
+      - Scriptwriting and storytelling
+      - Game content creation
+      - Design ideation and prototyping
+      
+      ## Content Production
+      
+      Streamlining media creation:
+      - Marketing content generation
+      - Video production assistance
+      - Audio narration and voiceovers
+      - Website and UI element creation
+      - Product visualization
+      
+      ## Programming and Development
+      
+      Enhancing software creation:
+      - Code generation and completion
+      - Debugging assistance
+      - Documentation writing
+      - Test case generation
+      - UI implementation from designs
+      
+      ## Education and Training
+      
+      Supporting learning through:
+      - Personalized tutoring content
+      - Educational example generation
+      - Practice problem creation
+      - Simplified explanations
+      - Language learning tools
+      
+      # Ethical Considerations and Challenges
+      
+      ## Misinformation and Deepfakes
+      
+      Concerns include:
+      - Generation of false or misleading content
+      - Creation of convincing fake media
+      - Impersonation risks
+      - Erosion of trust in authentic media
+      
+      ## Creative Rights and Attribution
+      
+      Issues around:
+      - Copyright of training data
+      - Ownership of generated content
+      - Proper attribution and consent
+      - Impact on creative professions
+      
+      ## Bias and Representation
+      
+      Challenges with:
+      - Reproducing biases present in training data
+      - Unequal representation across demographics
+      - Harmful stereotypes in generated content
+      - Cultural appropriation concerns
+      
+      ## Safety and Misuse
+      
+      Risks including:
+      - Generation of harmful content
+      - Potential for automated social engineering
+      - Scaling of disinformation campaigns
+      - Circumvention of content safety measures
+      
+      # Future Directions
+      
+      Generative AI continues to evolve rapidly:
+      - Multimodal generation across text, image, audio, and video
+      - Increased control and precision in generation
+      - More efficient models requiring less computational resources
+      - Enhanced factuality and reduced hallucinations
+      - Integration with physical systems and robotics
+      - Development of better oversight and governance mechanisms
+      
+      As these technologies advance, they promise to transform creative processes, knowledge work, and human-computer interaction in profound ways, while also presenting important challenges for society to address.
 
   - name: AI Ethics
-    shortDescription: Discussion of ethical issues related to the development and use of AI technologies.
+    shortDescription: The study and practice of developing and using AI systems in ways that align with human values, promote fairness, ensure transparency, and minimize harm.
     fullDescription: |
-      AI Ethics deals with the moral and social questions arising from the development and application of AI technologies. Key topics include:
-      - Fairness and non-discrimination in models
-      - Privacy and data security
-      - Transparency and explainability of AI decisions
-      - Impacts on employment and economy
-      - Responsibility and accountability in autonomous systems
-      - Long-term effects on society and culture
-      The goal of ethical discussion is to ensure that AI development is done responsibly and for the benefit of humanity.
+      # What is AI Ethics?
+      
+      AI Ethics is the field concerned with ensuring artificial intelligence systems are designed, developed, and deployed in ways that align with human values, respect rights, promote fairness, maintain transparency, and minimize potential harms. It involves identifying and addressing moral, legal, and social challenges that arise from AI technologies.
+      
+      # Why is AI Ethics Important?
+      
+      AI ethics has become increasingly critical for several reasons:
+      
+      - Growing AI capabilities and autonomy require ethical oversight
+      - AI systems can amplify existing social biases and inequalities
+      - Decisions made by algorithms affect millions of lives
+      - Unethical AI can erode trust in technology
+      - Poorly designed AI can cause harm at unprecedented scale
+      - Developing beneficial AI requires alignment with human values
+      
+      As AI becomes more pervasive in society, ensuring ethical implementation becomes essential for sustainable and beneficial technological progress.
+      
+      # Key Principles in AI Ethics
+      
+      ## Fairness and Non-discrimination
+      
+      Ensuring AI systems:
+      - Treat all individuals and groups equitably
+      - Don't perpetuate or amplify historical biases
+      - Provide equal quality of service across demographics
+      - Actively mitigate unfair outcomes
+      
+      This involves techniques like bias detection, fairness metrics, and diverse training data.
+      
+      ## Transparency and Explainability
+      
+      Making AI systems understandable through:
+      - Clear documentation of how systems work
+      - Explainable AI (XAI) techniques
+      - Disclosure of limitations and error rates
+      - Visibility into decision-making processes
+      
+      Transparency enables stakeholders to understand, trust, and effectively oversight AI systems.
+      
+      ## Privacy and Data Protection
+      
+      Safeguarding individual rights by:
+      - Respecting data consent and ownership
+      - Implementing privacy-preserving techniques
+      - Minimizing data collection to what's necessary
+      - Protecting against unauthorized access and misuse
+      - Following data protection regulations
+      
+      ## Accountability and Responsibility
+      
+      Establishing clear lines of:
+      - Attribution for AI actions and decisions
+      - Responsibility for addressing harms
+      - Liability frameworks for AI-related damages
+      - Governance structures for oversight
+      
+      This ensures there are mechanisms to address problems when they occur.
+      
+      ## Safety and Security
+      
+      Building systems that:
+      - Are robust against manipulation and attack
+      - Fail safely when they encounter problems
+      - Can be monitored and controlled effectively
+      - Undergo thorough testing and validation
+      
+      ## Human Autonomy and Dignity
+      
+      Respecting human agency by:
+      - Preserving human decision-making in critical areas
+      - Avoiding manipulation or deception
+      - Designing systems that augment rather than replace human capabilities
+      - Respecting cultural differences and values
+      
+      ## Beneficial Purpose
+      
+      Ensuring AI systems:
+      - Contribute positively to individual and societal wellbeing
+      - Address meaningful problems and needs
+      - Don't waste resources on trivial or harmful applications
+      - Consider their broader societal impact
+      
+      # Major Ethical Challenges in AI
+      
+      ## Algorithmic Bias
+      
+      AI systems can perpetuate or amplify existing biases:
+      - Training data may reflect historical discrimination
+      - Feature selection can encode implicit biases
+      - Optimization objectives may favor majority groups
+      - Evaluation metrics might miss disparate impacts
+      
+      Addressing bias requires diverse data, careful feature engineering, fairness-aware algorithms, and continuous monitoring.
+      
+      ## Privacy Concerns
+      
+      AI presents novel privacy challenges:
+      - Large-scale data collection and processing
+      - Advanced analytics that can infer sensitive information
+      - Facial recognition and biometric privacy issues
+      - Re-identification risks in anonymized data
+      - Long-term storage of personal information
+      
+      ## Black Box Problem
+      
+      Many advanced AI systems lack transparency:
+      - Deep learning models can be opaque even to their creators
+      - Complex algorithms make decisions without clear explanations
+      - Users may not understand how their data influences outcomes
+      - Regulators struggle to audit non-transparent systems
+      
+      ## Automation and Employment
+      
+      AI's impact on work raises ethical questions:
+      - Job displacement in certain sectors
+      - Changes in required skills and education
+      - Distribution of productivity gains
+      - New forms of algorithmic management
+      - Impact on workplace autonomy and dignity
+      
+      ## Autonomy and Decision Rights
+      
+      Questions arise about:
+      - When AI should make decisions versus humans
+      - Informed consent in AI-mediated interactions
+      - Manipulation concerns with personalized systems
+      - Rights to explanation and recourse
+      
+      ## Dual-Use and Misuse Potential
+      
+      AI technologies can be:
+      - Repurposed for harmful applications
+      - Used for surveillance and social control
+      - Deployed in autonomous weapons systems
+      - Leveraged for large-scale manipulation
+      
+      ## Long-term and Systemic Risks
+      
+      Broader concerns include:
+      - Concentration of power in entities controlling advanced AI
+      - Systemic risks from interdependent AI systems
+      - Long-term impact on human flourishing and values
+      - Potential risks from highly advanced future systems
+      
+      # Approaches to Ethical AI
+      
+      ## Technical Approaches
+      
+      Engineering solutions include:
+      - Fairness-aware algorithm design
+      - Explainable AI techniques
+      - Privacy-preserving machine learning
+      - Robust and secure system architecture
+      - Safety verification and validation methods
+      
+      ## Policy and Governance
+      
+      Institutional measures include:
+      - Regulatory frameworks and standards
+      - Impact assessments and auditing processes
+      - Industry codes of conduct
+      - Certification and benchmarking programs
+      - International cooperation and agreements
+      
+      ## Participatory Design
+      
+      Inclusive development through:
+      - Diverse teams and perspectives
+      - Stakeholder consultation and co-design
+      - User feedback integration
+      - Value-sensitive design methodologies
+      - Public engagement and deliberation
+      
+      ## Education and Awareness
+      
+      Building capacity via:
+      - Ethics training for AI developers
+      - Public literacy about AI capabilities and limitations
+      - Interdisciplinary collaboration
+      - Case studies and best practices sharing
+      
+      # AI Ethics Frameworks and Guidelines
+      
+      Numerous organizations have developed principles and guidelines:
+      
+      - OECD AI Principles
+      - IEEE Ethically Aligned Design
+      - EU Ethics Guidelines for Trustworthy AI
+      - UNESCO Recommendation on AI Ethics
+      - Corporate AI principles from tech companies
+      - National AI strategies with ethical components
+      
+      These frameworks often share common themes but may emphasize different values or implementation approaches.
+      
+      # The Future of AI Ethics
+      
+      The field continues to evolve:
+      - Moving from principles to practical implementation
+      - Developing measurable standards and metrics
+      - Creating effective governance institutions
+      - Addressing emerging challenges from advanced AI
+      - Balancing innovation with appropriate safeguards
+      - Ensuring global and cross-cultural perspectives
+      
+      AI ethics is not a static set of rules but an ongoing process of aligning powerful technologies with human values and societal wellbeing as both technology and social contexts evolve.
 
   - name: Generative Adversarial Networks (GANs)
-    shortDescription: Competing neural networks for creating new and convincing content.
+    shortDescription: A class of AI algorithms consisting of two neural networks competing against each other to generate new, synthetic data that resembles real data.
     fullDescription: |
-      GANs are a deep learning architecture consisting of two neural networks:
-      - Generator: produces artificial data.
-      - Discriminator: tries to distinguish between real and artificial data.
-      The two networks compete with each other, with the Generator improving in creating realistic data and the Discriminator improving in detecting fakes.
-      GANs are used to create images, video, and even realistic text.
+      # What are Generative Adversarial Networks (GANs)?
+      
+      Generative Adversarial Networks (GANs) are a revolutionary class of deep learning frameworks that consist of two neural networks—a generator and a discriminator—competing against each other in a game-theoretic scenario. The generator creates synthetic data samples, while the discriminator evaluates them against real data. Through this adversarial process, GANs learn to generate new data that is indistinguishable from authentic data.
+      
+      # How Do GANs Work?
+      
+      GANs operate through a competitive training process:
+      
+      1. The generator network creates synthetic samples (e.g., images, text) from random noise
+      2. The discriminator network attempts to distinguish between real data and the generator's synthetic data
+      3. The generator tries to fool the discriminator by producing increasingly realistic samples
+      4. The discriminator improves its ability to detect synthetic samples
+      5. Through iterative training, both networks improve until the generator creates samples that the discriminator cannot reliably distinguish from real data
+      
+      This adversarial dynamic drives both networks to improve continuously, resulting in high-quality synthetic data generation.
+      
+      # Key Components of GANs
+      
+      ## Generator Network
+      
+      The creator component that:
+      - Takes random noise (latent space) as input
+      - Transforms this noise into structured data (images, text, etc.)
+      - Aims to maximize the probability of fooling the discriminator
+      - Learns the distribution of real data rather than memorizing examples
+      - Usually consists of deconvolutional layers (for images) or transformer-based architectures (for text)
+      
+      ## Discriminator Network
+      
+      The evaluator component that:
+      - Takes both real and generated samples as input
+      - Outputs a probability that the input came from real data rather than generated
+      - Acts as a binary classifier (real vs. fake)
+      - Provides feedback signals to improve the generator
+      - Typically uses convolutional layers for image data or recurrent networks for sequential data
+      
+      ## Loss Function
+      
+      The mathematical objective that:
+      - Forms a minimax game between the two networks
+      - Generator aims to minimize the discriminator's accuracy
+      - Discriminator aims to maximize its own accuracy
+      - Creates a zero-sum game dynamic where one network's gain is the other's loss
+      
+      ## Training Process
+      
+      The iterative procedure that:
+      - Alternates between training the discriminator and generator
+      - Requires careful balancing to prevent one network from overwhelming the other
+      - Often requires techniques like gradient penalty or spectral normalization for stability
+      - Continues until reaching a Nash equilibrium where neither network can improve unilaterally
+      
+      # Popular GAN Architectures
+      
+      ## Original GAN
+      
+      The foundational architecture introduced by Ian Goodfellow in 2014:
+      - Fully connected networks for both generator and discriminator
+      - Established the core adversarial training concept
+      - Demonstrated the potential of generative adversarial training
+      
+      ## Deep Convolutional GAN (DCGAN)
+      
+      An architecture that:
+      - Uses convolutional and deconvolutional layers
+      - Introduced architectural guidelines for stable GAN training
+      - Significantly improved image quality and training stability
+      
+      ## Conditional GAN (cGAN)
+      
+      A variant that:
+      - Incorporates conditional information (labels, text, etc.)
+      - Allows controlling the generation process
+      - Enables generating samples from specific categories
+      
+      ## CycleGAN
+      
+      A design for unpaired image-to-image translation:
+      - Transforms images from one domain to another without paired examples
+      - Uses cycle consistency loss to maintain content integrity
+      - Enables applications like style transfer and season change
+      
+      ## StyleGAN and StyleGAN2
+      
+      Advanced architectures that:
+      - Separate content and style in the generation process
+      - Allow fine-grained control over generated images
+      - Produce remarkably realistic human faces and other images
+      - Introduce style mixing and truncation tricks for quality improvement
+      
+      ## Progressive GAN
+      
+      An approach that:
+      - Gradually increases resolution during training
+      - Stabilizes training for high-resolution images
+      - Produces sharper and more detailed outputs
+      
+      # Applications of GANs
+      
+      ## Image Generation and Manipulation
+      
+      GANs excel at creating and editing visual content:
+      - Photorealistic face generation
+      - Image-to-image translation
+      - Super-resolution (enhancing low-resolution images)
+      - Image inpainting (filling in missing parts)
+      - Style transfer and domain adaptation
+      - Photo editing and restoration
+      
+      ## Content Creation
+      
+      GANs assist creative professionals through:
+      - Generating art and design elements
+      - Creating textures for 3D models
+      - Producing synthetic environments for games and simulations
+      - Fashion design and product visualization
+      - Architectural rendering and interior design
+      
+      ## Data Augmentation
+      
+      GANs improve machine learning datasets by:
+      - Generating additional training examples
+      - Creating synthetic data for rare cases
+      - Balancing imbalanced datasets
+      - Preserving privacy through synthetic data
+      
+      ## Medical Applications
+      
+      Healthcare innovations include:
+      - Medical image synthesis (CT, MRI, X-ray)
+      - Anomaly detection in scans
+      - Drug discovery and molecular design
+      - Generating synthetic medical records for research
+      
+      ## Video and Animation
+      
+      Advanced GAN applications include:
+      - Video generation and prediction
+      - Motion transfer between subjects
+      - Creating talking head animations from still images
+      - Video-to-video translation
+      
+      # Challenges and Limitations
+      
+      ## Training Instability
+      
+      GANs face several training difficulties:
+      - Mode collapse (generator produces limited varieties)
+      - Non-convergence and oscillation
+      - Vanishing gradients
+      - Balancing generator and discriminator strength
+      
+      ## Evaluation Difficulty
+      
+      Assessing GAN performance is challenging due to:
+      - Lack of a single definitive metric
+      - Trade-offs between sample quality and diversity
+      - Subjective nature of visual quality
+      - Need for multiple complementary measures (FID, Inception Score, etc.)
+      
+      ## Ethical Concerns
+      
+      GANs raise important ethical questions around:
+      - Deepfakes and potential misuse
+      - Copyright and ownership of generated content
+      - Privacy implications of realistic data synthesis
+      - Potential for generating misleading information
+      
+      # Future Directions
+      
+      GANs continue to evolve in several promising directions:
+      
+      - Self-supervised and semi-supervised learning approaches
+      - Combination with other generative models (diffusion models, VAEs)
+      - Multi-modal generation across text, image, audio, and video
+      - Increased control and interpretability
+      - Energy-efficient training methods
+      - Enhanced stability and convergence guarantees
+      
+      As GAN technology advances, it promises to transform creative workflows, data generation, and synthetic media across industries, while also necessitating careful consideration of ethical guidelines and safeguards.
 
   - name: Gradient Descent
-    shortDescription: A common optimization algorithm in machine learning.
+    shortDescription: A first-order iterative optimization algorithm for finding the minimum of a function by taking steps proportional to the negative of the gradient.
     fullDescription: |
-      Gradient Descent is an iterative algorithm for finding the minimum of a cost function. It operates as follows:
-      1. Starts from a random point.
-      2. Computes the gradient (direction of steepest slope) of the cost function.
-      3. Moves in the opposite direction to the gradient (i.e., "descends" downhill).
-      4. Repeats the process until convergence.
-      There are various versions such as Stochastic Gradient Descent and Mini-batch Gradient Descent.
+      # What is Gradient Descent?
+      
+      Gradient descent is a fundamental optimization algorithm used to minimize a function by iteratively moving in the direction of steepest descent, as defined by the negative of the gradient. In machine learning, it's the primary method for finding the optimal parameters (weights and biases) of models by minimizing cost or loss functions.
+      
+      # How Does Gradient Descent Work?
+      
+      Gradient descent operates through a simple iterative process:
+      
+      1. Start with initial parameter values (often random)
+      2. Calculate the gradient (vector of partial derivatives) of the cost function with respect to each parameter
+      3. Update the parameters by moving in the opposite direction of the gradient
+      4. Repeat steps 2-3 until convergence or a set number of iterations
+      
+      The parameter update rule is:
+      
+      ```
+      parameters = parameters - learning_rate * gradient
+      ```
+      
+      Where the learning rate controls the size of the steps taken during optimization.
+      
+      # Key Components of Gradient Descent
+      
+      ## Cost Function
+      
+      The objective being minimized:
+      - Measures how poorly the model performs
+      - Common examples include mean squared error and cross-entropy loss
+      - Should be differentiable for gradient calculation
+      - Generally designed to have a single global minimum or few local minima
+      
+      ## Gradient
+      
+      The direction of steepest increase:
+      - Vector of partial derivatives with respect to each parameter
+      - Points in the direction of steepest ascent of the cost function
+      - Negative gradient points toward steepest descent
+      - Magnitude indicates the steepness of the slope
+      
+      ## Learning Rate
+      
+      The step size hyperparameter:
+      - Controls how far to move in the gradient direction
+      - Too small: slow convergence
+      - Too large: overshooting or divergence
+      - Often requires careful tuning
+      - May be adapted during training
+      
+      ## Convergence Criteria
+      
+      Rules for stopping the algorithm:
+      - Gradient magnitude below a threshold
+      - Change in cost function below a threshold
+      - Maximum number of iterations reached
+      - Validation performance stops improving
+      
+      # Types of Gradient Descent
+      
+      ## Batch Gradient Descent
+      
+      Computes the gradient using the entire dataset:
+      - Provides the most accurate gradient estimate
+      - Computationally expensive for large datasets
+      - Guaranteed convergence to local minimum for convex problems
+      - Slow updates as it processes all examples before each parameter update
+      
+      ## Stochastic Gradient Descent (SGD)
+      
+      Computes the gradient using a single training example:
+      - Much faster updates, especially for large datasets
+      - Noisier gradients leading to more exploration of the parameter space
+      - May help escape shallow local minima
+      - Often requires more iterations but less computation overall
+      - Can be unstable and may never reach exact minimum
+      
+      ## Mini-batch Gradient Descent
+      
+      Computes the gradient using a small batch of training examples:
+      - Balance between batch and stochastic approaches
+      - Reduces gradient noise compared to SGD
+      - More efficient than batch gradient descent
+      - Better utilization of vectorized operations
+      - Typical batch sizes range from 32 to 512 examples
+      
+      # Advanced Gradient Descent Algorithms
+      
+      ## Momentum
+      
+      Adds a fraction of the previous update vector:
+      - Helps accelerate convergence
+      - Reduces oscillations in ravine-like surfaces
+      - Maintains direction through noisy gradients
+      - Acts like a ball rolling down a hill gaining momentum
+      
+      ## RMSprop
+      
+      Adaptive learning rate method that:
+      - Maintains per-parameter learning rates
+      - Divides updates by a running average of gradient magnitudes
+      - Helps deal with varying gradient scales across parameters
+      - Especially useful for non-stationary objectives
+      
+      ## Adam (Adaptive Moment Estimation)
+      
+      Combines momentum and RMSprop:
+      - Maintains both first moment (mean) and second moment (variance) of gradients
+      - Includes bias correction for more accurate estimates
+      - Often works well with default hyperparameters
+      - Widely used due to its robust performance across problems
+      
+      ## AdaGrad
+      
+      Adapts learning rates for each parameter:
+      - Accumulates squared gradients over time
+      - Parameters with larger gradients get smaller updates
+      - Parameters with smaller gradients get larger updates
+      - Can cause premature stopping as accumulated gradient grows
+      
+      # Challenges in Gradient Descent
+      
+      ## Local Minima and Saddle Points
+      
+      Optimization obstacles include:
+      - Local minima where gradient is zero but not globally optimal
+      - Saddle points where some directions increase cost and others decrease it
+      - Plateaus where gradient is very small but not at minimum
+      
+      ## Vanishing and Exploding Gradients
+      
+      Problems in deep networks:
+      - Vanishing: gradients become extremely small, slowing learning
+      - Exploding: gradients become extremely large, causing instability
+      - Both issues complicate training of deep neural networks
+      
+      ## Choosing Learning Rates
+      
+      Finding the right step size:
+      - Too large: overshooting and possible divergence
+      - Too small: slow convergence or getting stuck
+      - May need to be adjusted during training (learning rate schedules)
+      - Different parameters may require different learning rates
+      
+      ## Ill-Conditioned Problems
+      
+      When the cost surface has very different curvatures in different directions:
+      - Standard gradient descent converges slowly
+      - May require specialized algorithms like conjugate gradient
+      - Preconditioning can help improve the condition number
+      
+      # Applications of Gradient Descent
+      
+      Gradient descent is fundamental to:
+      - Training neural networks of all types
+      - Linear and logistic regression
+      - Support vector machines
+      - Matrix factorization
+      - Reinforcement learning algorithms
+      - Natural language processing models
+      - Computer vision systems
+      
+      It remains one of the most important algorithms in machine learning, with ongoing research to improve its performance, stability, and efficiency across a wide range of applications.
 
   - name: Backpropagation
-    shortDescription: An algorithm for computing the gradient in neural networks.
+    shortDescription: A key algorithm for training neural networks that efficiently calculates gradients of the loss function with respect to weights by propagating errors backward through the network.
     fullDescription: |
-      Backpropagation is an efficient algorithm for computing the gradients of the cost function with respect to each weight in a neural network. It operates as follows:
-      1. Performs a "forward pass" through the network to compute the output.
-      2. Computes the error in the output layer.
-      3. Moves backward through the network, computing the contribution of each weight to the final error.
-      4. Updates the weights accordingly.
-      This is a critical algorithm for training deep neural networks.
+      # What is Backpropagation?
+      
+      Backpropagation (short for "backward propagation of errors") is the fundamental algorithm used to efficiently train neural networks. It calculates the gradient of the loss function with respect to each weight in the network by propagating error signals backward from the output layer to the input layer. This gradient information enables gradient descent optimization to adjust the weights and improve the network's performance.
+      
+      # How Does Backpropagation Work?
+      
+      Backpropagation operates in two main phases:
+      
+      1. Forward Pass:
+         - Input data is fed through the network
+         - Each neuron computes its output using current weights
+         - The network produces a prediction
+         - A loss function quantifies the error between prediction and target
+      
+      2. Backward Pass:
+         - Error is calculated at the output layer
+         - The algorithm works backward, layer by layer
+         - It computes how much each weight contributed to the error
+         - It calculates gradients for each weight using the chain rule of calculus
+         - Weights are updated using these gradients and gradient descent
+      
+      This process efficiently computes all gradients with a single forward and backward pass through the network, making it computationally feasible to train large neural networks.
+      
+      # Key Components of Backpropagation
+      
+      ## Chain Rule Application
+      
+      Backpropagation leverages the chain rule from calculus:
+      - Decomposes complex derivatives into simpler parts
+      - Allows calculating gradients for deeply nested functions
+      - Enables reusing calculations across different weights
+      - Forms the mathematical foundation of the algorithm
+      
+      ## Error Signal
+      
+      The propagated information consists of:
+      - Initial error at output layer (prediction vs. target)
+      - Error gradients that flow backward through the network
+      - Signals that indicate how each layer should adjust to reduce error
+      
+      ## Weight Updates
+      
+      The process of improving the model:
+      - Uses calculated gradients to adjust weights
+      - Applies learning rate to control update magnitude
+      - May incorporate momentum or adaptive techniques
+      - Aims to minimize the loss function iteratively
+      
+      ## Activation Functions and Their Derivatives
+      
+      Important functions that:
+      - Introduce non-linearity in the network
+      - Must be differentiable for backpropagation
+      - Common choices include ReLU, sigmoid, and tanh
+      - Their derivatives are crucial in the gradient calculations
+      
+      # Backpropagation Process in Detail
+      
+      ## Forward Pass Computation
+      
+      Moving from input to output:
+      1. Each neuron computes weighted sum of inputs: z = Σ(w_i * x_i) + b
+      2. Activation function is applied: a = f(z)
+      3. Output of each layer becomes input to the next
+      4. Final layer produces the prediction
+      5. Loss function calculates error compared to target
+      
+      ## Error Calculation
+      
+      Measuring prediction quality:
+      - For regression: often mean squared error
+      - For classification: often cross-entropy loss
+      - The error depends on network outputs and target values
+      - Represents what we want to minimize
+      
+      ## Backward Pass Computation
+      
+      Moving from output to input:
+      1. Calculate error derivative at output layer
+      2. For each previous layer, calculate error contribution
+      3. Apply chain rule to compute weight gradients
+      4. Store gradients for all weights and biases
+      
+      ## Weight Update
+      
+      Improving the model:
+      1. Apply gradient descent (or variant) using computed gradients
+      2. Update rule: w_new = w_old - learning_rate * gradient
+      3. Repeat process for multiple epochs until convergence
+      
+      # Mathematical Foundation
+      
+      ## Chain Rule
+      
+      The core calculus principle states:
+      
+      If z = f(y) and y = g(x), then:
+      dz/dx = (dz/dy) * (dy/dx)
+      
+      This extends to neural networks with many nested functions.
+      
+      ## Gradient for Output Layer
+      
+      For output neuron j:
+      - δⱼ = ∂E/∂zⱼ = ∂E/∂aⱼ * f'(zⱼ)
+      - Where E is error, z is weighted input, a is activation, and f' is derivative of activation function
+      
+      ## Gradient for Hidden Layers
+      
+      For hidden neuron j in layer l:
+      - δⱼ^l = (Σ δₖ^(l+1) * w_{jk}^(l+1)) * f'(zⱼ^l)
+      - This shows how error propagates backward from layer to layer
+      
+      ## Weight Gradient
+      
+      For weight w_{ij} from neuron i to j:
+      - ∂E/∂w_{ij} = δⱼ * a_i
+      - Shows that gradient depends on error signal and input activation
+      
+      # Practical Implementations
+      
+      ## Vectorized Computation
+      
+      Efficient implementation using:
+      - Matrix and vector operations
+      - Batch processing of multiple examples
+      - GPU acceleration for parallel computation
+      - Optimized linear algebra libraries
+      
+      ## Mini-batch Processing
+      
+      Training pattern where:
+      - Gradients are calculated on small batches of data
+      - Updates occur more frequently than full-batch methods
+      - Balances computational efficiency and update frequency
+      
+      ## Automated Differentiation
+      
+      Modern approach using:
+      - Computational graphs to track operations
+      - Automatic generation of derivative functions
+      - Libraries like TensorFlow and PyTorch handle this internally
+      - Simplifies implementation of complex architectures
+      
+      # Challenges and Solutions
+      
+      ## Vanishing Gradient Problem
+      
+      When gradients become extremely small:
+      - Occurs with deep networks and sigmoid/tanh activations
+      - Early layers learn very slowly
+      - Solutions include ReLU activations, skip connections, batch normalization
+      
+      ## Exploding Gradient Problem
+      
+      When gradients become extremely large:
+      - Can cause unstable training and numerical overflow
+      - Solutions include gradient clipping, weight regularization, proper initialization
+      
+      ## Computational Efficiency
+      
+      Optimizing performance:
+      - Memory management for large networks
+      - Parallel processing across multiple GPUs
+      - Reduced precision calculations
+      - Checkpointing to trade computation for memory
+      
+      # Historical Context and Importance
+      
+      ## Development
+      
+      The algorithm's history:
+      - Introduced in the 1970s and popularized in the 1980s
+      - Key papers by Rumelhart, Hinton, and Williams (1986)
+      - Solved the credit assignment problem for multi-layer networks
+      - Enabled practical training of deep neural networks
+      
+      ## Impact
+      
+      Backpropagation's significance:
+      - Made neural networks practical and trainable
+      - Enabled the deep learning revolution
+      - Forms the foundation of most modern AI systems
+      - Continues to be improved and extended for new architectures
+      
+      Backpropagation remains the workhorse of neural network training, with ongoing research focused on enhancing its efficiency, accuracy, and ability to train increasingly complex architectures.
 
   - name: Activation Functions
     shortDescription: Functions that introduce non-linearity into neural networks.
