@@ -1,4 +1,40 @@
 hot_news:
+  - section: "Voice and Audio Technology"
+    topics:
+      - title: "OpenAI's Voice Revolution"
+        questions:
+          - question: "What new voice models has OpenAI released?"
+            answer: "OpenAI has released three new voice models: gpt-4o-mini-tts-latest for text-to-speech, GPT 4.0 Transcribe and GPT 4.0 Mini Transcribe for speech-to-text, all based on their transformer architecture and offering significantly improved capabilities."
+          - question: "What is the innovative 'promptable ASR' capability in the new models?"
+            answer: "Promptable ASR is an innovative capability that allows users to guide the transcription model with context - for example, specifying that the conversation is about dog breeds, thus improving the accuracy of breed name recognition. This opens up a new field of prompt engineering for speech recognition systems."
+          - question: "How does the new GPT 4.0 Mini TTS model enhance text-to-speech capabilities?"
+            answer: "The new GPT 4.0 Mini TTS model offers breakthrough capabilities to infuse emotions into generated speech. You can ask the model to speak with a specific emotion or in the voice of a particular character (like a 'mad scientist'). This represents a significant leap in the ability to produce more human-like and varied speech."
+          - question: "What is Semantic VAD and how does it improve the user experience?"
+            answer: "Semantic VAD (Voice Activity Detection) is a technology that segments audio based on the meaning of speech, not just the detection of silences. This allows the system to understand when the user has semantically finished speaking, solving the problem of AI agents interrupting users mid-sentence."
+          - question: "Where can users test OpenAI's new voice models?"
+            answer: "OpenAI has created a dedicated website at openai.fm that allows users to test the new models and experience the advanced voice and audio capabilities."
+        description: |
+          The past week marked a turning point in voice technology with the launch of innovative models from OpenAI and several impressive competitors from the open-source world. OpenAI introduced a series of advanced audio models based on their powerful transformer architecture.
+          
+          The new models include:
+          - gpt-4o-mini-tts-latest: An innovative text-to-speech (TTS) model
+          - GPT 4.0 Transcribe: A high-level speech-to-text (STT) model
+          - GPT 4.0 Mini Transcribe: A lighter, more economical version of the transcription model
+          
+          Key innovations in the new generation of audio models:
+          
+          1. Promptability: The new models allow the use of prompts to guide the transcription or speech process
+          2. Emotional Speech: The new TTS model can generate speech with emotional tone tailored to user requests
+          3. Semantic VAD: Semantic voice activity detection, allowing the model to understand when the user has finished speaking based on meaning, not just on silences
+          4. Improved Performance: Higher speed, lower cost, and improved accuracy across multiple languages
+          
+          OpenAI has also created a dedicated website at openai.fm that allows users to test the new models and experience the advanced voice and audio capabilities.
+        images:
+          - "openai-voice-models.jpg"
+        links:
+          - name: "Test OpenAI's New Voice Models"
+            url: "https://openai.fm"
+
   - section: "Claude 3.7"
     topics:
       - title: "Anthropic Launches Claude 3.7: New State-of-the-Art AI Model"
