@@ -1181,7 +1181,7 @@ function displayContent(content) {
     }
 
     // Create main content HTML with AEO-friendly structure
-    let html = `<h1>חדשות בינה מלאכותית עדכניות</h1>`;
+    let html = `<h1>Latest Artificial Intelligence News</h1>`;
     
     // Process each section
     content.hot_news.forEach(section => {

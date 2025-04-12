@@ -8,7 +8,6 @@ const app = express();
 const port = process.env.PORT || 8085;
 const allowedOrigins = ['http://localhost:8085', 'https://leonmelamud.github.io'];
 
-// ייבוא הספריה js-tiktoken
 const { getEncoding } = require('js-tiktoken');
 
 app.use(cors({

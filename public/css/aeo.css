@@ -23,7 +23,7 @@
 }
 
 .question-header::before {
-    content: "שאלה:";
+    content: "Question:";
     font-weight: 400;
     color: #6c757d;
     margin-left: 8px;
@@ -42,7 +42,7 @@
 }
 
 .direct-answer::before {
-    content: "תשובה:";
+    content: "Answer:";
     font-weight: 600;
     color: #0066cc;
     display: block;
@@ -578,7 +578,7 @@ body.aeo-enabled .aeo-navigation {
 }
 
 .aeo-question-header::before {
-    content: "שאלה:";
+    content: "Question:";
     color: #0066cc;
     font-weight: 400;
     position: absolute;
@@ -597,7 +597,7 @@ body.aeo-enabled .aeo-navigation {
 }
 
 .aeo-direct-answer::before {
-    content: "תשובה:";
+    content: "Answer:";
     color: #0066cc;
     font-weight: 600;
     position: absolute;
