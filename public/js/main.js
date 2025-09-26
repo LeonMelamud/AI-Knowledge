@@ -302,6 +302,16 @@ function updateAEOMetadata(route) {
         description = 'Latest AI news and updates';
         type = 'news';
         keywords = 'AI news, artificial intelligence updates, latest AI developments';
+    } else if (route === 'privacy-policy') {
+        title = 'Privacy Policy - מדיניות פרטיות';
+        description = 'Privacy Policy for AI Knowledge Guide - data collection, usage, and protection policies';
+        type = 'legal';
+        keywords = 'privacy policy, data protection, GDPR compliance, personal information';
+    } else if (route === 'terms-of-service') {
+        title = 'Terms of Service - תנאי שימוש';
+        description = 'Terms of Service for AI Knowledge Guide - rules and guidelines for using our website';
+        type = 'legal';
+        keywords = 'terms of service, user agreement, website rules, legal terms';
     } else {
         title = 'AI Knowledge Base';
         description = 'Comprehensive resource for artificial intelligence concepts and tools';
@@ -437,6 +447,10 @@ function updateContent(route) {
                     }
                 }
             }, 200);
+        } else if (route === 'privacy-policy') {
+            content = buildPrivacyPolicySection();
+        } else if (route === 'terms-of-service') {
+            content = buildTermsOfServiceSection();
         } else {
             content = `<p>${uiTranslations.noMatchingContent}</p>`;
         }
@@ -2010,6 +2024,119 @@ function addAEOGuideSection(contentContainer) {
     examplesTopic.appendChild(examplesContent);
     examplesSection.appendChild(examplesTopic);
     contentContainer.appendChild(examplesSection);
+}
+
+/**
+ * Build Privacy Policy content section
+ * @returns {string} HTML content for privacy policy
+ */
+function buildPrivacyPolicySection() {
+    return `
+        <div class="legal-page-content">
+            <h1>מדיניות פרטיות</h1>
+            <p class="subtitle">Privacy Policy</p>
+            <div class="legal-content-body">
+                <p class="effective-date"><strong>תוקף החל מ: 1 בינואר 2025</strong></p>
+                <p><strong>Effective Date: January 1, 2025</strong></p>
+
+                <h2>1. מבוא / Introduction</h2>
+                <p>מדריך הבינה המלאכותית ("האתר", "אנחנו", "שלנו") מתחייב לשמור על פרטיותכם. מדיניות פרטיות זו מסבירה כיצד אנו אוספים, משתמשים ומגנים על המידע האישי שלכם.</p>
+                <p>The AI Knowledge Guide ("the Site", "we", "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your personal information.</p>
+
+                <h2>2. מידע שאנו אוספים / Information We Collect</h2>
+                <h3>2.1. מידע שאתם מספקים / Information You Provide</h3>
+                <ul>
+                    <li>מידע שמוזן בכלי יצירת הטקסט והמחשבונים</li>
+                    <li>תוכן שאתם יוצרים באתר</li>
+                    <li>Information entered in text generation tools and calculators</li>
+                    <li>Content you create on the site</li>
+                </ul>
+
+                <h3>2.2. מידע שנאסף אוטומטית / Automatically Collected Information</h3>
+                <ul>
+                    <li>כתובת IP</li>
+                    <li>סוג דפדפן ומכשיר</li>
+                    <li>דפים שבהם ביקרתם באתר</li>
+                    <li>זמן הביקור ומשך השהייה</li>
+                    <li>IP address</li>
+                    <li>Browser and device type</li>
+                    <li>Pages visited on our site</li>
+                    <li>Visit time and duration</li>
+                </ul>
+
+                <h2>3. כיצד אנו משתמשים במידע / How We Use Information</h2>
+                <ul>
+                    <li>לספק ולשפר את שירותי האתר</li>
+                    <li>לענות על שאלותיכם ולספק תמיכה</li>
+                    <li>לנתח שימוש באתר ולשפר את החווית המשתמש</li>
+                    <li>To provide and improve our website services</li>
+                    <li>To respond to your questions and provide support</li>
+                    <li>To analyze website usage and improve user experience</li>
+                </ul>
+
+                <h2>4. יצירת קשר / Contact Us</h2>
+                <p>לשאלות או הערות בנוגע למדיניות פרטיות זו:</p>
+                <p>For questions or comments regarding this Privacy Policy:</p>
+                <ul>
+                    <li>אימייל / Email: privacy@ai-knowledge-guide.com</li>
+                    <li>LinkedIn: <a href="https://www.linkedin.com/in/leon-melamud" target="_blank">Leon Melamud</a></li>
+                </ul>
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * Build Terms of Service content section
+ * @returns {string} HTML content for terms of service
+ */
+function buildTermsOfServiceSection() {
+    return `
+        <div class="legal-page-content">
+            <h1>תנאי שימוש</h1>
+            <p class="subtitle">Terms of Service</p>
+            <div class="legal-content-body">
+                <p class="effective-date"><strong>תוקף החל מ: 1 בינואר 2025</strong></p>
+                <p><strong>Effective Date: January 1, 2025</strong></p>
+
+                <h2>1. קבלת התנאים / Acceptance of Terms</h2>
+                <p>על ידי גישה לאתר "מדריך הבינה המלאכותית" ושימוש בו, אתם מסכימים לציית לתנאי השימוש האלה ולכל החוקים והתקנות הרלוונטיים.</p>
+                <p>By accessing and using the "AI Knowledge Guide" website, you agree to comply with these Terms of Service and all applicable laws and regulations.</p>
+
+                <h2>2. שימוש מותר / Permitted Use</h2>
+                <p>אתם רשאים להשתמש באתר למטרות:</p>
+                <p>You may use the site for:</p>
+                <ul>
+                    <li>לימוד על בינה מלאכותית</li>
+                    <li>שימוש בכלי יצירת הטקסט והמחשבונים</li>
+                    <li>קבלת מידע ועצות בתחום הAI</li>
+                    <li>Learning about artificial intelligence</li>
+                    <li>Using text generation tools and calculators</li>
+                    <li>Obtaining information and advice in the AI field</li>
+                </ul>
+
+                <h2>3. שימוש אסור / Prohibited Use</h2>
+                <p>אסור להשתמש באתר למטרות:</p>
+                <p>You may not use the site for:</p>
+                <ul>
+                    <li>פעילויות בלתי חוקיות או מזיקות</li>
+                    <li>הפרת זכויות יוצרים או קניין רוחני</li>
+                    <li>ניסיונות פריצה או הרס מערכות</li>
+                    <li>Illegal or harmful activities</li>
+                    <li>Copyright or intellectual property infringement</li>
+                    <li>Attempting to hack or destroy systems</li>
+                </ul>
+
+                <h2>4. יצירת קשר / Contact Information</h2>
+                <p>לשאלות או הערות בנוגע לתנאי השימוש:</p>
+                <p>For questions or comments regarding these Terms of Service:</p>
+                <ul>
+                    <li>אימייל / Email: legal@ai-knowledge-guide.com</li>
+                    <li>LinkedIn: <a href="https://www.linkedin.com/in/leon-melamud" target="_blank">Leon Melamud</a></li>
+                </ul>
+            </div>
+        </div>
+    `;
 }
 
 /**

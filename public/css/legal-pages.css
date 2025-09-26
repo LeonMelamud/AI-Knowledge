@@ -1,0 +1,231 @@
+/* Legal Pages Styles - Privacy Policy and Terms of Service */
+
+.legal-content {
+    min-height: 100vh;
+    background-color: #fafafa;
+    padding: 20px 0;
+}
+
+.legal-content .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.legal-content header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 40px 0;
+    margin-bottom: 0;
+    border-radius: 10px 10px 0 0;
+}
+
+.header-content {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header-content h1 {
+    font-size: 2.5em;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+}
+
+.header-content .subtitle {
+    font-size: 1.2em;
+    margin: 0;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.policy-section,
+.terms-section {
+    padding: 40px;
+    line-height: 1.8;
+    color: #333;
+}
+
+.effective-date {
+    background-color: #e8f4fd;
+    padding: 15px;
+    border-left: 4px solid #0066cc;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.legal-content h2 {
+    color: #2c5282;
+    font-size: 1.8em;
+    margin: 40px 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0;
+    font-weight: 600;
+}
+
+.legal-content h3 {
+    color: #4a5568;
+    font-size: 1.4em;
+    margin: 30px 0 15px 0;
+    font-weight: 500;
+}
+
+.legal-content p {
+    margin-bottom: 20px;
+    text-align: justify;
+    font-size: 1.05em;
+}
+
+.legal-content ul {
+    margin: 20px 0;
+    padding-right: 30px;
+}
+
+.legal-content ul li {
+    margin-bottom: 10px;
+    list-style-type: disc;
+    font-size: 1.05em;
+}
+
+.legal-content a {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.legal-content a:hover {
+    text-decoration: underline;
+    color: #004499;
+}
+
+/* Footer styles for legal pages */
+.legal-content footer {
+    background-color: #2d3748;
+    color: #e2e8f0;
+    padding: 30px 0;
+    margin-top: 0;
+    border-radius: 0 0 10px 10px;
+}
+
+.footer-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.footer-nav {
+    margin-top: 20px;
+}
+
+.footer-nav a {
+    color: #e2e8f0;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.footer-nav a:hover {
+    background-color: #4a5568;
+    text-decoration: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .legal-content .container {
+        margin: 0 10px;
+        border-radius: 0;
+    }
+    
+    .header-content h1 {
+        font-size: 2em;
+    }
+    
+    .policy-section,
+    .terms-section {
+        padding: 20px;
+    }
+    
+    .legal-content h2 {
+        font-size: 1.5em;
+    }
+    
+    .legal-content h3 {
+        font-size: 1.3em;
+    }
+    
+    .footer-nav a {
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8em;
+    }
+    
+    .policy-section,
+    .terms-section {
+        padding: 15px;
+    }
+    
+    .legal-content ul {
+        padding-right: 20px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .legal-content {
+        background-color: white;
+    }
+    
+    .legal-content .container {
+        box-shadow: none;
+        border-radius: 0;
+    }
+    
+    .legal-content header {
+        background: white;
+        color: black;
+        border-bottom: 2px solid #333;
+    }
+    
+    .footer-nav {
+        display: none;
+    }
+}
+
+/* Accessibility improvements */
+.legal-content *:focus {
+    outline: 2px solid #0066cc;
+    outline-offset: 2px;
+}
+
+/* RTL (Right-to-Left) support for Hebrew content */
+[dir="rtl"] .legal-content ul {
+    padding-right: 0;
+    padding-left: 30px;
+}
+
+[dir="rtl"] .effective-date {
+    border-left: none;
+    border-right: 4px solid #0066cc;
+}
+
+[dir="rtl"] .footer-nav a {
+    margin: 0 15px;
+}
+
+@media (max-width: 768px) {
+    [dir="rtl"] .legal-content ul {
+        padding-left: 20px;
+    }
+}
