@@ -29,5 +29,54 @@
   "maintenanceMessage": "Server is under maintenance for cloud LLM services, fork the project from git to play with it locally.",
   "hotNewsDisclaimer": "Information sourced from ThursdAI or similar AI-powered news aggregators.",
   "hotNewsTitle": "Hot News",
-  "hotNewsDescription": "Latest advancements and updates in AI technology"
+  "hotNewsDescription": "Latest advancements and updates in AI technology",
+  "privacyPolicy": "Privacy Policy",
+  "termsOfService": "Terms of Service",
+  "privacyPolicyTitle": "Privacy Policy",
+  "termsOfServiceTitle": "Terms of Service",
+  "effectiveDate": "Effective Date: January 1, 2025",
+  "privacyIntroTitle": "1. Introduction",
+  "privacyIntro": "The AI Knowledge Guide (\"the Site\", \"we\", \"us\") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your personal information.",
+  "infoCollectTitle": "2. Information We Collect",
+  "infoProvidedTitle": "2.1. Information You Provide",
+  "infoProvidedList": [
+    "Information entered in text generation tools and calculators",
+    "Content you create on the site"
+  ],
+  "infoAutoTitle": "2.2. Automatically Collected Information",
+  "infoAutoList": [
+    "IP address",
+    "Browser and device type",
+    "Pages visited on our site",
+    "Visit time and duration"
+  ],
+  "howWeUseTitle": "3. How We Use Information",
+  "howWeUseList": [
+    "To provide and improve our website services",
+    "To respond to your questions and provide support",
+    "To analyze website usage and improve user experience"
+  ],
+  "contactUsTitle": "4. Contact Us",
+  "contactUsText": "For questions or comments regarding this Privacy Policy:",
+  "contactEmail": "Email: privacy@ai-knowledge-guide.com",
+  "contactLinkedIn": "LinkedIn:",
+  "tosAcceptanceTitle": "1. Acceptance of Terms",
+  "tosAcceptanceText": "By accessing and using the \"AI Knowledge Guide\" website, you agree to comply with these Terms of Service and all applicable laws and regulations.",
+  "tosPermittedTitle": "2. Permitted Use",
+  "tosPermittedText": "You may use the site for:",
+  "tosPermittedList": [
+    "Learning about artificial intelligence",
+    "Using text generation tools and calculators",
+    "Obtaining information and advice in the AI field"
+  ],
+  "tosProhibitedTitle": "3. Prohibited Use",
+  "tosProhibitedText": "You may not use the site for:",
+  "tosProhibitedList": [
+    "Illegal or harmful activities",
+    "Copyright or intellectual property infringement",
+    "Attempting to hack or destroy systems"
+  ],
+  "tosContactTitle": "4. Contact Information",
+  "tosContactText": "For questions or comments regarding these Terms of Service:",
+  "tosContactEmail": "Email: legal@ai-knowledge-guide.com"
 }
