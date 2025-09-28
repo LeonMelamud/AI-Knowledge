@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - תנאי שימוש</title>
+    <meta name="description" content="תנאי השימוש של מדריך הבינה המלאכותית - חוקים והגבלות לשימוש באתר ובשירותים">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://example.com/terms-of-service.html" />
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/legal-pages.css">
+    <script src="js/translations.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>תנאי שימוש</h1>
+            <p class="subtitle">Terms of Service</p>
+        </div>
+    </header>
+
+    <main class="legal-content">
+        <div class="container">
+            <section class="terms-section" id="terms-content">
+                <!-- Content will be loaded dynamically -->
+                <div class="loading">Loading content...</div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 The Comprehensive Guide to Artificial Intelligence. All rights reserved.</p>
+            <nav class="footer-nav">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="#/">Back to Home</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        // Load and render terms of service content dynamically
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Wait for translations to load
+            await new Promise(resolve => {
+                const checkTranslations = () => {
+                    if (Object.keys(uiTranslations).length > 0) {
+                        resolve();
+                    } else {
+                        setTimeout(checkTranslations, 100);
+                    }
+                };
+                checkTranslations();
+            });
+            
+            const content = document.getElementById('terms-content');
+            const t = uiTranslations;
+            
+            content.innerHTML = `
+                <p class="effective-date"><strong>${t.effectiveDate}</strong></p>
+
+                <h2>${t.tosAcceptanceTitle}</h2>
+                <p>${t.tosAcceptanceText}</p>
+
+                <h2>${t.tosPermittedTitle}</h2>
+                <p>${t.tosPermittedText}</p>
+                <ul>
+                    ${t.tosPermittedList.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+
+                <h2>${t.tosProhibitedTitle}</h2>
+                <p>${t.tosProhibitedText}</p>
+                <ul>
+                    ${t.tosProhibitedList.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+
+                <h2>${t.tosContactTitle}</h2>
+                <p>${t.tosContactText}</p>
+                <ul>
+                    <li>${t.tosContactEmail}</li>
+                    <li>${t.contactLinkedIn} <a href="https://www.linkedin.com/in/leon-melamud" target="_blank">Leon Melamud</a></li>
+                </ul>
+            `;
+        });
+    </script>
+</body>
+</html>

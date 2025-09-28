@@ -1310,3 +1310,171 @@ pre {
 .info-button {
     margin: 1em 0;
 }
+
+/* Legal Pages Styles for main application */
+.legal-page-content {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.legal-page-content h1 {
+    color: #2c5282;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    text-align: center;
+    border-bottom: 3px solid #e2e8f0;
+    padding-bottom: 15px;
+}
+
+.legal-page-content .subtitle {
+    text-align: center;
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.legal-content-body {
+    line-height: 1.8;
+}
+
+.legal-page-content .effective-date {
+    background-color: #e8f4fd;
+    padding: 15px;
+    border-left: 4px solid #0066cc;
+    margin-bottom: 30px;
+    font-size: 1.05em;
+    border-radius: 5px;
+}
+
+.legal-page-content h2 {
+    color: #2c5282;
+    font-size: 1.6em;
+    margin: 35px 0 15px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.legal-page-content h3 {
+    color: #4a5568;
+    font-size: 1.3em;
+    margin: 25px 0 12px 0;
+}
+
+.legal-page-content p {
+    margin-bottom: 15px;
+    font-size: 1.05em;
+    text-align: justify;
+}
+
+.legal-page-content ul {
+    margin: 15px 0;
+    padding-right: 25px;
+}
+
+.legal-page-content ul li {
+    margin-bottom: 8px;
+    list-style-type: disc;
+    font-size: 1.05em;
+}
+
+.legal-page-content a {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.legal-page-content a:hover {
+    text-decoration: underline;
+    color: #004499;
+}
+
+/* RTL (Right-to-Left) support for Hebrew content in legal pages */
+[dir="rtl"] .legal-page-content ul {
+    padding-right: 0;
+    padding-left: 25px;
+}
+
+[dir="rtl"] .legal-page-content .effective-date {
+    border-left: none;
+    border-right: 4px solid #0066cc;
+}
+
+/* Responsive design for legal pages */
+@media (max-width: 768px) {
+    .legal-page-content {
+        padding: 15px;
+    }
+    
+    .legal-page-content h1 {
+        font-size: 1.8em;
+    }
+    
+    .legal-page-content h2 {
+        font-size: 1.4em;
+    }
+    
+    .legal-page-content ul {
+        padding-right: 20px;
+    }
+    
+    [dir="rtl"] .legal-page-content ul {
+        padding-left: 20px;
+        padding-right: 0;
+    }
+}
+
+/* Footer Styles */
+footer {
+    background-color: #2d3748;
+    color: #e2e8f0;
+    padding: 20px 0;
+    margin-top: 40px;
+    clear: both;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.footer-content p {
+    margin: 0 0 15px 0;
+    font-size: 0.9em;
+}
+
+.footer-nav {
+    margin-top: 15px;
+}
+
+.footer-nav a {
+    color: #e2e8f0;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 0.9em;
+}
+
+.footer-nav a:hover {
+    background-color: #4a5568;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Responsive footer */
+@media (max-width: 768px) {
+    .footer-nav a {
+        display: inline-block;
+        margin: 5px 10px;
+        font-size: 0.85em;
+    }
+    
+    .footer-content {
+        padding: 0 15px;
+    }
+}

@@ -181,6 +181,12 @@ async function loadLanguageData(lang) {
 function updatePageContent() {
     document.querySelector('.hero-section h1').textContent = uiTranslations.heroTitle;
     document.querySelector('footer p').textContent = uiTranslations.footerText;
+    
+    // Update footer links
+    const privacyLink = document.getElementById('privacy-policy-link');
+    const termsLink = document.getElementById('terms-of-service-link');
+    if (privacyLink) privacyLink.textContent = uiTranslations.privacyPolicy;
+    if (termsLink) termsLink.textContent = uiTranslations.termsOfService;
 }
 
 function buildNavigation() {
@@ -302,6 +308,16 @@ function updateAEOMetadata(route) {
         description = 'Latest AI news and updates';
         type = 'news';
         keywords = 'AI news, artificial intelligence updates, latest AI developments';
+    } else if (route === 'privacy-policy') {
+        title = uiTranslations.privacyPolicyTitle;
+        description = 'Privacy Policy for AI Knowledge Guide - data collection, usage, and protection policies';
+        type = 'legal';
+        keywords = 'privacy policy, data protection, GDPR compliance, personal information';
+    } else if (route === 'terms-of-service') {
+        title = uiTranslations.termsOfServiceTitle;
+        description = 'Terms of Service for AI Knowledge Guide - rules and guidelines for using our website';
+        type = 'legal';
+        keywords = 'terms of service, user agreement, website rules, legal terms';
     } else {
         title = 'AI Knowledge Base';
         description = 'Comprehensive resource for artificial intelligence concepts and tools';
@@ -437,6 +453,10 @@ function updateContent(route) {
                     }
                 }
             }, 200);
+        } else if (route === 'privacy-policy') {
+            content = buildPrivacyPolicySection();
+        } else if (route === 'terms-of-service') {
+            content = buildTermsOfServiceSection();
         } else {
             content = `<p>${uiTranslations.noMatchingContent}</p>`;
         }
@@ -2010,6 +2030,112 @@ function addAEOGuideSection(contentContainer) {
     examplesTopic.appendChild(examplesContent);
     examplesSection.appendChild(examplesTopic);
     contentContainer.appendChild(examplesSection);
+}
+
+/**
+ * Build Privacy Policy content section
+ * @returns {string} HTML content for privacy policy
+ */
+function buildPrivacyPolicySection() {
+    const t = uiTranslations;
+    
+    // Fallback content if translations aren't loaded yet
+    if (!t || !t.privacyPolicyTitle) {
+        return `
+            <div class="legal-page-content">
+                <h1>Privacy Policy - מדיניות פרטיות</h1>
+                <div class="legal-content-body">
+                    <p>Loading translations...</p>
+                </div>
+            </div>
+        `;
+    }
+    
+    return `
+        <div class="legal-page-content">
+            <h1>${t.privacyPolicyTitle}</h1>
+            <div class="legal-content-body">
+                <p class="effective-date"><strong>${t.effectiveDate}</strong></p>
+
+                <h2>${t.privacyIntroTitle}</h2>
+                <p>${t.privacyIntro}</p>
+
+                <h2>${t.infoCollectTitle}</h2>
+                <h3>${t.infoProvidedTitle}</h3>
+                <ul>
+                    ${Array.isArray(t.infoProvidedList) ? t.infoProvidedList.map(item => `<li>${item}</li>`).join('') : ''}
+                </ul>
+
+                <h3>${t.infoAutoTitle}</h3>
+                <ul>
+                    ${Array.isArray(t.infoAutoList) ? t.infoAutoList.map(item => `<li>${item}</li>`).join('') : ''}
+                </ul>
+
+                <h2>${t.howWeUseTitle}</h2>
+                <ul>
+                    ${Array.isArray(t.howWeUseList) ? t.howWeUseList.map(item => `<li>${item}</li>`).join('') : ''}
+                </ul>
+
+                <h2>${t.contactUsTitle}</h2>
+                <p>${t.contactUsText}</p>
+                <ul>
+                    <li>${t.contactEmail}</li>
+                    <li>${t.contactLinkedIn} <a href="https://www.linkedin.com/in/leon-melamud" target="_blank">Leon Melamud</a></li>
+                </ul>
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * Build Terms of Service content section
+ * @returns {string} HTML content for terms of service
+ */
+function buildTermsOfServiceSection() {
+    const t = uiTranslations;
+    
+    // Fallback content if translations aren't loaded yet
+    if (!t || !t.termsOfServiceTitle) {
+        return `
+            <div class="legal-page-content">
+                <h1>Terms of Service - תנאי שימוש</h1>
+                <div class="legal-content-body">
+                    <p>Loading translations...</p>
+                </div>
+            </div>
+        `;
+    }
+    
+    return `
+        <div class="legal-page-content">
+            <h1>${t.termsOfServiceTitle}</h1>
+            <div class="legal-content-body">
+                <p class="effective-date"><strong>${t.effectiveDate}</strong></p>
+
+                <h2>${t.tosAcceptanceTitle}</h2>
+                <p>${t.tosAcceptanceText}</p>
+
+                <h2>${t.tosPermittedTitle}</h2>
+                <p>${t.tosPermittedText}</p>
+                <ul>
+                    ${Array.isArray(t.tosPermittedList) ? t.tosPermittedList.map(item => `<li>${item}</li>`).join('') : ''}
+                </ul>
+
+                <h2>${t.tosProhibitedTitle}</h2>
+                <p>${t.tosProhibitedText}</p>
+                <ul>
+                    ${Array.isArray(t.tosProhibitedList) ? t.tosProhibitedList.map(item => `<li>${item}</li>`).join('') : ''}
+                </ul>
+
+                <h2>${t.tosContactTitle}</h2>
+                <p>${t.tosContactText}</p>
+                <ul>
+                    <li>${t.tosContactEmail}</li>
+                    <li>${t.contactLinkedIn} <a href="https://www.linkedin.com/in/leon-melamud" target="_blank">Leon Melamud</a></li>
+                </ul>
+            </div>
+        </div>
+    `;
 }
 
 /**
