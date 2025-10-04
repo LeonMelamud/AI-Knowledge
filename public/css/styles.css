@@ -1,26 +1,29 @@
+/* TODO: Implement CSS custom properties for better maintainability */
+/* FIXME: Using generic Arial font - should include proper font stack */
 /* Base styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Arial', sans-serif; /* TODO: Use proper font stack with fallbacks */
     line-height: 1.6;
-    color: #333;
+    color: #333; /* TODO: Define as CSS custom property --text-color */
     margin: 0;
     padding: 0;
     background-size: cover;
     width: 100%;
     overflow-x: hidden;
-    background-color: #f0f8ff;
+    background-color: #f0f8ff; /* TODO: Define as CSS custom property --bg-color */
 }
 
+/* TODO: Consider using CSS Grid instead of margins for centering */
 .container {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.95); /* TODO: Define transparency level as variable */
     width: 100%;
-    max-width: 1200px;
+    max-width: 1200px; /* TODO: Make max-width responsive */
     margin: 20px auto;
     padding: 0;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* TODO: Use CSS custom properties for shadows */
     box-sizing: border-box;
     position: relative;
-    z-index: 1;
+    z-index: 1; /* FIXME: Define z-index scale in variables */
 }
 
 .main-content {
@@ -55,14 +58,15 @@ body {
     clear: both;
 }
 
+/* TODO: Add fallback for browsers that don't support backdrop-filter */
 /* Navigation styles - Updated with reduced spacing */
 nav {
-    background: rgba(15, 23, 42, 0.9);
+    background: rgba(15, 23, 42, 0.9); /* TODO: Define nav colors as CSS custom properties */
     padding: 8px 0; /* Reduced from 15px */
     position: sticky;
     top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
+    z-index: 1000; /* FIXME: Use z-index variable from design system */
+    backdrop-filter: blur(10px); /* TODO: Add fallback for unsupported browsers */
 }
 
 .nav-container {
@@ -926,6 +930,7 @@ input[type="text"],
     color: #fff;
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00);
     -webkit-background-clip: text;
+    background-clip: text; /* FIXME: Added standard property for compatibility */
     -webkit-text-fill-color: transparent;
     animation: fire 3s ease-in-out infinite;
     text-shadow: 0 0 10px rgba(255, 115, 0, 0.5);

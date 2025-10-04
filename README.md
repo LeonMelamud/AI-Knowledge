@@ -1,8 +1,13 @@
 # AI Knowledge Base
 
+<!-- TODO: Add badges for build status, license, version -->
+<!-- TODO: Add table of contents for easier navigation -->
+
 ## About This Site
 
 The AI Knowledge Base is a comprehensive resource for artificial intelligence enthusiasts, students, and professionals. Our purpose is to provide up-to-date information, explanations, and resources on various AI topics, tools, and concepts.
+
+<!-- FIXME: Update description to reflect current feature set -->
 
 Key features of this site include:
 
@@ -17,33 +22,44 @@ We continuously update our content to reflect the latest advancements in AI, ens
 
 ## Running Locally
 
+<!-- TODO: Add prerequisites section (Node.js version requirements) -->
+
 1. Clone the repository:
-   ```
+
+   ```bash
    git clone git@github.com:LeonMelamud/AI-Knowledge.git
    ```
 
 2. Navigate to the project directory:
-   ```
+
+   ```bash
    cd your-repo-name
    ```
 
 3. Install dependencies:
-   ```
+
+   ```bash
    npm install
    ```
 
 4. Start the development server:
-   ```
+
+   ```bash
    npm run start
    ```
 
 5. Open your browser and visit `http://localhost:8085`
 
+<!-- TODO: Add troubleshooting section for common setup issues -->
+
 
 ## Adding New Data
 
 To add new data to the site, update the files in the `public/data` directory:
-this is multi language site , English and Hebrew. 
+
+<!-- TODO: Add validation rules for data files -->
+This is a multi-language site supporting English and Hebrew.
+
 ### File Structure
 
 - `public/data/`

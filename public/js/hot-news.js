@@ -1,6 +1,8 @@
+// FIXME: Commented import suggests circular dependency issues
 // Remove the import that might be causing conflicts
 // import { currentLanguage, hotNewsData } from './main.js';
 
+// TODO: Consider moving image observation logic to a separate utility module
 // Initialize Intersection Observer for lazy loading images
 const observeImages = () => {
     console.log('Setting up image observers for lazy loading');
@@ -25,13 +27,15 @@ const observeImages = () => {
                         console.error('Error parsing alternative paths:', e);
                     }
                     
-                    // Function to try loading from multiple paths
+                    // TODO: Add exponential backoff for retry attempts
+                    // HACK: Relying on external service (placehold.co) for fallback images
                     const tryLoadingImage = (pathIndex = 0) => {
                         // If we've tried all paths, use placeholder
                         if (pathIndex >= altPaths.length) {
                             console.warn(`All image paths failed for ${img.alt}`);
                             const title = img.alt || 'AI News';
                             const words = title.split(' ').slice(0, 2).join(' ');
+                            // FIXME: External dependency on placehold.co service
                             img.src = `https://placehold.co/100x100/2196F3/FFFFFF?text=${encodeURIComponent(words)}`;
                             img.classList.add('error');
                             observer.unobserve(img);
@@ -111,7 +115,8 @@ const observeImages = () => {
  * Handles rendering of hot news items with structured question-answer support
  */
 
-// Apply special styles needed for the hot news section
+// TODO: Move styles to separate CSS file instead of injecting via JavaScript
+// HACK: Injecting styles via JavaScript instead of using proper CSS files
 export function addHotNewsStyles() {
     if (document.getElementById('hotNewsStyles')) return;
     
@@ -466,7 +471,8 @@ function formatQuestions(questions) {
     return questionsHtml;
 }
 
-// Render hot news data
+// TODO: Add error boundaries for rendering failures
+// FIXME: Too much console logging in production code
 export function renderHotNews(newsData) {
     console.log("Rendering hot news with data structure:", typeof newsData, newsData);
     const container = document.getElementById('hotNewsContainer');
@@ -476,6 +482,7 @@ export function renderHotNews(newsData) {
         return;
     }
     
+    // HACK: Flexible data structure handling without proper validation
     // Handle nested structure - extract the array from hot_news property if it exists
     const newsArray = newsData && newsData.hot_news ? newsData.hot_news : newsData;
     

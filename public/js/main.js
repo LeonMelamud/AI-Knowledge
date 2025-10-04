@@ -1,3 +1,5 @@
+// TODO: Implement proper AEO schema generation functionality
+// FIXME: Comment mentions AEO object but it's not defined anywhere
 // AEO schema functions now available globally via the AEO object
 // Any previously imported { generateSchemas } should now use AEO.generateSchema instead
 
@@ -6,18 +8,21 @@ import { buildCalculatorSection, setupCalculator } from './calculator.js';
 import { handleGenerateText } from './llm-apis.js';
 import { buildHotNewsSection, renderHotNews, addHotNewsStyles } from './hot-news.js';
 import { config } from './config.js';
+// TODO: Consider using a state management solution instead of global variables
 let linksData;
 let conceptsData;
-let lastLoadTime = 0;
+let lastLoadTime = 0; // TODO: Use this for caching or remove if unused
 export let currentLanguage = 'he';
 export let hotNewsData = {};
 let uiTranslations = {};
-let contentData = null;
+let contentData = null; // FIXME: This variable seems unused throughout the file
 let hasLoadedData = false;
 
+// TODO: Move lazy loading to a separate utility module
+// FIXME: Function has too many responsibilities - should be split
 // Enhanced lazy loading utility with error handling and progressive loading
 function setupLazyLoading(imgElement, src, alt) {
-    // Set low-quality image placeholder or blur-up placeholder
+    // HACK: Using base64 encoded transparent GIF as placeholder
     imgElement.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
     imgElement.setAttribute('data-src', src);
     imgElement.alt = alt || '';
@@ -52,6 +57,7 @@ function setupLazyLoading(imgElement, src, alt) {
                     img.style.opacity = '1';
                     img.classList.add('loaded');
                     
+                    // BUG: Redundant opacity setting in requestAnimationFrame
                     // Add fade-in effect
                     requestAnimationFrame(() => {
                         img.style.opacity = '1';
@@ -64,6 +70,7 @@ function setupLazyLoading(imgElement, src, alt) {
                     img.classList.add('error');
                     img.setAttribute('aria-label', 'Image failed to load');
                     
+                    // TODO: Use a proper fallback image instead of creating DOM elements
                     // Add fallback/error image or message
                     const errorContainer = document.createElement('div');
                     errorContainer.className = 'image-error';
@@ -90,7 +97,8 @@ function setupLazyLoading(imgElement, src, alt) {
     return imgElement;
 }
 
-// Performance monitoring function
+// TODO: Add more comprehensive performance monitoring
+// FIXME: Performance monitoring should be conditional (development only)
 function monitorImagePerformance() {
     if ('PerformanceObserver' in window) {
         const observer = new PerformanceObserver((list) => {
@@ -106,6 +114,7 @@ function monitorImagePerformance() {
         
         observer.observe({ entryTypes: ['largest-contentful-paint', 'layout-shift'] });
     }
+    // TODO: Add fallback for browsers without PerformanceObserver support
 }
 
 // Initialize performance monitoring
@@ -122,8 +131,11 @@ async function loadInitialData() {
     }
 }
 
+// TODO: Add retry mechanism for failed requests
+// FIXME: No timeout handling for fetch requests
 async function loadLanguageData(lang) {
     try {
+        // TODO: Add request timeout and error handling for each fetch
         const [conceptsResponse, translationsResponse, linksResponse, hotNewsResponse ] = await Promise.all([
             fetch(`./data/concepts_${lang}.yaml`),
             fetch(`./data/ui_translations_${lang}.json`),
