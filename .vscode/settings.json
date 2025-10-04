@@ -3,5 +3,15 @@
         "activityBar.background": "#0A3426",
         "titleBar.activeBackground": "#0D4935",
         "titleBar.activeForeground": "#F3FDFA"
-    }
+    },
+    // Agent Mode Settings
+    "chat.agent.enabled": true,
+    "chat.todoListTool.enabled": true,
+    "chat.agent.maxRequests": 150,
+    "github.copilot.chat.agent.runTasks": true,
+    "github.copilot.chat.agent.autoFix": true,
+    // Optional: Enable checkpoints for reverting changes
+    "chat.checkpoints.enabled": true,
+    "chat.checkpoints.showFileChanges": true,
+    "todo-tree.tree.showBadges": false
 }
