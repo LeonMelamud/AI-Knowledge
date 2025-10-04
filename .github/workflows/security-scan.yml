@@ -1,13 +1,10 @@
 name: Security Scan
 
 on:
-  push:
-    branches: [ main, develop, '001-react-native-migration' ]
+  # Only run on pull requests to avoid duplication with CodeQL
+  # CodeQL already scans on push and runs weekly
   pull_request:
     branches: [ main, develop ]
-  schedule:
-    # Run weekly security scan
-    - cron: '0 2 * * 1'
 
 jobs:
   security-audit:

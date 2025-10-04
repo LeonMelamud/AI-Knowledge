@@ -10,14 +10,12 @@
     "_comment_scripts": "TODO: Add dev, build, lint, and pre-commit scripts"
   },
   "dependencies": {
-    
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "js-tiktoken": "^1.0.14",
     "js-yaml": "^4.1.0",
     "rss-parser": "^3.13.0",
-    "node-fetch": "^2.6.1",
-    "_comment_deps": "TODO: Audit dependencies for security vulnerabilities regularly"
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "mocha": "^9.1.3",
