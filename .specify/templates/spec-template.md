@@ -78,22 +78,39 @@ When creating this spec from a user prompt:
 - **FR-006**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
 - **FR-007**: System MUST retain user data for [NEEDS CLARIFICATION: retention period not specified]
 
+### Non-Functional Requirements *(include when relevant)*
+
+- **Performance**: [Response time, throughput targets, e.g., "System MUST respond within 2 seconds"]
+- **Security**: [Authentication, authorization, data protection requirements]
+- **Usability**: [Accessibility standards, user experience requirements]
+- **Scalability**: [Expected load, concurrent users, growth projections]
+
+### Dependencies & Assumptions *(include when relevant)*
+
+- **External Systems**: [Required integrations, third-party services]
+- **Business Constraints**: [Policies, regulations, organizational limits]
+- **Technical Constraints**: [Platform limitations, existing system compatibility]
+
 ### Key Entities *(include if feature involves data)*
+
 - **[Entity 1]**: [What it represents, key attributes without implementation]
 - **[Entity 2]**: [What it represents, relationships to other entities]
 
 ---
 
 ## Review & Acceptance Checklist
-*GATE: Automated checks run during main() execution*
+
+**GATE**: Automated checks run during main() execution
 
 ### Content Quality
+
 - [ ] No implementation details (languages, frameworks, APIs)
 - [ ] Focused on user value and business needs
 - [ ] Written for non-technical stakeholders
 - [ ] All mandatory sections completed
 
 ### Requirement Completeness
+
 - [ ] No [NEEDS CLARIFICATION] markers remain
 - [ ] Requirements are testable and unambiguous  
 - [ ] Success criteria are measurable
@@ -103,7 +120,8 @@ When creating this spec from a user prompt:
 ---
 
 ## Execution Status
-*Updated by main() during processing*
+
+**Updated by main() during processing**
 
 - [ ] User description parsed
 - [ ] Key concepts extracted

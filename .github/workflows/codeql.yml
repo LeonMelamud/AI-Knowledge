@@ -2,7 +2,7 @@ name: "CodeQL Security Analysis"
 
 on:
   push:
-    branches: [ "main", "develop" ]
+    branches: [ "main", "develop", "001-react-native-migration" ]
   pull_request:
     branches: [ "main", "develop" ]
   schedule:
