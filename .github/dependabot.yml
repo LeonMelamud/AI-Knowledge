@@ -1,0 +1,13 @@
+# Enable Dependabot security updates
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    assignees:
+      - "LeonMelamud"
+    commit-message:
+      prefix: "chore(deps):"
+      include: "scope"

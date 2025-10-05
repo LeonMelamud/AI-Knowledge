@@ -1,26 +1,34 @@
+// TODO: Add setup and teardown for test server
+// FIXME: Hardcoded BASE_URL should be configurable via environment variables
 const fetch = require('node-fetch');
 const assert = require('assert');
-const path = require('path');
+const path = require('path'); // TODO: Remove unused import if not needed
 
-const BASE_URL = 'http://localhost:8085';
+const BASE_URL = 'http://localhost:8085'; // FIXME: Should be configurable
 
 describe('Hot News API', function() {
+    // TODO: Make timeout configurable based on environment
     this.timeout(5000); // Set timeout to 5 seconds
 
     describe('GET /api/hot-news/:lang', function() {
+        // TODO: Add more comprehensive validation of response structure
         it('should return English news', async function() {
             const response = await fetch(`${BASE_URL}/api/hot-news/en`);
             const data = await response.json();
             assert(response.ok, 'GET request for English news failed');
             assert(data.hot_news, 'English news data is missing');
+            // TODO: Add validation for news data structure and content
         });
 
+        // TODO: Add test for response time and performance
         it('should return Hebrew news', async function() {
             const response = await fetch(`${BASE_URL}/api/hot-news/he`);
             const data = await response.json();
             assert(response.ok, 'GET request for Hebrew news failed');
             assert(data.hot_news, 'Hebrew news data is missing');
+            // TODO: Validate Hebrew-specific content encoding
         });
+        
 
         it('should fail for invalid language', async function() {
             const response = await fetch(`${BASE_URL}/api/hot-news/fr`);
@@ -83,3 +91,10 @@ describe('Hot News API', function() {
         });
     });
 });
+
+// TODO: Add tests for edge cases like very large payloads, invalid data types, etc.
+// TODO: Add tests for malformed JSON requests
+// TODO: Add tests for concurrent requests
+// TODO: Add performance benchmarking tests
+// TODO: Add integration tests with actual YAML file operations
+// FIXME: Tests should clean up any test data created during execution
