@@ -1,0 +1,64 @@
+---
+name: Security Scan
+
+'on':
+  push:
+    branches: [main, develop, '001-react-native-migration']
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    # Run weekly security scan
+    - cron: '0 2 * * 1'
+
+jobs:
+  security-audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit
+        run: |
+          npm audit --audit-level=moderate
+          echo "NPM audit completed"
+        continue-on-error: true
+
+      - name: Security Notice
+        run: |
+          echo "🛡️ Using GitHub native security - npm audit, CodeQL, Dependabot"
+
+      - name: License Check
+        run: |
+          npx license-checker \
+            --onlyAllow "MIT;ISC;Apache-2.0;BSD-2-Clause;BSD-3-Clause" \
+            --production
+        continue-on-error: true
+
+  dependency-review:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    permissions:
+      contents: read
+      pull-requests: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: moderate
+          allow-licenses: MIT, ISC, Apache-2.0, BSD-2-Clause, BSD-3-Clause
