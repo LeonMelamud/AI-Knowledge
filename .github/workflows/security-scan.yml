@@ -34,15 +34,14 @@ jobs:
         continue-on-error: true
 
       - name: Security Notice
-        run: >
-          echo "🛡️ Using GitHub native security -
-          npm audit, CodeQL, and Dependabot"
+        run: |
+          echo "🛡️ Using GitHub native security - npm audit, CodeQL, Dependabot"
 
       - name: License Check
-        run: >
-          npx license-checker
-          --onlyAllow "MIT;ISC;Apache-2.0;BSD-2-Clause;BSD-3-Clause"
-          --production
+        run: |
+          npx license-checker \
+            --onlyAllow "MIT;ISC;Apache-2.0;BSD-2-Clause;BSD-3-Clause" \
+            --production
         continue-on-error: true
 
   dependency-review:

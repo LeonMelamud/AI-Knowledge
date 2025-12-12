@@ -44,6 +44,12 @@ Remove the following lines:
 ### File 2: `.github/workflows/security-scan.yml`
 Use the corrected version provided in this PR, which removes the TruffleHog step.
 
+**Note:** The workflow uses `npx license-checker` which downloads and runs on-demand. 
+For better security and reproducibility, consider adding it as a devDependency:
+```bash
+npm install --save-dev license-checker
+```
+
 ## Alternative Solution
 If TruffleHog functionality is required, either:
 1. Add `AGPL-3.0` to the allowed licenses list in the workflow
