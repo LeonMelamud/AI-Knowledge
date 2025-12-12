@@ -58,4 +58,4 @@ jobs:
       uses: actions/dependency-review-action@v4
       with:
         fail-on-severity: moderate
-        allow-licenses: MIT, ISC, Apache-2.0, BSD-2-Clause, BSD-3-Clause
+        allow-licenses: MIT, ISC, Apache-2.0, BSD-2-Clause, BSD-3-Clause, AGPL-3.0
