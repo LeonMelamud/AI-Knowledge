@@ -1,8 +1,5 @@
 # AI Knowledge Base
 
-<!-- TODO: Add badges for build status, license, version -->
-<!-- TODO: Add table of contents for easier navigation -->
-
 ## About This Site
 
 The AI Knowledge Base is a comprehensive resource for artificial intelligence enthusiasts, students, and professionals. Our purpose is to provide up-to-date information, explanations, and resources on various AI topics, tools, and concepts.
@@ -91,3 +88,17 @@ This is a multi-language site supporting English and Hebrew.
    - Installs dependencies and uploads the `public` directory as an artifact
 
 After updating these files, the site will automatically rebuild and redeploy when changes are pushed to the main branch.
+
+## Security
+
+We take security seriously. This repository uses multiple automated security tools:
+
+- **CodeQL** - Static code analysis for security vulnerabilities
+- **npm audit** - Dependency vulnerability scanning
+- **Dependabot** - Automated dependency updates
+- **TruffleHog** - Secret scanning
+
+For details on our security policy, vulnerability status, and reporting procedures, see [SECURITY.md](SECURITY.md).
+
+**Current Status**: 3 moderate severity vulnerabilities in dev dependencies (down from 14). See SECURITY.md for remediation timeline.
+
