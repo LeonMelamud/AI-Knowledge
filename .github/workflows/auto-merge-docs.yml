@@ -1,0 +1,217 @@
+name: Auto-Merge Documentation
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: read
+
+jobs:
+  check-docs-only:
+    name: Check if Documentation Only
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    outputs:
+      is_docs_only: ${{ steps.check.outputs.is_docs_only }}
+      is_auto_docs: ${{ steps.check.outputs.is_auto_docs }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check changed files
+        id: check
+        run: |
+          # Get changed files in PR
+          CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }})
+          
+          echo "Changed files in PR:"
+          echo "$CHANGED_FILES"
+          
+          # Check if commit message contains [auto-docs]
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          if echo "$COMMIT_MSG" | grep -q "\[auto-docs\]"; then
+            echo "is_auto_docs=true" >> $GITHUB_OUTPUT
+            echo "Commit message contains [auto-docs]"
+          else
+            echo "is_auto_docs=false" >> $GITHUB_OUTPUT
+          fi
+          
+          # Check if all changed files are under docs/
+          if echo "$CHANGED_FILES" | grep -qv "^docs/"; then
+            echo "is_docs_only=false" >> $GITHUB_OUTPUT
+            echo "Non-documentation files changed"
+          else
+            echo "is_docs_only=true" >> $GITHUB_OUTPUT
+            echo "Only documentation files changed"
+          fi
+
+  auto-approve:
+    name: Auto-Approve Documentation PR
+    needs: check-docs-only
+    if: |
+      github.event_name == 'pull_request' &&
+      (needs.check-docs-only.outputs.is_docs_only == 'true' || needs.check-docs-only.outputs.is_auto_docs == 'true')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Approve PR
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            try {
+              await github.rest.pulls.createReview({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+                event: 'APPROVE',
+                body: '✅ Auto-approved: Documentation-only changes detected. All validation checks passed.'
+              });
+              console.log('PR approved successfully');
+            } catch (error) {
+              console.log('Could not approve PR:', error.message);
+            }
+
+  wait-for-checks:
+    name: Wait for CI Checks
+    needs: [check-docs-only, auto-approve]
+    if: |
+      github.event_name == 'pull_request' &&
+      (needs.check-docs-only.outputs.is_docs_only == 'true' || needs.check-docs-only.outputs.is_auto_docs == 'true')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for status checks
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const maxAttempts = 30;
+            const delayMs = 10000; // 10 seconds
+            
+            async function waitForChecks() {
+              for (let i = 0; i < maxAttempts; i++) {
+                const { data: pr } = await github.rest.pulls.get({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: context.issue.number
+                });
+                
+                // Check if PR is mergeable
+                if (pr.mergeable === false) {
+                  throw new Error('PR has merge conflicts');
+                }
+                
+                // Get commit statuses and check runs
+                const { data: statuses } = await github.rest.repos.getCombinedStatusForRef({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  ref: pr.head.sha
+                });
+                
+                const { data: checkRuns } = await github.rest.checks.listForRef({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  ref: pr.head.sha
+                });
+                
+                // Check if all required checks are complete
+                const allChecksPassed = 
+                  statuses.state === 'success' &&
+                  checkRuns.check_runs.every(run => 
+                    run.status === 'completed' && 
+                    (run.conclusion === 'success' || run.conclusion === 'neutral' || run.conclusion === 'skipped')
+                  );
+                
+                if (allChecksPassed) {
+                  console.log('All checks passed!');
+                  return true;
+                }
+                
+                console.log(`Waiting for checks... (attempt ${i + 1}/${maxAttempts})`);
+                await new Promise(resolve => setTimeout(resolve, delayMs));
+              }
+              
+              throw new Error('Timeout waiting for checks to complete');
+            }
+            
+            try {
+              await waitForChecks();
+            } catch (error) {
+              console.error('Error waiting for checks:', error.message);
+              core.setFailed(error.message);
+            }
+
+  auto-merge:
+    name: Auto-Merge Documentation PR
+    needs: [check-docs-only, wait-for-checks]
+    if: |
+      github.event_name == 'pull_request' &&
+      (needs.check-docs-only.outputs.is_docs_only == 'true' || needs.check-docs-only.outputs.is_auto_docs == 'true')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge PR
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            try {
+              const { data: pr } = await github.rest.pulls.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number
+              });
+              
+              // Final check for merge conflicts
+              if (pr.mergeable === false) {
+                throw new Error('PR has merge conflicts and cannot be auto-merged');
+              }
+              
+              await github.rest.pulls.merge({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+                commit_title: '📚 Auto-merge documentation updates',
+                commit_message: 'Automatically merged documentation-only changes',
+                merge_method: 'squash'
+              });
+              
+              console.log('PR merged successfully!');
+              
+              // Add a comment
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: '✅ **Auto-merged:** This PR contained only documentation changes and all checks passed.\n\n---\n*Merged automatically by the Auto-Merge Documentation workflow.*'
+              });
+            } catch (error) {
+              console.error('Failed to merge PR:', error.message);
+              
+              // Comment on failure
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: `⚠️ **Auto-merge failed:** ${error.message}\n\nPlease merge manually.`
+              });
+              
+              core.setFailed(error.message);
+            }
+
+      - name: Log auto-merge action
+        run: |
+          echo "📝 Auto-merge completed for PR #${{ github.event.pull_request.number }}"
+          echo "Changes were documentation-only and all checks passed"
+          echo "Merge method: squash"
