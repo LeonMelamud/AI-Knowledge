@@ -2,7 +2,7 @@
 
 const fs = require('fs').promises;
 const path = require('path');
-const yaml = require('js-yaml');
+const yamlParser = require('js-yaml');
 
 const ROOT_DIR = path.join(__dirname, '..');
 const DOCS_DIR = path.join(ROOT_DIR, 'docs');
@@ -143,7 +143,7 @@ async function validateYAMLFiles() {
         const filePath = path.join(DATA_DIR, file);
         try {
             const content = await fs.readFile(filePath, 'utf8');
-            const data = yaml.load(content);
+            const data = yamlParser.load(content);
             
             // Basic structure validation
             if (file.startsWith('news_') && !data.hot_news) {

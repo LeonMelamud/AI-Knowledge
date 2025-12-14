@@ -3,7 +3,6 @@
 const fs = require('fs').promises;
 const path = require('path');
 const yaml = require('js-yaml');
-const acorn = require('acorn');
 
 const ROOT_DIR = path.join(__dirname, '..');
 const DOCS_DIR = path.join(ROOT_DIR, 'docs');
