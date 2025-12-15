@@ -1,0 +1,177 @@
+name: Auto-Documentation Generator
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    # Run daily at midnight UTC for sync checks
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  detect-changes:
+    name: Detect File Changes
+    runs-on: ubuntu-latest
+    outputs:
+      should_generate: ${{ steps.check.outputs.should_generate }}
+      changed_files: ${{ steps.check.outputs.changed_files }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect changed files
+        id: check
+        run: |
+          # Get changed files
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }})
+          elif [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            # For scheduled runs, always generate
+            echo "should_generate=true" >> $GITHUB_OUTPUT
+            echo "changed_files=all" >> $GITHUB_OUTPUT
+            exit 0
+          else
+            CHANGED_FILES=$(git diff --name-only HEAD^ HEAD)
+          fi
+          
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+          
+          # Check if we should skip (only docs/ changed)
+          if echo "$CHANGED_FILES" | grep -qv "^docs/"; then
+            echo "should_generate=true" >> $GITHUB_OUTPUT
+            echo "Code or data files changed, will generate docs"
+          else
+            echo "should_generate=false" >> $GITHUB_OUTPUT
+            echo "Only documentation changed, skipping generation"
+          fi
+          
+          echo "changed_files<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGED_FILES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+  generate-docs:
+    name: Generate Documentation
+    needs: detect-changes
+    if: needs.detect-changes.outputs.should_generate == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ github.head_ref || github.ref }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate documentation
+        run: npm run docs:generate
+
+      - name: Validate documentation
+        run: npm run docs:validate
+
+      - name: Check for documentation changes
+        id: check_changes
+        run: |
+          if git diff --quiet docs/; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No documentation changes detected"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Documentation changes detected"
+          fi
+
+      - name: Commit documentation changes
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs/
+          git commit -m "docs: Auto-update documentation [skip ci]" || echo "No changes to commit"
+
+      - name: Push changes (main branch)
+        if: steps.check_changes.outputs.has_changes == 'true' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          git push origin main
+
+      - name: Push changes (PR)
+        if: steps.check_changes.outputs.has_changes == 'true' && github.event_name == 'pull_request'
+        run: |
+          git push origin HEAD:${{ github.head_ref }}
+
+      - name: Comment on PR with documentation updates
+        if: steps.check_changes.outputs.has_changes == 'true' && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const { execSync } = require('child_process');
+            
+            // Get list of changed documentation files
+            const changedDocs = execSync('git diff --name-only HEAD^ HEAD docs/').toString().trim();
+            
+            if (changedDocs) {
+              const comment = `## 📚 Documentation Auto-Updated
+              
+              The following documentation files were automatically updated:
+              
+              ${changedDocs.split('\n').map(file => `- \`${file}\``).join('\n')}
+              
+              These changes reflect the latest code and data modifications.
+              
+              ---
+              *This update was performed automatically by the Auto-Documentation workflow.*`;
+              
+              github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: comment
+              });
+            }
+
+      - name: Upload documentation artifacts
+        if: steps.check_changes.outputs.has_changes == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-docs
+          path: docs/
+
+  summary:
+    name: Documentation Summary
+    needs: [detect-changes, generate-docs]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create summary
+        run: |
+          echo "## 📊 Auto-Documentation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ needs.detect-changes.outputs.should_generate }}" = "false" ]; then
+            echo "✅ **Skipped:** Only documentation files changed" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ needs.generate-docs.result }}" = "success" ]; then
+            echo "✅ **Success:** Documentation generated and validated" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ needs.generate-docs.result }}" = "skipped" ]; then
+            echo "⏭️ **Skipped:** No generation needed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ **Failed:** Documentation generation encountered errors" >> $GITHUB_STEP_SUMMARY
+          fi

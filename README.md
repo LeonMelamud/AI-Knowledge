@@ -39,6 +39,41 @@ We continuously update our content to reflect the latest advancements in AI, ens
 
 5. Open your browser and visit `http://localhost:8085`
 
+## 📚 Auto-Documentation System
+
+This repository features a **fully autonomous documentation system** that automatically generates and maintains comprehensive documentation with zero manual intervention.
+
+### Features
+
+- **🤖 Automatic Generation**: Documentation is auto-generated from source code and data files
+- **🔄 Always in Sync**: Updates automatically on every code change
+- **✅ Self-Validating**: Built-in validation ensures documentation accuracy
+- **🔀 Auto-Merge**: Documentation-only changes merge automatically after passing all checks
+
+### Documentation Available
+
+Visit the [`docs/`](./docs/) directory for:
+- **[API Reference](./docs/API.md)** - Complete API endpoint documentation
+- **[Data Schemas](./docs/DATA_SCHEMAS.md)** - YAML/JSON data structure documentation
+- **[Architecture](./docs/ARCHITECTURE.md)** - System architecture and tech stack
+- **[Contributing Guide](./docs/CONTRIBUTING.md)** - How to contribute to the project
+
+### Manual Documentation Commands
+
+```bash
+# Generate documentation
+npm run docs:generate
+
+# Validate documentation
+npm run docs:validate
+```
+
+The auto-documentation workflow runs automatically on:
+- Every push to `main` branch
+- Every pull request
+- Daily at midnight UTC (sync check)
+- Manual workflow dispatch
+
 
 ## Adding New Data
 
