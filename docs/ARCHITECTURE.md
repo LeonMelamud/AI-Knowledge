@@ -58,7 +58,7 @@ The AI Knowledge Base is a bilingual (English/Hebrew) web application built with
 
 ### Core Dependencies
 - **cors** (^2.8.5) - Enable Cross-Origin Resource Sharing
-- **express** (^4.19.2) - Web application framework for Node.js
+- **express** (^4.22.1) - Web application framework for Node.js
 - **js-tiktoken** (^1.0.21) - Token counting for OpenAI models
 - **js-yaml** (^4.1.1) - YAML parser for reading data files
 - **node-fetch** (^2.6.1) - HTTP client for external API calls
