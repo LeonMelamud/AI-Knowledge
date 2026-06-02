@@ -1072,6 +1072,15 @@ document.addEventListener('DOMContentLoaded', () => {
         profilePicture.style.opacity = '1';
     }
 
+    // Support language selection via URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('lang')) {
+        const langParam = urlParams.get('lang');
+        if (langParam === 'en' || langParam === 'he') {
+            currentLanguage = langParam;
+        }
+    }
+
     loadInitialData();
     initializeMobileMenu();
 
@@ -1106,45 +1115,8 @@ document.addEventListener('DOMContentLoaded', () => {
     checkRSSAvailability();
 });
 
-// Initialize the application
-document.addEventListener('DOMContentLoaded', function() {
-    // Set language based on URL or default
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('lang')) {
-        const langParam = urlParams.get('lang');
-        if (document.getElementById('language-selector')) {
-            document.getElementById('language-selector').value = langParam;
-        }
-        // Use loadContent with the URL parameter
-        loadContent(langParam);
-    } else {
-        // Use default language (Hebrew)
-        loadContent('he');
-    }
-
-    // Setup language selector
-    if (document.getElementById('language-selector')) {
-        document.getElementById('language-selector').addEventListener('change', function() {
-            const selectedLang = this.value;
-            loadContent(selectedLang);
-            // Update URL to reflect language change
-            const url = new URL(window.location);
-            url.searchParams.set('lang', selectedLang);
-            window.history.pushState({}, '', url);
-        });
-    }
-
-    // Setup navigation toggle for mobile
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navContent = document.querySelector('.nav-content');
-    
-    if (menuToggle && navContent) {
-        menuToggle.addEventListener('click', function() {
-            navContent.classList.toggle('show');
-            menuToggle.classList.toggle('active');
-        });
-    }
-});
+// Note: Application initialization is handled by the DOMContentLoaded listener above.
+// Language selection and mobile menu are set up there via loadInitialData() and initializeMobileMenu().
 
 // Add a loading flag to prevent duplicate loads
 let isLoadingContent = false;
@@ -1166,7 +1138,7 @@ async function loadContent(language) {
         }
         
         // Load YAML data
-        const response = await fetch(`/data/news_${language}.yaml`);
+        const response = await fetch(`./data/news_${language}.yaml`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
