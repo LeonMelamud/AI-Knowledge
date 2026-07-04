@@ -7,3 +7,4 @@ dist/
  ai_back_end/
 .aider*
 .env
+.gstack/

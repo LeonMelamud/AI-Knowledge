@@ -1,0 +1,62 @@
+@import 'tailwindcss';
+
+/* Markdown content styles (fullDescription fields use #-headers, lists, code) */
+.markdown h1,
+.markdown h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-slate-900);
+  margin-block: 1rem 0.5rem;
+}
+
+.markdown h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-slate-800);
+  margin-block: 0.75rem 0.25rem;
+}
+
+.markdown p {
+  margin-block-end: 0.75rem;
+}
+
+.markdown ul,
+.markdown ol {
+  list-style: disc;
+  padding-inline-start: 1.5rem;
+  margin-block-end: 0.75rem;
+}
+
+.markdown ol {
+  list-style: decimal;
+}
+
+.markdown li {
+  margin-block-end: 0.25rem;
+}
+
+.markdown a {
+  color: var(--color-indigo-600);
+  text-decoration: underline;
+}
+
+.markdown pre {
+  direction: ltr;
+  overflow-x: auto;
+  background: var(--color-slate-900);
+  color: var(--color-slate-100);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  margin-block-end: 0.75rem;
+}
+
+.markdown code {
+  font-size: 0.8em;
+}
+
+.markdown :not(pre) > code {
+  background: var(--color-slate-100);
+  padding: 0.1em 0.35em;
+  border-radius: 0.25rem;
+}
