@@ -50,7 +50,18 @@ export interface NewsTopic {
 
 export interface NewsSection {
   section: string
+  /** YYYY-MM-DD; sections older than NEWS_MAX_AGE_MONTHS are hidden automatically */
+  date?: string
   topics: NewsTopic[]
+}
+
+export const NEWS_MAX_AGE_MONTHS = 6
+
+function isFresh(section: NewsSection): boolean {
+  if (!section.date) return true // undated legacy sections stay visible; prune script flags them
+  const cutoff = new Date()
+  cutoff.setMonth(cutoff.getMonth() - NEWS_MAX_AGE_MONTHS)
+  return new Date(section.date) >= cutoff
 }
 
 export type Lang = 'en' | 'he'
@@ -79,7 +90,7 @@ export function getTools(lang: Lang): ToolSection[] {
 }
 
 export function getNews(lang: Lang): NewsSection[] {
-  return newsByLang[lang] ?? newsByLang.en
+  return (newsByLang[lang] ?? newsByLang.en).filter(isFresh)
 }
 
 /** Hebrew news lags behind English; append the untranslated English tail so both languages see all news. */
