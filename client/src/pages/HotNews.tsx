@@ -68,7 +68,7 @@ function NewsSectionBlock({ section, locale, manifest }: { section: NewsSection;
                 src={`${import.meta.env.BASE_URL}images/news-auto/${auto}`}
                 alt={topic.title}
                 loading="lazy"
-                className="mt-4 max-h-72 w-full rounded-xl border border-stone-200 object-cover"
+                className="mx-auto mt-4 block max-h-80 max-w-full rounded-xl border border-stone-200"
               />
             )}
             {topic.description && (
@@ -82,7 +82,7 @@ function NewsSectionBlock({ section, locale, manifest }: { section: NewsSection;
                 src={`${import.meta.env.BASE_URL}images/${img}`}
                 alt={topic.title}
                 loading="lazy"
-                className="mt-4 max-w-full rounded-lg border border-stone-200"
+                className="mx-auto mt-4 block max-h-80 max-w-full rounded-lg border border-stone-200"
               />
             ))}
             {topic.links && topic.links.length > 0 && (
