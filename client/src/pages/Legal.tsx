@@ -3,7 +3,7 @@ import { usePageMeta } from '../lib/usePageMeta'
 
 function List({ items }: { items: string[] }) {
   return (
-    <ul className="list-disc space-y-1 ps-6 text-sm leading-relaxed text-slate-600">
+    <ul className="list-disc space-y-1 ps-6 text-sm leading-relaxed text-stone-600">
       {items.map((item) => (
         <li key={item}>{item}</li>
       ))}
@@ -14,30 +14,30 @@ function List({ items }: { items: string[] }) {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="space-y-2">
-      <h2 className="text-lg font-semibold text-slate-900">{title}</h2>
+      <h2 className="text-lg font-semibold text-stone-900">{title}</h2>
       {children}
     </section>
   )
 }
 
 const P = ({ children }: { children: React.ReactNode }) => (
-  <p className="text-sm leading-relaxed text-slate-600">{children}</p>
+  <p className="text-sm leading-relaxed text-stone-600">{children}</p>
 )
 
 export function PrivacyPolicy() {
   const { t, tList } = useI18n()
   usePageMeta(t('privacyPolicyTitle'))
   return (
-    <div className="mx-auto max-w-3xl space-y-6 rounded-2xl border border-violet-100 bg-white/90 p-8 shadow-sm">
-      <h1 className="text-2xl font-bold text-slate-900">{t('privacyPolicyTitle')}</h1>
+    <div className="mx-auto max-w-3xl space-y-6 rounded-2xl border border-stone-200 bg-white p-8 shadow-sm">
+      <h1 className="text-2xl font-bold text-stone-900">{t('privacyPolicyTitle')}</h1>
       <P>{t('effectiveDate')}</P>
       <Section title={t('privacyIntroTitle')}>
         <P>{t('privacyIntro')}</P>
       </Section>
       <Section title={t('infoCollectTitle')}>
-        <h3 className="text-base font-medium text-slate-800">{t('infoProvidedTitle')}</h3>
+        <h3 className="text-base font-medium text-stone-800">{t('infoProvidedTitle')}</h3>
         <List items={tList('infoProvidedList')} />
-        <h3 className="text-base font-medium text-slate-800">{t('infoAutoTitle')}</h3>
+        <h3 className="text-base font-medium text-stone-800">{t('infoAutoTitle')}</h3>
         <List items={tList('infoAutoList')} />
       </Section>
       <Section title={t('howWeUseTitle')}>
@@ -48,7 +48,7 @@ export function PrivacyPolicy() {
         <P>{t('contactEmail')}</P>
         <P>
           {t('contactLinkedIn')}{' '}
-          <a href="https://www.linkedin.com/in/leon-melamud" target="_blank" rel="noreferrer" className="text-violet-700 hover:text-violet-900">
+          <a href="https://www.linkedin.com/in/leon-melamud" target="_blank" rel="noreferrer" className="text-orange-800 hover:text-orange-950">
             Leon Melamud
           </a>
         </P>
@@ -61,8 +61,8 @@ export function TermsOfService() {
   const { t, tList } = useI18n()
   usePageMeta(t('termsOfServiceTitle'))
   return (
-    <div className="mx-auto max-w-3xl space-y-6 rounded-2xl border border-violet-100 bg-white/90 p-8 shadow-sm">
-      <h1 className="text-2xl font-bold text-slate-900">{t('termsOfServiceTitle')}</h1>
+    <div className="mx-auto max-w-3xl space-y-6 rounded-2xl border border-stone-200 bg-white p-8 shadow-sm">
+      <h1 className="text-2xl font-bold text-stone-900">{t('termsOfServiceTitle')}</h1>
       <P>{t('effectiveDate')}</P>
       <Section title={t('tosAcceptanceTitle')}>
         <P>{t('tosAcceptanceText')}</P>

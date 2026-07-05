@@ -2,59 +2,35 @@
 
 @theme {
   --font-sans: 'Rubik', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Frank Ruhl Libre', Georgia, 'Times New Roman', serif;
 }
 
-/* Aurora backdrop (ui-ux-pro-max: "Aurora UI" — soft drifting pastel gradients
-   behind the content; violet + cyan brand colors, AA text contrast preserved) */
-.aurora {
+/* Editorial ink-on-paper (ui-ux-pro-max: magazine/editorial): serif display headings */
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif);
+}
+
+/* Warm paper backdrop — calm, no neon */
+.paper-backdrop {
   position: fixed;
   inset: 0;
   z-index: -10;
-  overflow: hidden;
-  background: linear-gradient(180deg, #faf5ff 0%, #f5f3ff 45%, #ecfeff 100%);
+  background: linear-gradient(180deg, #faf7f2 0%, #f7f1e8 100%);
 }
 
-.aurora::before,
-.aurora::after {
+.paper-backdrop::before {
   content: '';
   position: absolute;
+  width: 50vw;
+  height: 50vw;
+  top: -20vw;
+  inset-inline-end: -15vw;
   border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.55;
-  animation: aurora-drift 14s ease-in-out infinite alternate;
-}
-
-.aurora::before {
-  width: 55vw;
-  height: 55vw;
-  top: -18vw;
-  inset-inline-start: -12vw;
-  background: radial-gradient(circle, #c4b5fd 0%, transparent 65%);
-}
-
-.aurora::after {
-  width: 45vw;
-  height: 45vw;
-  bottom: -14vw;
-  inset-inline-end: -10vw;
-  background: radial-gradient(circle, #a5f3fc 0%, transparent 65%);
-  animation-delay: -7s;
-}
-
-@keyframes aurora-drift {
-  from {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  to {
-    transform: translate3d(4vw, 3vw, 0) scale(1.15);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .aurora::before,
-  .aurora::after {
-    animation: none;
-  }
+  filter: blur(100px);
+  opacity: 0.35;
+  background: radial-gradient(circle, #fcd9b8 0%, transparent 65%);
 }
 
 /* Markdown content styles (fullDescription fields use #-headers, lists, code) */
@@ -62,14 +38,14 @@
 .markdown h2 {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--color-slate-900);
+  color: var(--color-stone-900);
   margin-block: 1rem 0.5rem;
 }
 
 .markdown h3 {
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--color-slate-800);
+  color: var(--color-stone-800);
   margin-block: 0.75rem 0.25rem;
 }
 
@@ -93,15 +69,15 @@
 }
 
 .markdown a {
-  color: var(--color-violet-700);
+  color: var(--color-orange-800);
   text-decoration: underline;
 }
 
 .markdown pre {
   direction: ltr;
   overflow-x: auto;
-  background: var(--color-slate-900);
-  color: var(--color-slate-100);
+  background: var(--color-stone-900);
+  color: var(--color-stone-100);
   padding: 1rem;
   border-radius: 0.5rem;
   font-size: 0.75rem;
@@ -113,7 +89,7 @@
 }
 
 .markdown :not(pre) > code {
-  background: var(--color-violet-50);
+  background: var(--color-stone-100);
   padding: 0.1em 0.35em;
   border-radius: 0.25rem;
 }

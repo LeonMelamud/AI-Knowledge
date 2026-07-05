@@ -20,7 +20,7 @@ function Dropdown({
         onClick={onToggle}
         aria-expanded={open}
         className={`flex cursor-pointer items-center gap-1 rounded-full px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-          open ? 'bg-violet-100 text-violet-800' : 'text-slate-700 hover:bg-violet-50 hover:text-violet-800'
+          open ? 'bg-orange-100 text-orange-950' : 'text-stone-700 hover:bg-stone-200/60 hover:text-stone-950'
         }`}
       >
         {label}
@@ -29,14 +29,14 @@ function Dropdown({
         </svg>
       </button>
       {open && (
-        <div className="absolute start-0 top-full z-20 mt-2 w-64 rounded-2xl border border-violet-100 bg-white/95 p-2 shadow-xl shadow-violet-200/40 backdrop-blur">
+        <div className="absolute start-0 top-full z-20 mt-2 w-64 rounded-2xl border border-stone-200 bg-white p-2 shadow-xl shadow-stone-300/40">
           {items.map((item) => (
             <NavLink
               key={item.id}
               to={`/${item.id}`}
               className={({ isActive }) =>
                 `block rounded-lg px-3 py-2 text-sm transition-colors duration-150 ${
-                  isActive ? 'bg-violet-50 font-medium text-violet-800' : 'text-slate-700 hover:bg-violet-50/70 hover:text-violet-800'
+                  isActive ? 'bg-orange-50 font-medium text-orange-950' : 'text-stone-700 hover:bg-stone-100 hover:text-stone-950'
                 }`
               }
             >
@@ -71,20 +71,20 @@ export default function Layout() {
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `rounded-full px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-      isActive ? 'bg-violet-100 text-violet-800' : 'text-slate-700 hover:bg-violet-50 hover:text-violet-800'
+      isActive ? 'bg-orange-100 text-orange-950' : 'text-stone-700 hover:bg-stone-200/60 hover:text-stone-950'
     }`
 
   return (
-    <div className="relative flex min-h-screen flex-col text-slate-900">
-      <div aria-hidden className="aurora" />
+    <div className="relative flex min-h-screen flex-col text-stone-900">
+      <div aria-hidden className="paper-backdrop" />
 
-      <header className="sticky top-0 z-30 border-b border-violet-100/70 bg-white/75 backdrop-blur-md">
+      <header className="sticky top-0 z-30 border-b border-stone-200/80 bg-[#faf7f2]/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-3">
           <Link to="/" className="group flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-cyan-500 text-lg font-bold text-white shadow-lg shadow-violet-500/25 transition-transform duration-200 group-hover:scale-105">
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-stone-900 font-serif text-lg font-bold text-orange-50 transition-transform duration-200 group-hover:scale-105">
               AI
             </span>
-            <span className="hidden text-lg font-semibold text-slate-900 sm:block">{t('heroTitle')}</span>
+            <span className="hidden font-serif text-xl font-bold text-stone-900 sm:block">{t('heroTitle')}</span>
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex">
@@ -110,14 +110,14 @@ export default function Layout() {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setLang(lang === 'he' ? 'en' : 'he')}
-              className="cursor-pointer rounded-full border border-violet-200 bg-white/70 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors duration-200 hover:border-violet-300 hover:bg-violet-50"
+              className="cursor-pointer rounded-full border border-stone-300 bg-white/70 px-3 py-1.5 text-sm font-medium text-stone-700 transition-colors duration-200 hover:border-stone-400 hover:bg-stone-100"
               aria-label="Switch language"
             >
               {lang === 'he' ? '🇺🇸 English' : '🇮🇱 עברית'}
             </button>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="cursor-pointer rounded-full p-2 text-slate-700 transition-colors duration-200 hover:bg-violet-50 lg:hidden"
+              className="cursor-pointer rounded-full p-2 text-stone-700 transition-colors duration-200 hover:bg-stone-200/60 lg:hidden"
               aria-label="Menu"
               aria-expanded={mobileOpen}
             >
@@ -129,20 +129,20 @@ export default function Layout() {
         </div>
 
         {mobileOpen && (
-          <nav className="border-t border-violet-100 bg-white/95 px-4 py-3 backdrop-blur lg:hidden">
-            <p className="px-3 pb-1 pt-2 text-xs font-semibold uppercase tracking-wide text-violet-400">{t('knowledge')}</p>
+          <nav className="border-t border-stone-200 bg-[#faf7f2]/95 px-4 py-3 backdrop-blur lg:hidden">
+            <p className="px-3 pb-1 pt-2 text-xs font-semibold uppercase tracking-wide text-stone-400">{t('knowledge')}</p>
             {concepts.map((s) => (
               <NavLink key={s.id} to={`/${s.id}`} className={navLinkClass + ' block'}>
                 {s.title}
               </NavLink>
             ))}
-            <p className="px-3 pb-1 pt-3 text-xs font-semibold uppercase tracking-wide text-violet-400">{t('links')}</p>
+            <p className="px-3 pb-1 pt-3 text-xs font-semibold uppercase tracking-wide text-stone-400">{t('links')}</p>
             {tools.map((s) => (
               <NavLink key={s.id} to={`/${s.id}`} className={navLinkClass + ' block'}>
                 {s.title}
               </NavLink>
             ))}
-            <p className="px-3 pb-1 pt-3 text-xs font-semibold uppercase tracking-wide text-violet-400">{t('specialSections')}</p>
+            <p className="px-3 pb-1 pt-3 text-xs font-semibold uppercase tracking-wide text-stone-400">{t('specialSections')}</p>
             {directLinks.map((link) => (
               <NavLink key={link.to} to={link.to} className={navLinkClass + ' block'}>
                 {link.label}
@@ -158,7 +158,7 @@ export default function Layout() {
         <Outlet />
       </main>
 
-      <footer className="border-t border-indigo-900 bg-indigo-950 text-indigo-200">
+      <footer className="border-t border-stone-800 bg-stone-900 text-stone-300">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-4 py-6 text-sm sm:flex-row sm:justify-between">
           <p>© 2026 {t('heroTitle')}</p>
           <nav className="flex items-center gap-4">

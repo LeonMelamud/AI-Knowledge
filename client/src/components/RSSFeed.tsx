@@ -20,22 +20,22 @@ export default function RSSFeed() {
   if (!items.length) return null
 
   return (
-    <section className="rounded-2xl border border-cyan-100 bg-gradient-to-br from-cyan-50/80 to-violet-50/80 p-6" dir="ltr">
-      <h2 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-cyan-800">
+    <section className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm" dir="ltr">
+      <h2 className="flex items-center gap-2 font-sans text-sm font-semibold uppercase tracking-wide text-stone-700">
         <span className="relative flex h-2.5 w-2.5">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-500 opacity-60 motion-reduce:animate-none" />
-          <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-cyan-600" />
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-600 opacity-50 motion-reduce:animate-none" />
+          <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-orange-700" />
         </span>
         AI News Feed
       </h2>
       <ul className="mt-3 space-y-2">
         {items.map((item) => (
           <li key={item.link} className="text-sm">
-            <a href={item.link} target="_blank" rel="noreferrer" className="font-medium text-slate-800 transition-colors duration-150 hover:text-violet-700">
+            <a href={item.link} target="_blank" rel="noreferrer" className="font-medium text-stone-800 transition-colors duration-150 hover:text-orange-800">
               {item.title}
             </a>
             {item.pubDate && (
-              <span className="ms-2 text-xs text-slate-400">{new Date(item.pubDate).toLocaleDateString()}</span>
+              <span className="ms-2 text-xs text-stone-400">{new Date(item.pubDate).toLocaleDateString()}</span>
             )}
           </li>
         ))}
