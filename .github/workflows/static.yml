@@ -5,7 +5,7 @@ on:
     branches: ["main"]
   workflow_dispatch:
   schedule:
-    - cron: "0 6 * * 1" # weekly rebuild to refresh the RSS snapshot
+    - cron: "0 6 * * *" # daily rebuild to refresh the RSS snapshot
 
 permissions:
   contents: read
