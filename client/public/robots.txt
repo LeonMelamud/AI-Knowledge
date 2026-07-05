@@ -10,4 +10,4 @@ Disallow:
 User-agent: *
 Allow: /
 
-Sitemap: https://leonmelamud.github.io/AI-Knowledge/sitemap.xml
+Sitemap: https://ai-know.org/sitemap.xml

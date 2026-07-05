@@ -9,7 +9,7 @@ import path from 'node:path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/AI-Knowledge/',
+  base: '/', // custom domain ai-know.org serves from the root
   plugins: [react(), tailwindcss(), yaml()],
   server: {
     fs: {
