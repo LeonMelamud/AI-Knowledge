@@ -5,16 +5,9 @@ import yamlPlugin from '@rollup/plugin-yaml'
 
 // CJS package: TS resolves the namespace instead of the callable default export
 const yaml = yamlPlugin as unknown as typeof import('@rollup/plugin-yaml').default
-import path from 'node:path'
 
 // https://vite.dev/config/
 export default defineConfig({
   base: '/', // custom domain ai-know.org serves from the root
   plugins: [react(), tailwindcss(), yaml()],
-  server: {
-    fs: {
-      // data files live in ../public/data until legacy cleanup
-      allow: [path.resolve(__dirname, '..')],
-    },
-  },
 })

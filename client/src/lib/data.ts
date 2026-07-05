@@ -1,9 +1,9 @@
-import conceptsEnRaw from '../../../public/data/concepts_en.yaml'
-import conceptsHeRaw from '../../../public/data/concepts_he.yaml'
-import linksEnRaw from '../../../public/data/links_en.yaml'
-import linksHeRaw from '../../../public/data/links_he.yaml'
-import newsEnRaw from '../../../public/data/news_en.yaml'
-import newsHeRaw from '../../../public/data/news_he.yaml'
+import conceptsEnRaw from '../../data/concepts_en.yaml'
+import conceptsHeRaw from '../../data/concepts_he.yaml'
+import linksEnRaw from '../../data/links_en.yaml'
+import linksHeRaw from '../../data/links_he.yaml'
+import newsEnRaw from '../../data/news_en.yaml'
+import newsHeRaw from '../../data/news_he.yaml'
 
 export interface QA {
   question: string

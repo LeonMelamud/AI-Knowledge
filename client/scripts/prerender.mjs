@@ -8,7 +8,7 @@ import { load } from 'js-yaml'
 
 const CLIENT_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), '..')
 const DIST = path.join(CLIENT_DIR, 'dist')
-const DATA_DIR = path.join(CLIENT_DIR, '..', 'public', 'data')
+const DATA_DIR = path.join(CLIENT_DIR, 'data')
 const BASE_URL = 'https://ai-know.org/'
 const SITE_NAME = 'Guide to AI'
 

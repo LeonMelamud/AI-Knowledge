@@ -1,7 +1,7 @@
 name: Daily AI News Refresh
 
 # Researches the latest AI news with Claude and opens a PR updating
-# public/data/news_{en,he}.yaml. Merging the PR triggers the Pages deploy.
+# client/data/news_{en,he}.yaml. Merging the PR triggers the Pages deploy.
 # Requires the ANTHROPIC_API_KEY repository secret.
 #
 # Manual fallback only: the daily schedule is owned by the local Hermes cron
@@ -44,7 +44,7 @@ jobs:
           prompt: |
             You maintain the Hot News data for the AI-Knowledge site.
 
-            1. Read public/data/news_en.yaml and public/data/news_he.yaml to see
+            1. Read client/data/news_en.yaml and client/data/news_he.yaml to see
                the existing sections, their dates, and the exact YAML schema
                (hot_news -> section, date 'YYYY-MM-DD', topics -> title,
                description, questions[question/answer], links[name/url]).
@@ -62,8 +62,8 @@ jobs:
                than 6 months).
             5. Validate both files parse: cd client && node --input-type=module
                -e "const {load}=await import('js-yaml');const {readFileSync}=await
-               import('node:fs');load(readFileSync('../public/data/news_en.yaml','utf8'));
-               load(readFileSync('../public/data/news_he.yaml','utf8'))"
+               import('node:fs');load(readFileSync('../data/news_en.yaml','utf8'));
+               load(readFileSync('../data/news_he.yaml','utf8'))"
             6. If you changed anything, commit and open a pull request titled
                "chore(news): daily AI news refresh" with a short summary of the
                added sections and any pruned ones.

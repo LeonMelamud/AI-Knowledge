@@ -8,7 +8,7 @@ import path from 'node:path'
 import { load, dump } from 'js-yaml'
 
 const MONTHS = Number(process.argv[2] ?? 6)
-const DATA_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'public', 'data')
+const DATA_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'data')
 
 const cutoff = new Date()
 cutoff.setMonth(cutoff.getMonth() - MONTHS)

@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
-import en from '../../../public/data/ui_translations_en.json'
-import he from '../../../public/data/ui_translations_he.json'
+import en from '../../data/ui_translations_en.json'
+import he from '../../data/ui_translations_he.json'
 import type { Lang } from './data'
 
 type Translations = Record<string, string | string[]>
