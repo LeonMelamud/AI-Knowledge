@@ -1,9 +1,13 @@
-import { getNewsWithFallback, type NewsSection } from '../lib/data'
+import { useEffect, useState } from 'react'
+import { getNewsWithFallback, type NewsSection, type NewsTopic } from '../lib/data'
 import { useI18n } from '../lib/i18n'
 import { usePageMeta } from '../lib/usePageMeta'
 import Markdown from '../components/Markdown'
 import QAList from '../components/QAList'
 import RSSFeed from '../components/RSSFeed'
+
+/** link URL -> file in images/news-auto/, generated at build time by scripts/fetch-news-images.mjs */
+type ImageManifest = Record<string, string>
 
 // Per-topic screenshots die with the 6-month retention, so each section gets an
 // evergreen photo header matched by title keywords (EN + HE).
@@ -39,17 +43,34 @@ function SectionBanner({ section, locale }: { section: NewsSection; locale: stri
   )
 }
 
-function NewsSectionBlock({ section, locale }: { section: NewsSection; locale: string }) {
+// Story image straight from the news source (og:image, downloaded at build time).
+// Manual YAML images: take precedence.
+function storyImage(topic: NewsTopic, manifest: ImageManifest) {
+  if (topic.images?.length) return null
+  return topic.links?.map((l) => manifest[l.url]).find(Boolean) ?? null
+}
+
+function NewsSectionBlock({ section, locale, manifest }: { section: NewsSection; locale: string; manifest: ImageManifest }) {
   return (
     <section>
       <SectionBanner section={section} locale={locale} />
       <div className="mt-4 space-y-4">
-        {section.topics.map((topic) => (
+        {section.topics.map((topic) => {
+          const auto = storyImage(topic, manifest)
+          return (
           <article
             key={topic.title}
             className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition-shadow duration-200 hover:shadow-md"
           >
             <h3 className="text-xl font-bold text-stone-900">{topic.title}</h3>
+            {auto && (
+              <img
+                src={`${import.meta.env.BASE_URL}images/news-auto/${auto}`}
+                alt={topic.title}
+                loading="lazy"
+                className="mt-4 max-h-72 w-full rounded-xl border border-stone-200 object-cover"
+              />
+            )}
             {topic.description && (
               <div className="mt-2">
                 <Markdown>{topic.description}</Markdown>
@@ -82,7 +103,8 @@ function NewsSectionBlock({ section, locale }: { section: NewsSection; locale: s
             )}
             {topic.questions && <QAList items={topic.questions} />}
           </article>
-        ))}
+          )
+        })}
       </div>
     </section>
   )
@@ -92,6 +114,14 @@ export default function HotNews() {
   const { lang, t } = useI18n()
   const { sections, extraEnglish } = getNewsWithFallback(lang)
   const locale = lang === 'he' ? 'he-IL' : 'en-US'
+  const [manifest, setManifest] = useState<ImageManifest>({})
+
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}data/news-images.json`)
+      .then((res) => (res.ok ? res.json() : {}))
+      .then((data: ImageManifest) => setManifest(data && typeof data === 'object' ? data : {}))
+      .catch(() => {})
+  }, [])
 
   usePageMeta(t('hotNewsTitle'), t('hotNewsDescription'))
 
@@ -107,14 +137,14 @@ export default function HotNews() {
       <RSSFeed />
 
       {sections.map((section, i) => (
-        <NewsSectionBlock key={`${section.section}-${i}`} section={section} locale={locale} />
+        <NewsSectionBlock key={`${section.section}-${i}`} section={section} locale={locale} manifest={manifest} />
       ))}
 
       {extraEnglish.length > 0 && (
         <div dir="ltr" className="space-y-10 border-t border-stone-200 pt-8 text-start">
           <p className="text-sm font-medium text-stone-500">More news (English)</p>
           {extraEnglish.map((section, i) => (
-            <NewsSectionBlock key={`en-${section.section}-${i}`} section={section} locale="en-US" />
+            <NewsSectionBlock key={`en-${section.section}-${i}`} section={section} locale="en-US" manifest={manifest} />
           ))}
         </div>
       )}

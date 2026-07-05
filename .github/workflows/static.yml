@@ -41,6 +41,10 @@ jobs:
         working-directory: client
         run: node scripts/fetch-rss.mjs
 
+      - name: Fetch news story images
+        working-directory: client
+        run: node scripts/fetch-news-images.mjs
+
       - name: Build
         working-directory: client
         run: npm run build
