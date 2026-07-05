@@ -1,5 +1,62 @@
 @import 'tailwindcss';
 
+@theme {
+  --font-sans: 'Rubik', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* Aurora backdrop (ui-ux-pro-max: "Aurora UI" — soft drifting pastel gradients
+   behind the content; violet + cyan brand colors, AA text contrast preserved) */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  background: linear-gradient(180deg, #faf5ff 0%, #f5f3ff 45%, #ecfeff 100%);
+}
+
+.aurora::before,
+.aurora::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.55;
+  animation: aurora-drift 14s ease-in-out infinite alternate;
+}
+
+.aurora::before {
+  width: 55vw;
+  height: 55vw;
+  top: -18vw;
+  inset-inline-start: -12vw;
+  background: radial-gradient(circle, #c4b5fd 0%, transparent 65%);
+}
+
+.aurora::after {
+  width: 45vw;
+  height: 45vw;
+  bottom: -14vw;
+  inset-inline-end: -10vw;
+  background: radial-gradient(circle, #a5f3fc 0%, transparent 65%);
+  animation-delay: -7s;
+}
+
+@keyframes aurora-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(4vw, 3vw, 0) scale(1.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora::before,
+  .aurora::after {
+    animation: none;
+  }
+}
+
 /* Markdown content styles (fullDescription fields use #-headers, lists, code) */
 .markdown h1,
 .markdown h2 {
@@ -36,7 +93,7 @@
 }
 
 .markdown a {
-  color: var(--color-indigo-600);
+  color: var(--color-violet-700);
   text-decoration: underline;
 }
 
@@ -56,7 +113,7 @@
 }
 
 .markdown :not(pre) > code {
-  background: var(--color-slate-100);
+  background: var(--color-violet-50);
   padding: 0.1em 0.35em;
   border-radius: 0.25rem;
 }

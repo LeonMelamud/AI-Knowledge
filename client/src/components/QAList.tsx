@@ -5,8 +5,8 @@ export default function QAList({ items }: { items: QA[] }) {
   return (
     <div className="mt-4 space-y-2">
       {items.map((qa) => (
-        <details key={qa.question} className="group rounded-lg border border-slate-200 bg-slate-50">
-          <summary className="cursor-pointer select-none px-4 py-3 text-sm font-medium text-slate-800 group-open:text-indigo-700">
+        <details key={qa.question} className="group rounded-xl border border-violet-100 bg-violet-50/50 transition-colors duration-200 open:bg-violet-50">
+          <summary className="cursor-pointer select-none px-4 py-3 text-sm font-medium text-slate-800 transition-colors duration-150 group-open:text-violet-800 hover:text-violet-800">
             {qa.question}
           </summary>
           <p className="px-4 pb-4 text-sm leading-relaxed text-slate-600">{qa.answer}</p>

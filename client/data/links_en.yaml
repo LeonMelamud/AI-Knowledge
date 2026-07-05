@@ -15,7 +15,7 @@ tools:
       - Information analysis and summarization of complex topics
       - Language translation with reasonable accuracy across many languages
 
-      ChatGPT is widely used by students, professionals, content creators, developers, and businesses seeking to automate text-based tasks, enhance creativity, or access information quickly. The most advanced version, GPT-4, demonstrates significantly improved reasoning capabilities and broader general knowledge compared to earlier models.
+      ChatGPT is widely used by students, professionals, content creators, developers, and businesses seeking to automate text-based tasks, enhance creativity, or access information quickly. As of 2026 it is powered by the GPT-5 model family (currently GPT-5.5, with the GPT-5.6 preview rolling out), bringing far stronger reasoning and agentic capabilities than earlier generations.
   - name: Claude
     company: Anthropic
     url: https://claude.ai/new
@@ -23,14 +23,14 @@ tools:
       Claude is an advanced AI assistant developed by Anthropic with a focus on helpfulness, harmlessness, and honesty. It excels at thoughtful conversation, complex reasoning, and understanding nuanced instructions across a wide range of topics and tasks.
 
       Key strengths:
-      - Long context handling (up to 200,000 tokens in Claude 3 Opus)
+      - Long context handling (up to 1 million tokens in recent models)
       - Nuanced reasoning and analysis of complex problems
       - Document understanding and summarization
       - Creative writing with attention to style and tone
       - Code assistance with explanation capabilities
       - Reduced tendency toward hallucination compared to some competitors
 
-      Claude is particularly useful for researchers, writers, business professionals, and developers who need to process large documents, generate thoughtful content, or engage in complex problem-solving. Anthropic's Constitutional AI approach aims to create systems that are both powerful and aligned with human values and safety considerations.
+      Claude is particularly useful for researchers, writers, business professionals, and developers who need to process large documents, generate thoughtful content, or engage in complex problem-solving. Anthropic's Constitutional AI approach aims to create systems that are both powerful and aligned with human values and safety considerations. As of mid-2026 the lineup is the Claude 5 family — Sonnet 5 for everyday work and Opus 4.8 as the reasoning flagship.
   - name: Gemini
     company: Google
     url: https://gemini.google.com/
@@ -45,7 +45,7 @@ tools:
       - Document analysis and information extraction
       - Conversational capabilities with enhanced context retention
 
-      Gemini is available in different versions (Ultra, Pro, Nano) suited to different use cases from enterprise applications to on-device deployment. It's particularly valuable for developers, researchers, content creators, and professionals who need to work across different content formats and leverage Google's knowledge systems.
+      Gemini is available in different tiers (Pro, Flash and on-device Nano, currently in the Gemini 3 generation) suited to different use cases from enterprise applications to on-device deployment. It's particularly valuable for developers, researchers, content creators, and professionals who need to work across different content formats and leverage Google's knowledge systems.
 
   - name: Storm Genie
     company: Stanford University
@@ -80,7 +80,7 @@ tools:
     company: DeepSeek, Inc.
     url: https://platform.deepseek.com/api-docs/
     description: |
-      DeepSeek offers a powerful API for conversational AI and code generation, featuring the DeepSeek V2.5 model. It provides robust capabilities for integrating AI into applications, supporting both chat and coding functionalities.
+      DeepSeek offers a powerful API for conversational AI and code generation, featuring its latest open-weight chat and reasoning models. It provides robust capabilities for integrating AI into applications, supporting both chat and coding functionalities.
       
 
   - name: OpenRouter
@@ -88,6 +88,68 @@ tools:
     url: https://openrouter.ai/
     description: |
       OpenRouter offers a unified interface for managing and interacting with various large language models (LLMs). It helps users find the best models and prices for their prompts, enhancing productivity in tasks like chat, transcription, and translation.
+
+  - name: Grok
+    company: xAI
+    url: https://grok.com/
+    description: |
+      Grok is xAI's conversational assistant, tightly integrated with X (Twitter) for real-time knowledge. The Grok 4 generation offers strong reasoning, live web awareness, image understanding and a distinctively direct conversational style.
+
+  - name: Kimi
+    company: Moonshot AI
+    url: https://www.kimi.com/
+    description: |
+      Kimi is Moonshot AI's assistant, built on the open-weight Kimi K2 model family. It is known for very long context handling, strong agentic coding performance, and being one of the leading examples of frontier-level open-weight models.
+
+  - name: Perplexity
+    company: Perplexity AI
+    url: https://www.perplexity.ai/
+    description: |
+      Perplexity is an AI-powered answer engine that combines live web search with language models, returning cited, source-linked answers instead of a list of links. It is widely used for research, fact-checking and staying current, with Pro search and its Comet browser extending it into an agentic research workspace.
+
+- id: coding-tools
+  title: AI Coding Agents
+  items:
+  - name: Claude Code
+    company: Anthropic
+    url: https://claude.com/claude-code
+    description: |
+      Claude Code is Anthropic's agentic coding tool: it works in the terminal, IDEs and the web, reads your codebase, edits files, runs commands and tests, and can complete multi-step engineering tasks autonomously.
+
+      Key capabilities:
+      - Deep codebase understanding without manually selecting context
+      - Runs shell commands, tests and git workflows end to end
+      - Extensible with skills, subagents and MCP servers
+  - name: Cursor
+    company: Anysphere
+    url: https://www.cursor.com/
+    description: |
+      Cursor is an AI-powered code editor designed to enhance developer productivity. It integrates seamlessly with your codebase, predicts your next edits, and allows you to write and update code using natural language instructions — including a background agent mode for delegating whole tasks.
+  - name: Windsurf
+    company: Windsurf
+    url: https://windsurf.com/
+    description: |
+      Windsurf is an agentic IDE built around Cascade, an AI agent that keeps a live understanding of your project state and can plan and execute multi-file changes, run commands, and preview results while you stay in flow.
+  - name: GitHub Copilot
+    company: GitHub
+    url: https://github.com/features/copilot
+    description: |
+      GitHub Copilot is GitHub's AI pair programmer: inline completions, chat, and an autonomous coding agent that can take a GitHub issue, work in a cloud environment, and open a pull request. It supports multiple frontier models and integrates across major IDEs and github.com.
+  - name: OpenAI Codex
+    company: OpenAI
+    url: https://openai.com/codex/
+    description: |
+      Codex is OpenAI's software engineering agent. It runs tasks in parallel sandboxed environments or locally via the Codex CLI — writing features, fixing bugs, answering codebase questions and proposing pull requests for review.
+  - name: Gemini CLI
+    company: Google
+    url: https://github.com/google-gemini/gemini-cli
+    description: |
+      Gemini CLI is Google's open-source terminal AI agent powered by Gemini. It brings a large context window, built-in web grounding and MCP support to the command line, with generous free usage for individual developers.
+  - name: Continue
+    company: Continue, Inc.
+    url: https://www.continue.dev/
+    description: |
+      Continue is an open-source AI code assistant that enhances developer productivity by providing custom autocomplete and chat experiences within the IDE. It supports integration with various models and contexts, allowing developers to remain in flow while coding and accelerating development with a plug-and-play system.
 
 - id: libraries
   title: Open-Source Libraries/Tools
@@ -377,6 +439,18 @@ tools:
     description: |
       Tensor.Art is a creative platform that leverages AI to enable users to generate and share digital art. It offers tools for creating various styles, including anime, realistic, and sci-fi, and supports workflows for model hosting and online training, making it a versatile tool for artists and designers.
 
+  - name: Veo 3 / Flow
+    company: Google
+    url: https://labs.google/flow/
+    description: |
+      Veo 3 is Google's state-of-the-art video generation model, producing cinematic clips with native synchronized audio — dialogue, sound effects and music. Flow is the AI filmmaking tool built around it, letting creators direct scenes, extend shots and keep characters consistent across clips.
+
+  - name: ElevenLabs
+    company: ElevenLabs
+    url: https://elevenlabs.io/
+    description: |
+      ElevenLabs is the leading AI voice platform: ultra-realistic text-to-speech in dozens of languages, instant voice cloning, dubbing, and conversational voice agents. It powers narration, audiobooks, games and real-time voice applications.
+
 - id: articles
   title: Articles
   items:
@@ -453,18 +527,6 @@ tools:
 - id: productivity
   title: Productivity Tools
   items:
-  - name: Cursor
-    company: Anysphere
-    url: https://www.cursor.com/
-    description: |
-      Cursor is an AI-powered code editor designed to enhance developer productivity. It integrates seamlessly with your codebase, predicts your next edits, and allows you to write and update code using natural language instructions. Cursor supports importing extensions, themes, and keybindings, and prioritizes privacy and security with SOC 2 certification.
-      
-  - name: Continue
-    company: Continue, Inc.
-    url: https://www.continue.dev/
-    description: |
-      Continue is an open-source AI code assistant that enhances developer productivity by providing custom autocomplete and chat experiences within the IDE. It supports integration with various models and contexts, allowing developers to remain in flow while coding and accelerating development with a plug-and-play system.
-
   - name: NotebookLM
     company: Google
     url: https://notebooklm.google/

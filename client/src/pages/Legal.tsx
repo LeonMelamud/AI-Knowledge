@@ -28,7 +28,7 @@ export function PrivacyPolicy() {
   const { t, tList } = useI18n()
   usePageMeta(t('privacyPolicyTitle'))
   return (
-    <div className="mx-auto max-w-3xl space-y-6 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+    <div className="mx-auto max-w-3xl space-y-6 rounded-2xl border border-violet-100 bg-white/90 p-8 shadow-sm">
       <h1 className="text-2xl font-bold text-slate-900">{t('privacyPolicyTitle')}</h1>
       <P>{t('effectiveDate')}</P>
       <Section title={t('privacyIntroTitle')}>
@@ -48,7 +48,7 @@ export function PrivacyPolicy() {
         <P>{t('contactEmail')}</P>
         <P>
           {t('contactLinkedIn')}{' '}
-          <a href="https://www.linkedin.com/in/leon-melamud" target="_blank" rel="noreferrer" className="text-indigo-600 hover:text-indigo-800">
+          <a href="https://www.linkedin.com/in/leon-melamud" target="_blank" rel="noreferrer" className="text-violet-700 hover:text-violet-900">
             Leon Melamud
           </a>
         </P>
@@ -61,7 +61,7 @@ export function TermsOfService() {
   const { t, tList } = useI18n()
   usePageMeta(t('termsOfServiceTitle'))
   return (
-    <div className="mx-auto max-w-3xl space-y-6 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+    <div className="mx-auto max-w-3xl space-y-6 rounded-2xl border border-violet-100 bg-white/90 p-8 shadow-sm">
       <h1 className="text-2xl font-bold text-slate-900">{t('termsOfServiceTitle')}</h1>
       <P>{t('effectiveDate')}</P>
       <Section title={t('tosAcceptanceTitle')}>

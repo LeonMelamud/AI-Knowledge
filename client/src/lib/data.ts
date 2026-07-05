@@ -66,10 +66,23 @@ function isFresh(section: NewsSection): boolean {
 
 export type Lang = 'en' | 'he'
 
+// YAML images come as strings or {url, alt} objects with legacy ./css/images/ paths;
+// components render `${BASE_URL}images/<name>`, so reduce every shape to the file name.
+function normalizeImages(item: { images?: unknown[] }) {
+  if (!Array.isArray(item.images)) return
+  item.images = item.images
+    .map((img) => {
+      const url = typeof img === 'string' ? img : (img as { url?: string })?.url ?? ''
+      return url.split('/').pop() ?? ''
+    })
+    .filter(Boolean)
+}
+
 const conceptsByLang: Record<Lang, ConceptSection[]> = {
   en: (conceptsEnRaw as { concepts: ConceptSection[] }).concepts,
   he: (conceptsHeRaw as { concepts: ConceptSection[] }).concepts,
 }
+Object.values(conceptsByLang).forEach((sections) => sections.forEach((s) => s.items.forEach(normalizeImages)))
 
 const toolsByLang: Record<Lang, ToolSection[]> = {
   en: (linksEnRaw as { tools: ToolSection[] }).tools,
@@ -80,6 +93,7 @@ const newsByLang: Record<Lang, NewsSection[]> = {
   en: (newsEnRaw as { hot_news: NewsSection[] }).hot_news,
   he: (newsHeRaw as { hot_news: NewsSection[] }).hot_news,
 }
+Object.values(newsByLang).forEach((sections) => sections.forEach((s) => s.topics.forEach(normalizeImages)))
 
 export function getConcepts(lang: Lang): ConceptSection[] {
   return conceptsByLang[lang] ?? conceptsByLang.en

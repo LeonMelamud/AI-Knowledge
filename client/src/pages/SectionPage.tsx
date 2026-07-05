@@ -12,21 +12,21 @@ function ConceptCard({ item }: { item: ConceptItem }) {
   const hasMore = Boolean(item.fullDescription || item.codeExample || item.images?.length)
 
   return (
-    <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <article className="rounded-2xl border border-violet-100 bg-white/90 p-6 shadow-sm transition-shadow duration-200 hover:shadow-lg hover:shadow-violet-100/70">
       <h2 className="text-lg font-semibold text-slate-900">{item.name}</h2>
       <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.shortDescription}</p>
 
       {hasMore && (
         <button
           onClick={() => setExpanded(!expanded)}
-          className="mt-3 text-sm font-medium text-indigo-600 hover:text-indigo-800"
+          className="mt-3 cursor-pointer text-sm font-medium text-violet-700 transition-colors duration-150 hover:text-violet-900"
         >
           {expanded ? t('hideInfo') : t('moreInfo')}
         </button>
       )}
 
       {expanded && (
-        <div className="mt-4 border-t border-slate-100 pt-4">
+        <div className="mt-4 border-t border-violet-50 pt-4">
           {item.fullDescription && <Markdown>{item.fullDescription}</Markdown>}
           {item.codeExample && (
             <div className="mt-4">
@@ -42,7 +42,7 @@ function ConceptCard({ item }: { item: ConceptItem }) {
               src={`${import.meta.env.BASE_URL}images/${img}`}
               alt={item.name}
               loading="lazy"
-              className="mt-4 max-w-full rounded-lg border border-slate-200"
+              className="mt-4 max-w-full rounded-lg border border-violet-100"
             />
           ))}
         </div>
@@ -55,12 +55,12 @@ function ConceptCard({ item }: { item: ConceptItem }) {
 
 function ToolCard({ item }: { item: ToolItem }) {
   return (
-    <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <article className="rounded-2xl border border-violet-100 bg-white/90 p-6 shadow-sm transition-shadow duration-200 hover:shadow-lg hover:shadow-violet-100/70">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h2 className="text-lg font-semibold text-slate-900">
           {item.url ? (
-            <a href={item.url} target="_blank" rel="noreferrer" className="hover:text-indigo-700">
-              {item.name} <span aria-hidden className="text-sm text-indigo-400">↗</span>
+            <a href={item.url} target="_blank" rel="noreferrer" className="transition-colors duration-150 hover:text-violet-700">
+              {item.name} <span aria-hidden className="text-sm text-violet-400">↗</span>
             </a>
           ) : (
             item.name
@@ -74,7 +74,7 @@ function ToolCard({ item }: { item: ToolItem }) {
         </div>
       )}
       {item.recentUpdates && (
-        <div className="mt-3 rounded-lg bg-indigo-50 p-3">
+        <div className="mt-3 rounded-lg bg-violet-50 p-3">
           <Markdown>{item.recentUpdates}</Markdown>
         </div>
       )}
@@ -93,7 +93,8 @@ export default function SectionPage() {
 
   return (
     <div>
-      <h1 className="mb-6 text-2xl font-bold text-slate-900">{result.section.title}</h1>
+      <h1 className="mb-1 text-3xl font-bold text-slate-900">{result.section.title}</h1>
+      <div className="mb-6 h-1 w-16 rounded-full bg-gradient-to-r from-violet-600 to-cyan-500" />
       <div className="space-y-4">
         {result.kind === 'concept'
           ? result.section.items.map((item) => <ConceptCard key={item.name} item={item} />)

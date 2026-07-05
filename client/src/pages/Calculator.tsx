@@ -35,31 +35,33 @@ export default function Calculator() {
 
   return (
     <div className="mx-auto max-w-3xl space-y-6">
-      <h1 className="text-2xl font-bold text-slate-900">{t('tokenCalculator')}</h1>
+      <h1 className="bg-gradient-to-r from-violet-700 to-cyan-600 bg-clip-text text-3xl font-bold text-transparent">
+        {t('tokenCalculator')}
+      </h1>
 
-      <div className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div className="space-y-4 rounded-2xl border border-violet-100 bg-white/90 p-6 shadow-sm">
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder={t('enterText')}
           rows={6}
-          className="w-full rounded-lg border border-slate-300 p-3 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          className="w-full rounded-lg border border-violet-200 p-3 text-sm transition-colors duration-150 focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500"
         />
         <button
           onClick={calculate}
           disabled={busy || !text}
-          className="rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+          className="cursor-pointer rounded-full bg-gradient-to-r from-violet-600 to-violet-500 px-6 py-2.5 text-sm font-medium text-white shadow-md shadow-violet-500/25 transition-all duration-200 hover:from-violet-700 hover:to-violet-600 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {t('calculateTokens')}
         </button>
         {count !== null && (
-          <p className="rounded-lg bg-indigo-50 p-4 text-sm font-medium text-indigo-800">
+          <p className="rounded-lg bg-violet-50 p-4 text-sm font-medium text-violet-800">
             {t('numberOfTokens')}: {count}
           </p>
         )}
       </div>
 
-      <div className="rounded-2xl border border-slate-200 bg-white p-6 text-sm leading-relaxed text-slate-600 shadow-sm">
+      <div className="rounded-2xl border border-violet-100 bg-white/90 p-6 text-sm leading-relaxed text-slate-600 shadow-sm">
         {t('tokenExplanation')
           .split('\n\n')
           .map((paragraph) => (

@@ -30,7 +30,6 @@ const routes = [
   })),
   { path: 'hot-news', title: 'Hot News', description: 'Latest advancements and updates in AI technology.' },
   { path: 'calculator', title: 'Token Calculator', description: 'Count LLM tokens for any text, right in your browser.' },
-  { path: 'text-generation', title: 'Text Generation', description: 'Generate text with OpenAI models using your own API key.' },
   { path: 'privacy-policy', title: 'Privacy Policy', description: 'Privacy policy of the Guide to AI knowledge base.' },
   { path: 'terms-of-service', title: 'Terms of Service', description: 'Terms of service of the Guide to AI knowledge base.' },
 ]
