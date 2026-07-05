@@ -1,0 +1,18 @@
+# AI Knowledge Base
+
+## Overview
+This site provides a comprehensive knowledge base about Artificial Intelligence, including latest news, model comparisons, and tools.
+
+## Key Sections
+- /#/hot-news: Latest AI News and Updates
+- /#/models: Comparison of AI Models (GPT, Claude, etc.)
+- /#/tools: AI Tools and Resources
+- /#/articles: In-depth Articles
+
+## Content Format
+Content is structured in sections with topics, questions, and answers.
+The site supports English (en) and Hebrew (he).
+
+## API
+- /api/hot-news/:lang (GET): Retrieve news data
+- /api/hot-news/:lang (POST): Add news items

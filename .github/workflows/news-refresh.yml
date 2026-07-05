@@ -1,0 +1,69 @@
+name: Daily AI News Refresh
+
+# Researches the latest AI news with Claude and opens a PR updating
+# public/data/news_{en,he}.yaml. Merging the PR triggers the Pages deploy.
+# Requires the ANTHROPIC_API_KEY repository secret.
+#
+# Manual fallback only: the daily schedule is owned by the local Hermes cron
+# "AI-Knowledge Site News Refresh" (hermes cron list). Run this from the
+# Actions tab if the Hermes job is down.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh-news:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install client dependencies (for prune script + YAML validation)
+        working-directory: client
+        run: npm ci
+
+      - name: Research and update news
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          base_branch: "main"
+          branch_prefix: "news/"
+          claude_args: |
+            --model claude-sonnet-5
+            --max-turns 50
+            --allowedTools Read,Edit,Write,WebSearch,Bash
+          prompt: |
+            You maintain the Hot News data for the AI-Knowledge site.
+
+            1. Read public/data/news_en.yaml and public/data/news_he.yaml to see
+               the existing sections, their dates, and the exact YAML schema
+               (hot_news -> section, date 'YYYY-MM-DD', topics -> title,
+               description, questions[question/answer], links[name/url]).
+            2. Use web search to find significant AI news from the last 2 days
+               (model releases, big-company announcements, agents/MCP, open
+               source, vision/image/video, voice).
+            3. If there is genuinely significant news NOT already covered in the
+               existing sections, add 1-2 new dated sections (today's date) to
+               BOTH files — natural Hebrew translation in news_he.yaml, same
+               section order in both. Follow the existing writing style:
+               factual description with bullet lines, 1-2 Q&A entries per topic
+               for SEO, source links. If nothing significant happened, change
+               nothing and do not open a PR.
+            4. Run: node client/scripts/prune-news.mjs   (removes sections older
+               than 6 months).
+            5. Validate both files parse: cd client && node --input-type=module
+               -e "const {load}=await import('js-yaml');const {readFileSync}=await
+               import('node:fs');load(readFileSync('../public/data/news_en.yaml','utf8'));
+               load(readFileSync('../public/data/news_he.yaml','utf8'))"
+            6. If you changed anything, commit and open a pull request titled
+               "chore(news): daily AI news refresh" with a short summary of the
+               added sections and any pruned ones.
