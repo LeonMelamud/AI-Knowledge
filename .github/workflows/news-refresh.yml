@@ -3,10 +3,12 @@ name: Daily AI News Refresh
 # Researches the latest AI news with Claude and opens a PR updating
 # public/data/news_{en,he}.yaml. Merging the PR triggers the Pages deploy.
 # Requires the ANTHROPIC_API_KEY repository secret.
+#
+# Manual fallback only: the daily schedule is owned by the local Hermes cron
+# "AI-Knowledge Site News Refresh" (hermes cron list). Run this from the
+# Actions tab if the Hermes job is down.
 
 on:
-  schedule:
-    - cron: "0 5 * * *" # daily, 05:00 UTC — before the 06:00 site rebuild
   workflow_dispatch:
 
 permissions:
