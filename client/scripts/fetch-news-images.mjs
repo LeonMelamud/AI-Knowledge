@@ -5,7 +5,7 @@
 // link URL -> local file name; HotNews.tsx falls back to the static category
 // photo when a story has no image here. Like fetch-rss.mjs, this must NEVER
 // fail the build — any error just means fewer images.
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { createHash } from 'node:crypto'
 import path from 'node:path'
@@ -16,6 +16,17 @@ const IMG_DIR = path.join(CLIENT_DIR, 'public', 'images', 'news-auto')
 const MANIFEST = path.join(CLIENT_DIR, 'public', 'data', 'news-images.json')
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36'
 const EXT = { 'image/jpeg': '.jpg', 'image/png': '.png', 'image/webp': '.webp', 'image/gif': '.gif', 'image/avif': '.avif' }
+
+// Listing pages (site /news hubs) serve generic marketing cards as og:image,
+// not story images — only article-looking URLs (deep path or a year) qualify.
+function looksLikeArticle(url) {
+  try {
+    const segments = new URL(url).pathname.split('/').filter(Boolean)
+    return segments.length >= 3 || /\b20\d{2}\b/.test(url)
+  } catch {
+    return false
+  }
+}
 
 const get = (url, accept) =>
   fetch(url, { headers: { 'User-Agent': UA, Accept: accept }, redirect: 'follow', signal: AbortSignal.timeout(12000) })
@@ -52,12 +63,13 @@ async function storyImage(linkUrl) {
 }
 
 mkdirSync(IMG_DIR, { recursive: true })
+for (const stale of readdirSync(IMG_DIR)) unlinkSync(path.join(IMG_DIR, stale))
 const manifest = {}
 try {
   const news = load(readFileSync(path.join(CLIENT_DIR, 'data', 'news_en.yaml'), 'utf8')).hot_news ?? []
   for (const section of news) {
     for (const topic of section.topics ?? []) {
-      for (const link of topic.links ?? []) {
+      for (const link of (topic.links ?? []).filter((l) => looksLikeArticle(l.url))) {
         if (manifest[link.url] !== undefined) break
         try {
           const name = await storyImage(link.url)
