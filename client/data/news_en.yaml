@@ -2,6 +2,194 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+  - section: Voice & Multimodal AI
+    date: '2026-07-10'
+    topics:
+      - title: 'OpenAI launches GPT-Live for real-time voice conversations'
+        description: >
+          OpenAI introduced GPT-Live on July 8, 2026, a new family of
+          full-duplex voice models that can listen and speak at the same time
+          and keep a conversation flowing while delegating harder work to GPT-5.5
+          in the background.
+
+
+          Key developments:
+
+          - GPT-Live powers the new ChatGPT Voice experience with more natural
+          turn-taking, quick acknowledgements and fewer awkward interruptions
+
+          - The architecture separates continuous voice interaction from deeper
+          search and reasoning, letting the system keep talking while a frontier
+          model works behind the scenes
+
+          - OpenAI is rolling out GPT-Live-1 and GPT-Live-1 mini globally in
+          ChatGPT first, with API availability planned next
+        questions:
+          - question: What is GPT-Live?
+            answer: >-
+              GPT-Live is OpenAI's new voice-model family for natural spoken
+              interaction. It uses a full-duplex design, so it can listen and
+              speak at the same time instead of waiting for rigid turn-by-turn
+              pauses.
+          - question: Why does GPT-Live matter for AI products?
+            answer: >-
+              It points to a more agentic voice interface: the voice model keeps
+              a natural conversation going while a stronger background model
+              handles search, reasoning or other longer-running tasks. That can
+              make AI assistants feel faster and more human in real use.
+        links:
+          - name: OpenAI product announcement
+            url: https://openai.com/index/introducing-gpt-live/
+          - name: GPT-Live system card
+            url: https://deploymentsafety.openai.com/gpt-live
+
+  - section: Agentic Browsers & AI Workflows
+    date: '2026-07-09'
+    topics:
+      - title: 'Google makes the Gemini Interactions API the default for models and agents'
+        description: >
+          Google pushed its agent stack further this week by promoting the
+          Gemini Interactions API to general availability and making it the
+          primary interface for Gemini models and agents.
+
+
+          Key developments:
+
+          - The API now has a stable schema and becomes the default path in
+          Google AI Studio, Gemini API docs and partner integrations
+
+          - Google says long-running, stateful agent workflows will
+          increasingly land on this interface, not the older generateContent
+          flow
+
+          - Managed Agents now support background execution, remote MCP server
+          connections, custom functions and credential refresh, making hosted
+          agents more practical for production workloads
+        questions:
+          - question: What is the Gemini Interactions API?
+            answer: >-
+              It is Google's unified API for both model calls and agentic
+              workflows. Instead of stitching together separate endpoints,
+              developers can use one interface for stateful interactions,
+              background tasks, tool use and multimodal generation.
+          - question: Why does this Google update matter for AI agents?
+            answer: >-
+              Because Google is standardizing its agent platform around one
+              production API and adding the missing operational pieces —
+              background execution, remote MCP access and credential handling —
+              that teams need to run reliable agents at scale.
+        links:
+          - name: Google Interactions API GA
+            url: https://blog.google/innovation-and-ai/technology/developers-tools/interactions-api-general-availability
+          - name: Google Managed Agents update
+            url: https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api/
+      - title: 'Chrome turns Gemini into an auto-browsing assistant'
+        description: >
+          Google also brought more visible agent behavior directly into the
+          browser. Gemini in Chrome now gets a persistent side panel and a new
+          auto browse mode that can handle multi-step web chores on the user's
+          behalf.
+
+
+          Key developments:
+
+          - Gemini in Chrome can compare tabs, summarize content and work with
+          connected Google apps such as Gmail, Calendar, Maps and Flights
+
+          - Auto browse can research options, fill forms, collect documents and
+          complete repetitive online tasks with user confirmation on sensitive
+          actions
+
+          - Google says Chrome will support its new Universal Commerce Protocol,
+          an open standard meant to let AI agents act across shopping flows more
+          consistently
+        questions:
+          - question: What is Chrome auto browse?
+            answer: >-
+              It is Google's new agentic browsing mode for Gemini in Chrome.
+              In preview, it can perform multi-step tasks such as comparing
+              travel options, gathering information across sites and filling in
+              forms while keeping the user in the loop.
+          - question: Why is agentic browsing a big deal?
+            answer: >-
+              It moves AI from summarizing pages to actually operating across
+              the web. If the approach works reliably, browsers could become a
+              major surface for AI assistants to handle research, shopping and
+              admin work end to end.
+        links:
+          - name: Google Chrome Gemini auto browse announcement
+            url: https://blog.google/products-and-platforms/products/chrome/gemini-3-auto-browse
+  - section: AI Agents in Production
+    date: '2026-07-08'
+    topics:
+      - title: 'Google Expands Managed Agents in the Gemini API'
+        description: >
+          Google said on July 7 that Managed Agents in the Gemini API are moving
+          closer to production use with background execution, remote MCP support
+          and better ways to run agents inside real environments.
+
+
+          Key developments:
+
+          - Agents can continue long-running work in the background instead of
+          blocking the main app flow
+
+          - Remote MCP support lets Gemini agents call external tools and
+          services through the Model Context Protocol
+
+          - Updated environment and credential controls are meant to make
+          asynchronous agents more practical for real developer workflows
+        questions:
+          - question: What changed in Google's Managed Agents update?
+            answer: >-
+              Google added background-task support and remote MCP connectivity to
+              Managed Agents in the Gemini API, making it easier to build agents
+              that keep working asynchronously and call external tools in more
+              realistic production environments.
+          - question: Why does remote MCP matter for AI agents?
+            answer: >-
+              Remote MCP gives agents a standard way to connect to outside tools
+              and services without every team inventing its own integration
+              layer, which helps agent platforms move from demos to reusable
+              production systems.
+        links:
+          - name: Google Blog — Expanding Managed Agents in Gemini API
+            url: https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api/
+          - name: Gemini API docs — Managed agents quickstart
+            url: https://ai.google.dev/gemini-api/docs/managed-agents-quickstart
+      - title: 'Alberta Uses Claude Agents for Large-Scale Cybersecurity Review'
+        description: >
+          Anthropic published a July 6 case study showing the Government of
+          Alberta using Claude Code with roughly 50 parallel agents to review
+          and remediate security issues across government systems.
+
+
+          Key developments:
+
+          - Alberta says the agent-based review scanned 466 million lines of
+          code in about 20 hours
+
+          - Claude agents were used not only to find issues but also to propose
+          fixes, write tests and help modernize legacy systems
+
+          - The case suggests agentic code review is moving beyond startups into
+          large public-sector production workloads
+        questions:
+          - question: What did Alberta claim Claude agents accomplished?
+            answer: >-
+              Alberta said Claude-based agents scanned 466 million lines of code
+              in about 20 hours, identified vulnerabilities, and often helped
+              generate fixes and tests under human review.
+          - question: Why is this case study notable?
+            answer: >-
+              It is an unusually large real-world example of AI coding agents
+              being used for continuous security review and remediation across
+              government software systems rather than only small internal pilots.
+        links:
+          - name: Anthropic case study — Government of Alberta uses Claude to find and fix cybersecurity vulnerabilities
+            url: https://www.anthropic.com/news/alberta-government-claude-cybersecurity
+          - name: Alberta technical white papers
+            url: https://thevelocitywhitepapers.com/
   - section: Frontier LLMs
     date: '2026-06-30'
     topics:
