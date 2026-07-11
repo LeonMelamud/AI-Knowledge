@@ -2,6 +2,85 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+  - section: Frontier Models & Agentic Development
+    date: '2026-07-11'
+    topics:
+      - title: 'OpenAI makes the GPT-5.6 family generally available'
+        description: >
+          OpenAI has moved the GPT-5.6 family from its limited preview to
+          general availability. The release spans Sol, its flagship model;
+          Terra, a balanced everyday model; and Luna, the cost-efficient tier.
+
+
+          Key developments:
+
+          - GPT-5.6 Sol is positioned for demanding coding, knowledge-work,
+          cybersecurity and scientific tasks, while Terra and Luna offer
+          lower-cost options for broader production use
+
+          - OpenAI says the family improves the intelligence-to-cost and
+          intelligence-to-latency trade-off for long agentic workflows
+
+          - The general release follows a limited preview, making the family
+          available beyond a small group of vetted partners
+        questions:
+          - question: What are GPT-5.6 Sol, Terra and Luna?
+            answer: >-
+              They are the three generally available models in OpenAI's GPT-5.6
+              family: Sol is the flagship for the hardest work, Terra balances
+              capability and cost for everyday use, and Luna is the most
+              cost-efficient option.
+          - question: Why does GPT-5.6 general availability matter?
+            answer: >-
+              A general release lets teams move from evaluating a restricted
+              preview to building production applications. The three-tier
+              lineup also lets developers match cost and speed to each part of
+              an agentic workflow.
+        links:
+          - name: OpenAI — GPT-5.6 general availability
+            url: https://openai.com/index/gpt-5-6
+          - name: OpenAI — GPT-5.6 Sol preview and safety details
+            url: https://openai.com/index/previewing-gpt-5-6-sol
+
+      - title: 'Meta launches Muse Spark 1.1 and previews its first Model API'
+        description: >
+          Meta introduced Muse Spark 1.1, a multimodal reasoning model built
+          for agentic tasks, and opened a public preview of the Meta Model API.
+          The launch gives developers a direct path to build with a Meta model
+          through the company’s own API.
+
+
+          Key developments:
+
+          - Meta says Muse Spark 1.1 improves tool use, computer use, coding
+          and multimodal understanding for workflows that need planning and
+          orchestration across apps and services
+
+          - The model is available in Thinking mode in the Meta AI app and at
+          meta.ai, while the new API is in public preview for developers
+
+          - This is Meta's clearest move into the developer-model market,
+          placing its agentic offering in more direct competition with OpenAI
+          and Anthropic
+        questions:
+          - question: What is Muse Spark 1.1?
+            answer: >-
+              Muse Spark 1.1 is Meta's updated multimodal reasoning model for
+              agentic work. Meta says it is stronger at planning, tool and
+              computer use, coding, and understanding mixed text and visual
+              inputs.
+          - question: Why is the Meta Model API important?
+            answer: >-
+              The public preview gives developers a direct way to build with
+              Meta's model through an API. It turns Meta from primarily a
+              consumer-AI provider into a more direct platform competitor for
+              agent and application developers.
+        links:
+          - name: Meta AI — Introducing Muse Spark 1.1
+            url: https://ai.meta.com/blog/introducing-muse-spark-meta-model-api
+          - name: Reuters — Meta debuts Muse Spark 1.1 with developer preview
+            url: https://www.reuters.com/business/meta-debuts-muse-spark-11-with-preview-open-developers-2026-07-09
+
   - section: Voice & Multimodal AI
     date: '2026-07-10'
     topics:
