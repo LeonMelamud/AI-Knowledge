@@ -2,6 +2,83 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+  - section: Open Weights & Local AI Agents
+    date: '2026-07-17'
+    topics:
+      - title: 'Thinking Machines releases Inkling, its first open-weights model'
+        description: >
+          Thinking Machines Lab released Inkling on July 15: its first model
+          trained from scratch with downloadable open weights. The multimodal
+          mixture-of-experts model is aimed at developers who want to adapt a
+          capable base model to their own workflows rather than use a fixed API
+          model.
+
+
+          Key developments:
+
+          - Inkling has 975 billion total parameters, with 41 billion active
+          per token, and supports a context window of up to one million tokens
+
+          - It natively accepts text, images and audio, and its weights are
+          released under the Apache 2.0 license
+
+          - Thinking Machines positions controllable reasoning effort and
+          fine-tuning through its Tinker platform as the release's core value,
+          while also previewing a smaller Inkling-Small model
+        questions:
+          - question: What is Inkling?
+            answer: >-
+              Inkling is Thinking Machines Lab's first open-weights foundation
+              model. It is a 975B-parameter mixture-of-experts model with 41B
+              active parameters that can reason over text, images and audio.
+          - question: Why does Inkling matter for AI developers?
+            answer: >-
+              Its downloadable Apache 2.0 weights give teams a new large,
+              multimodal base model to fine-tune and deploy for specialized
+              agent, coding and retrieval workflows instead of relying only on
+              closed model APIs.
+        links:
+          - name: Thinking Machines — Inkling open-weights announcement
+            url: https://thinkingmachines.ai/news/introducing-inkling
+          - name: Thinking Machines — Inkling model card
+            url: https://thinkingmachines.ai/model-card/inkling
+
+      - title: 'LM Studio previews Bionic, an agent built for open models'
+        description: >
+          LM Studio introduced Bionic, an initial-preview AI agent designed for
+          open models. The product extends the company's local-model tooling
+          from chat and inference into agentic work for code, creative tasks and
+          everyday knowledge work.
+
+
+          Key developments:
+
+          - Bionic is designed to run natively on local open models, emphasizing
+          user control of data, model choice and AI spending
+
+          - LM Studio describes the agent as built for creativity, work and
+          code, bringing agent workflows to its local-first ecosystem
+
+          - The launch reflects a growing effort to make agentic tools usable
+          with open weights rather than only with hosted frontier-model services
+        questions:
+          - question: What is LM Studio Bionic?
+            answer: >-
+              Bionic is LM Studio's new AI agent for open models. It is in
+              initial preview and is designed to support creative work, general
+              tasks and coding while retaining a local-first model workflow.
+          - question: Why is a local-first AI agent useful?
+            answer: >-
+              A local-first agent can let users choose and run open models under
+              their own data and cost controls. That can be valuable for private
+              files, offline-capable workflows and teams that want less
+              dependence on a single hosted-model provider.
+        links:
+          - name: LM Studio — Bionic product announcement
+            url: https://lmstudio.ai/bionic
+          - name: 9to5Mac — LM Studio expands beyond chat with Bionic
+            url: https://9to5mac.com/2026/07/16/lm-studio-expands-beyond-chat-with-bionic-a-new-ai-agent-app-for-open-models
+
   - section: Frontier Models & Agentic Development
     date: '2026-07-11'
     topics:
