@@ -2,6 +2,92 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+  - section: AI Cybersecurity & Physical AI
+    date: '2026-07-20'
+    topics:
+      - title: 'White House launches GOLD EAGLE for AI-assisted vulnerability coordination'
+        description: >
+          The White House announced GOLD EAGLE, a federal clearinghouse for
+          coordinating cybersecurity-vulnerability intake, scanning and
+          remediation across critical infrastructure. The initiative, created
+          under the June 2026 AI-security executive order, says it will use
+          frontier AI to prioritize and speed up defensive work with government
+          agencies, open-source partners and industry.
+
+
+          Key developments:
+
+          - Treasury, DHS/CISA and the Department of War are participating with
+          private-sector partners to coordinate faster exploit detection and
+          remediation
+
+          - The program says it uses frontier AI to reduce duplicated scanning
+          and deliver prioritized vulnerability and remediation information to
+          public- and private-sector defenders
+
+          - GOLD EAGLE has begun receiving and prioritizing vulnerabilities;
+          the announcement frames it as an operational cyber-defense program,
+          not a new AI model or consumer product
+        questions:
+          - question: What is the GOLD EAGLE AI cybersecurity initiative?
+            answer: >-
+              GOLD EAGLE is a U.S. government clearinghouse for coordinating
+              cybersecurity-vulnerability intake, verification and remediation.
+              It is intended to use frontier AI and cross-sector coordination to
+              help defenders identify and prioritize risks faster.
+          - question: Why does GOLD EAGLE matter for AI security?
+            answer: >-
+              It is a concrete government deployment of frontier AI for
+              defensive cyber operations. Its value will depend on safeguards,
+              coordination with software maintainers and whether AI-assisted
+              prioritization improves response without creating new risks.
+        links:
+          - name: White House — GOLD EAGLE vulnerability coordination announcement
+            url: https://www.whitehouse.gov/releases/2026/07/white-house-launches-gold-eagle-initiative-for-unprecedented-cybersecurity-vulnerability-coordination
+          - name: White House — AI innovation and security executive order
+            url: https://www.whitehouse.gov/presidential-actions/2026/06/promoting-advanced-artificial-intelligence-innovation-and-security
+
+      - title: 'Nvidia and Japan advance a national physical-AI infrastructure plan'
+        description: >
+          Following Jensen Huang's July visit to Tokyo, Nvidia and Japanese
+          industrial partners outlined projects that pair a national AI factory
+          with domestic models for robots, vehicles and factory floors. The
+          effort puts physical AI and sovereign infrastructure at the center of
+          Japan's industrial strategy.
+
+
+          Key developments:
+
+          - The Noetra initiative brings together roughly 44 domestic companies,
+          including SoftBank, Sony, NEC and Honda, around Japanese AI for
+          industrial and robotic use
+
+          - Japan is committing up to 1 trillion yen over five years, while
+          Nvidia plans a Vera Rubin AI factory expected to use 13,750 Vera CPUs
+          and 27,500 Rubin GPUs
+
+          - The roadmap starts with Japanese-language reasoning models, then
+          adds multimodal capabilities and ultimately aims for AI that can run
+          robots and other real-world systems
+        questions:
+          - question: What is Japan's physical-AI plan with Nvidia?
+            answer: >-
+              Japan is combining a planned national AI factory with domestic
+              foundation models for industrial uses such as robots, vehicles and
+              factories. Nvidia is supplying planned Rubin-generation
+              infrastructure while Japanese companies develop the AI stack.
+          - question: Why is physical AI important?
+            answer: >-
+              Physical AI applies models to machines operating in the real world,
+              not only chat or software tasks. It can support robotics,
+              manufacturing and autonomous systems, but requires reliable models,
+              specialized data and rigorous safety controls.
+        links:
+          - name: TechCrunch — Nvidia's Japan physical-AI partnerships
+            url: https://techcrunch.com/2026/07/19/what-to-watch-for-after-jensen-huangs-japan-visit
+          - name: Nvidia — Japan, industrial leaders and Nvidia launch national AI infrastructure
+            url: https://nvidianews.nvidia.com/news/japan-government-industrial-leaders-and-nvidia-launch-the-worlds-first-national-ai-infrastructure
+
   - section: Open Weights & Local AI Agents
     date: '2026-07-17'
     topics:
