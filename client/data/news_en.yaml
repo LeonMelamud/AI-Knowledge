@@ -2,6 +2,51 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+  - section: Frontier Model Previews & Open Weights
+    date: '2026-07-21'
+    topics:
+      - title: 'Alibaba previews the 2.4T-parameter Qwen3.8-Max and promises open weights'
+        description: >
+          Alibaba has previewed Qwen3.8-Max at the World Artificial Intelligence
+          Conference in Shanghai. The company describes the multimodal model as
+          a 2.4-trillion-parameter system and says the preview can handle text,
+          images, video and documents; it has also said the weights will be
+          released publicly, but has not given a date or license.
+
+
+          Key developments:
+
+          - Qwen3.8-Max-Preview is available for testing through Alibaba's
+          Token Plan subscription and Qoder developer tools, rather than as a
+          downloadable model today
+
+          - Alibaba says the model is competitive with leading frontier systems,
+          but the preview arrived without a model card, public benchmark package
+          or independent leaderboard result to substantiate that claim
+
+          - The planned open-weight release would give developers a new very
+          large multimodal model to evaluate and adapt; practical deployment
+          will depend on the eventual license, hardware requirements and release
+          details
+        questions:
+          - question: What is Qwen3.8-Max-Preview?
+            answer: >-
+              Qwen3.8-Max-Preview is Alibaba's early-access version of a
+              2.4-trillion-parameter multimodal frontier model. It can process
+              text, images, video and documents and is currently offered through
+              Alibaba's hosted products rather than as downloadable weights.
+          - question: Are Qwen3.8's open weights available now?
+            answer: >-
+              No. Alibaba has said Qwen3.8 will become open weight, but had not
+              published the weights, a release date or license terms at the time
+              of the preview. Developers should treat the open release as a plan,
+              not as an available download.
+        links:
+          - name: Quartz — Alibaba previews Qwen3.8-Max
+            url: https://qz.com/alibaba-qwen38-preview-anthropic-fable-5-072026
+          - name: Qwen — Qwen3.8-Max-Preview announcement
+            url: https://x.com/Alibaba_Qwen/status/2078759124914098291
+
   - section: AI Cybersecurity & Physical AI
     date: '2026-07-20'
     topics:
