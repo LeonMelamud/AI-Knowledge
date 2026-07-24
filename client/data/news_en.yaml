@@ -2,6 +2,49 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+  - section: Grok Build Workflow Orchestration
+    date: '2026-07-24'
+    topics:
+      - title: 'xAI adds Workflows to Grok Build for large parallel-agent jobs'
+        description: >
+          xAI has introduced Workflows in Grok Build, letting users describe a
+          complex task in natural language and have the coding agent create and
+          run a background orchestration plan. The feature is aimed at work that
+          can be divided among many independent agents and then consolidated into
+          one verified result.
+
+
+          Key developments:
+
+          - A workflow plans phases, assigns focused agents and combines their
+          results, with optional independent checks before the final report
+
+          - Each run has a budget of 128 agents, with up to 1,024 available for
+          large jobs; progress is saved so paused runs can resume without
+          repeating completed work
+
+          - Successful workflows can be saved in a project or user directory
+          and reused as slash commands, while a built-in /deep-research workflow
+          fans out research and returns a cited report
+        questions:
+          - question: What are Workflows in Grok Build?
+            answer: >-
+              Workflows are xAI's background orchestration feature for Grok
+              Build. A user describes a large task, and Grok creates a plan that
+              distributes independent pieces to parallel agents, verifies work
+              where needed and combines the results into one report.
+          - question: When should developers use a Grok Build workflow?
+            answer: >-
+              Workflows are intended for complex work that is too broad for one
+              conversation but can be split into independent pieces, such as
+              reviewing a large pull request, triaging many issues or auditing a
+              codebase for a specific class of bug.
+        links:
+          - name: xAI — Workflows in Grok Build
+            url: https://x.ai/news/workflows
+          - name: xAI — Grok Build overview
+            url: https://x.ai/cli
+
   - section: Frontier Model Previews & Open Weights
     date: '2026-07-21'
     topics:
