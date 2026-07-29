@@ -2,6 +2,94 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+  - section: MCP’s Stateless Protocol Revision
+    date: '2026-07-29'
+    topics:
+      - title: 'MCP 2026-07-28 moves agent-tool connections to a stateless core'
+        description: >
+          The Model Context Protocol project released version 2026-07-28 of its
+          specification and Tier 1 SDKs. The update replaces MCP’s bidirectional,
+          session-oriented transport with independent request/response calls,
+          aiming to make agent-tool servers simpler to scale and operate behind
+          ordinary load balancers.
+
+
+          Key developments:
+
+          - The initialize/initialized handshake and Mcp-Session-Id header are
+          retired; each request carries protocol version, client identity and
+          capabilities in _meta, while server/discover is an optional RPC
+
+          - New Mcp-Method and Mcp-Name headers let gateways, rate limiters and
+          WAFs route and meter Streamable HTTP requests without parsing JSON bodies
+
+          - The release adds cache metadata for list/read responses, moves tasks
+          to an extension and provides migration notes; legacy HTTP+SSE and several
+          older features are deprecated with at least a 12-month transition period
+        questions:
+          - question: What changes in MCP specification 2026-07-28?
+            answer: >-
+              MCP 2026-07-28 makes the protocol core stateless. It removes the
+              initialize handshake and protocol session ID, so requests can be
+              handled independently by any server instance while application state
+              is passed explicitly when a tool needs it.
+          - question: Why does stateless MCP matter for AI agents?
+            answer: >-
+              Stateless requests make it easier to scale MCP servers with standard
+              load balancing and without shared session storage. The change also
+              gives infrastructure tools clearer headers for routing and policy
+              enforcement, though existing session-based integrations may need
+              migration work.
+        links:
+          - name: Model Context Protocol — 2026-07-28 specification
+            url: https://blog.modelcontextprotocol.io/posts/2026-07-28
+          - name: MCP — TypeScript SDK
+            url: https://github.com/modelcontextprotocol/typescript-sdk
+
+  - section: Gemini Managed Agents Controls
+    date: '2026-07-29'
+    topics:
+      - title: 'Google adds hooks, budgets and schedules to Gemini API Managed Agents'
+        description: >
+          Google updated Managed Agents in the Gemini API with controls for
+          production agent workflows. The managed agent now defaults to Gemini 3.6
+          Flash, and developers can add sandbox hooks, token budgets, scheduled
+          triggers and free-tier access around a hosted agent environment.
+
+
+          Key developments:
+
+          - Environment hooks run custom command or HTTP handlers before or after
+          tool calls, enabling teams to block, lint or audit an agent’s actions in
+          its remote sandbox
+
+          - Developers can choose supported Gemini models, set a maximum total
+          token budget and create scheduled triggers whose runs reuse the same
+          sandbox and persisted files
+
+          - Google says Managed Agents coordinate reasoning, code execution,
+          package installation, file management and web retrieval from a single
+          Interactions API call; the new controls are also available to free-tier
+          projects for experimentation
+        questions:
+          - question: What are Gemini API Managed Agents environment hooks?
+            answer: >-
+              Environment hooks are custom command or HTTP handlers that run before
+              or after tool calls inside a Gemini Managed Agent sandbox. They can
+              enforce a policy, perform linting or audit an agent action before it
+              proceeds or after it completes.
+          - question: How can developers control the cost of a Gemini Managed Agent?
+            answer: >-
+              Developers can select an agent model and set a maximum total-token
+              budget. They can also schedule recurring runs through persistent
+              triggers, allowing a managed sandbox and its files to be reused
+              rather than rebuilding the workflow manually each time.
+        links:
+          - name: 'Google — Gemini API Managed Agents: hooks, budgets and schedules'
+            url: https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api-3-6-flash-hooks
+          - name: Google — Gemini 3.6 Flash and 3.5 Flash models
+            url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber
+
   - section: Grok Build Workflow Orchestration
     date: '2026-07-24'
     topics:

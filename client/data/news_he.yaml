@@ -2,6 +2,92 @@
 # מקטעים בני יותר מ-6 חודשים מוסתרים אוטומטית (client/src/lib/data.ts)
 # וניתן להסירם פיזית עם: node client/scripts/prune-news.mjs
 hot_news:
+  - section: "עדכון הפרוטוקול הסטטלסי של MCP"
+    date: '2026-07-29'
+    topics:
+      - title: "MCP 2026-07-28 מעביר את חיבורי הסוכנים והכלים לליבה חסרת מצב"
+        description: >
+          פרויקט Model Context Protocol פרסם את גרסת 2026-07-28 של המפרט ושל
+          ערכות הפיתוח Tier 1. העדכון מחליף את התעבורה הדו-כיוונית ומבוססת
+          הסשנים של MCP בקריאות request/response עצמאיות, במטרה להפוך שרתים
+          שמחברים סוכני AI לכלים לקלים יותר להרחבה ולהפעלה מאחורי מאזני עומס
+          רגילים.
+
+
+          התפתחויות מרכזיות:
+
+          - לחיצת היד initialize/initialized וכותרת Mcp-Session-Id יוצאות
+          משימוש; כל בקשה כוללת ב-_meta את גרסת הפרוטוקול, זהות הלקוח ויכולותיו,
+          ו-server/discover הוא RPC אופציונלי
+
+          - הכותרות החדשות Mcp-Method ו-Mcp-Name מאפשרות לשערים, למגבילי קצב
+          ול-WAF לנתב ולמדוד בקשות Streamable HTTP בלי לנתח גופי JSON
+
+          - הגרסה מוסיפה מטא-נתוני מטמון לתגובות list/read, מעבירה משימות להרחבה
+          ומספקת הערות מעבר; HTTP+SSE הישן ומספר יכולות ישנות מסומנים כהוצאו
+          משימוש עם תקופת מעבר של לפחות 12 חודשים
+        questions:
+          - question: "מה משתנה במפרט MCP 2026-07-28?"
+            answer: >-
+              MCP 2026-07-28 הופך את ליבת הפרוטוקול לחסרת מצב. הוא מסיר את
+              לחיצת היד initialize ואת מזהה הסשן ברמת הפרוטוקול, כך שכל מופע
+              שרת יכול לטפל בבקשות עצמאיות, בעוד מצב יישומי מועבר במפורש כשכלי
+              זקוק לו.
+          - question: "מדוע MCP חסר מצב חשוב לסוכני AI?"
+            answer: >-
+              בקשות חסרות מצב מקלות על הרחבת שרתי MCP בעזרת איזון עומסים רגיל
+              וללא אחסון סשנים משותף. השינוי גם מעניק לכלי תשתית כותרות ברורות
+              יותר לניתוב ולאכיפת מדיניות, אך אינטגרציות קיימות המבוססות על
+              סשנים עשויות לדרוש עבודת מעבר.
+        links:
+          - name: "Model Context Protocol — מפרט 2026-07-28"
+            url: https://blog.modelcontextprotocol.io/posts/2026-07-28
+          - name: "MCP — ערכת הפיתוח ל-TypeScript"
+            url: https://github.com/modelcontextprotocol/typescript-sdk
+
+  - section: "בקרות לסוכנים מנוהלים של Gemini"
+    date: '2026-07-29'
+    topics:
+      - title: "Google מוסיפה hooks, תקציבים ותזמונים ל-Managed Agents ב-Gemini API"
+        description: >
+          Google עדכנה את Managed Agents ב-Gemini API עם בקרות לתהליכי עבודה
+          של סוכנים בסביבת ייצור. הסוכן המנוהל משתמש כעת כברירת מחדל ב-Gemini
+          3.6 Flash, ומפתחים יכולים להוסיף hooks בסביבת ה-sandbox, תקציבי
+          טוקנים, טריגרים מתוזמנים וגישה בשכבה החינמית סביב סביבת סוכן מתארחת.
+
+
+          התפתחויות מרכזיות:
+
+          - Environment hooks מריצים פקודות מותאמות אישית או מטפלי HTTP לפני
+          או אחרי קריאות לכלים, ומאפשרים לצוותים לחסום, לבצע lint או לבקר את
+          פעולות הסוכן ב-sandbox המרוחק
+
+          - מפתחים יכולים לבחור בין מודלי Gemini נתמכים, להגדיר תקציב מרבי של
+          טוקנים וליצור טריגרים מתוזמנים שהרצותיהם משתמשות שוב באותו sandbox
+          ובקבצים שנשמרו בו
+
+          - לפי Google, Managed Agents מתאמים חשיבה, הרצת קוד, התקנת חבילות,
+          ניהול קבצים ואחזור מהאינטרנט באמצעות קריאה אחת ל-Interactions API;
+          הבקרות החדשות זמינות גם לפרויקטים בשכבה החינמית לצורכי ניסוי
+        questions:
+          - question: "מהם Environment hooks של Managed Agents ב-Gemini API?"
+            answer: >-
+              Environment hooks הם מטפלי פקודה או HTTP מותאמים אישית שרצים לפני
+              או אחרי קריאות לכלים בתוך sandbox של Gemini Managed Agent. הם
+              יכולים לאכוף מדיניות, לבצע lint או לבקר פעולת סוכן לפני שהיא
+              מתקדמת או לאחר שהושלמה.
+          - question: "כיצד מפתחים יכולים לשלוט בעלות של Gemini Managed Agent?"
+            answer: >-
+              מפתחים יכולים לבחור מודל לסוכן ולהגדיר תקציב מרבי של טוקנים. הם
+              יכולים גם לתזמן הרצות חוזרות באמצעות טריגרים מתמידים, וכך לעשות
+              שימוש חוזר ב-sandbox המנוהל ובקבצים שבו במקום לבנות מחדש את
+              תהליך העבודה בכל פעם.
+        links:
+          - name: "Google — Gemini API Managed Agents: hooks, תקציבים ותזמונים"
+            url: https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api-3-6-flash-hooks
+          - name: "Google — מודלי Gemini 3.6 Flash ו-3.5 Flash"
+            url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber
+
   - section: "תזמור תהליכי עבודה ב-Grok Build"
     date: '2026-07-24'
     topics:
