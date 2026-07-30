@@ -2,6 +2,84 @@
 # מקטעים בני יותר מ-6 חודשים מוסתרים אוטומטית (client/src/lib/data.ts)
 # וניתן להסירם פיזית עם: node client/scripts/prune-news.mjs
 hot_news:
+  - section: "הסוכן האישי Gemini Spark"
+    date: '2026-07-30'
+    topics:
+      - title: "Google מתחילה בהשקת Gemini Spark, סוכן אישי שרץ ברקע, בהודו"
+        description: >
+          Google הודיעה כי Gemini Spark יתחיל להיפתח בשבועות הקרובים למנויי Google
+          AI Pro בהודו. הסוכן האישי מבוסס הענן נועד לעבוד ברקע — גם כשהטלפון נעול
+          או המחשב הנייד סגור — ומתחבר באופן טבעי ל-Gmail, ל-Docs ול-Sheets.
+
+
+          התפתחויות מרכזיות:
+
+          - Spark מופעל על ידי Gemini 3.6 Flash וזמין בהודו למנויי Google AI Ultra
+          ולמנויי Google AI Pro
+
+          - המשתמשים בוחרים אם להפעיל את Spark ולאילו אפליקציות Google Workspace
+          הוא יתחבר; לפי Google, הוא מבקש אישור לפני פעולות בעלות משמעות גבוהה,
+          כמו הוצאת כסף או שליחת דוא"ל
+
+          - ההשקה מציבה את Gemini כסוכן מתמשך שיכול לטפל במטלות דיגיטליות לאורך
+          זמן, ולא רק לענות על הנחיות בודדות
+        questions:
+          - question: "מהו Gemini Spark?"
+            answer: >-
+              Gemini Spark הוא סוכן AI אישי מבוסס ענן של Google. הוא נועד לבצע
+              מטלות דיגיטליות מתמשכות ברקע, ויכול להתחבר באופן טבעי לאפליקציות
+              Google Workspace שנבחרו, ובהן Gmail, Docs ו-Sheets.
+          - question: "היכן Gemini Spark זמין תחילה?"
+            answer: >-
+              לפי Google, Gemini Spark נפתח בשבועות הקרובים למנויי Google AI Pro
+              בהודו. הוא זמין שם גם למנויי Google AI Ultra, עם שליטה בהפעלתו
+              ובאפליקציות שאליהן הוא יכול לגשת.
+        links:
+          - name: "Google — הצגת Gemini Spark בהודו"
+            url: https://blog.google/intl/en-in/company-news/technology/introducing-gemini-spark-your-247-personal-ai-agent-in-country
+          - name: "Google — Gemini Spark בכנס I/O 2026"
+            url: https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements
+
+  - section: "ChatGPT לחוקרים באקדמיה"
+    date: '2026-07-30'
+    topics:
+      - title: "OpenAI פותחת תוכנית גישה חינמית למודלים מתקדמים עבור חוקרים באקדמיה"
+        description: >
+          OpenAI הציגה את ChatGPT for Academic Researchers, תוכנית שתספק לחוקרים
+          נבחרים במוסדות זכאים גישה חינמית למודלים ולכלים מתקדמים. התוכנית מתחילה
+          הקיץ עם 10,000 חוקרים, ומתוכננת להגיע ל-100,000 מדענים, מתמטיקאים ומהנדסים
+          עד 2027.
+
+
+          התפתחויות מרכזיות:
+
+          - המשתתפים יקבלו גישה ל-ChatGPT, ל-ChatGPT Work ול-Codex, כולל מודלי
+          GPT-5.6 בעת ההשקה, Deep Research מורחב וחלונות הקשר גדולים יותר
+
+          - חוקרים יכולים להזמין עד ארבעה משתפי פעולה מאותו מוסד; OpenAI מציינת
+          שהסביבות כוללות הגנות פרטיות ואבטחה ברמה עסקית, ושהנתונים אינם משמשים
+          לאימון המודלים כברירת מחדל
+
+          - התוכנית תומכת בתהליכי מחקר, מסקירת ספרות וכתיבת בקשות למענק ועד ניתוח
+          גנומי, מידול חלבונים, כתיבת קוד ועבודה עם נתונים
+        questions:
+          - question: "מהי תוכנית ChatGPT for Academic Researchers?"
+            answer: >-
+              ChatGPT for Academic Researchers היא תוכנית של OpenAI שמציעה גישה
+              חינמית למודלים מתקדמים לחוקרים אקדמיים זכאים. היא משלבת כלים של
+              ChatGPT, ChatGPT Work ו-Codex עבור תהליכי מחקר מדעיים, מתמטיים
+              והנדסיים.
+          - question: "כמה חוקרים יקבלו גישה חינמית ל-ChatGPT?"
+            answer: >-
+              OpenAI מתחילה הקיץ עם 10,000 חוקרים ומתכננת להרחיב את התוכנית
+              ל-100,000 חוקרים עד 2027. הזכאות מוגבלת לחוקרים מתאימים במוסדות
+              נבחרים המעניקים תארים ובעלי פעילות מחקרית משמעותית.
+        links:
+          - name: "OpenAI — ChatGPT for Academic Researchers"
+            url: https://openai.com/index/chatgpt-for-academic-researchers
+          - name: "OpenAI — GPT-5.6"
+            url: https://openai.com/index/gpt-5-6/
+
   - section: "עדכון הפרוטוקול הסטטלסי של MCP"
     date: '2026-07-29'
     topics:
