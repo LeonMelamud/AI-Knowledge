@@ -2,6 +2,87 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+  - section: GPT-5.6 Price and Speed Updates
+    date: '2026-07-31'
+    topics:
+      - title: 'OpenAI cuts GPT-5.6 Terra and Luna API prices and replaces Priority Processing'
+        description: >
+          OpenAI updated GPT-5.6 pricing on July 30, lowering the API price of
+          Terra by 20% and Luna by 80% while leaving Sol pricing unchanged. The
+          company also replaced API Priority Processing with a new Fast mode that
+          aligns with the /fast option in Codex.
+
+
+          Key developments:
+
+          - Terra is now priced at $2 per million input tokens and $12 per million
+          output tokens; Luna is $0.20 input and $1.20 output per million tokens
+
+          - ChatGPT and Codex subscription prices and quota budgets are unchanged,
+          though Terra and Luna now consume fewer credits in those products
+
+          - Existing API requests tagged priority will continue to work, while Fast
+          mode becomes the path for accelerated GPT-5.6 Sol requests
+        questions:
+          - question: What changed in GPT-5.6 API pricing?
+            answer: >-
+              OpenAI reduced the July 30 API prices for GPT-5.6 Terra by 20% and
+              GPT-5.6 Luna by 80%. Terra now costs $2 per million input tokens and
+              $12 per million output tokens, while Luna costs $0.20 input and
+              $1.20 output per million tokens; Sol pricing did not change.
+          - question: What is Fast mode for GPT-5.6?
+            answer: >-
+              Fast mode is OpenAI's replacement for Priority Processing in the
+              GPT-5.6 API. It matches the /fast option in Codex, while existing
+              API requests using the priority tag remain supported.
+        links:
+          - name: OpenAI — Advancing the price-performance frontier with GPT-5.6
+            url: https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6
+          - name: OpenAI — GPT-5.6 availability and pricing
+            url: https://openai.com/index/gpt-5-6/
+
+  - section: Anthropic Cybersecurity Evaluation Incidents
+    date: '2026-07-31'
+    topics:
+      - title: 'Anthropic reports three unintended live-system accesses during Claude cyber evaluations'
+        description: >
+          Anthropic said an internal review found three incidents in which Claude
+          models reached live systems while carrying out cybersecurity evaluations.
+          The company says each incident stemmed from an evaluation-environment
+          misconfiguration involving third-party testing partner Irregular, rather
+          than deliberate misuse or a model escaping its intended scope.
+
+
+          Key developments:
+
+          - Anthropic reviewed 141,006 evaluation runs after OpenAI disclosed a
+          separate test-environment incident and found three relevant cases
+
+          - Opus 4.7, Mythos 5 and an internal research model accessed the internet
+          through a configuration that was believed to be isolated
+
+          - Anthropic says it is changing evaluation controls and monitoring; the
+          disclosure highlights the need to treat AI safety-test infrastructure as
+          production-grade security infrastructure
+        questions:
+          - question: What did Anthropic find in its cybersecurity evaluation review?
+            answer: >-
+              Anthropic found three incidents in which Claude models reached live
+              systems during cybersecurity evaluations. The company says the cases
+              came from a misconfigured testing environment with a third-party
+              partner, not from an intended production deployment.
+          - question: Why do the Anthropic evaluation incidents matter?
+            answer: >-
+              The incidents show that testing powerful AI systems can itself create
+              operational risk when an environment is not truly isolated. Anthropic
+              says it is tightening controls and monitoring, while the episode
+              underscores the importance of strong sandboxing and oversight.
+        links:
+          - name: Anthropic — Investigating three real-world incidents in cybersecurity evaluations
+            url: https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals
+          - name: TechCrunch — Anthropic says its AI models breached three companies during tests
+            url: https://techcrunch.com/2026/07/30/anthropic-says-its-own-ai-models-breached-three-companies-during-security-tests
+
   - section: Gemini Spark Personal Agent
     date: '2026-07-30'
     topics:

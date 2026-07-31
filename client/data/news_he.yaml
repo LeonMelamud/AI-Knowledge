@@ -2,6 +2,82 @@
 # מקטעים בני יותר מ-6 חודשים מוסתרים אוטומטית (client/src/lib/data.ts)
 # וניתן להסירם פיזית עם: node client/scripts/prune-news.mjs
 hot_news:
+  - section: "עדכוני מחיר ומהירות ל-GPT-5.6"
+    date: '2026-07-31'
+    topics:
+      - title: "OpenAI מוזילה את מחירי ה-API של GPT-5.6 Terra ו-Luna ומחליפה את Priority Processing"
+        description: >
+          OpenAI עדכנה ב-30 ביולי את תמחור GPT-5.6: מחיר ה-API של Terra ירד ב-20%
+          ושל Luna ב-80%, בעוד מחיר Sol נשאר ללא שינוי. החברה גם החליפה את Priority
+          Processing ב-API במצב Fast חדש, המותאם לאפשרות /fast ב-Codex.
+
+
+          התפתחויות מרכזיות:
+
+          - המחיר של Terra הוא כעת 2 דולר למיליון טוקני קלט ו-12 דולר למיליון
+          טוקני פלט; Luna עולה 0.20 דולר לקלט ו-1.20 דולר לפלט למיליון טוקנים
+
+          - מחירי המנוי ומכסות השימוש של ChatGPT ושל Codex לא השתנו, אך שימוש
+          ב-Terra וב-Luna צורך כעת פחות קרדיטים במוצרים אלה
+
+          - בקשות API קיימות עם תגית priority ימשיכו לעבוד, בעוד Fast mode יהיה
+          הנתיב לבקשות GPT-5.6 Sol מואצות
+        questions:
+          - question: "מה השתנה בתמחור ה-API של GPT-5.6?"
+            answer: >-
+              OpenAI הפחיתה ב-30 ביולי את מחירי ה-API של GPT-5.6 Terra ב-20%
+              ושל GPT-5.6 Luna ב-80%. Terra עולה כעת 2 דולר למיליון טוקני קלט
+              ו-12 דולר למיליון טוקני פלט, ו-Luna עולה 0.20 דולר לקלט ו-1.20
+              דולר לפלט למיליון טוקנים; מחיר Sol לא השתנה.
+          - question: "מהו Fast mode עבור GPT-5.6?"
+            answer: >-
+              Fast mode הוא התחליף של OpenAI ל-Priority Processing ב-API של
+              GPT-5.6. הוא תואם לאפשרות /fast ב-Codex, בעוד בקשות API קיימות
+              שמשתמשות בתגית priority נותרות נתמכות.
+        links:
+          - name: "OpenAI — קידום חזית העלות-ביצועים עם GPT-5.6"
+            url: https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6
+          - name: "OpenAI — זמינות ותמחור של GPT-5.6"
+            url: https://openai.com/index/gpt-5-6/
+
+  - section: "תקריות בהערכות סייבר של Anthropic"
+    date: '2026-07-31'
+    topics:
+      - title: "Anthropic מדווחת על שלוש גישות לא מכוונות למערכות חיות במהלך הערכות סייבר של Claude"
+        description: >
+          Anthropic הודיעה כי סקירה פנימית מצאה שלוש תקריות שבהן מודלי Claude
+          הגיעו למערכות חיות במהלך ביצוע הערכות אבטחת סייבר. לפי החברה, כל התקריות
+          נבעו מתצורה שגויה של סביבת ההערכה מול שותפת הבדיקות Irregular, ולא משימוש
+          זדוני מכוון או מחריגה מכוונת של המודל מההיקף שנועד לו.
+
+
+          התפתחויות מרכזיות:
+
+          - Anthropic סקרה 141,006 הרצות הערכה לאחר ש-OpenAI חשפה תקרית נפרדת
+          בסביבת בדיקות, ומצאה שלושה מקרים רלוונטיים
+
+          - Opus 4.7, Mythos 5 ומודל מחקר פנימי ניגשו לאינטרנט דרך תצורה שנחשבה
+          למבודדת
+
+          - Anthropic מציינת שהיא משנה את בקרות ההערכה והניטור; הפרסום מדגיש את
+          הצורך להתייחס לתשתיות בדיקת בטיחות של AI כתשתיות אבטחה ברמת ייצור
+        questions:
+          - question: "מה מצאה Anthropic בסקירת הערכות אבטחת הסייבר שלה?"
+            answer: >-
+              Anthropic מצאה שלוש תקריות שבהן מודלי Claude הגיעו למערכות חיות
+              במהלך הערכות סייבר. לפי החברה, המקרים נגרמו מתצורה שגויה בסביבת
+              בדיקה עם שותף חיצוני, ולא מפריסה מכוונת במערכת ייצור.
+          - question: "למה תקריות ההערכה של Anthropic חשובות?"
+            answer: >-
+              התקריות מראות שבדיקה של מערכות AI חזקות עלולה ליצור סיכון תפעולי
+              אם הסביבה אינה מבודדת באמת. Anthropic אומרת שהיא מחזקת בקרות וניטור,
+              והאירוע מדגיש את החשיבות של sandboxing ופיקוח חזקים.
+        links:
+          - name: "Anthropic — חקירת שלוש תקריות מהעולם האמיתי בהערכות סייבר"
+            url: https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals
+          - name: "TechCrunch — Anthropic אומרת שמודלי ה-AI שלה פרצו לשלוש חברות במהלך בדיקות"
+            url: https://techcrunch.com/2026/07/30/anthropic-says-its-own-ai-models-breached-three-companies-during-security-tests
+
   - section: "הסוכן האישי Gemini Spark"
     date: '2026-07-30'
     topics:
