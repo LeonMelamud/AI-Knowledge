@@ -2,6 +2,45 @@
 # מקטעים בני יותר מ-6 חודשים מוסתרים אוטומטית (client/src/lib/data.ts)
 # וניתן להסירם פיזית עם: node client/scripts/prune-news.mjs
 hot_news:
+  - section: "Meta Muse Code ו-Muse Spark 1.2"
+    date: '2026-08-07'
+    topics:
+      - title: "Meta משחררת את Muse Code בגרסת בטא, סוכן קוד למסוף שמופעל על ידי Muse Spark 1.2"
+        description: >
+          Meta שחררה בגרסת בטא את Muse Code, סוכן קוד מבוסס מסוף עבור macOS ו-Linux,
+          לצד מודל Muse Spark 1.2 שממוקד בכתיבת קוד. המערכת נועדה לתכנן שינויים,
+          לכתוב קוד ולאמת תוצאות במאגרי קוד גדולים, תוך שמירה על יכולת התאוששות
+          גם במשימות הנדסיות ארוכות.
+
+
+          התפתחויות מרכזיות:
+
+          - Muse Code יכול לתאם תת-סוכנים אסינכרוניים מתמשכים, שנותרים פעילים
+          לאורך הסשן במקום להיווצר מחדש עבור כל משימה בנפרד
+
+          - יומן אירועים מקומי מסוג append-only מתעד קריאות למודל, הרצות כלים,
+          אישורים ועריכות, וכך מאפשר למשימה שנקטעה לחזור למצב הקודם שלה
+
+          - לפי Meta, ‏Muse Spark 1.2 משפר יצירת קוד, ניפוי שגיאות מורכבות,
+          הבנת מאגרי קוד וזרימות עבודה מלאות למפתחים; המודל זמין ב-Muse Code
+          ובאמצעות Meta Model API
+        questions:
+          - question: "מהו Meta Muse Code?"
+            answer: >-
+              Muse Code הוא סוכן הקוד של Meta בגרסת בטא עבור מסופי macOS ו-Linux.
+              הוא מופעל על ידי Muse Spark 1.2 ונועד לטפל בעבודת הנדסת תוכנה מורכבת
+              במאגרי קוד גדולים — מתכנון ועריכה ועד אימות התוצאות.
+          - question: "כיצד Muse Code מטפל במשימות קוד ארוכות?"
+            answer: >-
+              Muse Code משתמש בתת-סוכנים אסינכרוניים מתמשכים וביומן אירועים מקומי
+              שמתעד קריאות למודל, הרצות כלים, אישורים ועריכות. לפי Meta, כך הסוכן
+              נמנע מאיסוף מידע כפול במהלך הסשן ויכול להתחדש בדיוק לאחר קריסה.
+        links:
+          - name: "Meta AI — הצגת Muse Code ו-Muse Spark 1.2"
+            url: https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2
+          - name: "Reuters — Meta משיקה כלי קוד חדש מבוסס Muse Spark 1.2"
+            url: https://www.reuters.com/technology/meta-launches-new-ai-coding-tool-powered-by-muse-spark-12-2026-08-05
+
   - section: "עדכוני מחיר ומהירות ל-GPT-5.6"
     date: '2026-07-31'
     topics:

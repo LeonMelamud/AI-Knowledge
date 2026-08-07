@@ -2,6 +2,49 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+  - section: Meta Muse Code and Muse Spark 1.2
+    date: '2026-08-07'
+    topics:
+      - title: 'Meta releases Muse Code beta, a terminal coding agent powered by Muse Spark 1.2'
+        description: >
+          Meta has released Muse Code in beta, a terminal-based coding agent for
+          macOS and Linux, alongside the coding-focused Muse Spark 1.2 model. The
+          system is designed to plan changes, write code and validate results across
+          large repositories, while keeping work recoverable during long-running
+          engineering tasks.
+
+
+          Key developments:
+
+          - Muse Code can coordinate persistent asynchronous background subagents,
+          which remain active through a session rather than being created for each
+          individual task
+
+          - Its local append-only event log records model calls, tool runs,
+          approvals and edits, allowing a crashed task to resume from its prior state
+
+          - Meta says Muse Spark 1.2 improves code generation, complex debugging,
+          codebase understanding and end-to-end developer workflows; the model is
+          available in Muse Code and through the Meta Model API
+        questions:
+          - question: What is Meta Muse Code?
+            answer: >-
+              Muse Code is Meta's beta terminal coding agent for macOS and Linux.
+              Powered by the Muse Spark 1.2 model, it is intended to handle complex
+              software-engineering work across large repositories by planning,
+              editing code and validating the results.
+          - question: How does Muse Code handle long-running coding tasks?
+            answer: >-
+              Muse Code uses persistent asynchronous subagents and a local event log
+              that records model calls, tool runs, approvals and edits. Meta says
+              this lets the agent avoid redundant work during a session and resume
+              precisely after a crash.
+        links:
+          - name: Meta AI — Introducing Muse Code and Muse Spark 1.2
+            url: https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2
+          - name: Reuters — Meta launches new AI coding tool powered by Muse Spark 1.2
+            url: https://www.reuters.com/technology/meta-launches-new-ai-coding-tool-powered-by-muse-spark-12-2026-08-05
+
   - section: GPT-5.6 Price and Speed Updates
     date: '2026-07-31'
     topics:
