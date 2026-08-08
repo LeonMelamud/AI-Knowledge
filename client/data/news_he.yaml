@@ -2,6 +2,48 @@
 # מקטעים בני יותר מ-6 חודשים מוסתרים אוטומטית (client/src/lib/data.ts)
 # וניתן להסירם פיזית עם: node client/scripts/prune-news.mjs
 hot_news:
+  - section: "עדכון GPT-5.6 ב-ChatGPT"
+    date: '2026-08-08'
+    topics:
+      - title: "OpenAI מעדכנת את GPT-5.6 Sol ב-ChatGPT ומעניקה למשתמשים חינמיים שיחות טקסט ללא הגבלה עם GPT-5.6 Luna"
+        description: >
+          OpenAI עדכנה את חוויית GPT-5.6 Sol ב-ChatGPT עבור משתמשי Plus ו-Pro,
+          והוסיפה שליטה בבחירת רמת מאמץ ההסקה של התשובה. במקביל, החברה הפכה את
+          GPT-5.6 Luna למודל ברירת המחדל למשתמשים חינמיים והרחיבה את הגישה אליו
+          לשיחות טקסט ללא הגבלת שימוש.
+
+
+          התפתחויות מרכזיות:
+
+          - העדכון ל-Sol ב-ChatGPT נועד לספק תשובות ממוקדות ואמינות יותר מבחינה
+          עובדתית, ומשתמש באותו מודל גם לתשובות Instant וגם להסקה מעמיקה בתוכניות
+          Plus ו-Pro
+
+          - מחוון מאמץ ההסקה מאפשר למשתמשים זכאים בתוכניות בתשלום לבחור כמה
+          חשיבה ישקיע Sol בכל תשובה; הגרסה המעודכנת של Sol מוגבלת לחוויית הצ'אט
+          ב-ChatGPT ולא חלה על Codex או על ChatGPT Work
+
+          - משתמשים חינמיים מקבלים כעת כברירת מחדל את GPT-5.6 Luna לשיחות טקסט
+          ללא הגבלה; כפתור Think מעניק גישה לתשובות עם רמת הסקה גבוהה יותר
+          כששאלה דורשת עבודה נוספת
+        questions:
+          - question: "מה השתנה ב-GPT-5.6 Sol עבור משתמשי ChatGPT?"
+            answer: >-
+              OpenAI עדכנה את גרסת GPT-5.6 Sol ב-ChatGPT עבור משתמשי Plus ו-Pro
+              כדי לספק תשובות ממוקדות ואמינות יותר. משתמשים זכאים יכולים גם
+              לבחור בעזרת מחוון את רמת מאמץ ההסקה עבור כל תשובה.
+          - question: "איזה מודל מקבלים משתמשי ChatGPT החינמיים לאחר עדכון GPT-5.6?"
+            answer: >-
+              משתמשים חינמיים מקבלים כעת את GPT-5.6 Luna כמודל ברירת המחדל
+              לשיחות טקסט ללא הגבלה. הם יכולים להשתמש בכפתור Think כאשר נדרשת
+              יותר הסקה, בעוד חוויית GPT-5.6 Sol המעודכנת זמינה בתוכניות
+              ChatGPT בתשלום.
+        links:
+          - name: "OpenAI — שיפור GPT-5.6 Sol ב-ChatGPT והרחבת הגישה ל-GPT-5.6 Luna"
+            url: https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt
+          - name: "The New Stack — עדכון GPT-5.6 Sol ב-ChatGPT"
+            url: https://thenewstack.io/gpt-sol-chatgpt-split
+
   - section: "Meta Muse Code ו-Muse Spark 1.2"
     date: '2026-08-07'
     topics:
