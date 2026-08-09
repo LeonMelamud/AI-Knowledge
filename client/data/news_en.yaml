@@ -2,6 +2,49 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+  - section: OpenAI Astra Cybersecurity Safeguards
+    date: '2026-08-09'
+    topics:
+      - title: 'OpenAI pauses some Astra work after evaluations raise a possible critical cyber-capability threshold'
+        description: >
+          OpenAI says preliminary internal evaluations of Astra, an upcoming model,
+          show enough progress in agentic coding and cybersecurity that it cannot rule
+          out a critical cyber-capability level under its Preparedness Framework. The
+          company is pausing Astra activities that do not satisfy strengthened security
+          controls while it continues to assess the model.
+
+
+          Key developments:
+
+          - OpenAI is moving higher-capability work into isolated testing environments
+          with restricted network and tool access, sandboxed execution, stronger model
+          weight protection and encryption, and additional monitoring
+
+          - The company says the preliminary finding does not mean Astra has been
+          released or that a final capability determination has been made; further
+          benchmarking and expert assessment are continuing
+
+          - OpenAI plans to work with government agencies and selected AI-safety
+          organizations to test the model's capabilities before any broader deployment
+        questions:
+          - question: Why did OpenAI pause some work on Astra?
+            answer: >-
+              OpenAI's preliminary evaluations found significant advances in Astra's
+              agentic coding and cybersecurity performance. Under its Preparedness
+              Framework, the company cannot yet rule out a critical cyber-capability
+              threshold, so it paused activities that do not meet strengthened security
+              requirements.
+          - question: What new safeguards is OpenAI applying to Astra?
+            answer: >-
+              OpenAI says it is using isolated test environments, restricted network
+              and tool access, sandboxed execution, enhanced protection and encryption
+              for model weights, plus additional monitoring and detection capabilities.
+        links:
+          - name: OpenAI — Responding to the next frontier of critical cyber capabilities
+            url: https://openai.com/index/responding-next-frontier-critical-cyber-capabilities
+          - name: Reuters — OpenAI flags possible critical cybersecurity risk in upcoming Astra model
+            url: https://www.reuters.com/legal/litigation/openai-flags-possible-critical-cybersecurity-risk-upcoming-model-tightens-2026-08-07
+
   - section: GPT-5.6 ChatGPT Update
     date: '2026-08-08'
     topics:
