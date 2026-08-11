@@ -2,6 +2,50 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+  - section: OpenAI Daybreak and GPT-5.6-Cyber
+    date: '2026-08-11'
+    topics:
+      - title: 'OpenAI expands Daybreak and introduces GPT-5.6-Cyber for approved defensive-security work'
+        description: >
+          OpenAI has expanded its Daybreak program with Blue and Red access tiers for
+          approved cybersecurity defenders, and introduced GPT-5.6-Cyber, a specialized
+          model built on GPT-5.6 Sol. The company says the Red-tier model is designed to
+          help authorized practitioners with advanced vulnerability research, exploit-chain
+          development and red-team work under identity checks, monitoring and use controls.
+
+
+          Key developments:
+
+          - Daybreak Blue removes some system-level cybersecurity guardrails for approved
+          defenders, while Daybreak Red provides access to GPT-5.6-Cyber for higher-risk,
+          dual-use work by vetted individuals and organizations
+
+          - OpenAI says GPT-5.6-Cyber completed 95.0% of its internal advanced-cyber
+          request evaluation, versus 1.5% for GPT-5.6 Sol with standard safeguards; these
+          are company-reported internal results, not an independent benchmark
+
+          - OpenAI says its researchers used the model to find two previously unknown V8
+          vulnerabilities, reported them to Google through coordinated disclosure, and that
+          one was fixed as CVE-2026-15903
+        questions:
+          - question: What is OpenAI Daybreak?
+            answer: >-
+              Daybreak is OpenAI's controlled-access program for approved cybersecurity
+              defenders. Blue access relaxes some system-level cyber guardrails for
+              legitimate defensive tasks, while Red access is intended for vetted work such
+              as advanced vulnerability research, exploit development and red teaming.
+          - question: Who can access GPT-5.6-Cyber?
+            answer: >-
+              GPT-5.6-Cyber is available through Daybreak Red to approved individuals and
+              organizations conducting authorized cybersecurity work. OpenAI says access is
+              governed by identity verification, account security, monitoring, approved-use
+              restrictions and legal attestations.
+        links:
+          - name: OpenAI — Expanding Daybreak as the Cyber Defense Window Narrows
+            url: https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows
+          - name: OpenAI — Daybreak access for cybersecurity defenders
+            url: https://openai.com/daybreak/partners/
+
   - section: OpenAI Astra Cybersecurity Safeguards
     date: '2026-08-09'
     topics:
