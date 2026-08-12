@@ -2,6 +2,41 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+  - section: Google Gemini Reaches 1 Billion Monthly Users
+    date: '2026-08-12'
+    topics:
+      - title: 'Google says the Gemini app has surpassed 1 billion monthly active users'
+        description: >
+          Google says its Gemini app has passed 1 billion monthly active users, making it
+          the company’s fastest-growing product in its history. The milestone underscores
+          the scale of consumer adoption for Google’s AI assistant, although the announcement
+          does not provide a detailed breakdown of usage by feature, country or subscription tier.
+
+
+          Key developments:
+
+          - Google announced the milestone on August 11 and describes Gemini as a more
+          personal, proactive and capable assistant for its next phase of growth
+
+          - The figure covers monthly users of the Gemini app, not necessarily paid
+          subscribers or API customers
+
+          - The company did not disclose comparable engagement, revenue or retention metrics
+          in the announcement
+        questions:
+          - question: How many monthly users does the Gemini app have?
+            answer: >-
+              Google says the Gemini app has surpassed 1 billion monthly active users.
+              The company announced the milestone on August 11, 2026.
+          - question: Does 1 billion Gemini users mean 1 billion paid subscribers?
+            answer: >-
+              No. Google’s announcement refers to monthly users of the Gemini app. It does
+              not state how many of those users are on paid plans, use the API or actively
+              use particular Gemini features.
+        links:
+          - name: Google — More than 1 billion people are using the Gemini app every month
+            url: https://blog.google/innovation-and-ai/products/gemini-app/one-billion-monthly-users
+
   - section: OpenAI Daybreak and GPT-5.6-Cyber
     date: '2026-08-11'
     topics:
