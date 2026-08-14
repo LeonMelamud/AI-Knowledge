@@ -2,6 +2,45 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+  - section: OpenAI Ultrafast Mode for GPT-5.6 Sol
+    date: '2026-08-14'
+    topics:
+      - title: 'OpenAI previews Ultrafast mode, running GPT-5.6 Sol at up to 14 times standard speed'
+        description: >
+          OpenAI has introduced Ultrafast, a limited-preview API service tier for
+          GPT-5.6 Sol that it says can run the model at up to 14 times standard
+          processing speed. Powered by Cerebras infrastructure, the tier is aimed
+          at products where low latency matters alongside frontier-model capability.
+
+
+          Key developments:
+
+          - OpenAI says Ultrafast can generate up to 750 output tokens per second,
+          and is initially available only to a select group of customers
+
+          - The company positions the tier for time-sensitive workflows including
+          live support, commerce, developer agents, financial research and incident response
+
+          - Ultrafast is a speed class for GPT-5.6 Sol rather than a new model;
+          availability will expand as capacity grows, according to OpenAI
+        questions:
+          - question: What is OpenAI Ultrafast mode?
+            answer: >-
+              Ultrafast is OpenAI's limited-preview API service tier for GPT-5.6
+              Sol. OpenAI says it uses Cerebras infrastructure to run the model at
+              up to 14 times standard speed, with output rates of up to 750 tokens
+              per second.
+          - question: Who can use GPT-5.6 Sol Ultrafast today?
+            answer: >-
+              OpenAI says GPT-5.6 Sol on Ultrafast mode is currently available in
+              limited preview to a select group of customers. The company plans to
+              expand access as capacity grows.
+        links:
+          - name: OpenAI — Previewing Ultrafast mode for GPT-5.6 Sol
+            url: https://openai.com/index/previewing-ultrafast
+          - name: Cerebras — Accelerating GPT-5.6 Sol Ultrafast with OpenAI
+            url: https://www.cerebras.ai/blog/accelerating-gpt-5-6-sol-ultrafast-with-openai
+
   - section: Google Gemini Reaches 1 Billion Monthly Users
     date: '2026-08-12'
     topics:

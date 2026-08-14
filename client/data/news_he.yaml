@@ -2,6 +2,45 @@
 # מקטעים בני יותר מ-6 חודשים מוסתרים אוטומטית (client/src/lib/data.ts)
 # וניתן להסירם פיזית עם: node client/scripts/prune-news.mjs
 hot_news:
+  - section: "מצב Ultrafast של OpenAI עבור GPT-5.6 Sol"
+    date: '2026-08-14'
+    topics:
+      - title: "OpenAI מציגה בתצוגה מקדימה את מצב Ultrafast, שמריץ את GPT-5.6 Sol במהירות של עד פי 14"
+        description: >
+          OpenAI הציגה את Ultrafast, שכבת שירות API בתצוגה מקדימה מוגבלת עבור
+          GPT-5.6 Sol, שלדבריה יכולה להריץ את המודל במהירות של עד פי 14 מהעיבוד
+          הרגיל. השכבה, המופעלת על תשתית של Cerebras, מיועדת למוצרים שבהם זמן
+          תגובה נמוך חשוב לצד יכולות של מודל חזית.
+
+
+          התפתחויות מרכזיות:
+
+          - לפי OpenAI, ‏Ultrafast יכול להפיק עד 750 טוקני פלט בשנייה, והוא זמין
+          תחילה רק לקבוצה מצומצמת של לקוחות
+
+          - החברה מייעדת את השכבה לזרימות עבודה תלויות-זמן, כגון תמיכה חיה,
+          מסחר, סוכני פיתוח, מחקר פיננסי ותגובה לתקריות
+
+          - Ultrafast הוא סיווג מהירות עבור GPT-5.6 Sol ולא מודל חדש; לפי OpenAI,
+          הזמינות תורחב ככל שהקיבולת תגדל
+        questions:
+          - question: "מהו מצב Ultrafast של OpenAI?"
+            answer: >-
+              Ultrafast הוא שכבת שירות API של OpenAI בתצוגה מקדימה מוגבלת עבור
+              GPT-5.6 Sol. לפי החברה, הוא משתמש בתשתית Cerebras כדי להריץ את
+              המודל במהירות של עד פי 14 מהעיבוד הרגיל, ובקצב של עד 750 טוקנים
+              בשנייה.
+          - question: "מי יכול להשתמש כיום ב-GPT-5.6 Sol במצב Ultrafast?"
+            answer: >-
+              OpenAI מסרה ש-GPT-5.6 Sol במצב Ultrafast זמין כרגע בתצוגה מקדימה
+              מוגבלת לקבוצה נבחרת של לקוחות. החברה מתכננת להרחיב את הגישה ככל
+              שהקיבולת תגדל.
+        links:
+          - name: "OpenAI — תצוגה מקדימה של מצב Ultrafast עבור GPT-5.6 Sol"
+            url: https://openai.com/index/previewing-ultrafast
+          - name: "Cerebras — האצת GPT-5.6 Sol Ultrafast עם OpenAI"
+            url: https://www.cerebras.ai/blog/accelerating-gpt-5-6-sol-ultrafast-with-openai
+
   - section: Gemini של Google חוצה מיליארד משתמשים חודשיים
     date: '2026-08-12'
     topics:
