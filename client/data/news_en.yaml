@@ -2,6 +2,80 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+  - section: Grok 4.6 for Long-Running Agents
+    date: '2026-08-15'
+    topics:
+      - title: 'xAI releases Grok 4.6 with a focus on long-running agents and interactive work'
+        description: >
+          xAI released Grok 4.6 on August 12. The company says the new model builds
+          on Grok 4.5 and is designed to sustain complex, multi-step work across
+          research, analysis, codebases and application-building tasks.
+
+
+          Key developments:
+
+          - xAI positions Grok 4.6 for long-running agents that need to retain
+          progress across many steps, rather than only answer a single prompt
+
+          - The release also targets more ambitious interactive and visual work,
+          including turning an idea into a polished application or work artifact
+
+          - xAI says the model received a longer supplemental training run using
+          curated reasoning, technical and engineering data before subsequent SFT
+          and reinforcement-learning stages
+        questions:
+          - question: What is Grok 4.6?
+            answer: >-
+              Grok 4.6 is xAI's model release announced on August 12, 2026. The
+              company says it builds on Grok 4.5 with particular emphasis on
+              long-running agents and ambitious interactive and visual work.
+          - question: What tasks is Grok 4.6 designed for?
+            answer: >-
+              xAI says Grok 4.6 is intended for complex multi-step tasks, such as
+              researching a topic, analyzing information, working across a codebase
+              and turning an idea into a polished application or work artifact.
+        links:
+          - name: xAI — Introducing Grok 4.6
+            url: https://x.ai/news/grok-4-6
+
+  - section: DeepSeek-V4-Pro-0813 Open Weights
+    date: '2026-08-15'
+    topics:
+      - title: 'DeepSeek publishes the official V4-Pro-0813 release with MIT-licensed weights'
+        description: >
+          DeepSeek has published DeepSeek-V4-Pro-0813 as the official release that
+          supersedes the V4-Pro preview. Its model card describes enhanced agentic
+          and production performance, a DSpark speculative-decoding module and
+          downloadable model weights under the MIT License.
+
+
+          Key developments:
+
+          - The release supports up to one million tokens of context, according to
+          the model card, and provides deployment and interactive-demo instructions
+
+          - DeepSeek recommends different sampling settings for agentic scenarios
+          and documents output lengths of up to 384K tokens at high or max reasoning
+          effort
+
+          - The MIT license permits reuse of the repository and model weights under
+          its terms, making the official release an open-weight option for local or
+          self-hosted evaluation
+        questions:
+          - question: What is DeepSeek-V4-Pro-0813?
+            answer: >-
+              DeepSeek-V4-Pro-0813 is the official release of DeepSeek-V4-Pro that
+              supersedes the preview version. DeepSeek describes it as having enhanced
+              agentic capabilities and production-environment performance improvements.
+          - question: Is DeepSeek-V4-Pro-0813 open weight?
+            answer: >-
+              Yes. The DeepSeek-V4-Pro-0813 model repository states that the repository
+              and model weights are licensed under the MIT License, and it includes
+              instructions for local inference and interactive demonstrations.
+        links:
+          - name: DeepSeek — DeepSeek-V4-Pro-0813 model card and weights
+            url: https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813
+
   - section: OpenAI Ultrafast Mode for GPT-5.6 Sol
     date: '2026-08-14'
     topics:
