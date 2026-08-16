@@ -5,6 +5,7 @@ import { usePageMeta } from '../lib/usePageMeta'
 import Markdown from '../components/Markdown'
 import QAList from '../components/QAList'
 import RSSFeed from '../components/RSSFeed'
+import SectionHero from '../components/SectionHero'
 
 /** link URL -> file in images/news-auto/, generated at build time by scripts/fetch-news-images.mjs */
 type ImageManifest = Record<string, string>
@@ -28,16 +29,16 @@ function SectionBanner({ section, locale }: { section: NewsSection; locale: stri
     new Date(section.date).toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' })
 
   return (
-    <div className="relative h-40 overflow-hidden rounded-2xl shadow-md sm:h-44">
+    <div className="relative h-40 overflow-hidden sm:h-44">
       <img
         src={`${import.meta.env.BASE_URL}images/news/${img}`}
         alt=""
         className="absolute inset-0 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/35 to-stone-950/10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/35 to-ink/10" />
       <div className="absolute inset-x-0 bottom-0 p-5">
-        <h2 className="font-serif text-2xl font-bold leading-tight text-white">{section.section}</h2>
-        {date && <p className="mt-0.5 text-sm font-medium text-stone-200">{date}</p>}
+        <h2 className="display-m text-canvas">{section.section}</h2>
+        {date && <p className="mt-0.5 text-sm font-medium text-canvas/70">{date}</p>}
       </div>
     </div>
   )
@@ -60,15 +61,15 @@ function NewsSectionBlock({ section, locale, manifest }: { section: NewsSection;
           return (
           <article
             key={topic.title}
-            className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition-shadow duration-200 hover:shadow-md"
+            className="border border-hairline bg-surface-raised p-6"
           >
-            <h3 className="text-xl font-bold text-stone-900">{topic.title}</h3>
+            <h3 className="text-xl font-bold text-ink">{topic.title}</h3>
             {auto && (
               <img
                 src={`${import.meta.env.BASE_URL}images/news-auto/${auto}`}
                 alt={topic.title}
                 loading="lazy"
-                className="mx-auto mt-4 block max-h-80 max-w-full rounded-xl border border-stone-200"
+                className="mx-auto mt-4 block max-h-80 max-w-full border border-hairline"
               />
             )}
             {topic.description && (
@@ -82,7 +83,7 @@ function NewsSectionBlock({ section, locale, manifest }: { section: NewsSection;
                 src={`${import.meta.env.BASE_URL}images/${img}`}
                 alt={topic.title}
                 loading="lazy"
-                className="mx-auto mt-4 block max-h-80 max-w-full rounded-lg border border-stone-200"
+                className="mx-auto mt-4 block max-h-80 max-w-full border border-hairline"
               />
             ))}
             {topic.links && topic.links.length > 0 && (
@@ -93,7 +94,7 @@ function NewsSectionBlock({ section, locale, manifest }: { section: NewsSection;
                       href={link.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-block rounded-full bg-orange-50 px-3 py-1.5 text-sm font-medium text-orange-900 transition-colors duration-200 hover:bg-orange-100"
+                      className="inline-block border border-hairline px-3 py-1.5 text-sm text-ink transition-colors duration-200 hover:bg-ink hover:text-canvas"
                     >
                       {link.name} ↗
                     </a>
@@ -126,28 +127,35 @@ export default function HotNews() {
   usePageMeta(t('hotNewsTitle'), t('hotNewsDescription'))
 
   return (
-    <div className="space-y-10">
-      <div>
-        <h1 className="font-serif text-4xl font-black text-stone-900">{t('hotNewsTitle')}</h1>
-        <div className="mt-2 h-1 w-16 rounded-full bg-orange-700" />
-        <p className="mt-3 text-sm text-stone-600">{t('hotNewsDescription')}</p>
-        <p className="mt-1 text-xs text-stone-400">{t('hotNewsDisclaimer')}</p>
-      </div>
+    <>
+      <SectionHero routeId="hot-news" title={t('hotNewsTitle')} />
 
-      <RSSFeed />
-
-      {sections.map((section, i) => (
-        <NewsSectionBlock key={`${section.section}-${i}`} section={section} locale={locale} manifest={manifest} />
-      ))}
-
-      {extraEnglish.length > 0 && (
-        <div dir="ltr" className="space-y-10 border-t border-stone-200 pt-8 text-start">
-          <p className="text-sm font-medium text-stone-500">More news (English)</p>
-          {extraEnglish.map((section, i) => (
-            <NewsSectionBlock key={`en-${section.section}-${i}`} section={section} locale="en-US" manifest={manifest} />
-          ))}
+      <div className="mx-auto max-w-[1280px] space-y-10 px-4 py-12">
+        <div className="max-w-2xl">
+          <p className="body-l text-ink-muted">{t('hotNewsDescription')}</p>
+          <p className="mt-2 font-mono text-xs text-ink-faint">{t('hotNewsDisclaimer')}</p>
         </div>
-      )}
-    </div>
+
+        <RSSFeed />
+
+        {sections.map((section, i) => (
+          <NewsSectionBlock key={`${section.section}-${i}`} section={section} locale={locale} manifest={manifest} />
+        ))}
+
+        {extraEnglish.length > 0 && (
+          <div dir="ltr" className="space-y-10 border-t border-hairline pt-8 text-start">
+            <p className="label text-ink-faint">More news (English)</p>
+            {extraEnglish.map((section, i) => (
+              <NewsSectionBlock
+                key={`en-${section.section}-${i}`}
+                section={section}
+                locale="en-US"
+                manifest={manifest}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </>
   )
 }

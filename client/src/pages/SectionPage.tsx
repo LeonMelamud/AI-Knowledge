@@ -5,79 +5,105 @@ import { useI18n } from '../lib/i18n'
 import { usePageMeta } from '../lib/usePageMeta'
 import Markdown from '../components/Markdown'
 import QAList from '../components/QAList'
+import SectionRail, { slugify } from '../components/SectionRail'
+import SectionHero from '../components/SectionHero'
 
-function ConceptCard({ item }: { item: ConceptItem }) {
+function ConceptCard({ item, index }: { item: ConceptItem; index: number }) {
   const { t } = useI18n()
   const [expanded, setExpanded] = useState(false)
   const hasMore = Boolean(item.fullDescription || item.codeExample || item.images?.length)
 
   return (
-    <article className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition-shadow duration-200 hover:shadow-md">
-      <h2 className="text-lg font-semibold text-stone-900">{item.name}</h2>
-      <p className="mt-2 text-sm leading-relaxed text-stone-600">{item.shortDescription}</p>
+    <article id={slugify(item.name)} className="border-b border-hairline py-8 scroll-mt-24">
+      <div className="flex items-baseline gap-4">
+        <span className="font-mono text-xs text-ink-faint">{String(index + 1).padStart(2, '0')}</span>
+        <div className="min-w-0 flex-1">
+          <h2 className="display-m">{item.name}</h2>
+          <p className="mt-3 max-w-2xl text-base font-light leading-relaxed text-ink-muted">
+            {item.shortDescription}
+          </p>
 
-      {hasMore && (
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="mt-3 cursor-pointer text-sm font-medium text-orange-800 transition-colors duration-150 hover:text-orange-950"
-        >
-          {expanded ? t('hideInfo') : t('moreInfo')}
-        </button>
-      )}
+          {hasMore && (
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="label mt-4 cursor-pointer border-b border-ink pb-1 text-ink transition-opacity duration-150 hover:opacity-60"
+            >
+              {expanded ? t('hideInfo') : t('moreInfo')}
+            </button>
+          )}
 
-      {expanded && (
-        <div className="mt-4 border-t border-stone-100 pt-4">
-          {item.fullDescription && <Markdown>{item.fullDescription}</Markdown>}
-          {item.codeExample && (
-            <div className="mt-4">
-              <p className="mb-1 text-sm font-medium text-stone-800">{t('codeExample')}</p>
-              <pre className="overflow-x-auto rounded-lg bg-stone-900 p-4 text-xs leading-relaxed text-stone-100" dir="ltr">
-                <code>{item.codeExample}</code>
-              </pre>
+          {expanded && (
+            <div className="mt-6 border-s border-hairline ps-5">
+              {item.fullDescription && <Markdown>{item.fullDescription}</Markdown>}
+              {item.codeExample && (
+                <div className="mt-4">
+                  <p className="label mb-2 text-ink-faint">{t('codeExample')}</p>
+                  <pre
+                    className="overflow-x-auto bg-ink p-4 font-mono text-xs leading-relaxed text-canvas"
+                    dir="ltr"
+                  >
+                    <code>{item.codeExample}</code>
+                  </pre>
+                </div>
+              )}
+              {item.images?.map((img) => (
+                <img
+                  key={img}
+                  src={`${import.meta.env.BASE_URL}images/${img}`}
+                  alt={item.name}
+                  loading="lazy"
+                  decoding="async"
+                  className="mt-4 max-w-full border border-hairline"
+                />
+              ))}
             </div>
           )}
-          {item.images?.map((img) => (
-            <img
-              key={img}
-              src={`${import.meta.env.BASE_URL}images/${img}`}
-              alt={item.name}
-              loading="lazy"
-              className="mt-4 max-w-full rounded-lg border border-stone-200"
-            />
-          ))}
-        </div>
-      )}
 
-      {item.commonQuestions && <QAList items={item.commonQuestions} />}
+          {item.commonQuestions && <QAList items={item.commonQuestions} />}
+        </div>
+      </div>
     </article>
   )
 }
 
-function ToolCard({ item }: { item: ToolItem }) {
+function ToolCard({ item, index }: { item: ToolItem; index: number }) {
   return (
-    <article className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition-shadow duration-200 hover:shadow-md">
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h2 className="text-lg font-semibold text-stone-900">
-          {item.url ? (
-            <a href={item.url} target="_blank" rel="noreferrer" className="transition-colors duration-150 hover:text-orange-800">
-              {item.name} <span aria-hidden className="text-sm text-stone-400">↗</span>
-            </a>
-          ) : (
-            item.name
+    <article id={slugify(item.name)} className="border-b border-hairline py-8 scroll-mt-24">
+      <div className="flex items-baseline gap-4">
+        <span className="font-mono text-xs text-ink-faint">{String(index + 1).padStart(2, '0')}</span>
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h2 className="display-m">
+              {item.url ? (
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition-opacity duration-150 hover:opacity-60"
+                >
+                  {item.name}{' '}
+                  <span aria-hidden className="align-middle text-sm text-ink-faint">
+                    ↗
+                  </span>
+                </a>
+              ) : (
+                item.name
+              )}
+            </h2>
+            {item.company && <span className="font-mono text-xs text-ink-faint">{item.company}</span>}
+          </div>
+          {item.description && (
+            <div className="mt-3 max-w-2xl">
+              <Markdown>{item.description}</Markdown>
+            </div>
           )}
-        </h2>
-        {item.company && <span className="text-sm text-stone-400">{item.company}</span>}
+          {item.recentUpdates && (
+            <div className="mt-4 border-s-2 border-ink bg-surface p-4">
+              <Markdown>{item.recentUpdates}</Markdown>
+            </div>
+          )}
+        </div>
       </div>
-      {item.description && (
-        <div className="mt-2">
-          <Markdown>{item.description}</Markdown>
-        </div>
-      )}
-      {item.recentUpdates && (
-        <div className="mt-3 rounded-lg bg-orange-50 p-3">
-          <Markdown>{item.recentUpdates}</Markdown>
-        </div>
-      )}
     </article>
   )
 }
@@ -91,15 +117,25 @@ export default function SectionPage() {
 
   if (!result) return <Navigate to="/ai-basics" replace />
 
+  const railItems = result.section.items.map((item) => ({
+    id: slugify(item.name),
+    name: item.name,
+  }))
+
   return (
-    <div>
-      <h1 className="mb-1 font-serif text-4xl font-black text-stone-900">{result.section.title}</h1>
-      <div className="mb-6 mt-2 h-1 w-16 rounded-full bg-orange-700" />
-      <div className="space-y-4">
-        {result.kind === 'concept'
-          ? result.section.items.map((item) => <ConceptCard key={item.name} item={item} />)
-          : result.section.items.map((item) => <ToolCard key={item.name} item={item} />)}
+    <>
+      <SectionHero routeId={sectionId} title={result.section.title} count={result.section.items.length} />
+
+      <div className="mx-auto flex max-w-[1280px] gap-16 px-4">
+        <div className="min-w-0 flex-1">
+          {result.kind === 'concept'
+            ? result.section.items.map((item, i) => (
+                <ConceptCard key={item.name} item={item} index={i} />
+              ))
+            : result.section.items.map((item, i) => <ToolCard key={item.name} item={item} index={i} />)}
+        </div>
+        <SectionRail items={railItems} />
       </div>
-    </div>
+    </>
   )
 }

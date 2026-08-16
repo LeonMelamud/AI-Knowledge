@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useI18n } from '../lib/i18n'
 import { usePageMeta } from '../lib/usePageMeta'
+import SectionHero from '../components/SectionHero'
 
 // Encoder is lazy-loaded (rank table is large) and cached after first use.
 let encodePromise: Promise<(text: string) => number> | null = null
@@ -34,33 +35,34 @@ export default function Calculator() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl space-y-6">
-      <h1 className="font-serif text-4xl font-black text-stone-900">{t('tokenCalculator')}</h1>
-      <div className="mt-2 h-1 w-16 rounded-full bg-orange-700" />
+    <>
+      <SectionHero routeId="calculator" title={t('tokenCalculator')} />
 
-      <div className="space-y-4 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
+      <div className="mx-auto max-w-3xl space-y-6 px-4 py-12">
+
+      <div className="space-y-4 border border-hairline bg-surface-raised p-6">
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder={t('enterText')}
           rows={6}
-          className="w-full rounded-lg border border-stone-300 p-3 text-sm transition-colors duration-150 focus:border-orange-700 focus:outline-none focus:ring-1 focus:ring-orange-700"
+          className="w-full border border-hairline p-3 text-sm transition-colors duration-150 focus:border-ink focus:outline-none focus:ring-1 focus:ring-ink"
         />
         <button
           onClick={calculate}
           disabled={busy || !text}
-          className="cursor-pointer rounded-full bg-stone-900 px-6 py-2.5 text-sm font-medium text-white shadow-sm transition-colors duration-200 hover:bg-stone-700 disabled:cursor-not-allowed disabled:opacity-50"
+          className="cursor-pointer bg-ink px-6 py-2.5 text-sm font-medium text-canvas transition-colors duration-200 hover:bg-ink-muted disabled:cursor-not-allowed disabled:opacity-50"
         >
           {t('calculateTokens')}
         </button>
         {count !== null && (
-          <p className="rounded-lg bg-orange-50 p-4 text-sm font-medium text-orange-950">
+          <p className="bg-surface p-4 text-sm font-medium text-ink">
             {t('numberOfTokens')}: {count}
           </p>
         )}
       </div>
 
-      <div className="rounded-2xl border border-stone-200 bg-white p-6 text-sm leading-relaxed text-stone-600 shadow-sm">
+      <div className="border border-hairline bg-surface-raised p-6 text-sm leading-relaxed text-ink-muted">
         {t('tokenExplanation')
           .split('\n\n')
           .map((paragraph) => (
@@ -69,6 +71,7 @@ export default function Calculator() {
             </p>
           ))}
       </div>
-    </div>
+      </div>
+    </>
   )
 }
