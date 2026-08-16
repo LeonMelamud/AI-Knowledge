@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { useI18n } from '../lib/i18n'
 import MegaNav from './MegaNav'
-import TransitionSting from './TransitionSting'
 
 export default function Layout() {
   const { t } = useI18n()
@@ -15,7 +14,6 @@ export default function Layout() {
   return (
     <div className="flex min-h-screen flex-col bg-canvas text-ink">
       <MegaNav />
-      <TransitionSting />
 
       <main className="flex-1">
         <Outlet />

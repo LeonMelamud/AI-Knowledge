@@ -411,6 +411,16 @@ Recorded during implementation. Each is a deliberate choice, not an oversight.
 
 ### 1. Per-section stings are image-driven, not sixteen video files
 
+> **Superseded 2026-08-16 — the sting was removed entirely at the user's
+> request** ("the movement when going to a different tab, remove it, it's not
+> giving value"). `TransitionSting.tsx` and all `.sting` CSS are deleted; route
+> changes are now a plain swap under the 180ms view-transition cross-fade, which
+> was kept. The 16 hero images remain in use as page heroes via `SectionHero`, so
+> nothing generated was wasted. The contract suite now asserts the *absence* of
+> the sting — in the DOM across the old 620ms window and as dead CSS in the
+> bundle. The rest of this entry, and the regression writeup at the foot of the
+> document, are kept as the historical record of what was built and why.
+
 **Designed:** §5.2 specified 16 HyperFrames-rendered video stings, one per route.
 
 **Built:** each sting sweeps that route's *own generated hero image* across the
@@ -483,7 +493,9 @@ avoids hand-rolling a navigation wrapper.
 | Horizontal scroll at 390 / 768 / 1440 | none |
 | Non-blocking sting with all media blocked | pass, 25–466ms navigation |
 | Reduced motion suppresses sting + hero loop | pass |
-| Sting does not leak onto hero-less routes (mid-sting exit) | pass — regression, see below |
+| Sting does not leak onto hero-less routes (mid-sting exit) | pass — regression, see below; moot since the sting was removed |
+| Sting absent from DOM and bundle after removal | pass, both navigation cases |
+| Hot News ThursdAI sourcing disclaimer removed | pass, EN + HE |
 | Lighthouse (desktop) | Accessibility 100, Best Practices 100, SEO 100, Agentic 100 |
 | Core Web Vitals | LCP 123ms, CLS 0.00 |
 | JSON-LD | parses; WebSite + Organization + Person intact; logo 1200×630 |
