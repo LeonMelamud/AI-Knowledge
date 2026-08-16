@@ -107,7 +107,10 @@ export default function MegaNav() {
 
       <header className="sticky top-0 z-40 border-b border-hairline bg-canvas/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-[1280px] items-center gap-6 px-4 py-4">
-          <Link to="/" className="flex items-center gap-2.5" aria-label={t('heroTitle')}>
+          {/* No aria-label: the visible wordmark already names this link, and an
+              aria-label that differs from visible text fails the
+              label-content-name-mismatch check for voice-control users. */}
+          <Link to="/" className="flex items-center gap-2.5">
             <span className="flex h-8 w-8 items-center justify-center bg-ink text-sm font-semibold tracking-tight text-canvas">
               ai
             </span>
@@ -147,10 +150,10 @@ export default function MegaNav() {
                 </svg>
               </button>
             ))}
-            <NavLink to="/hot-news" className={linkClass}>
+            <NavLink to="/hot-news" viewTransition className={linkClass}>
               {t('hotNews')}
             </NavLink>
-            <NavLink to="/calculator" className={linkClass}>
+            <NavLink to="/calculator" viewTransition className={linkClass}>
               {t('tokenCalculator')}
             </NavLink>
           </nav>
@@ -159,7 +162,9 @@ export default function MegaNav() {
             <button
               onClick={() => setLang(lang === 'he' ? 'en' : 'he')}
               className="label cursor-pointer border border-hairline px-3 py-2 text-ink-muted transition-colors duration-200 hover:border-ink hover:text-ink"
-              aria-label="Switch language"
+              /* Accessible name must start with the visible text, or
+                 voice-control users cannot say what they see. */
+              aria-label={lang === 'he' ? 'EN — switch to English' : 'עב — החלף לעברית'}
             >
               {lang === 'he' ? 'EN' : 'עב'}
             </button>
@@ -190,21 +195,22 @@ export default function MegaNav() {
           >
             <div className="overflow-hidden">
               <div className="mx-auto max-w-[1280px] px-4 py-10">
-                <p className="label mb-6 text-ink-faint">{groups[id].label}</p>
+                <p className="label mb-6 text-ink-muted">{groups[id].label}</p>
                 <ul className="grid grid-cols-2 gap-x-12 gap-y-1 xl:grid-cols-3">
                   {groups[id].entries.map((entry, i) => (
                     <li key={entry.id}>
                       <NavLink
                         to={`/${entry.id}`}
+                        viewTransition
                         className="group flex items-baseline gap-3 border-b border-transparent py-2.5 transition-colors duration-150 hover:border-hairline"
                       >
-                        <span className="font-mono text-xs text-ink-faint">{pad(i)}</span>
+                        <span className="font-mono text-xs text-ink-muted">{pad(i)}</span>
                         <span className="min-w-0 truncate text-base text-ink-muted transition-colors duration-150 group-hover:text-ink">
                           {entry.title}
                         </span>
                         {/* Count sits directly beside the title — pushed to the
                             column edge it reads as an orphaned number. */}
-                        <span className="font-mono text-xs text-ink-faint">({entry.count})</span>
+                        <span className="font-mono text-xs text-ink-muted">({entry.count})</span>
                       </NavLink>
                     </li>
                   ))}
@@ -238,15 +244,16 @@ export default function MegaNav() {
           <nav className="px-4 py-6" aria-label="Mobile">
             {(Object.keys(groups) as MenuId[]).map((id) => (
               <section key={id} className="mb-8">
-                <p className="label mb-3 text-ink-faint">{groups[id].label}</p>
+                <p className="label mb-3 text-ink-muted">{groups[id].label}</p>
                 <ul>
                   {groups[id].entries.map((entry, i) => (
                     <li key={entry.id}>
                       <NavLink
                         to={`/${entry.id}`}
+                        viewTransition
                         className="flex items-baseline gap-3 border-b border-hairline py-3 text-ink-muted"
                       >
-                        <span className="font-mono text-xs text-ink-faint">{pad(i)}</span>
+                        <span className="font-mono text-xs text-ink-muted">{pad(i)}</span>
                         <span className="flex-1">{entry.title}</span>
                       </NavLink>
                     </li>
@@ -255,7 +262,7 @@ export default function MegaNav() {
               </section>
             ))}
             <section>
-              <p className="label mb-3 text-ink-faint">{t('specialSections')}</p>
+              <p className="label mb-3 text-ink-muted">{t('specialSections')}</p>
               <ul>
                 <li>
                   <NavLink to="/hot-news" className="block border-b border-hairline py-3 text-ink-muted">

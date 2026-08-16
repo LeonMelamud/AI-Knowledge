@@ -63,7 +63,7 @@ export default function SectionHero({
       <div className="mx-auto max-w-[1280px] px-4 py-20 sm:py-28">
         <h1 className="display-xl max-w-4xl">{title}</h1>
         {count !== undefined && (
-          <p className="label mt-6 text-ink-faint">
+          <p className="label mt-6 text-ink-muted">
             <span className="font-mono">{String(count).padStart(2, '0')}</span>
           </p>
         )}

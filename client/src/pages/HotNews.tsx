@@ -133,7 +133,7 @@ export default function HotNews() {
       <div className="mx-auto max-w-[1280px] space-y-10 px-4 py-12">
         <div className="max-w-2xl">
           <p className="body-l text-ink-muted">{t('hotNewsDescription')}</p>
-          <p className="mt-2 font-mono text-xs text-ink-faint">{t('hotNewsDisclaimer')}</p>
+          <p className="mt-2 font-mono text-xs text-ink-muted">{t('hotNewsDisclaimer')}</p>
         </div>
 
         <RSSFeed />
@@ -144,7 +144,7 @@ export default function HotNews() {
 
         {extraEnglish.length > 0 && (
           <div dir="ltr" className="space-y-10 border-t border-hairline pt-8 text-start">
-            <p className="label text-ink-faint">More news (English)</p>
+            <p className="label text-ink-muted">More news (English)</p>
             {extraEnglish.map((section, i) => (
               <NewsSectionBlock
                 key={`en-${section.section}-${i}`}

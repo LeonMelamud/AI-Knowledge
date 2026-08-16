@@ -71,7 +71,7 @@ export default function SectionRail({ items }: { items: RailItem[] }) {
                     : 'border-transparent text-ink-muted hover:text-ink'
                 }`}
               >
-                <span className="font-mono text-xs text-ink-faint">
+                <span className="font-mono text-xs text-ink-muted">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 {/* Single-line: Hebrew labels containing parenthesised Latin

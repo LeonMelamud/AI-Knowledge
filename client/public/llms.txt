@@ -1,18 +1,44 @@
-# AI Knowledge Base
+# Guide to AI — The AI Knowledge Base
 
-## Overview
-This site provides a comprehensive knowledge base about Artificial Intelligence, including latest news, model comparisons, and tools.
+> A bilingual (English / Hebrew) knowledge base covering artificial-intelligence
+> concepts, tools, news, and a browser-side token calculator. Static site, no
+> tracking, no account required.
 
-## Key Sections
-- /#/hot-news: Latest AI News and Updates
-- /#/models: Comparison of AI Models (GPT, Claude, etc.)
-- /#/tools: AI Tools and Resources
-- /#/articles: In-depth Articles
+## Knowledge
 
-## Content Format
-Content is structured in sections with topics, questions, and answers.
-The site supports English (en) and Hebrew (he).
+- [Fundamentals of Artificial Intelligence](https://ai-know.org/ai-basics): core concepts — AI, machine learning, neural networks, deep learning
+- [Advanced Concepts](https://ai-know.org/advanced_concepts): weights and biases, generative AI, AI ethics
+- [Advanced Techniques](https://ai-know.org/techniques): transfer learning, few-shot learning, retrieval-augmented generation
+- [Evaluation Metrics](https://ai-know.org/evaluation_metrics): how model performance is measured
+- [Tools and Libraries](https://ai-know.org/tools_and_libraries): TensorFlow, PyTorch, Keras and related tooling
+- [Key Applications](https://ai-know.org/applications): AI in healthcare, finance, and transportation
+- [Future Trends](https://ai-know.org/future_trends): AGI, quantum computing, human–AI interaction
 
-## API
-- /api/hot-news/:lang (GET): Retrieve news data
-- /api/hot-news/:lang (POST): Add news items
+## Tools and resources
+
+- [Language Tools](https://ai-know.org/chat-tools): conversational and language models
+- [AI Coding Agents](https://ai-know.org/coding-tools): coding assistants and agents
+- [Open-Source Libraries/Tools](https://ai-know.org/libraries): open-source AI projects
+- [Graphics Tools](https://ai-know.org/graphics): image, video, and audio generation
+- [Articles](https://ai-know.org/articles): long-form reading
+- [Educational Resources](https://ai-know.org/educational-resources): courses and learning material
+- [Productivity Tools](https://ai-know.org/productivity): AI-assisted productivity software
+
+## Current
+
+- [Hot News](https://ai-know.org/hot-news): recent developments in AI, refreshed daily
+- [Token Calculator](https://ai-know.org/calculator): count LLM tokens for any text, computed in the browser
+
+## Optional
+
+- [Privacy Policy](https://ai-know.org/privacy-policy)
+- [Terms of Service](https://ai-know.org/terms-of-service)
+- [Sitemap](https://ai-know.org/sitemap.xml)
+
+## Notes
+
+Every page is available in English and Hebrew; language is selected in the
+interface and stored locally. Content is authored as structured YAML and
+rendered as sections of items, each with a short description and, where
+relevant, expanded detail and common questions. There is no public API — the
+site is fully static.

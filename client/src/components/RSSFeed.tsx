@@ -35,7 +35,7 @@ export default function RSSFeed() {
               {item.title}
             </a>
             {item.pubDate && (
-              <span className="ms-2 text-xs text-ink-faint">{new Date(item.pubDate).toLocaleDateString()}</span>
+              <span className="ms-2 text-xs text-ink-muted">{new Date(item.pubDate).toLocaleDateString()}</span>
             )}
           </li>
         ))}

@@ -16,7 +16,7 @@ function ConceptCard({ item, index }: { item: ConceptItem; index: number }) {
   return (
     <article id={slugify(item.name)} className="border-b border-hairline py-8 scroll-mt-24">
       <div className="flex items-baseline gap-4">
-        <span className="font-mono text-xs text-ink-faint">{String(index + 1).padStart(2, '0')}</span>
+        <span className="font-mono text-xs text-ink-muted">{String(index + 1).padStart(2, '0')}</span>
         <div className="min-w-0 flex-1">
           <h2 className="display-m">{item.name}</h2>
           <p className="mt-3 max-w-2xl text-base font-light leading-relaxed text-ink-muted">
@@ -37,7 +37,7 @@ function ConceptCard({ item, index }: { item: ConceptItem; index: number }) {
               {item.fullDescription && <Markdown>{item.fullDescription}</Markdown>}
               {item.codeExample && (
                 <div className="mt-4">
-                  <p className="label mb-2 text-ink-faint">{t('codeExample')}</p>
+                  <p className="label mb-2 text-ink-muted">{t('codeExample')}</p>
                   <pre
                     className="overflow-x-auto bg-ink p-4 font-mono text-xs leading-relaxed text-canvas"
                     dir="ltr"
@@ -70,7 +70,7 @@ function ToolCard({ item, index }: { item: ToolItem; index: number }) {
   return (
     <article id={slugify(item.name)} className="border-b border-hairline py-8 scroll-mt-24">
       <div className="flex items-baseline gap-4">
-        <span className="font-mono text-xs text-ink-faint">{String(index + 1).padStart(2, '0')}</span>
+        <span className="font-mono text-xs text-ink-muted">{String(index + 1).padStart(2, '0')}</span>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <h2 className="display-m">
@@ -90,7 +90,7 @@ function ToolCard({ item, index }: { item: ToolItem; index: number }) {
                 item.name
               )}
             </h2>
-            {item.company && <span className="font-mono text-xs text-ink-faint">{item.company}</span>}
+            {item.company && <span className="font-mono text-xs text-ink-muted">{item.company}</span>}
           </div>
           {item.description && (
             <div className="mt-3 max-w-2xl">
