@@ -1,4 +1,8 @@
 import { heroFor, heroSrc } from '../lib/heroes'
+import HeroLoop from './HeroLoop'
+
+/** `/` redirects here, so this is the de-facto landing route. */
+const LANDING_ROUTE = 'ai-basics'
 
 /**
  * Full-bleed section hero.
@@ -46,6 +50,10 @@ export default function SectionHero({
           />
         </picture>
       )}
+
+      {/* Ambient motion, landing route only. Layered over the static image so
+          it replaces it once decoded rather than leaving a gap while it loads. */}
+      {routeId === LANDING_ROUTE && <HeroLoop />}
 
       {/* Scrim protects the display type. Kept light: the heroes are already
           high-key and the ink is near-black, so contrast has plenty of headroom

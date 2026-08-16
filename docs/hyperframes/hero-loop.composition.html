@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #e7e8eb;
+      }
+
+      /* Full-bleed fill lives on a child, never the composition root — the
+         producer's frame compositing can drop a background set on the root. */
+      #stage {
+        position: absolute;
+        inset: 0;
+        background: #e7e8eb;
+        overflow: hidden;
+      }
+
+      #plate {
+        position: absolute;
+        inset: -6%;
+        background-image: url('assets/hero.jpg');
+        background-size: cover;
+        background-position: center;
+        will-change: transform;
+      }
+
+      /* Soft directional light that breathes with the drift. */
+      #sheen {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          62% 78% at 32% 24%,
+          rgba(255, 255, 255, 0.55) 0%,
+          rgba(255, 255, 255, 0) 68%
+        );
+      }
+
+      /* Lifts the whole plate toward the site canvas value so the loop sits in
+         the same tonal family as the static heroes. */
+      #wash {
+        position: absolute;
+        inset: 0;
+        background: #e7e8eb;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="6"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div id="stage" class="clip" data-start="0" data-duration="6" data-track-index="1">
+        <div id="plate" data-layout-allow-overflow></div>
+        <div id="sheen"></div>
+        <div id="wash"></div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Seamless by construction: every property returns to its exact starting
+      // value at t=6, so the last rendered frame matches the first and the
+      // <video loop> wrap is invisible. Symmetric halves, no yoyo/repeat.
+      tl.fromTo(
+        '#plate',
+        { scale: 1, xPercent: 0, yPercent: 0 },
+        { scale: 1.05, xPercent: -1.2, yPercent: -0.8, duration: 3, ease: 'sine.inOut' },
+        0,
+      );
+      tl.to(
+        '#plate',
+        { scale: 1, xPercent: 0, yPercent: 0, duration: 3, ease: 'sine.inOut' },
+        3,
+      );
+
+      tl.fromTo('#sheen', { opacity: 0.28 }, { opacity: 0.46, duration: 3, ease: 'sine.inOut' }, 0);
+      tl.to('#sheen', { opacity: 0.28, duration: 3, ease: 'sine.inOut' }, 3);
+
+      tl.fromTo('#wash', { opacity: 0.42 }, { opacity: 0.36, duration: 3, ease: 'sine.inOut' }, 0);
+      tl.to('#wash', { opacity: 0.42, duration: 3, ease: 'sine.inOut' }, 3);
+
+      window.__timelines['main'] = tl;
+    </script>
+  </body>
+</html>
