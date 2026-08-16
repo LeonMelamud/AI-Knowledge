@@ -31,10 +31,17 @@ export default function TransitionSting() {
       return
     }
 
-    if (!shouldPlay()) return
-
     const id = location.pathname.replace(/^\//, '')
-    if (!heroFor(id)?.available) return
+
+    // Clear on the way out, never bail early while a sting is still mounted.
+    // Returning without this leaves `routeId` pointing at the previous route,
+    // and because the element is keyed on pathname React remounts it — replaying
+    // the *old* route's hero across a page that has no hero (the legal pages),
+    // then leaving it in the DOM with no timer to remove it.
+    if (!shouldPlay() || !heroFor(id)?.available) {
+      setRouteId(null)
+      return
+    }
 
     setRouteId(id)
     window.clearTimeout(timer.current)

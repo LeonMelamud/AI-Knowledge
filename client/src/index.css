@@ -6,8 +6,10 @@
    General Sans carries Latin; it contains zero Hebrew glyphs (verified against
    its cmap: 0 codepoints in U+0590-05FF). Hebrew therefore falls through to
    Assistant automatically, per glyph, with no language-conditional switching.
-   Assistant is a variable font (wght 200-800) subset to Hebrew only, so English
-   visitors never download it.
+   Assistant is a variable font (wght 200-800) subset to Hebrew only, which keeps
+   it at 33KB. Its `unicode-range` alone would spare English visitors the fetch,
+   but index.html preloads it unconditionally because the document defaults to
+   Hebrew — the preload is the deliberate trade, not an oversight.
 --------------------------------------------------------------------------- */
 
 @font-face {
