@@ -9,7 +9,7 @@ name: AI News Refresh (manual fallback)
 #
 #   Saturdays 09:00  AI-Knowledge Hot News (weekly, ThursdAI RSS)
 #                    news_{en,he}.yaml, sourced from https://sub.thursdai.news/feed
-#   Sundays   09:00  AI-Knowledge Tools & Knowledge Refresh
+#   Sundays   04:00  AI-Knowledge Tools & Knowledge Refresh
 #                    links_{en,he}.yaml + concepts_{en,he}.yaml
 #
 # Both push straight to main rather than opening a PR. Run this workflow from
