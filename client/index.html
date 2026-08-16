@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#9A3412" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Frank Ruhl Libre (Hebrew newspaper serif) for headings + Rubik for body; both cover Hebrew + Latin -->
-    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
+    <meta name="theme-color" content="#E7E8EB" />
+    <!-- Fonts are self-hosted (see src/index.css): General Sans for Latin, Assistant
+         for Hebrew. No third-party font request, so nothing blocks first paint.
+         The document defaults to Hebrew, so both primary faces are preloaded. -->
+    <link rel="preload" href="/fonts/Assistant-he-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/GeneralSans-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/GeneralSans-600.woff2" as="font" type="font/woff2" crossorigin />
     <title>Guide to AI - The AI Knowledge Base</title>
     <meta name="description" content="A comprehensive bilingual guide to artificial intelligence: AI concepts, tools, hot news, token calculator and more. מדריך מקיף לבינה מלאכותית." />
     <meta name="robots" content="index, follow" />
