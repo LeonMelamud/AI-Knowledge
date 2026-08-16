@@ -21,8 +21,8 @@ const names = (items, n) => items.slice(0, n).map((item) => item.name).join(', '
 // generated hero, so a missing file never produces a broken og:image tag.
 const SITE_CARD = 'og-image.png'
 const heroPath = (id) => {
-  const file = path.join(CLIENT_DIR, 'public', 'images', 'heroes', `${id}-1280.png`)
-  return existsSync(file) ? `images/heroes/${id}-1280.png` : SITE_CARD
+  const file = path.join(CLIENT_DIR, 'public', 'images', 'heroes', `${id}-og.jpg`)
+  return existsSync(file) ? `images/heroes/${id}-og.jpg` : SITE_CARD
 }
 
 const routes = [

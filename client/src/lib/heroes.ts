@@ -17,22 +17,22 @@ export interface Hero {
 }
 
 export const HEROES: Record<string, Hero> = {
-  'ai-basics': { subject: 'interlocking glass cubes', hue: 'cool neutral', available: false },
-  advanced_concepts: { subject: 'deep crystalline lattice', hue: 'indigo', available: false },
-  techniques: { subject: 'braided fibre-optic bundle', hue: 'teal', available: false },
-  evaluation_metrics: { subject: 'precision measurement gauges', hue: 'steel', available: false },
-  tools_and_libraries: { subject: 'modular stacked components', hue: 'amber', available: false },
-  applications: { subject: 'radiating conduit network', hue: 'green', available: false },
-  future_trends: { subject: 'dissolving particulate form', hue: 'violet', available: false },
-  'chat-tools': { subject: 'overlapping sound-wave membranes', hue: 'sky', available: false },
-  'coding-tools': { subject: 'machined interlocking gears', hue: 'graphite', available: false },
-  libraries: { subject: 'dense stacked strata', hue: 'sand', available: false },
-  graphics: { subject: 'refracting prism array', hue: 'spectral', available: false },
-  articles: { subject: 'layered translucent sheets', hue: 'bone', available: false },
-  'educational-resources': { subject: 'nested concentric rings', hue: 'olive', available: false },
-  productivity: { subject: 'aligned parallel rails', hue: 'slate', available: false },
-  'hot-news': { subject: 'rippling liquid surface', hue: 'copper', available: false },
-  calculator: { subject: 'abacus-like ordered spheres', hue: 'cool grey', available: false },
+  'ai-basics': { subject: 'interlocking glass cubes', hue: 'cool neutral', available: true },
+  advanced_concepts: { subject: 'deep crystalline lattice', hue: 'indigo', available: true },
+  techniques: { subject: 'braided fibre-optic bundle', hue: 'teal', available: true },
+  evaluation_metrics: { subject: 'precision measurement gauges', hue: 'steel', available: true },
+  tools_and_libraries: { subject: 'modular stacked components', hue: 'amber', available: true },
+  applications: { subject: 'radiating conduit network', hue: 'green', available: true },
+  future_trends: { subject: 'dissolving particulate form', hue: 'violet', available: true },
+  'chat-tools': { subject: 'overlapping sound-wave membranes', hue: 'sky', available: true },
+  'coding-tools': { subject: 'machined interlocking gears', hue: 'graphite', available: true },
+  libraries: { subject: 'dense stacked strata', hue: 'sand', available: true },
+  graphics: { subject: 'refracting prism array', hue: 'spectral', available: true },
+  articles: { subject: 'layered translucent sheets', hue: 'bone', available: true },
+  'educational-resources': { subject: 'nested concentric rings', hue: 'olive', available: true },
+  productivity: { subject: 'aligned parallel rails', hue: 'slate', available: true },
+  'hot-news': { subject: 'rippling liquid surface', hue: 'copper', available: true },
+  calculator: { subject: 'abacus-like ordered spheres', hue: 'cool grey', available: true },
 }
 
 export const heroFor = (routeId: string): Hero | undefined => HEROES[routeId]

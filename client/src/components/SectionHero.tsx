@@ -47,8 +47,10 @@ export default function SectionHero({
         </picture>
       )}
 
-      {/* Scrim keeps the display type at full contrast over any image. */}
-      {hasImage && <div aria-hidden className="absolute inset-0 -z-10 bg-canvas/70" />}
+      {/* Scrim protects the display type. Kept light: the heroes are already
+          high-key and the ink is near-black, so contrast has plenty of headroom
+          and a heavier veil just washes the image out. */}
+      {hasImage && <div aria-hidden className="absolute inset-0 -z-10 bg-canvas/55" />}
 
       <div className="mx-auto max-w-[1280px] px-4 py-20 sm:py-28">
         <h1 className="display-xl max-w-4xl">{title}</h1>
