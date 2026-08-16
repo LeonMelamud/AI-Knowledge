@@ -483,7 +483,28 @@ avoids hand-rolling a navigation wrapper.
 | Horizontal scroll at 390 / 768 / 1440 | none |
 | Non-blocking sting with all media blocked | pass, 25–466ms navigation |
 | Reduced motion suppresses sting + hero loop | pass |
+| Sting does not leak onto hero-less routes (mid-sting exit) | pass — regression, see below |
 | Lighthouse (desktop) | Accessibility 100, Best Practices 100, SEO 100, Agentic 100 |
 | Core Web Vitals | LCP 123ms, CLS 0.00 |
 | JSON-LD | parses; WebSite + Organization + Person intact; logo 1200×630 |
-| Magnific spend | 1,900 of 5,000 ceiling |
+| Magnific spend | 1,900 of 5,000 ceiling (sum of per-call declarations; no before/after balance snapshot was taken, and the account counter is lifetime) |
+
+### Post-deploy regression: sting leaked onto hero-less routes
+
+Found after the first production deploy, fixed in `2d820da`.
+
+Leaving a hero route for one with no hero — the legal pages, reached from the
+footer — bailed out of the effect before clearing `routeId`. The cleanup had
+already cancelled the pending timer, so state still pointed at the route just
+left; because the overlay is keyed on pathname, React remounted it and replayed
+the *previous* route's hero across the new page, then left it in the DOM with
+nothing scheduled to remove it.
+
+The original contract suite only exercised hero → hero navigation, so it never
+fired. The suite now covers a mid-sting `graphics → privacy-policy` exit and
+asserts three things: nothing renders, nothing is stranded once the old timer
+would have elapsed, and the next hero route still stings. Verified to fail
+against the pre-fix build before being accepted.
+
+Lesson for later transitions: the interesting cases for route-scoped state are
+the routes that *opt out*, not the ones that opt in.
