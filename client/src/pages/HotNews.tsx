@@ -133,7 +133,6 @@ export default function HotNews() {
       <div className="mx-auto max-w-[1280px] space-y-10 px-4 py-12">
         <div className="max-w-2xl">
           <p className="body-l text-ink-muted">{t('hotNewsDescription')}</p>
-          <p className="mt-2 font-mono text-xs text-ink-muted">{t('hotNewsDisclaimer')}</p>
         </div>
 
         <RSSFeed />
