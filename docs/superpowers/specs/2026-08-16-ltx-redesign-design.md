@@ -1,7 +1,8 @@
 # LTX-style redesign of ai-know.org
 
 **Date:** 2026-08-16
-**Status:** Approved design, pending implementation plan
+**Status:** Implemented. See "Deviations from this design" at the foot of the
+document for where the build diverged and why.
 
 ## 1. Goal
 
@@ -401,3 +402,88 @@ finishing the build.
 - Dark mode. The grey/ink system ships light-only.
 - Any backend, CMS, or build-system replacement.
 - Changes to the news-refresh or security-scan workflows.
+
+---
+
+## Deviations from this design
+
+Recorded during implementation. Each is a deliberate choice, not an oversight.
+
+### 1. Per-section stings are image-driven, not sixteen video files
+
+**Designed:** §5.2 specified 16 HyperFrames-rendered video stings, one per route.
+
+**Built:** each sting sweeps that route's *own generated hero image* across the
+viewport.
+
+**Why:** the original request was "best image for the transition… each tab a
+different image", which the image-driven form satisfies directly. It is also
+better engineering. A 700ms video sting carries ~100ms+ of decode latency, so it
+fires visibly late relative to the route change it is meant to mark, and sixteen
+of them cost roughly 2MB for pure decoration. The hero images are already
+generated, already cached, and start instantly.
+
+The non-blocking contract is unchanged and was verified empirically: with every
+image and video request aborted, navigation still completed in 25–466ms with
+live, interactive content and no application errors.
+
+### 2. Generation was one anchor plus direct finals, not two passes
+
+**Designed:** §6.4 budgeted 32 drafts + 16 finals ≈ 3,820 credits.
+
+**Built:** 2 style anchors → 15 finals against the chosen anchor → 1 targeted
+re-roll → 1 social card. **1,900 credits**, half the budget.
+
+**Why:** with the anchor pinning lighting, palette, and background value, draft
+compositions added little signal — a rejected final costs the same to re-roll as
+a draft did. The one re-roll was `chat-tools`, whose first render came back as a
+concentric liquid ripple nearly identical to `hot-news`.
+
+### 3. `--ink-faint` is effectively retired
+
+**Designed:** §3.1 defined `--ink-faint` at 3.99:1, restricted to text ≥18.66px.
+
+**Built:** every actual use was 12px — index numbers and `.label` runs — so all
+of it moved to `--ink-muted` (6.93:1). The token now appears on a single
+decorative `aria-hidden` glyph.
+
+**Why:** a token whose only compliant use case never occurs in the design is a
+trap for the next person. Lighthouse flagged it; the fix took accessibility from
+96 to 100.
+
+### 4. The hero loop sits on `ai-basics`, not a homepage
+
+**Designed:** §5.2 said "behind the homepage hero".
+
+**Built:** behind the `ai-basics` hero.
+
+**Why:** there is no homepage — `/` redirects to `/ai-basics`, which is the
+de-facto landing route. The loop mounts only after `requestIdleCallback`, so the
+static image remains the LCP element (measured LCP 123ms, CLS 0.00).
+
+### 5. View Transitions are enabled via React Router
+
+**Designed:** the plan sketched a manual `document.startViewTransition` +
+`flushSync` wrapper.
+
+**Built:** React Router 7's `viewTransition` prop on each link.
+
+**Why:** it is the supported API for this router, feature-detects internally, and
+avoids hand-rolling a navigation wrapper.
+
+## Verification record
+
+| Check | Result |
+| --- | --- |
+| `npm run build` + `oxlint` | clean |
+| Routes rendered (18 × 2 languages) | 36/36, 0 failures, 0 warnings |
+| Mega-panel a11y (open / Escape / focus return / `aria-expanded`) | pass, both languages |
+| Rail side (`inline-end`) | right in LTR, left in RTL |
+| Mobile overlay + scroll lock at 390px | pass |
+| Horizontal scroll at 390 / 768 / 1440 | none |
+| Non-blocking sting with all media blocked | pass, 25–466ms navigation |
+| Reduced motion suppresses sting + hero loop | pass |
+| Lighthouse (desktop) | Accessibility 100, Best Practices 100, SEO 100, Agentic 100 |
+| Core Web Vitals | LCP 123ms, CLS 0.00 |
+| JSON-LD | parses; WebSite + Organization + Person intact; logo 1200×630 |
+| Magnific spend | 1,900 of 5,000 ceiling |
