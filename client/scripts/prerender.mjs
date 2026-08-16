@@ -1,7 +1,7 @@
 // Postbuild: copies dist/index.html to dist/<route>/index.html with per-route
 // title/description/OG/canonical, writes dist/404.html and dist/sitemap.xml.
 // Social scrapers don't run JS, so every shared link needs real HTML with its own tags.
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import { load } from 'js-yaml'
@@ -17,21 +17,31 @@ const tools = load(readFileSync(path.join(DATA_DIR, 'links_en.yaml'), 'utf8')).t
 
 const names = (items, n) => items.slice(0, n).map((item) => item.name).join(', ')
 
+// Per-route social image. Falls back to the site card when a route has no
+// generated hero, so a missing file never produces a broken og:image tag.
+const SITE_CARD = 'og-image.png'
+const heroPath = (id) => {
+  const file = path.join(CLIENT_DIR, 'public', 'images', 'heroes', `${id}-1280.png`)
+  return existsSync(file) ? `images/heroes/${id}-1280.png` : SITE_CARD
+}
+
 const routes = [
   ...concepts.map((s) => ({
     path: s.id,
     title: s.title,
     description: `${s.title} — AI concepts explained: ${names(s.items, 5)}.`,
+    image: heroPath(s.id),
   })),
   ...tools.map((s) => ({
     path: s.id,
     title: s.title,
     description: `${s.title} — curated AI tools and resources: ${names(s.items, 6)}.`,
+    image: heroPath(s.id),
   })),
-  { path: 'hot-news', title: 'Hot News', description: 'Latest advancements and updates in AI technology.' },
-  { path: 'calculator', title: 'Token Calculator', description: 'Count LLM tokens for any text, right in your browser.' },
-  { path: 'privacy-policy', title: 'Privacy Policy', description: 'Privacy policy of the Guide to AI knowledge base.' },
-  { path: 'terms-of-service', title: 'Terms of Service', description: 'Terms of service of the Guide to AI knowledge base.' },
+  { path: 'hot-news', title: 'Hot News', description: 'Latest advancements and updates in AI technology.', image: heroPath('hot-news') },
+  { path: 'calculator', title: 'Token Calculator', description: 'Count LLM tokens for any text, right in your browser.', image: heroPath('calculator') },
+  { path: 'privacy-policy', title: 'Privacy Policy', description: 'Privacy policy of the Guide to AI knowledge base.', image: SITE_CARD },
+  { path: 'terms-of-service', title: 'Terms of Service', description: 'Terms of service of the Guide to AI knowledge base.', image: SITE_CARD },
 ]
 
 const shell = readFileSync(path.join(DIST, 'index.html'), 'utf8')
@@ -47,6 +57,8 @@ for (const route of routes) {
     .replace(/(<meta property="og:title" content=")[^"]*(")/, `$1${title}$2`)
     .replace(/(<meta property="og:description" content=")[^"]*(")/, `$1${description}$2`)
     .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${url}$2`)
+    .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${BASE_URL}${route.image}$2`)
+    .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${BASE_URL}${route.image}$2`)
     .replace(/(<meta name="twitter:title" content=")[^"]*(")/, `$1${title}$2`)
     .replace(/(<meta name="twitter:description" content=")[^"]*(")/, `$1${description}$2`)
     .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`)
