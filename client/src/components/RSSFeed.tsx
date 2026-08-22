@@ -4,6 +4,7 @@ interface RSSItem {
   title: string
   link: string
   pubDate?: string
+  source?: string
 }
 
 /** RSS is fetched at build time by scripts/fetch-rss.mjs into public/data/rss.json (GitHub Pages has no server). */
@@ -34,9 +35,9 @@ export default function RSSFeed() {
             <a href={item.link} target="_blank" rel="noreferrer" className="font-medium text-ink transition-colors duration-150 hover:text-ink">
               {item.title}
             </a>
-            {item.pubDate && (
-              <span className="ms-2 text-xs text-ink-muted">{new Date(item.pubDate).toLocaleDateString()}</span>
-            )}
+            <span className="ms-2 whitespace-nowrap text-xs text-ink-muted">
+              {[item.source, item.pubDate && new Date(item.pubDate).toLocaleDateString()].filter(Boolean).join(' · ')}
+            </span>
           </li>
         ))}
       </ul>
