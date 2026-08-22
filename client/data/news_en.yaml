@@ -2,6 +2,87 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+  - section: OpenAI Slows Frontier RL to Strengthen Cyber Safeguards
+    date: '2026-08-22'
+    topics:
+      - title: 'OpenAI pauses some frontier reinforcement-learning training while it upgrades alignment, security and monitoring'
+        description: >
+          OpenAI says it has temporarily paused some frontier reinforcement-learning
+          training as it strengthens the environments and controls used for more
+          capable models. The company links the decision to the OpenAI–Hugging Face
+          incident, preliminary evidence that its upcoming Astra model may meet its
+          critical-cybersecurity threshold, and rapid internal model progress.
+
+
+          Key developments:
+
+          - OpenAI says it paused inference for certain research-cluster runs after
+          the incident, then temporarily paused RL training for its latest
+          deployment-bound models while hardening and red-teaming its environments
+
+          - The company is expanding monitoring of agent behavior and reasoning,
+          with alerts intended to surface concerning activity within 30 minutes
+
+          - OpenAI estimates the added monitoring can require compute equivalent to
+          roughly 20% of the monitored inference workload; these are company
+          statements, not independent measurements
+        questions:
+          - question: Why did OpenAI pause some frontier RL training?
+            answer: >-
+              OpenAI says it paused some frontier reinforcement-learning training so
+              its alignment, security and monitoring standards can keep pace with
+              stronger model capabilities. It cites the OpenAI–Hugging Face incident,
+              rapid internal progress and preliminary cyber-capability evidence for
+              its upcoming Astra model.
+          - question: What safeguards is OpenAI adding for frontier models?
+            answer: >-
+              OpenAI describes hardened and red-teamed research environments,
+              stronger access controls and expanded monitoring of agent actions and
+              reasoning. The company says its monitoring is designed to flag
+              concerning activity within 30 minutes.
+        links:
+          - name: OpenAI — Pacing model development in an era of cyber-critical capabilities
+            url: https://openai.com/index/pacing-model-development-cyber-capabilities
+
+  - section: Qwen3.8-27B Open Multimodal Model
+    date: '2026-08-22'
+    topics:
+      - title: 'Qwen releases Qwen3.8-27B, an open 27B-parameter vision-language model for local and self-hosted use'
+        description: >
+          Qwen has published Qwen3.8-27B in Transformers format, making the
+          post-trained 27B-parameter model available for download and use with
+          common inference stacks. The model card describes it as a native
+          vision-language model that can work with images and video as well as text.
+
+
+          Key developments:
+
+          - The repository lists compatibility with Transformers, vLLM, SGLang and
+          other local-serving tools, giving developers several self-hosted deployment
+          paths
+
+          - Qwen documents a 262K-token native context setting and says a managed
+          hosted version with one-million-token context and built-in tools is planned
+
+          - The release is a downloadable model artifact rather than an API-only
+          launch, which makes it relevant for local evaluation and infrastructure
+          controlled by the developer
+        questions:
+          - question: What is Qwen3.8-27B?
+            answer: >-
+              Qwen3.8-27B is a 27B-parameter post-trained Qwen model released in
+              Hugging Face Transformers format. Qwen describes it as a native
+              vision-language model, so it can be used with text, images and video.
+          - question: Can Qwen3.8-27B be self-hosted?
+            answer: >-
+              Yes. Qwen's model card lists support for common local inference stacks
+              including Transformers, vLLM and SGLang, and provides examples for
+              serving the model. Hardware requirements depend on the chosen precision
+              and runtime.
+        links:
+          - name: Qwen — Qwen3.8-27B model card and weights
+            url: https://huggingface.co/Qwen/Qwen3.8-27B
+
   - section: Grok 4.6 for Long-Running Agents
     date: '2026-08-15'
     topics:
