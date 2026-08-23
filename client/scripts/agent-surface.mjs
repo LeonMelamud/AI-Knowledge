@@ -293,6 +293,64 @@ Terms: [${BASE_URL}terms-of-service/](${BASE_URL}terms-of-service/).
 `,
 )
 
+// --- /agent-instructions.md ------------------------------------------------
+// One canonical page for "how should an agent use this site", separate from the
+// skill document: the same guidance an agent needs before it fetches anything.
+write(
+  'agent-instructions.md',
+  `# Instructions for AI agents using ${DOMAIN}
+
+${SITE_NAME} is a free, static, bilingual (English/Hebrew) AI knowledge base.
+Everything is an unauthenticated HTTP GET — no key, no quota, no write
+operations ([auth.md](${BASE_URL}auth.md)), and nothing costs anything
+([pricing.md](${BASE_URL}pricing.md)).
+
+## When to use this site
+
+- **Define an AI term** in plain language — ${stats.concepts} concepts, each with a
+  one-line definition and a fuller explanation you can quote.
+- **Shortlist AI tools for a job** — ${stats.tools} curated tools, each naming the
+  vendor, its home page and what the tool is actually for.
+- **Cite an explanatory source about AI** with a stable per-section URL.
+- **Count tokens** in a prompt or document ([calculator](${BASE_URL}calculator/)).
+- **Catch up on AI news** without crawling publisher sites.
+
+## When not to use it
+
+- A vendor's current pricing, model list or feature matrix — follow the vendor
+  URL in the tool record and verify there.
+- Primary research: papers, benchmarks, reproducible numbers.
+- Anything needing an account, a write operation or a transaction: none exist.
+
+This is a personally maintained secondary source. It is a good first
+explanation and a poor last word.
+
+## How to call it
+
+| Goal | Fetch |
+| --- | --- |
+| Orient | [${BASE_URL}llms.txt](${BASE_URL}llms.txt) |
+| One page's full text | \`${BASE_URL}<page>.md\` |
+| Everything at once | [${BASE_URL}llms-full.txt](${BASE_URL}llms-full.txt) |
+| Records to filter | [${BASE_URL}feeds/concepts.json](${BASE_URL}feeds/concepts.json), [tools.json](${BASE_URL}feeds/tools.json) |
+| Just the knowledge base | [${BASE_URL}docs/llms.txt](${BASE_URL}docs/llms.txt) |
+| Just the endpoints | [${BASE_URL}api/llms.txt](${BASE_URL}api/llms.txt) |
+| Everything machine-readable | [${BASE_URL}.well-known/ai-catalog.json](${BASE_URL}.well-known/ai-catalog.json) |
+
+Prefer one feed fetch over crawling every page. In a browser session the
+calculator registers a WebMCP tool, \`count_tokens\`; there is no server-side
+endpoint to post text to.
+
+## Citing and reuse
+
+Cite the canonical page (\`${BASE_URL}<section>/\`), not the \`.md\` twin.
+Crawling, quoting and training are all permitted for every crawler
+([robots.txt](${BASE_URL}robots.txt)); attribution to ${DOMAIN} is appreciated.
+Content lives as YAML in [the public repository](${REPO_URL}) — corrections
+belong there as an issue, not as a message to the page.
+`,
+)
+
 // --- /pricing.md -----------------------------------------------------------
 // Nothing here costs anything, and an agent comparing sources should be able to
 // establish that in one fetch instead of hunting for a pricing page that does
@@ -800,6 +858,7 @@ json('.well-known/ai-catalog.json', {
     entry('doc', 'docs-llms-txt', 'Scoped index: knowledge base', 'text/plain', `${BASE_URL}docs/llms.txt`, 'The explanatory content only — concepts and tool sections.', 'docs/llms.txt'),
     entry('doc', 'api-llms-txt', 'Scoped index: machine endpoints', 'text/plain', `${BASE_URL}api/llms.txt`, 'The programmatic surface only — feeds, catalogs, descriptions.', 'api/llms.txt'),
     entry('doc', 'auth-md', 'Authentication policy', 'text/markdown', `${BASE_URL}auth.md`, 'States definitively that there is no authentication: every endpoint is public, read-only and keyless.', 'auth.md'),
+    entry('doc', 'agent-instructions', 'Instructions for AI agents', 'text/markdown', `${BASE_URL}agent-instructions.md`, 'When to use this site and when not to, and which artifact to fetch for which question.', 'agent-instructions.md'),
     entry('doc', 'pricing-md', 'Pricing policy', 'text/markdown', `${BASE_URL}pricing.md`, 'States definitively that everything is free: no paid tier, no quota, no payment protocol, nothing to buy.', 'pricing.md'),
     entry('dataset', 'concepts', `${stats.concepts} AI concepts`, 'application/json', `${BASE_URL}feeds/concepts.json`, 'Every explained concept as a schema.org DefinedTerm array. JSONL twin at feeds/concepts.jsonl.', 'feeds/concepts.json'),
     entry('dataset', 'tools', `${stats.tools} curated AI tools`, 'application/json', `${BASE_URL}feeds/tools.json`, 'Every curated tool as a schema.org SoftwareApplication array. JSONL twin at feeds/tools.jsonl.', 'feeds/tools.json'),

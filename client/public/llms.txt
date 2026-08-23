@@ -56,7 +56,9 @@ rather than prose to read.
 - [Pages feed](https://ai-know.org/feeds/pages.jsonl): each page as a schema.org graph
 - [News snapshot](https://ai-know.org/data/rss.json): the raw publisher-feed data behind Hot News
 - [Capability catalog](https://ai-know.org/.well-known/ai-catalog.json): every machine-readable entry point on the site
+- [Instructions for AI agents](https://ai-know.org/agent-instructions.md): when to use this site, when not to, and which artifact to fetch
 - [Agent skill](https://ai-know.org/skills/ai-know-lookup/SKILL.md): how to look something up here and cite it
+- [Authentication policy](https://ai-know.org/auth.md) and [pricing policy](https://ai-know.org/pricing.md): there is no authentication and nothing costs anything
 - [OpenAPI description](https://ai-know.org/openapi.json): the read-only GET endpoints
 - [Schema feed map](https://ai-know.org/schemamap.xml): NLWeb-style map of the JSON-LD feeds
 - [Sitemap](https://ai-know.org/sitemap.xml): every canonical page URL
