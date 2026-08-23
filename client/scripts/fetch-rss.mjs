@@ -35,6 +35,12 @@ const STRICT = process.argv.includes('--strict')
 const OUT_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'public', 'data')
 const OUT_FILE = path.join(OUT_DIR, 'rss.json')
 
+const cutoff = Date.now() - MAX_AGE_DAYS * 24 * 60 * 60 * 1000
+const timeOf = (item) => {
+  const parsed = Date.parse(item.pubDate) // handles both RFC-822 (RSS) and ISO-8601 (Atom)
+  return Number.isNaN(parsed) ? 0 : parsed
+}
+
 const parser = new XMLParser({
   ignoreAttributes: false,
   attributeNamePrefix: '@_',
@@ -105,13 +111,11 @@ async function fetchFeed({ url, source, max }) {
     },
   })
   if (!res.ok) throw new Error(`HTTP ${res.status}`)
-  return parseFeed(await res.text(), source).slice(0, max)
-}
-
-const cutoff = Date.now() - MAX_AGE_DAYS * 24 * 60 * 60 * 1000
-const timeOf = (item) => {
-  const parsed = Date.parse(item.pubDate) // handles both RFC-822 (RSS) and ISO-8601 (Atom)
-  return Number.isNaN(parsed) ? 0 : parsed
+  // Sort before capping: newest-first is only a convention, and `max` silently keeps
+  // whatever happens to be at the top of the document.
+  return parseFeed(await res.text(), source)
+    .sort((a, b) => timeOf(b) - timeOf(a))
+    .slice(0, max)
 }
 
 const settled = await Promise.allSettled(FEEDS.map(fetchFeed))
@@ -140,16 +144,25 @@ writeFileSync(OUT_FILE, JSON.stringify(items, null, 2))
 // Write the snapshot first: even a degraded one beats none, and --strict must not
 // cost the site its feed on the way out.
 
-const failedSources = settled
-  .map((result, i) => (result.status === 'fulfilled' && result.value.length ? null : FEEDS[i].source))
-  .filter(Boolean)
-const healthyCount = FEEDS.length - failedSources.length
+// Health is measured on what SHIPPED, not on what fetched. A feed can return 200 with
+// items that are all months old — it contributes nothing to the page while looking fine
+// at the fetch layer. That gap is precisely how the old Nasdaq source stayed unnoticed.
+const shipped = new Set(items.map((item) => item.source))
+const healthyCount = shipped.size
+const missingSources = FEEDS.map(({ source }, i) => {
+  if (shipped.has(source)) return null
+  const result = settled[i]
+  if (result.status === 'rejected') return `${source} (fetch failed)`
+  if (!result.value.length) return `${source} (empty feed)`
+  const hasRecent = result.value.some((item) => timeOf(item) >= cutoff)
+  return `${source} (${hasRecent ? 'items excluded from snapshot' : `nothing newer than ${MAX_AGE_DAYS}d`})`
+}).filter(Boolean)
 const newestAgeHours = items.length ? (Date.now() - timeOf(items[0])) / 3_600_000 : Infinity
 
 const problems = []
 if (healthyCount < MIN_HEALTHY_SOURCES) {
   problems.push(
-    `only ${healthyCount}/${FEEDS.length} sources returned items (need ${MIN_HEALTHY_SOURCES}); down: ${failedSources.join(', ')}`,
+    `only ${healthyCount}/${FEEDS.length} sources reached the snapshot (need ${MIN_HEALTHY_SOURCES}); missing: ${missingSources.join(', ')}`,
   )
 }
 if (newestAgeHours > MAX_NEWEST_AGE_HOURS) {
@@ -157,8 +170,8 @@ if (newestAgeHours > MAX_NEWEST_AGE_HOURS) {
   problems.push(`newest item is ${age} (expected under ${MAX_NEWEST_AGE_HOURS}h) — feeds may be reachable but stale`)
 }
 
-const summary = `fetch-rss: ${items.length} items, ${healthyCount}/${FEEDS.length} sources healthy${
-  failedSources.length ? ` (down: ${failedSources.join(', ')})` : ''
+const summary = `fetch-rss: ${items.length} items, ${healthyCount}/${FEEDS.length} sources in snapshot${
+  missingSources.length ? ` (missing: ${missingSources.join(', ')})` : ''
 }`
 console.log(summary)
 
