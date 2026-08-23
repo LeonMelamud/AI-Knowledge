@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
+import { registerWebMcpTools } from './lib/webmcp'
 
 // legacy hash routes from the old site (ai-know.org/#/hot-news) → real paths
 if (window.location.hash.startsWith('#/')) {
@@ -19,6 +20,10 @@ window.addEventListener('vite:preloadError', () => {
   sessionStorage.setItem(RELOAD_KEY, String(Date.now()))
   window.location.reload()
 })
+
+// A browser agent gets the calculator and the knowledge base as callable tools
+// rather than a page to click through. No-op without a WebMCP host.
+registerWebMcpTools()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

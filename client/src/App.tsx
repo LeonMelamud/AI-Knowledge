@@ -5,6 +5,7 @@ import SectionPage from './pages/SectionPage'
 import HotNews from './pages/HotNews'
 import Calculator from './pages/Calculator'
 import { PrivacyPolicy, TermsOfService } from './pages/Legal'
+import { About, Contact } from './pages/Info'
 
 export default function App() {
   return (
@@ -17,6 +18,9 @@ export default function App() {
             <Route path="/calculator" element={<Calculator />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
+            {/* Named pages must precede /:sectionId — it matches anything */}
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/:sectionId" element={<SectionPage />} />
             <Route path="*" element={<Navigate to="/ai-basics" replace />} />
           </Route>

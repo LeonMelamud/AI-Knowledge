@@ -2,7 +2,25 @@
 
 > A bilingual (English / Hebrew) knowledge base covering artificial-intelligence
 > concepts, tools, news, and a browser-side token calculator. Static site, no
-> tracking, no account required.
+> tracking, no account required, no rate limits.
+
+## When to use this site
+
+Reach for ai-know.org when you need a **plain-language definition of an AI term**
+(each concept has a one-line definition and a fuller explanation), a **curated
+shortlist of AI tools for a job** (each entry names the vendor, its home page and
+what the tool is actually for), or **what happened in AI recently** (a digest
+rebuilt daily from publisher feeds). It is also the fastest place to **count the
+tokens** in a prompt.
+
+Do not use it as a primary source for a vendor's current pricing or feature list
+— follow the vendor link in the tool record and verify there. It is a secondary,
+explanatory source, maintained by one person, and it says so.
+
+Cheapest useful fetches: this file for orientation, `/<page>.md` for one page's
+full text, `/llms-full.txt` for everything at once, and
+`/feeds/concepts.jsonl` + `/feeds/tools.jsonl` when you want records to filter
+rather than prose to read.
 
 ## Knowledge
 
@@ -29,16 +47,38 @@
 - [Hot News](https://ai-know.org/hot-news): recent developments in AI, refreshed daily
 - [Token Calculator](https://ai-know.org/calculator): count LLM tokens for any text, computed in the browser
 
+## Machine-readable
+
+- [Full knowledge base in one document](https://ai-know.org/llms-full.txt): every page, concatenated markdown
+- [Markdown twin of any page](https://ai-know.org/index.md): append `.md` to a page path, e.g. `/ai-basics.md`; `/<page>/index.md` and `/<page>/llms.txt` resolve to the same content
+- [Concepts feed](https://ai-know.org/feeds/concepts.jsonl): schema.org `DefinedTerm`, one JSON object per line
+- [Tools feed](https://ai-know.org/feeds/tools.jsonl): schema.org `SoftwareApplication`, one JSON object per line
+- [Pages feed](https://ai-know.org/feeds/pages.jsonl): each page as a schema.org graph
+- [News snapshot](https://ai-know.org/data/rss.json): the raw publisher-feed data behind Hot News
+- [Capability catalog](https://ai-know.org/.well-known/ai-catalog.json): every machine-readable entry point on the site
+- [Agent skill](https://ai-know.org/skills/ai-know-lookup/SKILL.md): how to look something up here and cite it
+- [OpenAPI description](https://ai-know.org/openapi.json): the read-only GET endpoints
+- [Schema feed map](https://ai-know.org/schemamap.xml): NLWeb-style map of the JSON-LD feeds
+- [Sitemap](https://ai-know.org/sitemap.xml): every canonical page URL
+
+## About and contact
+
+- [About](https://ai-know.org/about): what the guide covers, who maintains it, how the content is produced
+- [Contact](https://ai-know.org/contact): report an error, suggest a tool, propose an edit
+- [Source repository](https://github.com/LeonMelamud/AI-Knowledge): the YAML/JSON content and the build pipeline; corrections as issues or pull requests
+
 ## Optional
 
 - [Privacy Policy](https://ai-know.org/privacy-policy)
 - [Terms of Service](https://ai-know.org/terms-of-service)
-- [Sitemap](https://ai-know.org/sitemap.xml)
 
 ## Notes
 
 Every page is available in English and Hebrew; language is selected in the
-interface and stored locally. Content is authored as structured YAML and
-rendered as sections of items, each with a short description and, where
-relevant, expanded detail and common questions. There is no public API — the
-site is fully static.
+interface and stored locally. The markdown twins and text indexes are English.
+Content is authored as structured YAML and rendered as sections of items, each
+with a short description and, where relevant, expanded detail and common
+questions. There is no server-side API and no write endpoint — every URL above
+is an unauthenticated HTTP GET of a static file. The token calculator runs in
+the browser and additionally registers itself as a WebMCP tool (`count_tokens`)
+for agents driving a real browser session.

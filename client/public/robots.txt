@@ -1,13 +1,62 @@
-User-agent: GPTBot
-Disallow:
+# robots.txt for ai-know.org — Guide to AI
+#
+# Everything on this site is free and meant to be read by people and machines
+# alike: crawling, indexing, quoting and training are all permitted, for every
+# crawler, on every path. Attribution to ai-know.org is appreciated.
+# Corrections: https://github.com/LeonMelamud/AI-Knowledge/issues
+#
+# The named groups below say the same thing as the catch-all rule. They are
+# spelled out because "no rule for you" and "yes, you may" are indistinguishable
+# to a crawler operator reading this file, and several of these agents are asked
+# to check for an explicit opt-in before using a page as an AI answer or as
+# training data. Content-Signal is the Cloudflare-proposed way to state that
+# intent per group: search / ai-input (retrieval-augmented answers) / ai-train.
 
-User-agent: Google-Extended
-Disallow:
-
-User-agent: CCBot
-Disallow:
-
-User-agent: *
+# --- Search engines ---
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: DuckDuckBot
+User-agent: Applebot
+User-agent: YandexBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 
+# --- AI assistants and their crawlers ---
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: anthropic-ai
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Amazonbot
+User-agent: meta-externalagent
+User-agent: MistralAI-User
+User-agent: cohere-ai
+User-agent: YouBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Allow: /
+
+# --- Dataset and archive crawlers ---
+User-agent: CCBot
+User-agent: ia_archiver
+User-agent: Bytespider
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Allow: /
+
+# --- Everyone else ---
+User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Allow: /
+
+# Machine-readable indexes of this site:
+#   https://ai-know.org/llms.txt              curated index for LLMs
+#   https://ai-know.org/llms-full.txt         the whole knowledge base, one file
+#   https://ai-know.org/<page>.md             markdown twin of any page
+#   https://ai-know.org/.well-known/ai-catalog.json   every entry point
 Sitemap: https://ai-know.org/sitemap.xml
+schemamap: https://ai-know.org/schemamap.xml

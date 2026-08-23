@@ -1,57 +1,38 @@
-// Postbuild: copies dist/index.html to dist/<route>/index.html with per-route
-// title/description/OG/canonical, writes dist/404.html and dist/sitemap.xml.
-// Social scrapers don't run JS, so every shared link needs real HTML with its own tags.
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs'
-import { fileURLToPath } from 'node:url'
+// Postbuild step 1: turn the SPA shell into real HTML for everything that does
+// not run JavaScript — social scrapers, search crawlers and AI agents. Each
+// route gets its own title/description/OG/canonical, its own JSON-LD, and the
+// page's actual content written inside #root (the app replaces it on load, so
+// browsers see no difference). Also writes 404.html and sitemap.xml.
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import path from 'node:path'
-import { load } from 'js-yaml'
+import { DIST, BASE_URL, SITE_NAME, allRoutes, routes, escapeHtml, jsonLdFor, concepts, tools } from './lib/content.mjs'
 
-const CLIENT_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), '..')
-const DIST = path.join(CLIENT_DIR, 'dist')
-const DATA_DIR = path.join(CLIENT_DIR, 'data')
-const BASE_URL = 'https://ai-know.org/'
-const SITE_NAME = 'Guide to AI'
-
-const concepts = load(readFileSync(path.join(DATA_DIR, 'concepts_en.yaml'), 'utf8')).concepts
-const tools = load(readFileSync(path.join(DATA_DIR, 'links_en.yaml'), 'utf8')).tools
-
-const names = (items, n) => items.slice(0, n).map((item) => item.name).join(', ')
-
-// Per-route social image. Falls back to the site card when a route has no
-// generated hero, so a missing file never produces a broken og:image tag.
-const SITE_CARD = 'og-image.png'
-const heroPath = (id) => {
-  const file = path.join(CLIENT_DIR, 'public', 'images', 'heroes', `${id}-og.jpg`)
-  return existsSync(file) ? `images/heroes/${id}-og.jpg` : SITE_CARD
+const ROOT_DIV = '<div id="root"></div>'
+const shell = readFileSync(path.join(DIST, 'index.html'), 'utf8')
+if (!shell.includes(ROOT_DIV)) {
+  throw new Error(`prerender: ${ROOT_DIV} not found in dist/index.html — cannot inject content`)
 }
 
-const routes = [
-  ...concepts.map((s) => ({
-    path: s.id,
-    title: s.title,
-    description: `${s.title} — AI concepts explained: ${names(s.items, 5)}.`,
-    image: heroPath(s.id),
-  })),
-  ...tools.map((s) => ({
-    path: s.id,
-    title: s.title,
-    description: `${s.title} — curated AI tools and resources: ${names(s.items, 6)}.`,
-    image: heroPath(s.id),
-  })),
-  { path: 'hot-news', title: 'Hot News', description: 'Latest advancements and updates in AI technology.', image: heroPath('hot-news') },
-  { path: 'calculator', title: 'Token Calculator', description: 'Count LLM tokens for any text, right in your browser.', image: heroPath('calculator') },
-  { path: 'privacy-policy', title: 'Privacy Policy', description: 'Privacy policy of the Guide to AI knowledge base.', image: SITE_CARD },
-  { path: 'terms-of-service', title: 'Terms of Service', description: 'Terms of service of the Guide to AI knowledge base.', image: SITE_CARD },
-]
+const PRERENDER_NOTE =
+  '<!-- Static content for clients that do not run JavaScript (crawlers, AI agents, ' +
+  'no-JS browsers). The React app replaces it on load. -->'
 
-const shell = readFileSync(path.join(DIST, 'index.html'), 'utf8')
-const escapeHtml = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;')
-
-for (const route of routes) {
-  const url = `${BASE_URL}${route.path}/`
-  const title = escapeHtml(`${route.title} | ${SITE_NAME}`)
+function render(route) {
+  const url = `${BASE_URL}${route.path ? `${route.path}/` : ''}`
+  const mdUrl = `${BASE_URL}${route.path ? `${route.path}.md` : 'index.md'}`
+  const title = escapeHtml(route.titleIsFull ? route.title : `${route.title} | ${SITE_NAME}`)
   const description = escapeHtml(route.description)
-  const html = shell
+  const head = `<link rel="alternate" type="text/markdown" href="${mdUrl}" title="Markdown version of this page" />
+    <link rel="alternate" type="text/plain" href="${BASE_URL}llms.txt" title="llms.txt site index" />
+    <script type="application/ld+json">
+${JSON.stringify(jsonLdFor(route), null, 2)}
+    </script>
+  `
+  const body = `<div id="root">${PRERENDER_NOTE}<main lang="en" dir="ltr">
+    ${route.body}
+  </main></div>`
+
+  return shell
     .replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`)
     .replace(/(<meta name="description" content=")[^"]*(")/, `$1${description}$2`)
     .replace(/(<meta property="og:title" content=")[^"]*(")/, `$1${title}$2`)
@@ -62,12 +43,56 @@ for (const route of routes) {
     .replace(/(<meta name="twitter:title" content=")[^"]*(")/, `$1${title}$2`)
     .replace(/(<meta name="twitter:description" content=")[^"]*(")/, `$1${description}$2`)
     .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`)
-  mkdirSync(path.join(DIST, route.path), { recursive: true })
-  writeFileSync(path.join(DIST, route.path, 'index.html'), html)
+    .replace('</head>', `${head}</head>`)
+    .replace(ROOT_DIV, body)
 }
 
-// Unknown paths on GitHub Pages fall back to 404.html → boot the SPA shell
-writeFileSync(path.join(DIST, '404.html'), shell)
+for (const route of allRoutes) {
+  const html = render(route)
+  if (route.path) {
+    mkdirSync(path.join(DIST, route.path), { recursive: true })
+    writeFileSync(path.join(DIST, route.path, 'index.html'), html)
+  } else {
+    writeFileSync(path.join(DIST, 'index.html'), html)
+  }
+}
+
+// GitHub Pages serves 404.html with a real 404 status for unknown paths. It has
+// to boot the SPA (deep links depend on it) but it can still say what happened
+// and where to go instead — an agent that lands here gets a usable index rather
+// than a silent redirect to /ai-basics.
+const notFound = render({
+  path: '404',
+  title: 'Page not found (404)',
+  description: `The requested page does not exist on ${SITE_NAME}. Browse the AI concept and tool sections, or use the site index.`,
+  image: 'og-image.png',
+  kind: 'page',
+  body: `<h1>Page not found (404)</h1>
+    <p>The URL you requested does not exist on ${SITE_NAME} (ai-know.org). Nothing was moved: this address was probably mistyped, or it comes from a very old version of the site that used hash routes such as <code>/#/hot-news</code>.</p>
+    <p>Everything the site publishes is listed below and in the machine-readable indexes.</p>
+    <h2>AI concepts</h2>
+    <ul>
+      ${concepts.map((s) => `<li><a href="/${s.id}/">${escapeHtml(s.title)}</a></li>`).join('\n      ')}
+    </ul>
+    <h2>AI tools and resources</h2>
+    <ul>
+      ${tools.map((s) => `<li><a href="/${s.id}/">${escapeHtml(s.title)}</a></li>`).join('\n      ')}
+    </ul>
+    <h2>Other pages</h2>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/hot-news/">Hot News</a> — daily AI news digest</li>
+      <li><a href="/calculator/">Token Calculator</a></li>
+      <li><a href="/about/">About</a> · <a href="/contact/">Contact</a></li>
+    </ul>
+    <h2>Machine-readable indexes</h2>
+    <ul>
+      <li><a href="/llms.txt">/llms.txt</a> — index for LLMs, <a href="/llms-full.txt">/llms-full.txt</a> for the full text</li>
+      <li><a href="/sitemap.xml">/sitemap.xml</a> — every page</li>
+      <li><a href="/.well-known/ai-catalog.json">/.well-known/ai-catalog.json</a> — capability catalog</li>
+    </ul>`,
+})
+writeFileSync(path.join(DIST, '404.html'), notFound)
 
 const today = new Date().toISOString().slice(0, 10)
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -79,4 +104,4 @@ ${['', ...routes.map((r) => `${r.path}/`)]
 `
 writeFileSync(path.join(DIST, 'sitemap.xml'), sitemap)
 
-console.log(`prerender: ${routes.length} routes, 404.html, sitemap.xml`)
+console.log(`prerender: ${allRoutes.length} routes with content + JSON-LD, 404.html, sitemap.xml`)

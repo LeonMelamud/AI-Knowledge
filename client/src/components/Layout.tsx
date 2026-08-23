@@ -30,6 +30,12 @@ export default function Layout() {
             </div>
 
             <nav className="flex flex-col gap-3 text-sm" aria-label="Footer">
+              <Link to="/about" className="opacity-70 transition-opacity duration-200 hover:opacity-100">
+                {t('aboutTitle')}
+              </Link>
+              <Link to="/contact" className="opacity-70 transition-opacity duration-200 hover:opacity-100">
+                {t('contactTitle')}
+              </Link>
               <Link to="/privacy-policy" className="opacity-70 transition-opacity duration-200 hover:opacity-100">
                 {t('privacyPolicy')}
               </Link>
@@ -43,6 +49,14 @@ export default function Layout() {
                 className="opacity-70 transition-opacity duration-200 hover:opacity-100"
               >
                 LinkedIn
+              </a>
+              <a
+                href="https://github.com/LeonMelamud/AI-Knowledge"
+                target="_blank"
+                rel="noreferrer"
+                className="opacity-70 transition-opacity duration-200 hover:opacity-100"
+              >
+                GitHub
               </a>
             </nav>
           </div>

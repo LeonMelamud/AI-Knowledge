@@ -58,7 +58,7 @@
   ],
   "contactUsTitle": "4. Contact Us",
   "contactUsText": "For questions or comments regarding this Privacy Policy:",
-  "contactEmail": "Email: privacy@ai-knowledge-guide.com",
+  "contactEmail": "Contact page: https://ai-know.org/contact",
   "contactLinkedIn": "LinkedIn:",
   "tosAcceptanceTitle": "1. Acceptance of Terms",
   "tosAcceptanceText": "By accessing and using the \"AI Knowledge Guide\" website, you agree to comply with these Terms of Service and all applicable laws and regulations.",
@@ -78,5 +78,28 @@
   ],
   "tosContactTitle": "4. Contact Information",
   "tosContactText": "For questions or comments regarding these Terms of Service:",
-  "tosContactEmail": "Email: legal@ai-knowledge-guide.com"
+  "tosContactEmail": "Contact page: https://ai-know.org/contact",
+  "aboutTitle": "About",
+  "aboutIntro": "Guide to AI (ai-know.org) is a free, bilingual knowledge base about artificial intelligence: explained concepts, curated tools, a daily news digest and a browser-side token calculator. No account, no tracking, no paywall.",
+  "aboutWhatTitle": "What is here",
+  "aboutWhat": "Concept sections explain AI terminology twice over — a one-line definition for orientation and a fuller explanation for depth. Tool sections are a curated directory: each entry names the vendor and says what the tool is actually for, rather than reprinting marketing copy. The news digest is assembled from publisher feeds every day, and the token calculator answers the most common practical question when working with language models.",
+  "aboutWhoTitle": "Who maintains it",
+  "aboutWho": "Leon Melamud — an AI and cloud-architecture practitioner working on generative AI, agents and automation, and a co-founder of several Israeli AI communities. The guide started as a way to give newcomers one honest reference instead of a pile of vendor blog posts.",
+  "aboutHowTitle": "How the content is produced",
+  "aboutHow": "Content is authored as structured YAML and JSON in a public repository and rendered as a static site. There is no CMS and no database. The news digest is refreshed by a scheduled build that reads publisher RSS feeds; every other change is a commit, so the full history of what changed and when is public. Corrections are welcome as an issue or a pull request.",
+  "aboutStanceTitle": "Editorial stance",
+  "aboutStanceList": [
+    "No sponsored placements. Tools are listed because they are useful, and nobody pays to appear.",
+    "No tracking, no analytics cookies, no account. The site collects nothing about you.",
+    "Bilingual by default — every section exists in English and Hebrew.",
+    "Machine-readable by default — the same content is published as markdown, JSON-LD and plain-text indexes for AI agents."
+  ],
+  "contactTitle": "Contact",
+  "contactIntro": "Guide to AI is maintained by Leon Melamud. There is no contact form and no mailing list — the site is static and stores nothing — so use one of the channels below.",
+  "contactChannelsTitle": "Channels",
+  "contactIssues": "Report an error, suggest a tool or request a concept (fastest, and it leaves a public record):",
+  "contactEdit": "Propose an edit directly — content lives as YAML and JSON under client/data:",
+  "contactOther": "Professional enquiries and everything else:",
+  "contactExpectTitle": "What to expect",
+  "contactExpect": "This is a personal, non-commercial project maintained alongside a full-time job, so replies are best-effort rather than same-day. Factual corrections are prioritised over everything else — if something here is wrong, say which page and what is wrong, and it gets fixed."
 }

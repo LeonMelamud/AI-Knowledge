@@ -1,26 +1,8 @@
 import { useState } from 'react'
 import { useI18n } from '../lib/i18n'
 import { usePageMeta } from '../lib/usePageMeta'
+import { loadEncoder } from '../lib/tokens'
 import SectionHero from '../components/SectionHero'
-
-// Encoder is lazy-loaded (rank table is large) and cached after first use.
-let encodePromise: Promise<(text: string) => number> | null = null
-
-function loadEncoder() {
-  encodePromise ??= Promise.all([import('js-tiktoken/lite'), import('js-tiktoken/ranks/gpt2')])
-    .then(([{ Tiktoken }, ranks]) => {
-      const encoding = new Tiktoken(ranks.default)
-      return (text: string) => encoding.encode(text).length
-    })
-    // Don't cache a rejection; each click should get a real attempt rather than
-    // an instantly-resolved failure. (A 404'd chunk stays dead in the browser's
-    // module map until reload — recovery there is the preloadError listener.)
-    .catch((error) => {
-      encodePromise = null
-      throw error
-    })
-  return encodePromise
-}
 
 export default function Calculator() {
   const { t } = useI18n()
@@ -51,16 +33,29 @@ export default function Calculator() {
 
       <div className="mx-auto max-w-3xl space-y-6 px-4 py-12">
 
-      <div className="space-y-4 border border-hairline bg-surface-raised p-6">
+      {/* toolname/tooldescription annotate the form for WebMCP agents; the same
+          capability is registered as the count_tokens tool in lib/webmcp.ts. */}
+      <form
+        toolname="count_tokens"
+        tooldescription="Count the number of LLM tokens (js-tiktoken GPT-2 encoding) in a piece of text. Runs locally in the browser; the text is not uploaded."
+        onSubmit={(event) => {
+          event.preventDefault()
+          calculate()
+        }}
+        className="space-y-4 border border-hairline bg-surface-raised p-6"
+      >
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder={t('enterText')}
           rows={6}
+          name="text"
+          toolname="text"
+          tooldescription="The text whose tokens should be counted"
           className="w-full border border-hairline p-3 text-sm transition-colors duration-150 focus:border-ink focus:outline-none focus:ring-1 focus:ring-ink"
         />
         <button
-          onClick={calculate}
+          type="submit"
           disabled={busy || !text}
           className="cursor-pointer bg-ink px-6 py-2.5 text-sm font-medium text-canvas transition-colors duration-200 hover:bg-ink-muted disabled:cursor-not-allowed disabled:opacity-50"
         >
@@ -76,7 +71,7 @@ export default function Calculator() {
             {t('encoderLoadFailed')}
           </p>
         )}
-      </div>
+      </form>
 
       <div className="border border-hairline bg-surface-raised p-6 text-sm leading-relaxed text-ink-muted">
         {t('tokenExplanation')

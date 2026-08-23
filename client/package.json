@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "postbuild": "node scripts/prerender.mjs",
+    "postbuild": "node scripts/prerender.mjs && node scripts/agent-surface.mjs",
     "lint": "oxlint",
     "preview": "vite preview"
   },

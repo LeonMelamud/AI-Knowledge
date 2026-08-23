@@ -1,0 +1,43 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ai-know",
+  "displayName": "Guide to AI (ai-know.org)",
+  "version": "1.0.0",
+  "description": "Look up plain-language definitions of AI concepts, curated AI tools by category, and a daily AI news digest from ai-know.org — a free, static, bilingual (English/Hebrew) knowledge base. Read-only: unauthenticated HTTP GET, no API key, no rate limits.",
+  "homepage": "https://ai-know.org/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LeonMelamud/AI-Knowledge"
+  },
+  "author": {
+    "name": "Leon Melamud",
+    "url": "https://www.linkedin.com/in/leon-melamud"
+  },
+  "keywords": [
+    "ai",
+    "knowledge-base",
+    "glossary",
+    "ai-tools",
+    "tokens",
+    "hebrew"
+  ],
+  "skills": [
+    {
+      "name": "ai-know-lookup",
+      "description": "Look up an AI concept or tool on ai-know.org and cite it: which markdown twin, feed or index to fetch, and how the content is structured.",
+      "path": "client/public/skills/ai-know-lookup/SKILL.md",
+      "url": "https://ai-know.org/skills/ai-know-lookup/SKILL.md"
+    }
+  ],
+  "resources": {
+    "catalog": "https://ai-know.org/.well-known/ai-catalog.json",
+    "llmsTxt": "https://ai-know.org/llms.txt",
+    "llmsFullTxt": "https://ai-know.org/llms-full.txt",
+    "openapi": "https://ai-know.org/openapi.json",
+    "feeds": [
+      "https://ai-know.org/feeds/concepts.jsonl",
+      "https://ai-know.org/feeds/tools.jsonl",
+      "https://ai-know.org/feeds/pages.jsonl"
+    ]
+  }
+}
