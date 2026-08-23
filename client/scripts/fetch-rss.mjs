@@ -84,9 +84,9 @@ function parseFeed(xml, source) {
 }
 
 async function fetchFeed({ url, source, max }) {
-  // Browser UA: several publishers' bot filters reject datacenter IPs outright, and a
-  // custom UA only adds to that score. TechCrunch fails from GitHub's runners either way,
-  // which is why the feed list is deep enough to lose a source without thinning out.
+  // Browser UA is load-bearing: with a custom "ai-know.org RSS snapshot" UA, TechCrunch
+  // returned "fetch failed" from GitHub's runners while working fine from a laptop.
+  // Publisher bot filters score UA and datacenter IP together — don't self-identify here.
   const res = await fetch(url, {
     signal: AbortSignal.timeout(TIMEOUT_MS),
     headers: {
