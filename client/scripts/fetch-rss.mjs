@@ -2,7 +2,7 @@
 // GitHub Pages has no server, so the app reads this static snapshot instead of proxying.
 // The Pages workflow rebuilds daily (static.yml cron), so the snapshot stays current.
 // Never fails the build: a dead feed is skipped, a total failure writes [] and exits 0.
-import { writeFileSync, mkdirSync } from 'node:fs'
+import { writeFileSync, mkdirSync, appendFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import { XMLParser } from 'fast-xml-parser'
@@ -22,6 +22,15 @@ const FEEDS = [
 const MAX_AGE_DAYS = 30 // a feed that stops publishing drops off instead of going stale on the page
 const MAX_ITEMS = 20
 const TIMEOUT_MS = 20000
+
+// Health thresholds. Losing a source or two is normal (publishers rate-limit, CDNs hiccup);
+// losing three at once means something systemic — the last time that happened it was a
+// user-agent the bot filters didn't like, and it went unnoticed because the build stayed green.
+// Under --strict these exit non-zero; the Pages build runs without it so a feed outage can
+// never block a content deploy. See .github/workflows/feed-health.yml.
+const MIN_HEALTHY_SOURCES = 5
+const MAX_NEWEST_AGE_HOURS = 72 // every source here publishes at least weekly
+const STRICT = process.argv.includes('--strict')
 
 const OUT_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'public', 'data')
 const OUT_FILE = path.join(OUT_DIR, 'rss.json')
@@ -126,3 +135,41 @@ if (!items.length) console.warn('fetch-rss: no items from any feed, writing empt
 
 mkdirSync(OUT_DIR, { recursive: true })
 writeFileSync(OUT_FILE, JSON.stringify(items, null, 2))
+
+// --- health ---------------------------------------------------------------
+// Write the snapshot first: even a degraded one beats none, and --strict must not
+// cost the site its feed on the way out.
+
+const failedSources = settled
+  .map((result, i) => (result.status === 'fulfilled' && result.value.length ? null : FEEDS[i].source))
+  .filter(Boolean)
+const healthyCount = FEEDS.length - failedSources.length
+const newestAgeHours = items.length ? (Date.now() - timeOf(items[0])) / 3_600_000 : Infinity
+
+const problems = []
+if (healthyCount < MIN_HEALTHY_SOURCES) {
+  problems.push(
+    `only ${healthyCount}/${FEEDS.length} sources returned items (need ${MIN_HEALTHY_SOURCES}); down: ${failedSources.join(', ')}`,
+  )
+}
+if (newestAgeHours > MAX_NEWEST_AGE_HOURS) {
+  const age = Number.isFinite(newestAgeHours) ? `${Math.round(newestAgeHours)}h old` : 'no items at all'
+  problems.push(`newest item is ${age} (expected under ${MAX_NEWEST_AGE_HOURS}h) — feeds may be reachable but stale`)
+}
+
+const summary = `fetch-rss: ${items.length} items, ${healthyCount}/${FEEDS.length} sources healthy${
+  failedSources.length ? ` (down: ${failedSources.join(', ')})` : ''
+}`
+console.log(summary)
+
+if (process.env.GITHUB_STEP_SUMMARY) {
+  const lines = [`**${summary}**`, ...problems.map((p) => `- :warning: ${p}`)]
+  appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${lines.join('\n')}\n`)
+}
+
+for (const problem of problems) {
+  // ::error:: annotates the run in the Actions UI even when the step exits 0
+  console.log(`::error title=RSS feed health::${problem}`)
+}
+
+if (problems.length && STRICT) process.exit(1)

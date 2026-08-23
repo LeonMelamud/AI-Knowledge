@@ -1,0 +1,40 @@
+name: RSS Feed Health
+
+# Deliberately separate from the Pages deploy. The deploy runs fetch-rss.mjs without
+# --strict so a publisher outage can never block shipping content; this job runs it WITH
+# --strict so a degraded feed fails a run and GitHub emails the repo owner. Nothing here
+# writes to the repo or deploys — it only reports.
+#
+# Fails when fewer than MIN_HEALTHY_SOURCES feeds return items, or when the newest item
+# across all feeds is older than MAX_NEWEST_AGE_HOURS (thresholds live in fetch-rss.mjs).
+# The Nasdaq source went two weeks stale unnoticed because nothing watched for this.
+
+on:
+  schedule:
+    - cron: "30 6 * * *" # 30 min after the Pages rebuild, so it checks what actually shipped
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-feeds:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: client/package-lock.json
+
+      - name: Install dependencies
+        working-directory: client
+        run: npm ci
+
+      - name: Check feed health
+        working-directory: client
+        run: node scripts/fetch-rss.mjs --strict

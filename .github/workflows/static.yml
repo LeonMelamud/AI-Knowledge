@@ -37,6 +37,9 @@ jobs:
         working-directory: client
         run: npm ci
 
+      # Intentionally NOT --strict: a publisher outage must never block a content deploy.
+      # Degradation still shows as an ::error:: annotation here, and feed-health.yml runs
+      # the same script with --strict on a schedule so a bad day actually notifies.
       - name: Fetch RSS snapshot
         working-directory: client
         run: node scripts/fetch-rss.mjs
