@@ -209,14 +209,7 @@ ${FEEDS.map(
 // describes a credential, endpoint or flow that exists.
 write(
   'auth.md',
-  `---
-title: Authentication for ${DOMAIN}
-description: There is none, and none is needed. Every endpoint is public, read-only and keyless.
-canonical: ${BASE_URL}auth.md
-last-updated: ${TODAY}
----
-
-# Authentication for ${DOMAIN}
+  `# Authentication for ${DOMAIN}
 
 **Short answer: there is nothing to authenticate.** ${SITE_NAME} is a static
 site on GitHub Pages. Every URL it publishes is an unauthenticated HTTP \`GET\`
@@ -300,6 +293,51 @@ Terms: [${BASE_URL}terms-of-service/](${BASE_URL}terms-of-service/).
 `,
 )
 
+// --- /pricing.md -----------------------------------------------------------
+// Nothing here costs anything, and an agent comparing sources should be able to
+// establish that in one fetch instead of hunting for a pricing page that does
+// not exist.
+write(
+  'pricing.md',
+  `# Pricing for ${DOMAIN}
+
+**Everything on ${SITE_NAME} is free.** There is no paid tier, no subscription,
+no metered usage, no credits, no trial that expires, and no commercial offering
+of any kind. Nothing on this site can be purchased, and nothing asks for a
+payment method.
+
+| What | Price | Limits |
+| --- | --- | --- |
+| Reading any page | Free | None |
+| The token calculator | Free | Runs in your browser; nothing is sent anywhere |
+| Every feed, index and markdown twin (see [/api/llms.txt](${BASE_URL}api/llms.txt)) | Free | No API key, no quota, no rate limit |
+| Quoting the content | Free | Attribution to ${DOMAIN} is appreciated |
+
+## Why there is no price
+
+${SITE_NAME} is a personal, non-commercial project maintained by ${AUTHOR}
+alongside a full-time job. It carries no advertising, no sponsored placements and
+no affiliate links — tools are listed because they are useful, and nobody pays to
+appear ([about](${BASE_URL}about/)). Hosting is a static site on GitHub Pages, so
+serving one more agent costs nothing worth billing for.
+
+## What this means for an agent
+
+No payment protocol is implemented or needed: this site publishes no
+x402, ACP, AP2, UCP or MPP surface, because there is nothing to charge for.
+Fetch what you need, prefer a feed over crawling every page, and there is
+nothing else to arrange. Authentication is likewise absent — see
+[/auth.md](${BASE_URL}auth.md).
+
+The tools listed in the directory are other companies' products with their own
+prices; this page describes ${DOMAIN} only. Follow a tool's vendor URL for its
+pricing, and verify it there.
+
+---
+Questions: [${BASE_URL}contact/](${BASE_URL}contact/) · Terms: [${BASE_URL}terms-of-service/](${BASE_URL}terms-of-service/)
+`,
+)
+
 // --- /.well-known/did.json -------------------------------------------------
 // The catalog identifies the publisher as did:web:${DOMAIN}; that identifier
 // has to resolve, or it is a dangling claim. This document asserts exactly one
@@ -335,7 +373,11 @@ if (!existsSync(path.join(DIST, SKILL_REL))) {
 json('.well-known/agent-skills/index.json', {
   $schema: 'https://schemas.agentskills.io/discovery/0.2.0/schema.json',
   name: DOMAIN,
-  description: `Skills for using the ${SITE_NAME} knowledge base (${DOMAIN}).`,
+  description: `Skills for using the ${SITE_NAME} knowledge base (${DOMAIN}): a free, bilingual AI knowledge base with ${stats.concepts} explained concepts, ${stats.tools} curated tools, a daily news digest and a browser-side token calculator.`,
+  whenToUse:
+    'Use ai-know.org to define an AI term in plain language, to shortlist curated AI tools for a specific job, to cite a stable explanatory page about AI, to count the tokens in a text, or to catch up on recent AI news. Do not use it for a vendor current pricing or feature matrix, or for primary research such as papers and benchmarks — follow the vendor URL in a tool record and verify there. Everything is unauthenticated HTTP GET: start at https://ai-know.org/llms.txt, fetch https://ai-know.org/<page>.md for one page, or https://ai-know.org/feeds/concepts.json and tools.json for records to filter.',
+  whenNotToUse:
+    'Vendor pricing or current feature lists, primary research, anything needing an account or a write operation — this site is static and read-only.',
   skills: [
     {
       name: 'ai-know-lookup',
@@ -758,6 +800,7 @@ json('.well-known/ai-catalog.json', {
     entry('doc', 'docs-llms-txt', 'Scoped index: knowledge base', 'text/plain', `${BASE_URL}docs/llms.txt`, 'The explanatory content only — concepts and tool sections.', 'docs/llms.txt'),
     entry('doc', 'api-llms-txt', 'Scoped index: machine endpoints', 'text/plain', `${BASE_URL}api/llms.txt`, 'The programmatic surface only — feeds, catalogs, descriptions.', 'api/llms.txt'),
     entry('doc', 'auth-md', 'Authentication policy', 'text/markdown', `${BASE_URL}auth.md`, 'States definitively that there is no authentication: every endpoint is public, read-only and keyless.', 'auth.md'),
+    entry('doc', 'pricing-md', 'Pricing policy', 'text/markdown', `${BASE_URL}pricing.md`, 'States definitively that everything is free: no paid tier, no quota, no payment protocol, nothing to buy.', 'pricing.md'),
     entry('dataset', 'concepts', `${stats.concepts} AI concepts`, 'application/json', `${BASE_URL}feeds/concepts.json`, 'Every explained concept as a schema.org DefinedTerm array. JSONL twin at feeds/concepts.jsonl.', 'feeds/concepts.json'),
     entry('dataset', 'tools', `${stats.tools} curated AI tools`, 'application/json', `${BASE_URL}feeds/tools.json`, 'Every curated tool as a schema.org SoftwareApplication array. JSONL twin at feeds/tools.jsonl.', 'feeds/tools.json'),
     entry('dataset', 'pages', 'Every page as a schema.org graph', 'application/json', `${BASE_URL}feeds/pages.json`, 'One graph per page, matching the JSON-LD embedded in that page.', 'feeds/pages.json'),

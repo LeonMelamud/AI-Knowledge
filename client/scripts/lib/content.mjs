@@ -704,6 +704,32 @@ export function jsonLdFor(route) {
     )
   }
 
+  // What the organisation actually offers, priced honestly at zero. Terms and
+  // the free-of-charge offer are the two things an agent most often needs to
+  // establish before using content.
+  if (route.kind === 'home') {
+    graph.push({
+      '@type': 'Service',
+      '@id': `${BASE_URL}#service`,
+      name: `${SITE_NAME} — AI knowledge base`,
+      serviceType: 'Free AI knowledge base and reference',
+      description: `Explanations of ${stats.concepts} artificial-intelligence concepts, a curated directory of ${stats.tools} AI tools, a daily AI news digest and a browser-side LLM token calculator. Bilingual (English and Hebrew), no account, no tracking.`,
+      provider: { '@id': `${BASE_URL}#organization` },
+      areaServed: 'Worldwide',
+      availableLanguage: ['en', 'he'],
+      isAccessibleForFree: true,
+      termsOfService: `${BASE_URL}terms-of-service/`,
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+        description: 'Free to read, quote and crawl. No account, no paid tier, no rate limit.',
+        url: `${BASE_URL}pricing.md`,
+      },
+    })
+  }
+
   // The calculator is a real application: free, browser-side, no upload.
   if (route.path === 'calculator') {
     graph.push({
