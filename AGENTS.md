@@ -50,6 +50,9 @@ client/scripts/         build pipeline (see below)
   `/.well-known/ai-catalog.json`, the agent-skills index, `/.well-known/api-catalog`
   and `openapi.json`.
 
+What each generated file is for, what was deliberately left out, and what is
+still worth doing: [`docs/agent-readiness.md`](docs/agent-readiness.md).
+
 **If you add or rename a route, change it in three places**: `client/src/App.tsx`
 (the SPA route), `client/scripts/lib/content.mjs` (title, description, body and
 markdown), and `client/public/llms.txt` (the curated index). The sitemap, feeds
@@ -92,6 +95,7 @@ and catalogs follow automatically.
 ## Definition of done
 
 `npm run lint` clean, `npm run build` green, and — for anything touching content
-or the pipeline — a spot check of `dist/`: the page has an `<h1>` and real body
-text, its `.md` twin exists, and every `<script type="application/ld+json">`
-block parses.
+or the pipeline — `npm run verify:agents`, which checks `dist/` the way a crawler
+or an agent-readiness scanner does: every page has an `<h1>` and real body text,
+its `.md` twin exists with frontmatter, every `<script type="application/ld+json">`
+block parses, and every catalog digest matches the file it names.

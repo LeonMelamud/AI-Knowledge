@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "postbuild": "node scripts/prerender.mjs && node scripts/agent-surface.mjs",
     "lint": "oxlint",
+    "verify:agents": "node scripts/verify-agent-surface.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
