@@ -65,13 +65,6 @@ const contentRoutes = () => [
   ...tools.map((s) => ({ id: s.id, title: s.title })),
 ]
 
-const otherSections = (currentId) =>
-  `<h2>Other sections of this guide</h2>\n    ${list(
-    contentRoutes()
-      .filter((s) => s.id !== currentId)
-      .map((s) => link(`/${s.id}/`, s.title)),
-  )}`
-
 // Repeated on every page: an agent that lands deep still finds the machine
 // surface without crawling back to the homepage.
 const agentFooter = (routePath) => {
@@ -86,6 +79,36 @@ const agentFooter = (routePath) => {
       `Source content: ${link(REPO_URL, 'github.com/LeonMelamud/AI-Knowledge')}`,
     ])}`
 }
+
+// Landmarks around the page body: an agent navigating by landmark and heading
+// gets header / nav / main / footer instead of one <main> and a wall of links.
+export const siteChrome = (routePath) => ({
+  header: `<header>
+      ${p(`${SITE_NAME} — the bilingual AI knowledge base at ai-know.org. ${stats.concepts} explained concepts, ${stats.tools} curated tools, daily AI news and a token calculator. Free, no account, no tracking.`)}
+    </header>`,
+  nav: `<nav aria-label="Site sections">
+      <h2>Sections of this guide</h2>
+      ${list(
+        contentRoutes()
+          .filter((s) => s.id !== routePath)
+          .map((s) => link(`/${s.id}/`, s.title)),
+      )}
+      ${list([
+        link('/hot-news/', 'Hot News'),
+        link('/calculator/', 'Token Calculator'),
+        link('/about/', 'About'),
+        link('/contact/', 'Contact'),
+      ])}
+    </nav>`,
+  footer: `<footer>
+      ${agentFooter(routePath)}
+      ${list([
+        link('/privacy-policy/', 'Privacy Policy'),
+        link('/terms-of-service/', 'Terms of Service'),
+        `Maintained by ${AUTHOR} — ${link(REPO_URL, 'source on GitHub')}`,
+      ])}
+    </footer>`,
+})
 
 const questionsOf = (section) =>
   (section.items || []).flatMap((item) =>
@@ -122,8 +145,7 @@ function conceptBody(section) {
       .join('\n    ')}`
         : ''
     }
-    ${otherSections(section.id)}
-    ${agentFooter(section.id)}`
+`
 }
 
 function toolBody(section) {
@@ -140,8 +162,7 @@ function toolBody(section) {
     </section>`,
       )
       .join('\n    ')}
-    ${otherSections(section.id)}
-    ${agentFooter(section.id)}`
+`
 }
 
 function conceptMarkdown(section) {
@@ -266,7 +287,6 @@ function homeBody() {
       ${p(q.answer)}
     </section>`,
     ).join('\n    ')}
-    ${agentFooter('')}
     ${p(`Sections: ${sections.map((s) => s.title).join(', ')}.`)}`
 }
 
@@ -328,8 +348,7 @@ const staticPages = () => [
       `Article images manifest (JSON): ${link('/data/news-images.json', '/data/news-images.json')}`,
       `Topic summaries are stored in the repository under client/data as news_en.yaml and news_he.yaml: ${link(REPO_URL, 'github.com/LeonMelamud/AI-Knowledge')}`,
     ])}
-    ${p('Items older than six months are pruned automatically, so the page is a rolling window rather than an archive.')}
-    ${agentFooter('hot-news')}`,
+    ${p('Items older than six months are pruned automatically, so the page is a rolling window rather than an archive.')}`,
     markdown: `# Hot News — AI developments
 
 > A digest of recent AI news, rebuilt automatically every day from publisher RSS feeds and grouped by topic. Canonical page: ${BASE_URL}hot-news/
@@ -361,8 +380,7 @@ Site index: ${BASE_URL}llms.txt
       <textarea id="tokens-input" name="text" toolname="text" tooldescription="The text whose tokens should be counted" rows="6"></textarea>
       <button type="submit">Calculate tokens</button>
     </form>
-    ${p('This page needs JavaScript to compute a count, because the encoder runs on your device. Agents can call the same capability as a WebMCP tool named count_tokens once the page has loaded.')}
-    ${agentFooter('calculator')}`,
+    ${p('This page needs JavaScript to compute a count, because the encoder runs on your device. Agents can call the same capability as a WebMCP tool named count_tokens once the page has loaded.')}`,
     markdown: `# Token Calculator — count LLM tokens
 
 > Count the tokens a large language model would charge for any text. Canonical page: ${BASE_URL}calculator/
@@ -400,8 +418,7 @@ Site index: ${BASE_URL}llms.txt
       'Bilingual by default — every section exists in English and Hebrew.',
       'Machine-readable by default — the same content is published as markdown, JSON-LD and plain-text indexes for AI agents.',
     ])}
-    ${list([`Repository: ${link(REPO_URL, 'github.com/LeonMelamud/AI-Knowledge')}`, `Contact: ${link('/contact/', 'the contact page')}`])}
-    ${agentFooter('about')}`,
+    ${list([`Repository: ${link(REPO_URL, 'github.com/LeonMelamud/AI-Knowledge')}`, `Contact: ${link('/contact/', 'the contact page')}`])}`,
     markdown: `# About ${SITE_NAME}
 
 > ${TAGLINE}
@@ -447,8 +464,7 @@ Contact: ${BASE_URL}contact/ · Site index: ${BASE_URL}llms.txt
     <h2>What to expect</h2>
     ${p('This is a personal, non-commercial project maintained alongside a full-time job, so replies are best-effort rather than same-day. Factual corrections are prioritised over everything else — if something on the site is wrong, say which page and what is wrong, and it gets fixed.')}
     ${p('Privacy or legal questions about the site are answered through the same channels; see the privacy policy and terms of service for the written positions.')}
-    ${list([link('/privacy-policy/', 'Privacy Policy'), link('/terms-of-service/', 'Terms of Service'), link('/about/', 'About this guide')])}
-    ${agentFooter('contact')}`,
+    ${list([link('/privacy-policy/', 'Privacy Policy'), link('/terms-of-service/', 'Terms of Service'), link('/about/', 'About this guide')])}`,
     markdown: `# Contact
 
 > How to reach the maintainer of ${SITE_NAME}. Canonical page: ${BASE_URL}contact/
@@ -487,8 +503,7 @@ Privacy: ${BASE_URL}privacy-policy/ · Terms: ${BASE_URL}terms-of-service/ · Si
     ${list(ui.howWeUseList.map(escapeHtml))}
     <h2>${escapeHtml(ui.contactUsTitle)}</h2>
     ${p(ui.contactUsText)}
-    ${list([link('/contact/', 'Contact page'), link('https://www.linkedin.com/in/leon-melamud', 'LinkedIn')])}
-    ${agentFooter('privacy-policy')}`,
+    ${list([link('/contact/', 'Contact page'), link('https://www.linkedin.com/in/leon-melamud', 'LinkedIn')])}`,
     markdown: `# ${ui.privacyPolicyTitle}
 
 > ${ui.effectiveDate} · Canonical page: ${BASE_URL}privacy-policy/
@@ -535,8 +550,7 @@ Site index: ${BASE_URL}llms.txt
     ${list(ui.tosProhibitedList.map(escapeHtml))}
     <h2>${escapeHtml(ui.tosContactTitle)}</h2>
     ${p(ui.tosContactText)}
-    ${list([link('/contact/', 'Contact page'), link('https://www.linkedin.com/in/leon-melamud', 'LinkedIn')])}
-    ${agentFooter('terms-of-service')}`,
+    ${list([link('/contact/', 'Contact page'), link('https://www.linkedin.com/in/leon-melamud', 'LinkedIn')])}`,
     markdown: `# ${ui.termsOfServiceTitle ?? 'Terms of Service'}
 
 > Canonical page: ${BASE_URL}terms-of-service/
@@ -656,7 +670,57 @@ export function jsonLdFor(route) {
     breadcrumb(route),
   ]
 
-  if (route.kind === 'home') graph.push(faqPage(route, SITE_FAQ))
+  if (route.kind === 'home') {
+    graph.push(faqPage(route, SITE_FAQ))
+    // The feeds really are datasets, and the homepage is where an agent that
+    // reads one page learns they exist.
+    graph.push(
+      {
+        '@type': 'Dataset',
+        '@id': `${BASE_URL}#concepts-dataset`,
+        name: `${SITE_NAME} — AI concepts`,
+        description: `${stats.concepts} artificial-intelligence concepts with plain-language definitions, as schema.org DefinedTerm records.`,
+        inLanguage: 'en',
+        isAccessibleForFree: true,
+        creator: { '@id': `${BASE_URL}#organization` },
+        distribution: [
+          { '@type': 'DataDownload', encodingFormat: 'application/x-ndjson', contentUrl: `${BASE_URL}feeds/concepts.jsonl` },
+          { '@type': 'DataDownload', encodingFormat: 'application/json', contentUrl: `${BASE_URL}feeds/concepts.json` },
+        ],
+      },
+      {
+        '@type': 'Dataset',
+        '@id': `${BASE_URL}#tools-dataset`,
+        name: `${SITE_NAME} — curated AI tools`,
+        description: `${stats.tools} curated AI tools and resources with vendor and purpose, as schema.org SoftwareApplication records.`,
+        inLanguage: 'en',
+        isAccessibleForFree: true,
+        creator: { '@id': `${BASE_URL}#organization` },
+        distribution: [
+          { '@type': 'DataDownload', encodingFormat: 'application/x-ndjson', contentUrl: `${BASE_URL}feeds/tools.jsonl` },
+          { '@type': 'DataDownload', encodingFormat: 'application/json', contentUrl: `${BASE_URL}feeds/tools.json` },
+        ],
+      },
+    )
+  }
+
+  // The calculator is a real application: free, browser-side, no upload.
+  if (route.path === 'calculator') {
+    graph.push({
+      '@type': 'SoftwareApplication',
+      '@id': `${url}#app`,
+      name: 'Token Calculator',
+      applicationCategory: 'UtilitiesApplication',
+      operatingSystem: 'Any browser',
+      url,
+      description:
+        'Counts the LLM tokens in any text using the js-tiktoken GPT-2 encoding. Runs entirely in the browser; the text is never uploaded.',
+      isAccessibleForFree: true,
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      featureList: ['Token count for arbitrary text', 'Runs in the browser with no upload', 'WebMCP tool: count_tokens'],
+      publisher: { '@id': `${BASE_URL}#organization` },
+    })
+  }
 
   if (route.kind === 'concepts') {
     graph.push({

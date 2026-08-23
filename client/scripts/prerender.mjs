@@ -5,7 +5,18 @@
 // browsers see no difference). Also writes 404.html and sitemap.xml.
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import path from 'node:path'
-import { DIST, BASE_URL, SITE_NAME, allRoutes, routes, escapeHtml, jsonLdFor, concepts, tools } from './lib/content.mjs'
+import {
+  DIST,
+  BASE_URL,
+  SITE_NAME,
+  allRoutes,
+  routes,
+  escapeHtml,
+  jsonLdFor,
+  siteChrome,
+  concepts,
+  tools,
+} from './lib/content.mjs'
 
 const ROOT_DIV = '<div id="root"></div>'
 const shell = readFileSync(path.join(DIST, 'index.html'), 'utf8')
@@ -28,9 +39,15 @@ function render(route) {
 ${JSON.stringify(jsonLdFor(route), null, 2)}
     </script>
   `
-  const body = `<div id="root">${PRERENDER_NOTE}<main lang="en" dir="ltr">
+  const chrome = siteChrome(route.path)
+  const body = `<div id="root">${PRERENDER_NOTE}<div lang="en" dir="ltr">
+    ${chrome.header}
+    <main>
     ${route.body}
-  </main></div>`
+    </main>
+    ${chrome.nav}
+    ${chrome.footer}
+  </div></div>`
 
   return shell
     .replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`)
@@ -90,7 +107,23 @@ const notFound = render({
       <li><a href="/llms.txt">/llms.txt</a> — index for LLMs, <a href="/llms-full.txt">/llms-full.txt</a> for the full text</li>
       <li><a href="/sitemap.xml">/sitemap.xml</a> — every page</li>
       <li><a href="/.well-known/ai-catalog.json">/.well-known/ai-catalog.json</a> — capability catalog</li>
-    </ul>`,
+    </ul>
+    <h2>Recovery block</h2>
+    <pre>${[
+      '# 404 — no such page on ai-know.org',
+      '',
+      'The status is a real 404: this path does not exist. Recover from one of these.',
+      '',
+      `- [Site index for LLMs](${BASE_URL}llms.txt)`,
+      `- [Whole knowledge base, one document](${BASE_URL}llms-full.txt)`,
+      `- [Sitemap, every canonical URL](${BASE_URL}sitemap.xml)`,
+      `- [Capability catalog](${BASE_URL}.well-known/ai-catalog.json)`,
+      `- [Home](${BASE_URL})`,
+      '',
+      '## Sections',
+      '',
+      ...[...concepts, ...tools].map((s) => `- [${s.title}](${BASE_URL}${s.id}/) — markdown: ${BASE_URL}${s.id}.md`),
+    ].join('\n')}</pre>`,
 })
 writeFileSync(path.join(DIST, '404.html'), notFound)
 

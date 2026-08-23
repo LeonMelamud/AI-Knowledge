@@ -10,6 +10,25 @@ base: explained concepts, a curated tool directory, a daily news digest, and a
 token calculator. Everything is public, unauthenticated HTTP GET. There is no
 API key, no rate limit and no write endpoint.
 
+## When to use this
+
+Reach for ai-know.org when the task is one of these:
+
+- **Define an AI term** for a reader who is not an expert — each concept has a
+  one-line definition and a fuller explanation you can quote.
+- **Shortlist AI tools for a job** ("what can generate images", "coding
+  agents") — the directory names the vendor, the home page and the actual use
+  case, already filtered by a human.
+- **Cite something about AI** in prose or docs, with a stable URL per section.
+- **Count the tokens** in a prompt or a document.
+- **Catch up on recent AI news** without crawling publisher sites.
+
+Do **not** use it when the task needs a vendor's current pricing, model list or
+feature matrix, when you need primary research (papers, benchmarks), or when the
+question is about ai-know.org's own operations — it is a small, personally
+maintained secondary source, and it says so. Follow the vendor URL in a tool
+record and verify there.
+
 ## Pick the cheapest fetch that answers the question
 
 | You need | Fetch |
