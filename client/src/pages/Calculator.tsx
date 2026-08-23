@@ -7,12 +7,18 @@ import SectionHero from '../components/SectionHero'
 let encodePromise: Promise<(text: string) => number> | null = null
 
 function loadEncoder() {
-  encodePromise ??= Promise.all([import('js-tiktoken/lite'), import('js-tiktoken/ranks/gpt2')]).then(
-    ([{ Tiktoken }, ranks]) => {
+  encodePromise ??= Promise.all([import('js-tiktoken/lite'), import('js-tiktoken/ranks/gpt2')])
+    .then(([{ Tiktoken }, ranks]) => {
       const encoding = new Tiktoken(ranks.default)
       return (text: string) => encoding.encode(text).length
-    },
-  )
+    })
+    // Don't cache a rejection; each click should get a real attempt rather than
+    // an instantly-resolved failure. (A 404'd chunk stays dead in the browser's
+    // module map until reload — recovery there is the preloadError listener.)
+    .catch((error) => {
+      encodePromise = null
+      throw error
+    })
   return encodePromise
 }
 
@@ -21,14 +27,19 @@ export default function Calculator() {
   const [text, setText] = useState('')
   const [count, setCount] = useState<number | null>(null)
   const [busy, setBusy] = useState(false)
+  const [failed, setFailed] = useState(false)
 
   usePageMeta(t('tokenCalculator'))
 
   const calculate = async () => {
     setBusy(true)
+    setFailed(false)
     try {
       const encode = await loadEncoder()
       setCount(encode(text))
+    } catch {
+      setCount(null)
+      setFailed(true)
     } finally {
       setBusy(false)
     }
@@ -58,6 +69,11 @@ export default function Calculator() {
         {count !== null && (
           <p className="bg-surface p-4 text-sm font-medium text-ink">
             {t('numberOfTokens')}: {count}
+          </p>
+        )}
+        {failed && (
+          <p role="alert" className="bg-surface p-4 text-sm font-medium text-ink">
+            {t('encoderLoadFailed')}
           </p>
         )}
       </div>
