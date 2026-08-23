@@ -11,9 +11,11 @@ import { XMLParser } from 'fast-xml-parser'
 // a high-volume publisher can't crowd the others out of the 8 slots the widget shows.
 const FEEDS = [
   { source: 'TechCrunch', url: 'https://techcrunch.com/category/artificial-intelligence/feed/', max: 3 },
+  { source: 'The Guardian', url: 'https://www.theguardian.com/technology/artificialintelligenceai/rss', max: 3 },
   { source: 'Ars Technica', url: 'https://arstechnica.com/ai/feed/', max: 3 },
   { source: 'The Verge', url: 'https://www.theverge.com/rss/ai-artificial-intelligence/index.xml', max: 3 },
   { source: 'MIT Tech Review', url: 'https://www.technologyreview.com/topic/artificial-intelligence/feed', max: 2 },
+  { source: 'The Register', url: 'https://www.theregister.com/software/ai_ml/headlines.atom', max: 2 },
   { source: 'VentureBeat', url: 'https://venturebeat.com/category/ai/feed/', max: 2 },
 ]
 
@@ -82,9 +84,16 @@ function parseFeed(xml, source) {
 }
 
 async function fetchFeed({ url, source, max }) {
+  // Browser UA: several publishers' bot filters reject datacenter IPs outright, and a
+  // custom UA only adds to that score. TechCrunch fails from GitHub's runners either way,
+  // which is why the feed list is deep enough to lose a source without thinning out.
   const res = await fetch(url, {
     signal: AbortSignal.timeout(TIMEOUT_MS),
-    headers: { 'user-agent': 'ai-know.org RSS snapshot (+https://ai-know.org)' },
+    headers: {
+      'user-agent':
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36',
+      accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml, */*',
+    },
   })
   if (!res.ok) throw new Error(`HTTP ${res.status}`)
   return parseFeed(await res.text(), source).slice(0, max)

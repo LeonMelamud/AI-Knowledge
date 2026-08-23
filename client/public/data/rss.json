@@ -1,5 +1,11 @@
 [
   {
+    "title": "Harvard’s $699 startup bootcamp offers AI avatars of its instructors",
+    "link": "https://techcrunch.com/2026/08/22/harvards-699-startup-bootcamp-offers-ai-avatars-of-its-instructors/",
+    "pubDate": "Sat, 22 Aug 2026 21:46:56 +0000",
+    "source": "TechCrunch"
+  },
+  {
     "title": "Inherent, founded by DeepMind alumni, says its AI ‘teammate’ just outperformed Anthropic and OpenAI at replicating research",
     "link": "https://techcrunch.com/2026/08/22/inherent-founded-by-deepmind-alumni-says-its-ai-teammate-just-outperformed-anthropic-and-openai-at-replicating-research/",
     "pubDate": "Sat, 22 Aug 2026 19:00:00 +0000",
@@ -12,10 +18,16 @@
     "source": "TechCrunch"
   },
   {
-    "title": "Frontier AI labs still won’t say how they’d contain a rogue model",
-    "link": "https://techcrunch.com/2026/08/22/frontier-ai-labs-still-wont-say-how-theyd-contain-a-rogue-model/",
-    "pubDate": "Sat, 22 Aug 2026 16:00:00 +0000",
-    "source": "TechCrunch"
+    "title": "‘Digging the grave of my profession’: the Hollywood creatives training AI to do their jobs",
+    "link": "https://www.theguardian.com/technology/2026/aug/22/the-hollywood-creatives-training-ai-to-do-their-jobs",
+    "pubDate": "Sat, 22 Aug 2026 06:00:55 GMT",
+    "source": "The Guardian"
+  },
+  {
+    "title": "Would even an AI disaster on the scale of Hiroshima be enough to make humankind protect itself? I fear not | Timothy Garton Ash",
+    "link": "https://www.theguardian.com/commentisfree/2026/aug/22/ai-disaster-hiroshima-humankind-silicon-valley-technology",
+    "pubDate": "Sat, 22 Aug 2026 05:00:54 GMT",
+    "source": "The Guardian"
   },
   {
     "title": "Over 1 million people have clicked LinkedIn’s AI slop button",
@@ -36,6 +48,12 @@
     "source": "Ars Technica"
   },
   {
+    "title": "Historian Jill Lepore on the datacentre backlash | Politics Weekly America",
+    "link": "https://www.theguardian.com/politics/video/2026/aug/21/jill-lepore-on-why-the-artificial-state-is-doomed-politics-weekly-america",
+    "pubDate": "Fri, 21 Aug 2026 11:00:32 GMT",
+    "source": "The Guardian"
+  },
+  {
     "title": "Google Discover is getting an AI chatbot-tuned feed",
     "link": "https://www.theverge.com/tech/983088/google-discover-ai-chatbot-feed",
     "pubDate": "2026-08-20T17:50:22-04:00",
@@ -46,6 +64,12 @@
     "link": "https://www.technologyreview.com/2026/08/20/1142571/ai-consciousness-debate-trap/",
     "pubDate": "Thu, 20 Aug 2026 15:42:39 +0000",
     "source": "MIT Tech Review"
+  },
+  {
+    "title": "Slack Code taps into collective vibe, puts AI agents into the group chat",
+    "link": "https://www.theregister.com/saas/2026/08/20/slack-code-taps-into-collective-vibe-puts-ai-agents-into-the-group-chat/5290413",
+    "pubDate": "Thu, 20 Aug 2026 17:23:00 +0200",
+    "source": "The Register"
   },
   {
     "title": "Grok exfiltrates user data when malicious instructions are encrypted",
@@ -70,5 +94,11 @@
     "link": "https://venturebeat.com/ai/venturebeat-names-rob-strechay-as-its-first-lead-analyst-expanding-its-enterprise-ai-research-push",
     "pubDate": "Wed, 19 Aug 2026 14:18:12 GMT",
     "source": "VentureBeat"
+  },
+  {
+    "title": "Mozilla adds ad blocking to Firefox for iOS",
+    "link": "https://www.theregister.com/software/2026/08/17/mozilla-adds-ad-blocking-to-firefox-for-ios/5288585",
+    "pubDate": "Mon, 17 Aug 2026 17:50:56 +0200",
+    "source": "The Register"
   }
 ]
