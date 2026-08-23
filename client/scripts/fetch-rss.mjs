@@ -153,7 +153,9 @@ const missingSources = FEEDS.map(({ source }, i) => {
   if (shipped.has(source)) return null
   const result = settled[i]
   if (result.status === 'rejected') return `${source} (fetch failed)`
-  return `${source} (${result.value.length ? `nothing newer than ${MAX_AGE_DAYS}d` : 'empty feed'})`
+  if (!result.value.length) return `${source} (empty feed)`
+  const hasRecent = result.value.some((item) => timeOf(item) >= cutoff)
+  return `${source} (${hasRecent ? 'items excluded from snapshot' : `nothing newer than ${MAX_AGE_DAYS}d`})`
 }).filter(Boolean)
 const newestAgeHours = items.length ? (Date.now() - timeOf(items[0])) / 3_600_000 : Infinity
 
