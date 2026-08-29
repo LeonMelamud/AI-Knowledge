@@ -2,6 +2,65 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+- section: Nvidia–Hugging Face Acquisition Talks Reported
+  date: '2026-08-29'
+  topics:
+  - title: Reports say Nvidia is in talks to acquire Hugging Face; neither company has confirmed a transaction
+    description: 'Reuters and other outlets reported this week that Nvidia has held serious talks about acquiring Hugging Face at a valuation above $13 billion. The reports are significant because Hugging Face is central infrastructure for sharing models, datasets and AI tools, but the companies had not confirmed a signed agreement at publication time.\n\n\n      Key developments:\n\n      - Reuters reported that the talks were based on Business Insider reporting and could not independently verify a deal\n\n      - Any transaction remains unconfirmed and could change or fail to close; this is a reported acquisition discussion, not an announced acquisition\n\n      - If completed, the deal would place a major open-model distribution platform under Nvidia ownership, a consequential change for the AI developer ecosystem\n\n      '
+    questions:
+    - question: Has Nvidia acquired Hugging Face?
+      answer: No acquisition had been officially announced as of August 29, 2026. Reuters reported talks citing Business Insider, while Nvidia and Hugging Face had not confirmed a signed transaction.
+    - question: Why would a Nvidia–Hugging Face deal matter for AI developers?
+      answer: Hugging Face hosts and distributes models, datasets and developer tools used across the AI ecosystem. A change in its ownership could affect an important piece of open-model infrastructure, although the reported talks may not result in a deal.
+    links:
+    - name: Reuters — Nvidia in talks to acquire Hugging Face in $13 billion deal
+      url: https://www.reuters.com/technology/nvidia-talks-acquire-hugging-face-13-billion-deal-business-insider-reports-2026-08-27
+    - name: ThursdAI — weekly AI news coverage
+      url: https://sub.thursdai.news/p/nvidia-buys-hugging-face-glm-53-flash
+- section: GLM-5.3-Flash Adds Visual Agent Capabilities
+  date: '2026-08-29'
+  topics:
+  - title: Z.ai launches GLM-5.3-Flash, a multimodal model for visual, browser and GUI-based workflows
+    description: 'Z.ai listed GLM-5.3-Flash as a new release on August 26. The company describes a hybrid model with native visual capabilities intended to observe interfaces, rendering results and interaction feedback, enabling a loop across code, browsers and GUIs.\n\n\n      Key developments:\n\n      - Z.ai says the model combines linear and sparse attention, with 320B total parameters and 18B activated parameters\n\n      - The release is positioned for visual software work: inspecting an interface, checking rendered output and responding to interaction feedback\n\n      - Z.ai also presents it for tool-using document and financial-research workflows; these are vendor capability claims\n\n      '
+    questions:
+    - question: What is GLM-5.3-Flash?
+      answer: GLM-5.3-Flash is a Z.ai model released on August 26, 2026. Z.ai describes it as a hybrid-architecture model with native visual capabilities for workflows involving code, browsers and graphical interfaces.
+    - question: How large is GLM-5.3-Flash?
+      answer: Z.ai lists 320 billion total parameters and 18 billion activated parameters, alongside linear and sparse attention designed to reduce compute and KV-cache requirements.
+    links:
+    - name: Z.ai — GLM-5.3-Flash release notes
+      url: https://docs.z.ai/release-notes/new-released
+    - name: Z.ai — GLM-5.3-Flash documentation
+      url: https://docs.z.ai/guides/vlm/glm-5.3-flash
+    - name: ThursdAI — weekly AI news coverage
+      url: https://sub.thursdai.news/p/nvidia-buys-hugging-face-glm-53-flash
+- section: New Controls and Speed for Generative Video
+  date: '2026-08-29'
+  topics:
+  - title: Google releases Gemini Omni 1.1 Flash with scene extension, keyframe controls and 4K upscaling
+    description: 'Google introduced Gemini Omni 1.1 Flash as a production-ready generative-video update for developers. The release adds controls intended to make video workflows more iterative and editable rather than limited to isolated short clips.\n\n\n      Key developments:\n\n      - Developers can extend a scene in 10-second increments to a cumulative 40 seconds, using up to 10 seconds of prior video context\n\n      - The API can generate between specified first and last frames, and accepts video references in multimodal input\n\n      - Google offers 360p draft generation for lower-cost iteration, plus 1080p and 4K output options\n\n      '
+    questions:
+    - question: What new controls does Gemini Omni 1.1 Flash add?
+      answer: Google says Omni 1.1 Flash can extend scenes, interpolate between first and last frames, use video references and generate higher-resolution output. It is available through Google AI Studio and the Gemini Enterprise Agent Platform.
+    - question: How long can an Omni 1.1 Flash video become?
+      answer: Google says scene extension can add 10-second increments up to a cumulative 40 seconds. The model can analyze up to 10 seconds of prior video context during extension.
+    links:
+    - name: Google — Gemini Omni 1.1 Flash lets you build with more control
+      url: https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-omni-1-1-flash
+    - name: ThursdAI — weekly AI news coverage
+      url: https://sub.thursdai.news/p/nvidia-buys-hugging-face-glm-53-flash
+  - title: fal introduces H3 Max, a post-trained MiniMax H3 variant optimized for video quality and latency
+    description: 'fal introduced H3 Max, a post-trained version of the open-weights MiniMax H3 model, developed by fal Research and hosted through fal. The company says the model was co-designed with its inference system to target both stronger human-preference results and fast generation.\n\n\n      Key developments:\n\n      - fal says H3 Max generates a five-second video in under three seconds, a vendor-reported throughput comparison of roughly 35× versus the official MiniMax H3 endpoint\n\n      - fal reports first-place results in its human-preference evaluation for overall quality, prompt understanding and aesthetics; benchmark claims should be read as vendor-reported\n\n      - H3 Max is available through fal’s Playground, Agent and API for text-to-video and image-to-video workflows\n\n      '
+    questions:
+    - question: What is H3 Max?
+      answer: H3 Max is a fal Research post-training of MiniMax H3, optimized and hosted by fal for generative-video workflows. It is available through fal’s API, Playground and Agent.
+    - question: How fast is H3 Max?
+      answer: fal says H3 Max generates a five-second video in under three seconds. Its comparisons and quality rankings are company-reported results, not independent measurements.
+    links:
+    - name: fal — Introducing H3 Max
+      url: https://blog.fal.ai/introducing-h3-max-by-fal
+    - name: ThursdAI — weekly AI news coverage
+      url: https://sub.thursdai.news/p/nvidia-buys-hugging-face-glm-53-flash
   - section: OpenAI Slows Frontier RL to Strengthen Cyber Safeguards
     date: '2026-08-22'
     topics:

@@ -2,6 +2,65 @@
 # מקטעים בני יותר מ-6 חודשים מוסתרים אוטומטית (client/src/lib/data.ts)
 # וניתן להסירם פיזית עם: node client/scripts/prune-news.mjs
 hot_news:
+- section: דיווחים על מגעים לרכישת Hugging Face בידי Nvidia
+  date: '2026-08-29'
+  topics:
+  - title: לפי דיווחים Nvidia מנהלת מגעים לרכישת Hugging Face; אף חברה לא אישרה עסקה
+    description: 'רויטרס וכלי תקשורת נוספים דיווחו השבוע כי Nvidia ניהלה מגעים רציניים לרכישת Hugging Face לפי שווי של יותר מ-13 מיליארד דולר. הדיווחים משמעותיים משום ש-Hugging Face היא תשתית מרכזית לשיתוף מודלים, מערכי נתונים וכלי AI, אך במועד הפרסום החברות לא אישרו הסכם חתום.\n\n\n      התפתחויות מרכזיות:\n\n      - רויטרס דיווחה שהמידע מבוסס על דיווח של Business Insider ושלא הצליחה לאמת עסקה באופן עצמאי\n\n      - כל עסקה עדיין אינה מאושרת ועלולה להשתנות או לא להיסגר; מדובר בדיווח על דיוני רכישה, ולא ברכישה שהוכרזה\n\n      - אם העסקה תושלם, פלטפורמה מרכזית להפצה של מודלים פתוחים תעבור לבעלות Nvidia — שינוי בעל השלכות על אקוסיסטם מפתחי ה-AI\n\n      '
+    questions:
+    - question: האם Nvidia רכשה את Hugging Face?
+      answer: לא הוכרזה רשמית רכישה נכון ל-29 באוגוסט 2026. רויטרס דיווחה על מגעים בציטוט Business Insider, בעוד Nvidia ו-Hugging Face לא אישרו עסקה חתומה.
+    - question: מדוע עסקה בין Nvidia ל-Hugging Face חשובה למפתחי AI?
+      answer: Hugging Face מארחת ומפיצה מודלים, מערכי נתונים וכלי פיתוח המשמשים ברחבי אקוסיסטם ה-AI. שינוי בעלות עשוי להשפיע על תשתית מרכזית של מודלים פתוחים, אם כי ייתכן שהמגעים לא יבשילו לעסקה.
+    links:
+    - name: Reuters — Nvidia במגעים לרכישת Hugging Face בעסקה של 13 מיליארד דולר
+      url: https://www.reuters.com/technology/nvidia-talks-acquire-hugging-face-13-billion-deal-business-insider-reports-2026-08-27
+    - name: ThursdAI — סיקור חדשות ה-AI השבועי
+      url: https://sub.thursdai.news/p/nvidia-buys-hugging-face-glm-53-flash
+- section: GLM-5.3-Flash מוסיף יכולות לסוכנים חזותיים
+  date: '2026-08-29'
+  topics:
+  - title: Z.ai משיקה את GLM-5.3-Flash, מודל מולטימודלי לזרימות עבודה חזותיות, דפדפן וממשקי GUI
+    description: 'Z.ai ציינה את GLM-5.3-Flash כהשקה חדשה ב-26 באוגוסט. החברה מתארת ארכיטקטורה היברידית עם יכולות חזותיות טבעיות, שנועדה לצפות בממשקים, בתוצאות רינדור ובמשוב מאינטראקציות — וליצור לולאה בין קוד, דפדפנים וממשקי GUI.\n\n\n      התפתחויות מרכזיות:\n\n      - לפי Z.ai, המודל משלב קשב ליניארי ודליל, עם 320 מיליארד פרמטרים בסך הכול ו-18 מיליארד פרמטרים פעילים\n\n      - ההשקה ממוצבת עבור עבודה חזותית בתוכנה: בדיקת ממשק, בחינת פלט מרונדר ותגובה למשוב מאינטראקציה\n\n      - Z.ai מציגה את המודל גם עבור זרימות עבודה של מסמכים ומחקר פיננסי המשתמשות בכלים; אלה טענות יכולת של הספק\n\n      '
+    questions:
+    - question: מהו GLM-5.3-Flash?
+      answer: GLM-5.3-Flash הוא מודל של Z.ai שהושק ב-26 באוגוסט 2026. Z.ai מתארת אותו כמודל בארכיטקטורה היברידית עם יכולות חזותיות טבעיות לזרימות עבודה הכוללות קוד, דפדפנים וממשקים גרפיים.
+    - question: מה גודלו של GLM-5.3-Flash?
+      answer: Z.ai מציינת 320 מיליארד פרמטרים בסך הכול ו-18 מיליארד פרמטרים פעילים, לצד קשב ליניארי ודליל שנועד להפחית דרישות חישוב ומטמון KV.
+    links:
+    - name: Z.ai — הערות ההשקה של GLM-5.3-Flash
+      url: https://docs.z.ai/release-notes/new-released
+    - name: Z.ai — תיעוד GLM-5.3-Flash
+      url: https://docs.z.ai/guides/vlm/glm-5.3-flash
+    - name: ThursdAI — סיקור חדשות ה-AI השבועי
+      url: https://sub.thursdai.news/p/nvidia-buys-hugging-face-glm-53-flash
+- section: בקרות חדשות ומהירות גבוהה לווידאו גנרטיבי
+  date: '2026-08-29'
+  topics:
+  - title: Google משיקה את Gemini Omni 1.1 Flash עם הארכת סצנות, בקרות פריימים ושדרוג ל-4K
+    description: 'Google הציגה את Gemini Omni 1.1 Flash כעדכון וידאו גנרטיבי מוכן לפרודקשן עבור מפתחים. ההשקה מוסיפה בקרות שנועדו להפוך זרימות עבודה בווידאו לאיטרטיביות וניתנות לעריכה יותר, במקום להסתפק בקטעים קצרים ונפרדים.\n\n\n      התפתחויות מרכזיות:\n\n      - מפתחים יכולים להאריך סצנה במרווחים של 10 שניות עד לאורך מצטבר של 40 שניות, תוך שימוש בעד 10 שניות של הקשר וידאו קודם\n\n      - ה-API יכול ליצור וידאו בין פריים ראשון ואחרון שנבחרו, ולקבל הפניות וידאו בקלט מולטימודלי\n\n      - Google מציעה יצירת טיוטות ב-360p לאיטרציה זולה יותר, ולצדה אפשרויות פלט של 1080p ו-4K\n\n      '
+    questions:
+    - question: אילו בקרות חדשות מוסיף Gemini Omni 1.1 Flash?
+      answer: לפי Google, ‏Omni 1.1 Flash יכול להאריך סצנות, ליצור מעבר בין פריים ראשון ואחרון, להשתמש בהפניות וידאו וליצור פלט ברזולוציה גבוהה. הוא זמין דרך Google AI Studio ופלטפורמת Gemini Enterprise Agent.
+    - question: לאיזה אורך יכול להגיע וידאו ב-Omni 1.1 Flash?
+      answer: Google מסרה שהארכת סצנות יכולה להוסיף מקטעים של 10 שניות עד לאורך מצטבר של 40 שניות. המודל יכול לנתח עד 10 שניות של הקשר וידאו קודם במהלך ההארכה.
+    links:
+    - name: Google — Gemini Omni 1.1 Flash מאפשר לבנות עם יותר שליטה
+      url: https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-omni-1-1-flash
+    - name: ThursdAI — סיקור חדשות ה-AI השבועי
+      url: https://sub.thursdai.news/p/nvidia-buys-hugging-face-glm-53-flash
+  - title: fal מציגה את H3 Max, גרסת MiniMax H3 שעברה post-training ומותאמת לאיכות וידאו ולהשהיה נמוכה
+    description: 'fal הציגה את H3 Max, גרסה של MiniMax H3 עם משקולות פתוחות שעברה post-training ב-fal Research ומוגשת דרך fal. החברה מסרה שהמודל עוצב יחד עם מערכת ההסקה שלה כדי לכוון גם לתוצאות העדפה אנושית חזקות יותר וגם ליצירה מהירה.\n\n\n      התפתחויות מרכזיות:\n\n      - fal מסרה ש-H3 Max יוצר וידאו של חמש שניות בפחות משלוש שניות — השוואת תפוקה של כ-35× מול נקודת הקצה הרשמית של MiniMax H3, לפי הספק\n\n      - fal דיווחה על מקום ראשון בהערכת ההעדפה האנושית שלה באיכות כוללת, הבנת הנחיה ואסתטיקה; יש לקרוא את טענות הבנצ׳מרק כטענות של הספק\n\n      - H3 Max זמין דרך Playground, ‏Agent ו-API של fal לזרימות עבודה של טקסט-לווידאו ותמונה-לווידאו\n\n      '
+    questions:
+    - question: מהו H3 Max?
+      answer: H3 Max הוא עיבוד post-training של fal Research למודל MiniMax H3, שמותאם ומוגש על ידי fal עבור זרימות עבודה של וידאו גנרטיבי. הוא זמין דרך ה-API, ‏Playground ו-Agent של fal.
+    - question: עד כמה H3 Max מהיר?
+      answer: fal מסרה ש-H3 Max יוצר וידאו של חמש שניות בפחות משלוש שניות. ההשוואות ודירוגי האיכות שלה הם תוצאות שדווחו על ידי החברה ולא מדידות עצמאיות.
+    links:
+    - name: fal — הצגת H3 Max
+      url: https://blog.fal.ai/introducing-h3-max-by-fal
+    - name: ThursdAI — סיקור חדשות ה-AI השבועי
+      url: https://sub.thursdai.news/p/nvidia-buys-hugging-face-glm-53-flash
   - section: "OpenAI מאטה אימון RL בחזית כדי לחזק הגנות סייבר"
     date: '2026-08-22'
     topics:
