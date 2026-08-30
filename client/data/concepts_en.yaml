@@ -1771,6 +1771,62 @@ concepts:
 
       A deep understanding of these metrics is essential for developing, evaluating, and improving models in machine learning and data science.
 
+  - name: Log Loss
+    shortDescription: A classification metric that penalizes incorrect and overconfident probability predictions.
+    fullDescription: |
+      Log Loss, also called cross-entropy loss, evaluates predicted probabilities rather than only the final class label.
+      - It assigns a larger penalty when a model is confident in an incorrect prediction.
+      - Lower values indicate better calibrated probability predictions.
+      - It is commonly used for binary and multiclass classification.
+
+  - name: Perplexity
+    shortDescription: A measure of how well a probabilistic language model predicts a sequence of text.
+    fullDescription: |
+      Perplexity is the exponentiated average negative log-likelihood of a sequence under a language model.
+      - Lower perplexity means the model assigns higher probability to the observed text.
+      - It is useful for comparing language models on the same dataset and tokenization setup.
+      - It does not by itself measure factuality, safety, or usefulness in an interactive setting.
+
+  - name: Mean Absolute Error (MAE)
+    shortDescription: A regression metric that averages the absolute difference between predictions and true values.
+    fullDescription: |
+      Mean Absolute Error measures the average magnitude of prediction errors without considering their direction.
+      - Formula: MAE = average(|y - y_hat|).
+      - It is expressed in the same units as the target value.
+      - Each error contributes linearly, making it less sensitive to large outliers than squared-error metrics.
+
+  - name: Root Mean Squared Error (RMSE)
+    shortDescription: A regression metric that gives greater weight to larger prediction errors.
+    fullDescription: |
+      Root Mean Squared Error is the square root of the average squared prediction error.
+      - Formula: RMSE = sqrt(average((y - y_hat)^2)).
+      - It is expressed in the same units as the target value.
+      - Squaring makes large errors contribute more strongly than small errors.
+
+  - name: R-squared (R²)
+    shortDescription: A regression statistic that compares a model's error with predicting the target mean.
+    fullDescription: |
+      R-squared, or the coefficient of determination, describes how much variation in a target is accounted for relative to a mean-prediction baseline.
+      - A value of 1 represents perfect predictions on the evaluated data.
+      - A value of 0 is equivalent to predicting the target mean.
+      - Negative values are possible when a model performs worse than that baseline.
+
+  - name: Calibration
+    shortDescription: The agreement between a model's stated confidence and the observed frequency of correctness.
+    fullDescription: |
+      A calibrated probabilistic model assigns probabilities that match observed outcomes over many comparable predictions.
+      - Among predictions given 70% confidence, about 70% should be correct when the model is well calibrated.
+      - Reliability diagrams and expected calibration error are common diagnostic tools.
+      - Calibration matters when probabilities inform decisions, ranking, or risk thresholds.
+
+  - name: Fairness Metrics
+    shortDescription: Measures used to examine whether model outcomes differ systematically across relevant groups.
+    fullDescription: |
+      Fairness metrics help evaluate disparities in a model's predictions or errors across groups.
+      - Examples include demographic parity, equal opportunity, and differences in false-positive or false-negative rates.
+      - The appropriate metric depends on the task, stakeholders, and legal or ethical context.
+      - Metrics should be interpreted alongside data quality, deployment conditions, and potential harms.
+
 - id: tools_and_libraries
   title: Tools and Libraries
   items:
@@ -1803,6 +1859,46 @@ concepts:
       - Ability to work on top of different backend engines (mainly TensorFlow).
       - Options for extension and writing custom layers and algorithms.
       Keras is designed to accelerate the experimentation and development process of deep learning models.
+
+  - name: Scikit-learn
+    shortDescription: An open-source Python library for classical machine learning, data preprocessing, and model evaluation.
+    fullDescription: |
+      Scikit-learn provides consistent Python interfaces for many common machine learning workflows.
+      - Includes classification, regression, clustering, dimensionality reduction, and model selection algorithms.
+      - Provides preprocessing tools, pipelines, and evaluation metrics.
+      - Integrates with NumPy and SciPy for numerical and scientific computing.
+
+  - name: Hugging Face Transformers
+    shortDescription: An open-source library for using and training pretrained text, vision, audio, and multimodal models.
+    fullDescription: |
+      Hugging Face Transformers provides APIs and pretrained model implementations for inference and training.
+      - Supports natural-language processing, computer vision, audio, and multimodal tasks.
+      - Includes utilities for loading pretrained models and fine-tuning them on task-specific data.
+      - Connects to the Hugging Face Hub for model discovery and sharing.
+
+  - name: JAX
+    shortDescription: A Python library for high-performance numerical computing with automatic differentiation and compilation.
+    fullDescription: |
+      JAX provides a NumPy-like interface together with program transformations for machine learning and scientific computing.
+      - Supports automatic differentiation, just-in-time compilation, and automatic vectorization.
+      - Uses OpenXLA to target CPU, GPU, and TPU hardware.
+      - Is commonly used as a foundation for research-oriented numerical and ML systems.
+
+  - name: LangChain
+    shortDescription: A framework for building applications and agents that use language models and external tools.
+    fullDescription: |
+      LangChain provides building blocks for composing language-model applications.
+      - Supports tool calling, retrieval workflows, agent patterns, and integrations.
+      - Helps connect models with data sources, APIs, and application state.
+      - Can be used alongside LangGraph for durable agent execution and workflow control.
+
+  - name: MLflow
+    shortDescription: An open-source platform for tracking experiments and managing the machine learning lifecycle.
+    fullDescription: |
+      MLflow helps teams record, compare, package, and manage machine learning work.
+      - Tracks runs, parameters, metrics, datasets, and artifacts.
+      - Supports model packaging, registry workflows, and deployment-oriented management.
+      - Includes tools for traditional ML as well as LLM and agent evaluation workflows.
 
 - id: applications
   title: Key Applications of Artificial Intelligence
@@ -1839,6 +1935,46 @@ concepts:
       - Prediction and prevention of faults in vehicles and transportation infrastructure.
       - Improving driving safety through advanced warning systems.
       - Smart traffic management in cities.
+
+  - name: Natural Language Processing
+    shortDescription: AI systems that analyze, understand, generate, or transform human language.
+    fullDescription: |
+      Natural language processing (NLP) is used to work with text and speech.
+      - Examples include translation, summarization, search, question answering, and conversational systems.
+      - It can support document classification, information extraction, and sentiment analysis.
+      - Modern NLP systems are commonly evaluated for accuracy, robustness, bias, and safety in their intended context.
+
+  - name: Computer Vision
+    shortDescription: AI systems that interpret images, video, and other visual data.
+    fullDescription: |
+      Computer vision enables software to extract information from visual inputs.
+      - Common tasks include image classification, object detection, segmentation, and visual inspection.
+      - Applications include medical imaging, manufacturing quality control, accessibility, and remote sensing.
+      - Performance depends on representative data and careful validation in the deployment environment.
+
+  - name: Recommender Systems
+    shortDescription: Systems that rank or suggest items, content, or actions for a user or context.
+    fullDescription: |
+      Recommender systems help people discover relevant products, media, information, or services.
+      - They may use collaborative filtering, content-based methods, or hybrid approaches.
+      - Ranking quality can be evaluated with measures such as precision at k, recall at k, and user outcomes.
+      - Designers should consider feedback loops, transparency, privacy, and diversity of recommendations.
+
+  - name: AI in Cybersecurity
+    shortDescription: AI applications for detecting, prioritizing, and responding to security threats.
+    fullDescription: |
+      AI can assist security teams in analyzing large volumes of logs, alerts, and other telemetry.
+      - Uses include anomaly detection, phishing classification, malware analysis, and alert prioritization.
+      - Human review and secure operational controls remain important because errors can have serious consequences.
+      - Defensive systems should be tested against adversarial behavior and changing attack patterns.
+
+  - name: AI in Education
+    shortDescription: AI applications that support teaching, learning, feedback, and educational administration.
+    fullDescription: |
+      AI can help tailor educational materials and reduce routine administrative work.
+      - Examples include adaptive practice, tutoring support, feedback on drafts, and accessibility tools.
+      - Teachers and institutions should evaluate accuracy, privacy, bias, and appropriate human oversight.
+      - AI should support learning goals rather than replace meaningful instruction and assessment.
 
 - id: future_trends
   title: Future Trends in Artificial Intelligence
