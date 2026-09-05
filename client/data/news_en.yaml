@@ -2,6 +2,113 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+- section: GPT-6 Astra Reaches OpenAI’s Critical Cybersecurity Threshold
+  date: '2026-09-05'
+  topics:
+  - title: OpenAI begins a phased release of GPT-6 Astra, its first broadly deployed model designated Critical for cybersecurity capability
+    description: >
+      OpenAI released GPT-6 Astra on September 3 and says it is the first model to
+      reach the Critical cybersecurity-capability level in its Preparedness Framework.
+      The company is rolling it out in phases while applying additional access,
+      monitoring and safety controls to advanced cyber-related work.
+
+
+      Key developments:
+
+      - OpenAI says access begins with a limited set of organizations and will expand
+      to ChatGPT Plus, Pro, Business and Enterprise users, the API and AWS
+
+      - The company says the Critical designation reflects model capability, not a
+      claim that the model can autonomously conduct cyberattacks without safeguards
+
+      - OpenAI’s safety overview points users to a system card and describes extra
+      protections for high-risk cybersecurity use
+    questions:
+    - question: What is GPT-6 Astra?
+      answer: GPT-6 Astra is OpenAI’s model released on September 3, 2026. OpenAI describes it as its most capable broadly deployed model and is rolling access out in phases.
+    - question: Why is GPT-6 Astra classified as Critical for cybersecurity?
+      answer: OpenAI says Astra is its first model to meet the Critical cybersecurity-capability threshold in its Preparedness Framework. The designation is why the launch includes additional safeguards and controlled access for sensitive cyber work.
+    links:
+    - name: OpenAI — GPT-6 Astra safety overview
+      url: https://openai.com/index/safety-overview-gpt-6-astra
+- section: A Week of New Models for Agentic and Coding Work
+  date: '2026-09-05'
+  topics:
+  - title: Anthropic releases Claude Fable 5.1 and Claude Mythos 5.1 for coding, knowledge work and research
+    description: >
+      Anthropic introduced Claude Fable 5.1 and Claude Mythos 5.1 on September 1.
+      The company positions the models for advanced coding and knowledge work, and
+      says their research capabilities offer an early view of AI-assisted scientific
+      work. Fable 5.1 is available to paid Claude users and through Anthropic’s
+      developer platform.
+
+
+      Key developments:
+
+      - Anthropic says Fable 5.1 is its most capable model for coding and knowledge work
+
+      - The release also introduces Mythos 5.1, including use in trusted-access
+      programs and Claude Security for code-vulnerability review
+
+      - Availability and safeguards can differ by product and access program
+    questions:
+    - question: What is Claude Fable 5.1?
+      answer: Claude Fable 5.1 is Anthropic’s September 2026 model release for demanding coding and knowledge-work tasks. Anthropic says it is available to Pro, Max, Team and Enterprise users, as well as through its developer platform.
+    - question: What is Claude Mythos 5.1?
+      answer: Claude Mythos 5.1 is a companion model release from Anthropic. The company says it is used in trusted-access programs and powers Claude Security for codebase vulnerability review.
+    links:
+    - name: Anthropic — Introducing Claude Fable 5.1 and Claude Mythos 5.1
+      url: https://www.anthropic.com/claude-fable-and-mythos-5-1
+  - title: Google launches Gemini 3.8 Flash and a restricted Gemini 3.8 Flash Cyber variant
+    description: >
+      Google announced Gemini 3.8 Flash and Gemini 3.8 Flash Cyber on September 2.
+      Google describes the models as targeting agentic workflows and cybersecurity;
+      the Cyber variant is intended for vetted organizations and defensive use cases.
+
+
+      Key developments:
+
+      - Google says Gemini 3.8 Flash improves prompt-injection robustness as measured
+      by the Gray Swan benchmark
+
+      - Gemini 3.8 Flash Cyber is a separate cybersecurity-focused offering with
+      restricted access rather than a generally open release
+
+      - Google lists introductory API prices through December 31, 2026, followed by
+      higher listed prices beginning January 1, 2027
+    questions:
+    - question: What is Gemini 3.8 Flash?
+      answer: Gemini 3.8 Flash is Google’s September 2026 Flash-model release, positioned for agentic workflows. Google announced it alongside a specialized cybersecurity variant.
+    - question: Who can use Gemini 3.8 Flash Cyber?
+      answer: Google describes Gemini 3.8 Flash Cyber as a cybersecurity-focused model for vetted organizations and defensive use cases. Its access is more restricted than the general Flash release.
+    links:
+    - name: Google — Introducing Gemini 3.8 Flash and 3.8 Flash Cyber
+      url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber
+  - title: Meta releases Muse Spark 1.3 with a focus on longer-horizon agentic and coding tasks
+    description: >
+      Meta released Muse Spark 1.3 on September 2 in Muse Code and the Meta Model
+      API. Meta says the model improves performance on agentic and coding tasks and
+      is designed to sustain longer-horizon work across multiple workflows in a long
+      thread.
+
+
+      Key developments:
+
+      - Meta says the model can use tools to build context across messy or conflicting
+      sources, identify gaps in a plan and retain what it learns for a deliverable
+
+      - Existing reasoning modes are rolling out with the release; Meta says max
+      reasoning will follow after additional safety testing
+
+      - The product is available through Meta’s developer and coding-agent surfaces
+    questions:
+    - question: What is Muse Spark 1.3?
+      answer: Muse Spark 1.3 is Meta’s September 2026 model update for agentic and coding work. Meta says it is designed to collaborate on longer-horizon objectives and manage multiple workflows within a long conversation.
+    - question: Where is Muse Spark 1.3 available?
+      answer: Meta says Muse Spark 1.3 is rolling out in Muse Code and the Meta Model API. The available reasoning modes and access can vary as the rollout continues.
+    links:
+    - name: Meta AI Research — Introducing Muse Spark 1.3
+      url: https://research.meta.ai/blog/introducing-muse-spark-1-3
 - section: Nvidia–Hugging Face Acquisition Talks Reported
   date: '2026-08-29'
   topics:

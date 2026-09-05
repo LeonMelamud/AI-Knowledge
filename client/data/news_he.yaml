@@ -2,6 +2,111 @@
 # מקטעים בני יותר מ-6 חודשים מוסתרים אוטומטית (client/src/lib/data.ts)
 # וניתן להסירם פיזית עם: node client/scripts/prune-news.mjs
 hot_news:
+- section: GPT-6 Astra מגיע לסף הסייבר הקריטי של OpenAI
+  date: '2026-09-05'
+  topics:
+  - title: OpenAI מתחילה בהשקה מדורגת של GPT-6 Astra, המודל הראשון שלה בפריסה רחבה שמסווג כבעל יכולות סייבר ברמת Critical
+    description: >
+      OpenAI השיקה את GPT-6 Astra ב-3 בספטמבר ומסרה שזהו המודל הראשון שהגיע
+      לרמת יכולות הסייבר Critical במסגרת Preparedness Framework שלה. החברה משיקה
+      אותו בהדרגה, לצד בקרות גישה, ניטור ואמצעי בטיחות נוספים לעבודה מתקדמת הקשורה לסייבר.
+
+
+      התפתחויות מרכזיות:
+
+      - לפי OpenAI, הגישה מתחילה בקבוצה מצומצמת של ארגונים ובהמשך תורחב למשתמשי
+      ChatGPT Plus, Pro, Business ו-Enterprise, ל-API ול-AWS
+
+      - החברה מדגישה שהסיווג Critical מתייחס ליכולות המודל, ואינו טענה שהמודל יכול
+      לבצע מתקפות סייבר באופן אוטונומי ללא הגנות
+
+      - סקירת הבטיחות של OpenAI מפנה לכרטיס מערכת ומתארת הגנות נוספות לשימושי
+      סייבר בסיכון גבוה
+    questions:
+    - question: מהו GPT-6 Astra?
+      answer: GPT-6 Astra הוא מודל של OpenAI שהושק ב-3 בספטמבר 2026. OpenAI מתארת אותו כמודל בעל היכולות הגבוהות ביותר שלה שנפרס באופן רחב, ומרחיבה את הגישה אליו בהדרגה.
+    - question: מדוע GPT-6 Astra מסווג כ-Critical בתחום הסייבר?
+      answer: OpenAI מסרה ש-Astra הוא המודל הראשון שלה שעומד בסף יכולות הסייבר Critical במסגרת Preparedness Framework. סיווג זה הוא הסיבה לבקרות ולהגנות נוספות סביב עבודה רגישה בתחום.
+    links:
+    - name: OpenAI — סקירת הבטיחות של GPT-6 Astra
+      url: https://openai.com/index/safety-overview-gpt-6-astra
+- section: שבוע של מודלים חדשים לעבודה סוכנית ולקוד
+  date: '2026-09-05'
+  topics:
+  - title: Anthropic משיקה את Claude Fable 5.1 ואת Claude Mythos 5.1 לקוד, לעבודה מבוססת ידע ולמחקר
+    description: >
+      Anthropic הציגה את Claude Fable 5.1 ואת Claude Mythos 5.1 ב-1 בספטמבר.
+      החברה ממקמת את המודלים עבור קוד ועבודה מתקדמת מבוססת ידע, ומסרה שיכולות
+      המחקר שלהם נותנות הצצה מוקדמת לתרומת מודלי AI למחקר מדעי. Fable 5.1 זמין
+      למשתמשי Claude בתשלום ובפלטפורמת המפתחים של Anthropic.
+
+
+      התפתחויות מרכזיות:
+
+      - Anthropic מסרה ש-Fable 5.1 הוא המודל בעל היכולות הגבוהות ביותר שלה לקוד
+      ולעבודה מבוססת ידע
+
+      - ההשקה כוללת גם את Mythos 5.1, לרבות שימוש בתוכניות גישה מהימנה וב-Claude
+      Security לסקירת פגיעויות בקוד
+
+      - הזמינות וההגנות עשויות להשתנות בין מוצרים ותוכניות גישה
+    questions:
+    - question: מהו Claude Fable 5.1?
+      answer: Claude Fable 5.1 הוא מודל של Anthropic מספטמבר 2026 למשימות קוד ועבודה מבוססת ידע תובעניות. Anthropic מסרה שהוא זמין למשתמשי Pro, Max, Team ו-Enterprise וגם בפלטפורמת המפתחים שלה.
+    - question: מהו Claude Mythos 5.1?
+      answer: Claude Mythos 5.1 הוא מודל משלים שהשיקה Anthropic. החברה מסרה שהוא משמש בתוכניות גישה מהימנה ומפעיל את Claude Security לסקירת פגיעויות במאגרי קוד.
+    links:
+    - name: Anthropic — הצגת Claude Fable 5.1 ו-Claude Mythos 5.1
+      url: https://www.anthropic.com/claude-fable-and-mythos-5-1
+  - title: Google משיקה את Gemini 3.8 Flash ואת גרסת Gemini 3.8 Flash Cyber המוגבלת בגישה
+    description: >
+      Google הכריזה ב-2 בספטמבר על Gemini 3.8 Flash ועל Gemini 3.8 Flash Cyber.
+      Google מתארת את המודלים כמיועדים לזרימות עבודה סוכניות ולסייבר; גרסת Cyber
+      מיועדת לארגונים שעברו בדיקה ולמקרי שימוש הגנתיים.
+
+
+      התפתחויות מרכזיות:
+
+      - Google מסרה כי Gemini 3.8 Flash מציג עמידות משופרת להזרקת הנחיות, לפי
+      מדידת Gray Swan
+
+      - Gemini 3.8 Flash Cyber הוא מוצר נפרד וממוקד סייבר עם גישה מוגבלת, ולא
+      השקה פתוחה לכלל המשתמשים
+
+      - Google פרסמה מחירי API ראשוניים עד 31 בדצמבר 2026, ולאחר מכן מחירים
+      גבוהים יותר החל ב-1 בינואר 2027
+    questions:
+    - question: מהו Gemini 3.8 Flash?
+      answer: Gemini 3.8 Flash הוא מודל Flash של Google שהושק בספטמבר 2026 וממוקם עבור זרימות עבודה סוכניות. Google הכריזה עליו לצד גרסה מתמחה לאבטחת סייבר.
+    - question: מי יכול להשתמש ב-Gemini 3.8 Flash Cyber?
+      answer: Google מתארת את Gemini 3.8 Flash Cyber כמודל ממוקד סייבר לארגונים שעברו בדיקה ולמקרי שימוש הגנתיים. הגישה אליו מוגבלת יותר מאשר לגרסת Flash הכללית.
+    links:
+    - name: Google — הצגת Gemini 3.8 Flash ו-Gemini 3.8 Flash Cyber
+      url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber
+  - title: Meta משיקה את Muse Spark 1.3 עם דגש על משימות סוכניות ארוכות טווח ועל קוד
+    description: >
+      Meta השיקה את Muse Spark 1.3 ב-2 בספטמבר ב-Muse Code וב-Meta Model API.
+      Meta מסרה שהמודל משפר ביצועים במשימות סוכניות ובקוד, ומתוכנן להחזיק עבודה
+      ארוכת טווח על פני כמה זרימות עבודה בתוך שיחה ארוכה.
+
+
+      התפתחויות מרכזיות:
+
+      - Meta מסרה שהמודל יכול להשתמש בכלים כדי לבנות הקשר ממקורות מבולגנים או
+      סותרים, לזהות פערים בתוכנית ולשמר את מה שלמד לקראת תוצר סופי
+
+      - מצבי החשיבה הקיימים נפרסים עם ההשקה; Meta מסרה שמצב חשיבה מרבי יגיע לאחר
+      בדיקות בטיחות נוספות
+
+      - המוצר זמין דרך ממשקי המפתחים והסוכן לקוד של Meta
+    questions:
+    - question: מהו Muse Spark 1.3?
+      answer: Muse Spark 1.3 הוא עדכון מודל של Meta מספטמבר 2026 לעבודה סוכנית ולקוד. Meta מסרה שהוא מתוכנן לשיתוף פעולה על יעדים ארוכי טווח ולניהול כמה זרימות עבודה בשיחה ארוכה.
+    - question: היכן Muse Spark 1.3 זמין?
+      answer: Meta מסרה ש-Muse Spark 1.3 נפרס ב-Muse Code וב-Meta Model API. מצבי החשיבה והגישה הזמינים עשויים להשתנות במהלך הפריסה.
+    links:
+    - name: Meta AI Research — הצגת Muse Spark 1.3
+      url: https://research.meta.ai/blog/introducing-muse-spark-1-3
 - section: דיווחים על מגעים לרכישת Hugging Face בידי Nvidia
   date: '2026-08-29'
   topics:
