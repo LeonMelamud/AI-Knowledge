@@ -15,7 +15,7 @@ tools:
       - Information analysis and summarization of complex topics
       - Language translation with reasonable accuracy across many languages
 
-      ChatGPT is widely used by students, professionals, content creators, developers, and businesses seeking to automate text-based tasks, enhance creativity, or access information quickly. As of 2026 it is powered by the GPT-5 model family (currently GPT-5.5, with the GPT-5.6 preview rolling out), bringing far stronger reasoning and agentic capabilities than earlier generations.
+      ChatGPT is widely used by students, professionals, content creators, developers, and businesses seeking to automate text-based tasks, enhance creativity, or access information quickly. It provides access to models suited to everyday work, extended reasoning, and longer-running workflows; the exact models and features available depend on the plan and rollout.
   - name: Claude
     company: Anthropic
     url: https://claude.ai/new
@@ -30,7 +30,7 @@ tools:
       - Code assistance with explanation capabilities
       - Reduced tendency toward hallucination compared to some competitors
 
-      Claude is particularly useful for researchers, writers, business professionals, and developers who need to process large documents, generate thoughtful content, or engage in complex problem-solving. Anthropic's Constitutional AI approach aims to create systems that are both powerful and aligned with human values and safety considerations. As of mid-2026 the lineup is the Claude 5 family — Sonnet 5 for everyday work and Opus 4.8 as the reasoning flagship.
+      Claude is particularly useful for researchers, writers, business professionals, and developers who need to process large documents, generate thoughtful content, or engage in complex problem-solving. Anthropic's Constitutional AI approach aims to create systems that are both powerful and aligned with human values and safety considerations. Model availability and context limits vary by product and plan.
   - name: Gemini
     company: Google
     url: https://gemini.google.com/
@@ -45,7 +45,7 @@ tools:
       - Document analysis and information extraction
       - Conversational capabilities with enhanced context retention
 
-      Gemini is available in different tiers (Pro, Flash and on-device Nano, currently in the Gemini 3 generation) suited to different use cases from enterprise applications to on-device deployment. It's particularly valuable for developers, researchers, content creators, and professionals who need to work across different content formats and leverage Google's knowledge systems.
+      Gemini is available in different model tiers, including Pro, Flash and on-device Nano, suited to different use cases from enterprise applications to on-device deployment. It's particularly valuable for developers, researchers, content creators, and professionals who need to work across different content formats and leverage Google's knowledge systems.
 
   - name: Storm Genie
     company: Stanford University
@@ -349,21 +349,6 @@ tools:
 
       Pika AI is particularly valuable for content creators, marketers, educators, and artists who need to produce engaging video content without extensive video production skills or resources. It excels at creating short-form content for social media, product demonstrations, educational animations, and creative projects.
 
-  - name: Sora ai
-    company: openai
-    url: https://openai.com/index/sora/
-    description: |
-      Sora is OpenAI's advanced text-to-video model that creates realistic and imaginative scenes from text instructions. It generates high-fidelity videos up to 60 seconds long that maintain remarkable consistency in physical objects, complex scenes, and camera movements while accurately portraying specific characters and their dynamic interactions.
-
-      Key capabilities:
-      - Generation of high-quality, photorealistic videos from text prompts
-      - Creation of complex scenes with multiple characters, specific movements, and accurate details
-      - Maintenance of visual consistency throughout longer videos
-      - Understanding of physical world dynamics and natural motion
-      - Animation of existing images and filling in missing frames
-      - Realistic rendering of various environments, lighting conditions, and perspectives
-
-      Sora represents a significant advancement in generative video AI, with potential applications in filmmaking, storytelling, education, and creative content production. While still in research preview, it demonstrates how AI models can understand and simulate the physical world through video, opening new possibilities for visual content creation.
 
   - name: Runway(Gen-3)
     company: Runway ai
@@ -423,7 +408,7 @@ tools:
       - Fine-tuning options for composition, lighting, perspective, and artistic elements
       - Version history and variation creation for iterative refinement
       - Community features for sharing and inspiration
-      - Progressive improvement through regular model updates (currently on version 6)
+      - Ongoing model updates that improve image quality, prompt adherence, and creative control
 
       Midjourney is widely used by artists, designers, creative professionals, marketers, and hobbyists seeking to visualize concepts, generate inspiration, create assets for projects, or explore creative possibilities. Its Discord-based interface and community-centric approach have fostered a collaborative environment for AI art creation and experimentation.
 
