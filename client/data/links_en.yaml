@@ -198,7 +198,7 @@ tools:
       accessible to everyone and useful in various contexts. It's built on NumPy, SciPy, and matplotlib, and provides a wide range
       of algorithms for classification, regression, clustering, dimensionality reduction, model selection, and preprocessing.
     recentUpdates: |
-      Version 1.0 of Scikit-learn was recently released, bringing improvements in new algorithms and support for parallelism.
+      Scikit-learn is actively maintained, with regular releases that add features, improve performance and fix bugs. Consult its official release notes for changes in the version you use.
 
   - name: Keras
     company: TensorFlow (Google)
