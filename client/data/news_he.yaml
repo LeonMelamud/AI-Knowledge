@@ -2,6 +2,60 @@
 # מקטעים בני יותר מ-6 חודשים מוסתרים אוטומטית (client/src/lib/data.ts)
 # וניתן להסירם פיזית עם: node client/scripts/prune-news.mjs
 hot_news:
+- section: גישות חדשות להחלטות AI ולשליטה אנושית
+  date: '2026-09-19'
+  topics:
+  - title: TypeSafe AI משיקה את Jev, מודל System One להחלטות מובנות בתוכנה
+    description: >
+      TypeSafe AI הכריזה ב-15 בספטמבר על Jev, מודל System One הראשון שלה, שנועד
+      להחזיר החלטות טיפוסיות ומכוילות עבור תוכנה במקום טקסט שיחתי. החברה מציגה את
+      מודל הגישה המוקדמת למשימות ניתוב, סיווג, דירוג וניקוד במערכות אוטומטיות.
+
+
+      התפתחויות מרכזיות:
+
+      - TypeSafe מציינת כי Jev מעריך במקביל מצב שסופק לו ושאלות טיפוסיות, ומחזיר
+      תשובות מובנות ומידע על רמת הביטחון לצורך לוגיקת יישום
+
+      - החברה מכנה את שיטת האימון Reinforcement Learning for Calibrated Decisions
+      (RLCD), ומציגה את Jev כהשלמה למודלי שפה שמייצרים טקסט
+
+      - טענות הביצועים והעלות הן טענות של הספק ויש לבחון אותן עבור עומס עבודה מסוים
+    questions:
+    - question: מהו Jev?
+      answer: Jev הוא מודל System One של TypeSafe AI, שהוכרז ב-15 בספטמבר 2026. הוא נועד להפיק החלטות מובנות והסתברותיות עבור תהליכי תוכנה במקום טקסט בסגנון צ׳אט.
+    - question: כיצד מפתחים יכולים להשתמש ב-Jev עם סוכן AI?
+      answer: TypeSafe מציגה את Jev לניתוב, סיווג, דירוג וניקוד. סוכן יכול להשתמש בתוצאות המובנות כדי להחליט מה לעשות בהמשך, ולשלב מודל שפה ליצירת טקסט.
+    links:
+    - name: TypeSafe AI — הכרזה על System One Models ו-Jev
+      url: https://typesafe.ai/blog/introducing-system-one-models-and-jev
+    - name: LangChain — בניית Harness עם Jev
+      url: https://www.langchain.com/blog/building-a-harness-with-jev
+  - title: Microsoft AI מפרסמת טיוטת קוד התנהגות ל-Humanist AI להתייעצות ציבורית
+    description: >
+      Microsoft AI פרסמה ב-14 בספטמבר טיוטת Humanist AI Code of Conduct לקבלת
+      משוב מהציבור. הטיוטה מגדירה מטרות והתנהגויות רצויות עבור מודלי MAI, ומדגישה
+      שליטה אנושית משמעותית ושירות לאנשים.
+
+
+      התפתחויות מרכזיות:
+
+      - Microsoft מסרה שההתייעצות תימשך שישה שבועות ותשמש לעיצוב הגרסאות הבאות של
+      הקוד
+
+      - הטיוטה קובעת שמודלים צריכים להיות ניתנים להפסקה, לתיקון ולכיבוי, ולא להפר
+      את הקוד באופן מהותי כדי להשלים משימה
+
+      - Microsoft מציגה את המסמך ככיוון מדיניות ואימון עבור מודלי MAI שלה, ולא
+      כתקן טכני לכל התעשייה
+    questions:
+    - question: מהו קוד ההתנהגות Humanist AI של Microsoft?
+      answer: זו טיוטה ש-Microsoft AI פרסמה ב-14 בספטמבר 2026, המתארת מטרות והתנהגויות רצויות למודלי MAI, תוך התמקדות בשליטה אנושית ובשירות לאנשים.
+    - question: האם קוד ההתנהגות Humanist AI הוא סופי?
+      answer: לא. Microsoft מגדירה אותו כטיוטה ופתחה התייעצות ציבורית של שישה שבועות כדי לקבל משוב לפני שתעדכן גרסאות עתידיות.
+    links:
+    - name: Microsoft AI — קוד ההתנהגות Humanist AI
+      url: https://microsoft.ai/code-of-conduct
 - section: GPT-6 Astra מגיע לסף הסייבר הקריטי של OpenAI
   date: '2026-09-05'
   topics:

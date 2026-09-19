@@ -2,6 +2,62 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+- section: New Approaches to AI Decisions and Human Control
+  date: '2026-09-19'
+  topics:
+  - title: TypeSafe AI launches Jev, a System One model for structured software decisions
+    description: >
+      TypeSafe AI announced Jev on September 15 as its first System One model, designed
+      to return typed, calibrated decisions for software rather than conversational text.
+      The company positions the early-access model for routing, classification, ranking
+      and scoring in automated systems.
+
+
+      Key developments:
+
+      - TypeSafe says Jev evaluates a supplied state and typed questions in parallel,
+      returning structured answers and confidence information for application logic
+
+      - The company calls its training approach Reinforcement Learning for Calibrated
+      Decisions (RLCD) and positions Jev as a complement to text-generating language models
+
+      - Performance and cost claims are vendor-reported and should be evaluated for a
+      specific workload
+    questions:
+    - question: What is Jev?
+      answer: Jev is TypeSafe AI’s System One model, announced on September 15, 2026. It is designed to produce structured, probabilistic decisions for software workflows instead of chat-style text.
+    - question: How could developers use Jev with an AI agent?
+      answer: TypeSafe positions Jev for routing, classification, ranking and scoring. An agent can use those structured results to decide what to do next while using a language model for text generation.
+    links:
+    - name: TypeSafe AI — Introducing System One Models & Jev
+      url: https://typesafe.ai/blog/introducing-system-one-models-and-jev
+    - name: LangChain — Building a Harness with Jev
+      url: https://www.langchain.com/blog/building-a-harness-with-jev
+  - title: Microsoft AI publishes a draft Humanist AI Code of Conduct for public consultation
+    description: >
+      Microsoft AI published a draft Humanist AI Code of Conduct on September 14 for
+      public feedback. The draft sets objectives and intended behaviors for MAI models,
+      emphasizing meaningful human control and service to people.
+
+
+      Key developments:
+
+      - Microsoft says the consultation will run for six weeks and will inform later
+      versions of the code
+
+      - The draft says models should be interruptible, correctable and shut-down-able,
+      and should not meaningfully violate the code in order to complete a task
+
+      - Microsoft frames the document as a policy and training direction for its own
+      MAI models, not an industry-wide technical standard
+    questions:
+    - question: What is Microsoft’s Humanist AI Code of Conduct?
+      answer: It is a draft published by Microsoft AI on September 14, 2026, that describes objectives and intended behaviors for MAI models, centered on human control and service to people.
+    - question: Is the Humanist AI Code of Conduct final?
+      answer: No. Microsoft says it is a draft and opened a six-week public consultation to gather feedback before refining future versions.
+    links:
+    - name: Microsoft AI — Humanist AI Code of Conduct
+      url: https://microsoft.ai/code-of-conduct
 - section: GPT-6 Astra Reaches OpenAI’s Critical Cybersecurity Threshold
   date: '2026-09-05'
   topics:
