@@ -313,10 +313,24 @@ tools:
       Giskard is an open-source testing framework for AI models, focusing on quality, security, and compliance. It helps teams automatically detect performance, bias, and security issues in AI models, ensuring compliance with regulations like the EU AI Act. Giskard facilitates collaboration between data scientists and business stakeholders, enhancing the reliability and fairness of AI systems.
 
   - name: MLflow
-  company: MLflow Project
-  url: https://mlflow.org/
-  description: |
-    MLflow is an open-source platform for managing the end-to-end machine learning lifecycle. It supports experiment tracking, model management, and deployment, and integrates with popular ML libraries and platforms. MLflow is designed to streamline the development and deployment of both traditional ML and generative AI applications.
+    company: MLflow Project
+    url: https://mlflow.org/
+    description: |
+      MLflow is an open-source platform for managing the end-to-end machine learning lifecycle. It supports experiment tracking, model management, and deployment, and integrates with popular ML libraries and platforms. MLflow is designed to streamline the development and deployment of both traditional ML and generative AI applications.
+
+  - name: Jev
+    company: TypeSafe AI
+    url: https://typesafe.ai/
+    description: |
+      Jev is TypeSafe AI's early-access System One model for making fast, structured decisions inside software. Rather than generating conversational text, it returns typed decisions with calibrated probabilities and confidence estimates that applications can use directly.
+
+      Key capabilities:
+      - Typed, constrained outputs for classification, routing, scoring, extraction, and branching
+      - Confidence estimates so workflows can set thresholds or escalate uncertain decisions for review
+      - Parallel decision generation designed for low-latency automation and real-time applications
+      - API-oriented integration for composing decision steps into larger software workflows
+
+      Jev is intended for developers and teams building AI-powered automation, guardrails, data-processing pipelines, or real-time product features. It is not a chat model and is currently offered in early access.
 
 - id: graphics
   title: Graphics Tools
