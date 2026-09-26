@@ -2,6 +2,113 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+- section: New Models Make Frontier AI More Accessible
+  date: '2026-09-26'
+  topics:
+  - title: OpenAI releases GPT-6 Sol and Luna, extending GPT-6 capabilities at lower API prices
+    description: >
+      OpenAI introduced GPT-6 Sol and GPT-6 Luna on September 22. The company says the
+      models use methods related to GPT-6 Astra while targeting faster, lower-cost work
+      at scale, and are available through the API alongside product rollouts.
+
+
+      Key developments:
+
+      - OpenAI lists API pricing of $2 input and $10 output per million tokens for Sol,
+      and $0.10 input and $0.50 output for Luna
+
+      - The company says both models receive a 90% discount on cached input and that
+      changing reasoning effort or tools does not invalidate cached prompts
+
+      - OpenAI positions Sol for more difficult professional tasks and Luna for
+      high-volume, cost-sensitive workloads; capability claims are vendor-reported
+    questions:
+    - question: What are GPT-6 Sol and Luna?
+      answer: GPT-6 Sol and GPT-6 Luna are OpenAI models introduced on September 22, 2026. OpenAI positions them as faster, more affordable GPT-6 options derived from the same generation of methods as GPT-6 Astra.
+    - question: How does prompt caching work for GPT-6 Sol and Luna?
+      answer: OpenAI says cached input receives a 90% discount and that changing reasoning effort or tools no longer invalidates the cache. Developers should still review current API pricing and documentation before deploying.
+    links:
+    - name: OpenAI — Introducing GPT-6 Sol and Luna
+      url: https://openai.com/index/introducing-gpt-6-sol-and-luna
+  - title: xAI releases Grok 4.7 for longer-running coding and agent workflows
+    description: >
+      xAI announced Grok 4.7 on September 21. The company says the model uses a larger
+      base model and a longer reinforcement-learning run, with training focused on
+      harder tasks that can take many hours to complete.
+
+
+      Key developments:
+
+      - xAI says Grok 4.7 improves self-verification and longer-context management
+      relative to Grok 4.6
+
+      - The model is available through the Grok API, Cursor, Grok Build and selected
+      third-party coding harnesses and cloud platforms
+
+      - xAI lists a 500,000-token context window and pricing starting at $2 input and
+      $6 output per million tokens; benchmarks and safety results are vendor-reported
+    questions:
+    - question: What is Grok 4.7?
+      answer: Grok 4.7 is xAI’s September 2026 model release for coding, general knowledge work and longer-running agent tasks. xAI says it uses a larger base model and a longer reinforcement-learning run than Grok 4.6.
+    - question: Where can developers use Grok 4.7?
+      answer: xAI says Grok 4.7 is available in its API, Cursor and Grok Build, as well as through selected coding harnesses, model routers and cloud platforms. Availability can vary by provider.
+    links:
+    - name: xAI — Introducing Grok 4.7
+      url: https://x.ai/news/grok-4-7
+- section: Personal Agents and Voice Tools Expand at Meta and Google
+  date: '2026-09-26'
+  topics:
+  - title: Meta Connect expands Muse with AI-glasses access, voice mode and new commerce connectors
+    description: >
+      At Connect 2026, Meta announced that Muse will come to its AI glasses, allowing
+      people to invoke their personal agent hands-free and give it visual context from
+      what they are viewing. Meta also described new connectors and voice capabilities.
+
+
+      Key developments:
+
+      - Meta says Muse can continue working while a user speaks in voice mode, rather
+      than requiring a turn-by-turn assistant interaction
+
+      - New and planned connectors include retail, payment, travel and grocery services,
+      expanding the tasks Muse can help carry out with partner services
+
+      - Meta says glasses support will let Muse act on visual context such as products,
+      flyers and lists; availability will roll out over time
+    questions:
+    - question: What changed for Meta Muse at Connect 2026?
+      answer: Meta announced that Muse is coming to its AI glasses, added new partner connectors and described a voice mode in which the agent can keep working while the user continues speaking.
+    - question: How will Muse use AI glasses?
+      answer: Meta says users will be able to invoke Muse by name and let it use what they are looking at as context, for example to help with a product, flyer or list. The company says the feature is coming soon rather than available everywhere immediately.
+    links:
+    - name: Meta — The Biggest News From Connect 2026
+      url: https://about.fb.com/news/2026/09/the-biggest-news-from-connect-2026
+  - title: Google launches Gemini 3.8 Flash TTS and Flash-Lite TTS, including consent-checked voice replication
+    description: >
+      Google announced Gemini 3.8 Flash TTS and Gemini 3.8 Flash-Lite TTS on September
+      23 for expressive speech and directed dialogue. The company says the models are
+      available across Google AI Studio, the Gemini API, Gemini Enterprise, Gemini
+      Notebook and Google Vids.
+
+
+      Key developments:
+
+      - Google says the release includes access to more than 2,000 production-ready
+      voices with broad language and regional-variant coverage
+
+      - Voice replication can recreate a vocal profile from a 30-second sample when the
+      user has rights to the voice, according to Google
+
+      - Google says replication requires a matching verbal-consent recording and uses
+      SynthID watermarking and C2PA credentials for transparency
+    questions:
+    - question: What are Gemini 3.8 Flash TTS and Flash-Lite TTS?
+      answer: They are Google’s September 2026 text-to-speech models for expressive voice generation and directed scene dialogue. Google says they are available in its developer and productivity AI surfaces.
+    - question: What safeguards does Google describe for voice replication?
+      answer: Google says voice replication requires the voice owner’s matching verbal consent, and that outputs use SynthID watermarking and C2PA credentials. Users must have rights to the voice they submit.
+    links:
+    - name: Google — Gemini 3.8 text-to-speech says hello
+      url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-text-to-speech
 - section: New Approaches to AI Decisions and Human Control
   date: '2026-09-19'
   topics:
