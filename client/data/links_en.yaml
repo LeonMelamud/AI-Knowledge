@@ -364,11 +364,20 @@ tools:
       Pika AI is particularly valuable for content creators, marketers, educators, and artists who need to produce engaging video content without extensive video production skills or resources. It excels at creating short-form content for social media, product demonstrations, educational animations, and creative projects.
 
 
-  - name: Runway(Gen-3)
-    company: Runway ai
+  - name: Runway Gen-4.5
+    company: Runway
     url: https://runwayml.com/
     description: |
-      Tools for real-time video processing and advanced visual content creation using AI.
+      Runway Gen-4.5 is Runway's current AI video-generation model, designed for cinematic, photorealistic video with strong prompt adherence, motion quality and visual fidelity.
+
+      Key capabilities:
+      - Generates video from text prompts and visual inputs
+      - Produces cinematic, photorealistic motion with detailed visual fidelity
+      - Follows prompts closely across diverse generation modes
+      - Helps creators maintain a consistent visual look while iterating on video concepts
+      - Supports creative video workflows for generated and live-action-adjacent content
+
+      Runway is particularly useful for filmmakers, designers, advertisers, social-media creators and creative teams who need to prototype, direct or produce video content with AI.
 
   - name: LivePortrait
     company: open source
