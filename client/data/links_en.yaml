@@ -260,16 +260,20 @@ tools:
     recentUpdates: |
       Recently, support for real-time retrieval and integration with additional data sources was added.
 
-  - name: OpenAI Gym
-    company: OpenAI
-    url: https://github.com/topics/openai-gym
+  - name: Gymnasium
+    company: Farama Foundation
+    url: https://gymnasium.farama.org/
     description: |
-      OpenAI Gym is a toolkit for developing and comparing reinforcement learning algorithms.
-      Gym provides a standard interface for a wide range of learning environments, from simple problems to complex video games
-      and robot control. It allows developers to create, compare, and share reinforcement learning algorithms
-      in an easy and uniform way.
-    recentUpdates: |
-      Gym has added support for new environments and improvements in reinforcement learning infrastructure.
+      Gymnasium is the maintained fork of OpenAI Gym, providing a standard Python interface for reinforcement learning environments. OpenAI Gym no longer receives updates; its maintainers moved future development to Gymnasium.
+
+      Key capabilities:
+      - A consistent API for creating environments, resetting episodes, taking actions, and rendering observations
+      - Reference environments for classic control, games, and simulated robot control
+      - Wrappers for modifying observations, rewards, and actions
+      - Separate signals for episode termination and truncation
+      - A migration guide for existing Gym-based projects
+
+      Gymnasium is intended for researchers, students, and developers who build or evaluate reinforcement learning agents and need a maintained environment interface.
 
   - name: Pandas
     company: Open Source Project
@@ -435,11 +439,6 @@ tools:
 
       Midjourney is widely used by artists, designers, creative professionals, marketers, and hobbyists seeking to visualize concepts, generate inspiration, create assets for projects, or explore creative possibilities. Its Discord-based interface and community-centric approach have fostered a collaborative environment for AI art creation and experimentation.
 
-  - name: Hotshot
-    company: Hotshot Inc.
-    url: https://hotshot.co/
-    description: |
-      Hotshot is an AI-powered platform that offers a wide range of creative tools for capturing and enhancing visual content. It supports various categories such as food, animals, workplace, and more, enabling users to explore and express their creativity through AI-driven visual effects and enhancements.
 
   - name: Tensor.Art
     company: Tensor.Art
