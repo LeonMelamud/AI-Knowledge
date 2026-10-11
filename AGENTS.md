@@ -27,7 +27,7 @@ and then regenerates every derived file. Run it before proposing a change.
 client/data/            content — edit here, not in components
   concepts_{en,he}.yaml   explained AI concepts (sections → items)
   links_{en,he}.yaml      curated tool directory (sections → items)
-  news_{en,he}.yaml       AI news digest (regenerated daily)
+  news_{en,he}.yaml       AI news digest (weekly, Saturdays, local Hermes cron)
   ui_translations_{en,he}.json   every UI string, both languages
 client/src/             app: pages/, components/, lib/ (data.ts, i18n.tsx, webmcp.ts)
 client/public/          served verbatim: robots.txt, llms.txt, skills/, images/
@@ -85,6 +85,10 @@ and catalogs follow automatically.
   `llms.txt` ships to production as written.
 - Pushing to `main` deploys. `.github/workflows/static.yml` also rebuilds daily,
   so an unmerged local fix does not stop yesterday's content from redeploying.
+- Status ledger: `NEXT-STEPS.md` is the source of truth for open work; update it
+  in the same commit when you finish, verify or drop an item (commit/PR/date). The
+  content crons push straight to `main`, so `git fetch` and read `origin/main`
+  before judging content freshness; a local checkout can lag weeks.
 - The site is served from a custom domain at the root (`vite.config.ts` sets
   `base: '/'`); relative asset paths break on GitHub's `*.github.io/repo` URL by
   design.
