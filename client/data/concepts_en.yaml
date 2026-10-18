@@ -1851,12 +1851,12 @@ concepts:
       - Excellent performance, especially in research and development of innovative models.
 
   - name: Keras
-    shortDescription: A high-level interface for building neural networks, works on top of TensorFlow.
+    shortDescription: A high-level interface for building neural networks with JAX, TensorFlow, or PyTorch backends.
     fullDescription: |
       Keras is a Python library for building neural networks, offering:
       - A simple and intuitive interface for building complex models.
       - Support for a wide range of built-in layers and algorithms.
-      - Ability to work on top of different backend engines (mainly TensorFlow).
+      - Support for JAX, TensorFlow, and PyTorch backends.
       - Options for extension and writing custom layers and algorithms.
       Keras is designed to accelerate the experimentation and development process of deep learning models.
 

@@ -208,7 +208,7 @@ tools:
       fast, and user-friendly. It allows for quick prototyping and supports both convolutional networks
       and recurrent networks, as well as combinations of the two.
     recentUpdates: |
-      Keras is fully integrated with TensorFlow and supports Keras Tuner for hyperparameter optimization.
+      Keras supports JAX, TensorFlow, and PyTorch backends, allowing developers to build and train models with their preferred framework. See the official guides for backend configuration and compatibility requirements.
 
   - name: Hugging Face Transformers
     company: Hugging Face
@@ -284,7 +284,7 @@ tools:
       It allows performing complex operations on data easily, including merging, reshaping, selecting,
       and cleaning data.
     recentUpdates: |
-      Pandas version 1.4 was recently released, bringing performance improvements and support for new features such as custom data types.
+      Pandas is actively maintained. Its official release notes document enhancements, compatibility changes, deprecations, and bug fixes; consult the notes for your installed version before upgrading.
 
   - name: Swimm
     company: Swimm
