@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { getNewsWithFallback, type NewsSection, type NewsTopic } from '../lib/data'
+import { getNewsWithFallback, latestNewsDate, type NewsSection, type NewsTopic } from '../lib/data'
+import { fill, formatDay } from '../lib/format'
 import { useI18n } from '../lib/i18n'
 import { usePageMeta } from '../lib/usePageMeta'
 import Markdown from '../components/Markdown'
@@ -26,7 +27,12 @@ function SectionBanner({ section, locale }: { section: NewsSection; locale: stri
   const img = CATEGORIES.find((c) => c.match.test(section.section))?.img ?? 'default.jpg'
   const date =
     section.date &&
-    new Date(section.date).toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' })
+    new Date(`${section.date}T00:00:00Z`).toLocaleDateString(locale, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      timeZone: 'UTC',
+    })
 
   return (
     <div className="relative h-40 overflow-hidden sm:h-44">
@@ -126,6 +132,10 @@ export default function HotNews() {
 
   usePageMeta(t('hotNewsTitle'), t('hotNewsDescription'))
 
+  // The real date of the newest digest, never "today": the digest is curated,
+  // so its age is information the reader is owed.
+  const latest = latestNewsDate(lang)
+
   return (
     <>
       <SectionHero routeId="hot-news" title={t('hotNewsTitle')} />
@@ -133,6 +143,11 @@ export default function HotNews() {
       <div className="mx-auto max-w-[1280px] space-y-10 px-4 py-12">
         <div className="max-w-2xl">
           <p className="body-l text-ink-muted">{t('hotNewsDescription')}</p>
+          {latest && (
+            <p className="mt-4 font-mono text-xs tabular-nums text-ink rtl:font-sans rtl:text-sm">
+              <time dateTime={latest}>{fill(t('latestDigest'), { date: formatDay(latest, lang) })}</time>
+            </p>
+          )}
         </div>
 
         <RSSFeed />
@@ -142,16 +157,18 @@ export default function HotNews() {
         ))}
 
         {extraEnglish.length > 0 && (
-          <div dir="ltr" className="space-y-10 border-t border-hairline pt-8 text-start">
-            <p className="label text-ink-muted">More news (English)</p>
-            {extraEnglish.map((section, i) => (
-              <NewsSectionBlock
-                key={`en-${section.section}-${i}`}
-                section={section}
-                locale="en-US"
-                manifest={manifest}
-              />
-            ))}
+          <div className="space-y-10 border-t border-hairline pt-8">
+            <p className="label text-ink-muted">{t('moreNewsEnglish')}</p>
+            <div dir="ltr" className="space-y-10 text-start">
+              {extraEnglish.map((section, i) => (
+                <NewsSectionBlock
+                  key={`en-${section.section}-${i}`}
+                  section={section}
+                  locale="en-US"
+                  manifest={manifest}
+                />
+              ))}
+            </div>
           </div>
         )}
       </div>
