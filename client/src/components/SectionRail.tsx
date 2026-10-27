@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useI18n } from '../lib/i18n'
 
 export interface RailItem {
   id: string
@@ -27,6 +28,7 @@ export const slugify = (name: string): string =>
  * `inline-end`, which resolves to the right in RTL and the left in LTR.
  */
 export default function SectionRail({ items }: { items: RailItem[] }) {
+  const { t } = useI18n()
   const [activeId, setActiveId] = useState<string | null>(null)
 
   useEffect(() => {
@@ -54,7 +56,7 @@ export default function SectionRail({ items }: { items: RailItem[] }) {
 
   return (
     <nav
-      aria-label="Section contents"
+      aria-label={t('sectionContents')}
       className="sticky top-24 hidden max-h-[calc(100vh-8rem)] w-56 shrink-0 overflow-y-auto xl:block"
     >
       <ol>

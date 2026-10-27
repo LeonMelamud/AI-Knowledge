@@ -35,12 +35,15 @@ export default function MegaNav() {
   const concepts = getConcepts(lang)
   const tools = getTools(lang)
 
-  const groups: Record<MenuId, { label: string; entries: NavEntry[] }> = {
+  // `short` names the bar trigger; `label` heads the open panel, where there is room for it.
+  const groups: Record<MenuId, { short: string; label: string; entries: NavEntry[] }> = {
     knowledge: {
+      short: t('navKnowledge'),
       label: t('knowledge'),
       entries: concepts.map((s) => ({ id: s.id, title: s.title, count: s.items.length })),
     },
     tools: {
+      short: t('navTools'),
       label: t('links'),
       entries: tools.map((s) => ({ id: s.id, title: s.title, count: s.items.length })),
     },
@@ -96,7 +99,9 @@ export default function MegaNav() {
           className="block bg-announce text-canvas transition-opacity duration-200 hover:opacity-85"
         >
           <div className="mx-auto flex max-w-[1280px] items-center justify-center gap-2 px-4 py-2.5">
-            <span className="label opacity-60">{t('hotNews')}</span>
+            {/* The label wraps to two lines in Hebrew on a phone and crowds out the
+                headline, so it only shows where it fits. */}
+            <span className="label hidden shrink-0 opacity-60 sm:inline">{t('navNews')}</span>
             <span className="truncate text-xs font-light">{latest}</span>
             <span aria-hidden className="text-xs rtl:rotate-180">
               →
@@ -120,7 +125,7 @@ export default function MegaNav() {
           </Link>
 
           {/* Horizontal axis */}
-          <nav className="hidden flex-1 items-center gap-7 lg:flex" aria-label="Main">
+          <nav className="hidden flex-1 items-center gap-7 lg:flex" aria-label={t('navMainLabel')}>
             {(Object.keys(groups) as MenuId[]).map((id) => (
               <button
                 key={id}
@@ -135,7 +140,7 @@ export default function MegaNav() {
                   openMenu === id ? 'text-ink' : 'text-ink-muted hover:text-ink'
                 }`}
               >
-                {groups[id].label}
+                {groups[id].short}
                 <svg
                   aria-hidden
                   viewBox="0 0 12 12"
@@ -151,10 +156,10 @@ export default function MegaNav() {
               </button>
             ))}
             <NavLink to="/hot-news" viewTransition className={linkClass}>
-              {t('hotNews')}
+              {t('navNews')}
             </NavLink>
             <NavLink to="/calculator" viewTransition className={linkClass}>
-              {t('tokenCalculator')}
+              {t('navCalculator')}
             </NavLink>
           </nav>
 
@@ -171,7 +176,7 @@ export default function MegaNav() {
             <button
               onClick={() => setMobileOpen((v) => !v)}
               className="cursor-pointer p-2 text-ink lg:hidden"
-              aria-label="Menu"
+              aria-label={t('menuOpen')}
               aria-expanded={mobileOpen}
             >
               <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -235,13 +240,13 @@ export default function MegaNav() {
         <div className="fixed inset-0 z-50 overflow-y-auto bg-canvas lg:hidden">
           <div className="flex items-center justify-between border-b border-hairline px-4 py-4">
             <span className="text-base font-semibold tracking-tight">{t('heroTitle')}</span>
-            <button onClick={() => setMobileOpen(false)} className="cursor-pointer p-2" aria-label="Close menu">
+            <button onClick={() => setMobileOpen(false)} className="cursor-pointer p-2" aria-label={t('menuClose')}>
               <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
-          <nav className="px-4 py-6" aria-label="Mobile">
+          <nav className="px-4 py-6" aria-label={t('navMobileLabel')}>
             {(Object.keys(groups) as MenuId[]).map((id) => (
               <section key={id} className="mb-8">
                 <p className="label mb-3 text-ink-muted">{groups[id].label}</p>
@@ -255,6 +260,7 @@ export default function MegaNav() {
                       >
                         <span className="font-mono text-xs text-ink-muted">{pad(i)}</span>
                         <span className="flex-1">{entry.title}</span>
+                        <span className="font-mono text-xs tabular-nums text-ink-muted">{entry.count}</span>
                       </NavLink>
                     </li>
                   ))}

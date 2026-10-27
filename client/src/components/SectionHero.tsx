@@ -1,8 +1,6 @@
-import { heroFor, heroSrc } from '../lib/heroes'
+import type { ReactNode } from 'react'
+import { LANDING_ROUTE, heroFor, heroSrc } from '../lib/heroes'
 import HeroLoop from './HeroLoop'
-
-/** `/` redirects here, so this is the de-facto landing route. */
-const LANDING_ROUTE = 'ai-basics'
 
 /**
  * Full-bleed section hero.
@@ -15,10 +13,15 @@ export default function SectionHero({
   routeId,
   title,
   count,
+  countLabel,
+  children,
 }: {
   routeId: string
   title: string
   count?: number
+  /** Translated template for `count` with an `{n}` slot, e.g. "{n} concepts". */
+  countLabel?: string
+  children?: ReactNode
 }) {
   const hero = heroFor(routeId)
   const hasImage = Boolean(hero?.available)
@@ -61,12 +64,22 @@ export default function SectionHero({
       {hasImage && <div aria-hidden className="absolute inset-0 -z-10 bg-canvas/55" />}
 
       <div className="mx-auto max-w-[1280px] px-4 py-20 sm:py-28">
-        <h1 className="display-xl max-w-4xl">{title}</h1>
+        <h1 className="display-xl max-w-4xl text-balance">{title}</h1>
         {count !== undefined && (
+          /* A bare "08" made the reader guess what was counted; the unit says it. */
           <p className="label mt-6 text-ink-muted">
-            <span className="font-mono">{String(count).padStart(2, '0')}</span>
+            {(countLabel ?? '{n}').split(/(\{n\})/).map((part, i) =>
+              part === '{n}' ? (
+                <span key={i} className="font-mono tabular-nums text-ink">
+                  {String(count).padStart(2, '0')}
+                </span>
+              ) : (
+                part
+              ),
+            )}
           </p>
         )}
+        {children}
       </div>
     </header>
   )
