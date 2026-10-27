@@ -2,6 +2,224 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+- section: AI-Assisted Security Moves from Testing to Proofs
+  date: '2026-10-27'
+  topics:
+  - title: Anthropic and Theorem report formal verification across 123 open-source libraries
+    description: >
+      On October 22, Anthropic published research with Theorem on using Claude to
+      generate machine-checked security proofs for compiled open-source software.
+
+      Key developments:
+
+      - The team reports no-crash proofs for 239 entry points across 123 OSS-Fuzz
+      libraries, covering inputs up to 64 MB
+
+      - The proofs target compiled RISC-V instructions and use the Rocq proof checker;
+      Claude also found and patched bugs while constructing the proofs
+
+      - These are guarantees about specified properties under the research setup,
+      not a claim that whole libraries or every production deployment are bug-free
+    questions:
+    - question: Did Claude prove that 123 open-source libraries have no bugs?
+      answer: No. The research reports no-crash proofs for selected entry points and bounded inputs under a particular compiled RISC-V setup. Other bugs, platforms and properties remain outside that guarantee.
+    - question: How does formal verification differ from testing?
+      answer: Tests check selected examples. A machine-checked proof establishes a specified property for all cases within its formal assumptions, so the specification and trusted components still matter.
+    links:
+    - name: Anthropic - Formal software verification at larger scale
+      url: https://www.anthropic.com/research/formal-verification
+- section: Proactive Agents, Voice and Open Inference
+  date: '2026-10-27'
+  topics:
+  - title: Anthropic opens a research preview of Claude Duet
+    description: >
+      Anthropic announced Claude Duet on October 21, a proactive agent powered by
+      Claude Opus 5.5 that works in its own cloud computer and browser.
+
+      Key developments:
+
+      - Duet sends morning briefs, checks connected apps every few hours and keeps
+      working when the user's devices are off
+
+      - It asks for approval before sending messages, making payments, signing
+      documents or deleting content; some financial actions remain prohibited
+
+      - The waitlisted preview starts with US Pro and Max subscribers, shares their
+      Claude usage limits and counts background checks against those limits
+    questions:
+    - question: What is Claude Duet?
+      answer: Claude Duet is Anthropic's proactive agent app. It can prepare work across connected apps, run tasks on a cloud computer and notify users when work needs review.
+    - question: Who can access Claude Duet?
+      answer: The research preview starts with US Claude Pro and Max subscribers through a waitlist. It shares the plan's existing usage limits, including for background activity.
+    links:
+    - name: Anthropic - Introducing Claude Duet
+      url: https://claude.com/blog/claude-duet
+  - title: Mistral introduces Voxtral 3 and a voice agent SDK
+    description: >
+      Mistral's October 20 release combines new transcription and speech-generation
+      models with an SDK for streaming voice agents that can call business tools.
+
+      Key developments:
+
+      - Batch transcription supports more than 50 languages, speaker diarization
+      and context biasing for specialized vocabulary
+
+      - The LiveKit-based SDK combines listening, reasoning, tool calls and speech;
+      Mistral offers API access and self-deployment through its sales team
+
+      - Listed prices include $0.0035 per minute for Mini batch transcription and
+      $13 per million characters for speech; performance claims are vendor-reported
+    questions:
+    - question: What does Voxtral 3 add for voice agents?
+      answer: Voxtral 3 combines speech-to-text and text-to-speech models with a LiveKit-based SDK, allowing developers to build streaming conversations with tool calls.
+    - question: Can Voxtral 3 run on private infrastructure?
+      answer: Mistral offers self-deployment through its sales team as well as hosted API endpoints. Organizations should confirm deployment terms and data-processing settings for their use case.
+    links:
+    - name: Mistral - Voxtral 3
+      url: https://mistral.ai/news/voxtral-3/
+  - title: DeepSeek open-sources DeepInfer for DeepSeek-V4.1-Flash
+    description: >
+      DeepSeek released DeepInfer on October 20 under Apache 2.0. The company
+      describes it as the inference framework behind its production services,
+      while the public release initially provides offline inference.
+
+      Key developments:
+
+      - The repository supports DeepSeek-V4.1-Flash, optimized kernels, distributed
+      execution, accelerated decoding and structured outputs
+
+      - Supported hardware includes NVIDIA SM100 GPUs and Huawei Ascend 950 NPUs
+
+      - A complete serving system still requires components not included in the
+      release, including a KV-cache system and load balancing
+    questions:
+    - question: What is DeepInfer?
+      answer: DeepInfer is DeepSeek's Apache-2.0 inference framework. Its initial public release supports offline inference for DeepSeek-V4.1-Flash rather than providing a complete hosted serving service.
+    links:
+    - name: DeepSeek - DeepInfer repository and release documentation
+      url: https://github.com/deepseek-ai/DeepInfer
+- section: Gemini 4 Broadens Access as Meta Releases Open Weights
+  date: '2026-10-15'
+  topics:
+  - title: Google makes Gemini 4 Argon globally available
+    description: >
+      Google expanded access to Gemini 4 Argon on October 13, bringing its frontier
+      model to developers, enterprises and eligible consumer subscribers.
+
+      Key developments:
+
+      - Availability includes the paid Gemini API in AI Studio and Gemini platform,
+      with product access varying across Gemini, Search and Antigravity plans
+
+      - Introductory API pricing is $2 input and $10 output per million tokens through
+      November 30, followed by $4 input and $20 output
+
+      - Google describes coding, scientific work and complex visualizations as target
+      uses; its engineering improvements and benchmark claims are vendor-reported
+    questions:
+    - question: Where is Gemini 4 Argon available?
+      answer: Google announced global API availability on October 13, alongside access in selected Gemini, Search and Antigravity subscription plans. Eligibility and usage limits vary by product.
+    - question: Is Gemini 4 Argon's introductory pricing permanent?
+      answer: No. Google lists $2 input and $10 output per million tokens through November 30, 2026, with $4 input and $20 output after that introductory period.
+    links:
+    - name: Google - Gemini 4 Argon is now available for everyone
+      url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon
+  - title: Meta releases Muse Spark Open with an 816B-parameter MoE architecture
+    description: >
+      Meta released Muse Spark Open on October 15. The model card describes an
+      open-weight model for coding and agentic work with multimodal inputs.
+
+      Key developments:
+
+      - The model has 816 billion total parameters, 42 billion active parameters per
+      token and a one-million-token context window
+
+      - Inputs include text, images, video and audio; output is text
+
+      - The custom Muse license requires attribution and a separate agreement for
+      qualifying model-as-a-service businesses above $20 million annual revenue;
+      this threshold is not a blanket restriction on all commercial use
+    questions:
+    - question: Is Muse Spark Open an unrestricted open-source model?
+      answer: It is an open-weight model under Meta's custom Muse Model License, not Apache 2.0. Its attribution, usage-policy and model-as-a-service conditions need review before deployment.
+    links:
+    - name: Meta - Muse Spark Open model card and license
+      url: https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B
+- section: Smaller Models Gain Adaptive Reasoning
+  date: '2026-10-07'
+  topics:
+  - title: Anthropic releases Claude Haiku 5.5 for high-volume agent work
+    description: >
+      Anthropic released Claude Haiku 5.5 on October 7, adding adaptive thinking
+      and effort controls to its fast, lower-cost model family.
+
+      Key developments:
+
+      - The model targets classification, extraction, routing and well-defined
+      subagent tasks, with a one-million-token context window
+
+      - Standard pricing for prompts up to 100,000 tokens is $0.10 input and $0.50
+      output per million tokens; longer prompts use higher pricing tiers
+
+      - The newer tokenizer counts the same text differently from Haiku 4.5, so
+      developers should test actual task costs rather than compare token prices alone
+    questions:
+    - question: What is new in Claude Haiku 5.5?
+      answer: Haiku 5.5 adds adaptive thinking and adjustable effort, supports a one-million-token context window and targets low-latency, high-volume tasks such as routing and subagent work.
+    - question: Does Haiku 5.5 always cost $0.10 per million input tokens?
+      answer: No. That rate applies to prompts up to 100,000 tokens. The documented standard rate for longer prompts is $0.50 input and $2.50 output per million tokens.
+    links:
+    - name: Anthropic - Introducing Claude Haiku 5.5
+      url: https://www.anthropic.com/claude-haiku-5-5
+    - name: Claude Platform - Haiku 5.5 specifications and pricing
+      url: https://platform.claude.com/docs/en/models/haiku-5-5/overview
+- section: New Daily-Driver Models for Coding and Professional Work
+  date: '2026-09-29'
+  topics:
+  - title: OpenAI introduces GPT-6.1 Sol with cheaper cached input
+    description: >
+      At its September 29 DevDay, OpenAI introduced GPT-6.1 Sol, an upgrade aimed
+      at coding, computer use and multi-step professional workflows.
+
+      Key developments:
+
+      - OpenAI lists $2 input and $10 output per million tokens, with cached input
+      at $0.10 per million tokens
+
+      - The company reports improvements over GPT-6 Sol and results approaching
+      GPT-6 Astra on selected evaluations at lower cost
+
+      - Benchmark comparisons are vendor-reported and should be checked against
+      task quality, latency and total workflow cost before changing production models
+    questions:
+    - question: How does GPT-6.1 Sol differ from GPT-6 Sol?
+      answer: OpenAI positions GPT-6.1 Sol as a more capable upgrade for coding and professional workflows, with cached input priced at $0.10 per million tokens instead of GPT-6 Sol's $0.20.
+    links:
+    - name: OpenAI - Introducing GPT-6.1 Sol
+      url: https://openai.com/index/introducing-gpt-6-1-sol
+  - title: Anthropic releases Claude Sonnet 5.5 for focused coding and knowledge work
+    description: >
+      Anthropic introduced Claude Sonnet 5.5 on September 28, positioning it for
+      well-scoped coding tasks and professional documents.
+
+      Key developments:
+
+      - Anthropic reports more than 30% higher speed and up to 30% lower cost for
+      most work compared with Sonnet 5; these are the company's own measurements
+
+      - Standard API pricing is $2 input and $10 output per million tokens, with
+      a one-million-token context window
+
+      - Developers migrating from Sonnet 5 should review changes to thinking,
+      tool use and response shape rather than assume a drop-in replacement
+    questions:
+    - question: What is Claude Sonnet 5.5 designed for?
+      answer: Anthropic positions Sonnet 5.5 for focused coding and everyday knowledge work, including bug fixes and polished documents, slides and spreadsheets.
+    links:
+    - name: Anthropic - Introducing Claude Sonnet 5.5
+      url: https://www.anthropic.com/claude-sonnet-5-5
+    - name: Claude Platform - Sonnet 5.5 specifications and migration changes
+      url: https://docs.claude.com/en/docs/models/sonnet-5-5/overview
 - section: New Models Make Frontier AI More Accessible
   date: '2026-09-26'
   topics:
