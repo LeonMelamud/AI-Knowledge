@@ -66,7 +66,7 @@ export default function Calculator() {
           name="text"
           toolname="text"
           tooldescription="The text whose tokens should be counted"
-          className="w-full border border-hairline bg-canvas p-3 text-sm leading-relaxed text-ink placeholder:text-ink-faint transition-colors duration-150 focus:border-ink focus:outline-none focus:ring-1 focus:ring-ink"
+          className="w-full border border-hairline bg-canvas p-3 text-sm leading-relaxed text-ink placeholder:text-ink-muted transition-colors duration-150 focus:border-ink focus:outline-none focus:ring-1 focus:ring-ink"
         />
         <button
           type="submit"
