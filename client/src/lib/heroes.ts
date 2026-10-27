@@ -10,6 +10,9 @@
  * encoded, the hero falls back to a typographic-only treatment — the layout is
  * complete and verifiable before any credits are spent.
  */
+/** `/` redirects here, so this is the de-facto landing route. */
+export const LANDING_ROUTE = 'ai-basics'
+
 export interface Hero {
   subject: string
   hue: string

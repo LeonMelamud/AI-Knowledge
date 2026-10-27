@@ -7,6 +7,10 @@ import Markdown from '../components/Markdown'
 import QAList from '../components/QAList'
 import SectionRail, { slugify } from '../components/SectionRail'
 import SectionHero from '../components/SectionHero'
+import SectionIndex from '../components/SectionIndex'
+import LandingPaths from '../components/LandingPaths'
+import ToolCategoryNav from '../components/ToolCategoryNav'
+import { LANDING_ROUTE } from '../lib/heroes'
 
 function ConceptCard({ item, index }: { item: ConceptItem; index: number }) {
   const { t } = useI18n()
@@ -98,7 +102,7 @@ function ToolCard({ item, index }: { item: ToolItem; index: number }) {
             </div>
           )}
           {item.recentUpdates && (
-            <div className="mt-4 border-s-2 border-ink bg-surface p-4">
+            <div className="mt-4 border-s border-ink bg-surface p-4">
               <Markdown>{item.recentUpdates}</Markdown>
             </div>
           )}
@@ -110,7 +114,7 @@ function ToolCard({ item, index }: { item: ToolItem; index: number }) {
 
 export default function SectionPage() {
   const { sectionId = '' } = useParams()
-  const { lang } = useI18n()
+  const { lang, t } = useI18n()
   const result = findSection(lang, sectionId)
 
   usePageMeta(result?.section.title ?? '')
@@ -122,12 +126,36 @@ export default function SectionPage() {
     name: item.name,
   }))
 
+  const isLanding = sectionId === LANDING_ROUTE
+
   return (
     <>
-      <SectionHero routeId={sectionId} title={result.section.title} count={result.section.items.length} />
+      <SectionHero
+        routeId={sectionId}
+        title={result.section.title}
+        count={result.section.items.length}
+        countLabel={t(result.kind === 'concept' ? 'conceptsCount' : 'toolsCount')}
+      >
+        {isLanding && railItems[0] && (
+          <div className="mt-8 max-w-2xl">
+            <p className="body-l text-ink">{t('landingLead')}</p>
+            <a
+              href={`#${railItems[0].id}`}
+              className="mt-8 inline-flex items-center gap-3 bg-ink px-6 py-3.5 text-sm font-medium text-canvas transition-colors duration-200 hover:bg-ink-muted"
+            >
+              {t('landingCta')}
+              <span aria-hidden>↓</span>
+            </a>
+          </div>
+        )}
+      </SectionHero>
+
+      {isLanding && railItems[0] && <LandingPaths firstAnchor={railItems[0].id} />}
+      {result.kind === 'tool' && <ToolCategoryNav />}
 
       <div className="mx-auto flex max-w-[1280px] gap-16 px-4">
         <div className="min-w-0 flex-1">
+          <SectionIndex items={railItems} />
           {result.kind === 'concept'
             ? result.section.items.map((item, i) => (
                 <ConceptCard key={item.name} item={item} index={i} />

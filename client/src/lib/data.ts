@@ -126,3 +126,12 @@ export function findSection(lang: Lang, id: string):
   if (tool) return { kind: 'tool', section: tool }
   return null
 }
+
+/** Date of the newest dated digest section in this language, or undefined. */
+export function latestNewsDate(lang: Lang): string | undefined {
+  return getNews(lang)
+    .map((s) => s.date)
+    .filter((d): d is string => Boolean(d))
+    .sort()
+    .at(-1)
+}
