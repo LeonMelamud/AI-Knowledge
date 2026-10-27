@@ -26,10 +26,11 @@ export default function Layout() {
               <span className="flex h-8 w-8 items-center justify-center bg-canvas text-sm font-semibold tracking-tight text-ink">
                 ai
               </span>
-              <p className="mt-4 max-w-xs text-sm font-light opacity-70">{t('heroTitle')}</p>
+              <p className="mt-4 max-w-xs text-sm font-medium">{t('heroTitle')}</p>
+              <p className="mt-2 max-w-xs text-sm font-light opacity-70">{t('footerStance')}</p>
             </div>
 
-            <nav className="flex flex-col gap-3 text-sm" aria-label="Footer">
+            <nav className="flex flex-col gap-3 text-sm" aria-label={t('navFooterLabel')}>
               <Link to="/about" className="opacity-70 transition-opacity duration-200 hover:opacity-100">
                 {t('aboutTitle')}
               </Link>
