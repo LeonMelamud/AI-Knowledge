@@ -47,19 +47,34 @@ tools:
 
       Gemini is available in different model tiers, including Pro, Flash and on-device Nano, suited to different use cases from enterprise applications to on-device deployment. It's particularly valuable for developers, researchers, content creators, and professionals who need to work across different content formats and leverage Google's knowledge systems.
 
-  - name: Storm Genie
+  - name: STORM
     company: Stanford University
     url: https://storm.genie.stanford.edu/
     description: |
-      Storm Genie is a tool developed by Stanford University, providing advanced solutions for AI and machine learning research.
-      It offers a platform for developing, testing, and deploying AI models with a focus on innovation and efficiency.
+      STORM is a research project from Stanford University that uses large language models to write long, Wikipedia-style articles grounded in web sources. Rather than drafting immediately, it concentrates on the pre-writing stage: researching a topic from several perspectives and building an outline before the article is written.
 
-  - name: FinChat
-    company: Stratosphere Technology Inc.
-    url: https://finchat.io/
+      Key capabilities:
+      - Discovers different perspectives on a topic before writing
+      - Simulates conversations in which those perspectives question a retrieval-grounded expert
+      - Organizes the collected information into an outline, then into a full article with citations
+      - Public web demo, with the research code available as open source (stanford-oval/storm on GitHub)
+
+      STORM is useful for students, researchers, writers and analysts who need a cited first overview of an unfamiliar topic, and for developers studying research-and-writing agents. Its output is a starting point that still needs human fact-checking.
+
+  - name: Fiscal.ai
+    company: Fiscal.ai (formerly FinChat)
+    url: https://fiscal.ai/
     description: |
-      FinChat is an AI-powered platform designed for investment research, providing institutional-quality data verified by human equity analysts. It offers tools for summarizing financial data, building models, and visualizing information, helping investors make informed decisions quickly and efficiently.
-      
+      Fiscal.ai, formerly FinChat, is an AI-powered financial data and investment research platform. The company renamed itself to reflect a broader focus than a chat interface: financial data infrastructure delivered through a research terminal and APIs.
+
+      Key capabilities:
+      - An all-in-one research terminal for public-equity data, filings and company metrics
+      - AI-assisted questions and summaries over financial data
+      - A data feed API used by investing platforms and institutions
+      - Connectors that bring its financial data into other AI tools
+
+      Fiscal.ai serves self-directed investors, financial professionals and fintech teams that need accurate company data and want AI help with research.
+
   - name: Google AI Studio
     company: Google
     url: https://aistudio.google.com/app/prompts/new_chat
@@ -389,15 +404,6 @@ tools:
     description: |
       Image and video processing, mimicking facial movements from video into a static image.
 
-  - name: Play AI
-    company: PlayAI
-    url: https://play.ai/
-    description: |
-      Simulates voice for customer service or any business.
-      Record a short conversation with the voice and it prepares an agent.
-
-      my voice: https://play.ai/agent/YOUR-AI-CLONE-mUU6LGsosIX-ra3-jxn_-
-
   - name: Character AI
     company: Character.AI
     url: https://character.ai/
@@ -525,11 +531,19 @@ tools:
     description: |
       The LF AI & Data Foundation Interactive Landscape provides a comprehensive overview of open-source AI and data projects. It is modeled after the CNCF landscape and offers insights into various tools and platforms across machine learning, deep learning, data processing, and more, helping users navigate the open-source AI ecosystem.
 
-  - name: DLI Learning Journey
+  - name: NVIDIA DLI Learning Paths
     company: NVIDIA
-    url: https://nvdam.widen.net/s/brxsxxtskb/dli-learning-journey-2009000-r5-web
+    url: https://www.nvidia.com/en-us/learn/learning-paths/
     description: |
-      The DLI Learning Journey by NVIDIA provides a comprehensive guide for developers and data scientists to enhance their skills in deep learning and AI. It offers structured learning paths, resources, and tools to facilitate the development and deployment of AI models, improving productivity and expertise in the field.
+      The NVIDIA Deep Learning Institute (DLI) offers training in AI, accelerated computing and data science, and its learning paths recommend course sequences for building skills and credentials in a specific area.
+
+      Key offerings:
+      - Self-paced online courses, including free courses
+      - Instructor-led workshops, also available as private training for teams
+      - Certificates in selected courses
+      - Topics such as deep learning, generative AI and LLMs, data science, AI infrastructure, and graphics and simulation
+
+      The learning paths suit developers, data scientists and IT teams who want a structured route through NVIDIA's AI curriculum.
 
 - id: productivity
   title: Productivity Tools
