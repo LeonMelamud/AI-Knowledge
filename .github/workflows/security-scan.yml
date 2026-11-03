@@ -23,13 +23,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: '18'
+          node-version: '22'
           cache: 'npm'
+          cache-dependency-path: client/package-lock.json
 
       - name: Install dependencies
+        working-directory: client
         run: npm ci
 
       - name: Run npm audit
+        working-directory: client
         run: |
           npm audit --audit-level=moderate
           echo "NPM audit completed"
@@ -40,6 +43,7 @@ jobs:
           echo "🛡️ Using GitHub native security - npm audit, CodeQL, Dependabot"
 
       - name: License Check
+        working-directory: client
         run: |
           npx license-checker \
             --onlyAllow "MIT;ISC;Apache-2.0;BSD-2-Clause;BSD-3-Clause" \
