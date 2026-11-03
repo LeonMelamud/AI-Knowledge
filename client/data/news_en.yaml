@@ -2,6 +2,60 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+- section: Frontier Models Advance in Cybersecurity and Long-Running Work
+  date: '2026-10-31'
+  topics:
+  - title: Google announces Gemini 4 Carbon with a restricted defender-first rollout
+    description: >
+      Google announced Gemini 4 Carbon on October 28, targeting cybersecurity
+      defense and sustained, multi-step engineering work.
+
+      Key developments:
+
+      - Initial access goes to selected cyber defenders, followed by additional
+      trusted partners through the Fairwind Program; broad availability is still planned
+
+      - Google reports 88.2% on SEC-bench Pro for vulnerability discovery and 71.0%
+      on CWE-bench for patching, with these external evaluations run without guardrails
+
+      - Announced introductory API pricing is $2 input and $10 output per million
+      tokens, rising to $4 and $20 after the introductory period
+    questions:
+    - question: Is Gemini 4 Carbon publicly available?
+      answer: Not generally at announcement. Google is starting with selected cyber defenders and trusted partners, with broader developer, business and consumer access planned but no general release date stated.
+    - question: What is Gemini 4 Carbon designed for?
+      answer: Google positions Carbon for long-running engineering tasks and cybersecurity defense, including finding, validating and patching vulnerabilities. Published benchmark results are not guarantees of production performance.
+    links:
+    - name: Google - Introducing Gemini 4 Carbon
+      url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon
+- section: Interactive World Models Gain Native Audio
+  date: '2026-10-31'
+  topics:
+  - title: DeepMind previews Genie 4 with real-time scene editing and generated sound
+    description: >
+      Google DeepMind announced Genie 4 on October 27, a research world model
+      that generates interactive simulations with native audio.
+
+      Key developments:
+
+      - Users can steer a running scene with natural language, including camera
+      movement, weather changes and new characters
+
+      - Generated audio includes ambient sound, music and interactive dialogue;
+      Gemini-family models help ground simulations and maintain continuity
+
+      - The rollout starts with trusted testers; access for Google AI Ultra users
+      in Project Genie and early-access API and AI Studio partners is coming later
+    questions:
+    - question: How is Genie 4 different from a conventional AI video generator?
+      answer: Genie 4 generates an interactive simulation that users can steer while it runs, rather than only producing a fixed video clip. It also generates audio as the scene unfolds.
+    - question: Can all Google AI Ultra subscribers use Genie 4 now?
+      answer: Google's announcement describes an initial research preview for trusted testers. Access for AI Ultra subscribers in Project Genie and early-access Gemini API and AI Studio partners is described as coming soon, not general availability.
+    links:
+    - name: Google - Announcing Genie 4
+      url: https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-genie-4
+    - name: DeepMind - Genie 4 world simulation research and demos
+      url: https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/
 - section: AI-Assisted Security Moves from Testing to Proofs
   date: '2026-10-27'
   topics:
