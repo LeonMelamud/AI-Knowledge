@@ -23,7 +23,7 @@ tools:
       Claude is an advanced AI assistant developed by Anthropic with a focus on helpfulness, harmlessness, and honesty. It excels at thoughtful conversation, complex reasoning, and understanding nuanced instructions across a wide range of topics and tasks.
 
       Key strengths:
-      - Long context handling (up to 1 million tokens in recent models)
+      - Long context windows for working with large documents and codebases
       - Nuanced reasoning and analysis of complex problems
       - Document understanding and summarization
       - Creative writing with attention to style and tone
@@ -108,13 +108,13 @@ tools:
     company: xAI
     url: https://grok.com/
     description: |
-      Grok is xAI's conversational assistant, tightly integrated with X (Twitter) for real-time knowledge. The Grok 4 generation offers strong reasoning, live web awareness, image understanding and a distinctively direct conversational style.
+      Grok is xAI's conversational assistant, tightly integrated with X (Twitter) for real-time knowledge. Its models offer strong reasoning, live web awareness, image understanding and a distinctively direct conversational style.
 
   - name: Kimi
     company: Moonshot AI
     url: https://www.kimi.com/
     description: |
-      Kimi is Moonshot AI's assistant, built on the open-weight Kimi K2 model family. It is known for very long context handling, strong agentic coding performance, and being one of the leading examples of frontier-level open-weight models.
+      Kimi is Moonshot AI's assistant, built on Moonshot's Kimi model family, which includes open-weight releases. It is known for very long context handling, strong agentic coding performance, and Moonshot's prominent open-weight models.
 
   - name: Perplexity
     company: Perplexity AI
@@ -140,11 +140,11 @@ tools:
     url: https://www.cursor.com/
     description: |
       Cursor is an AI-powered code editor designed to enhance developer productivity. It integrates seamlessly with your codebase, predicts your next edits, and allows you to write and update code using natural language instructions — including a background agent mode for delegating whole tasks.
-  - name: Windsurf
-    company: Windsurf
-    url: https://windsurf.com/
+  - name: Devin Desktop (formerly Windsurf)
+    company: Cognition
+    url: https://devin.ai/desktop
     description: |
-      Windsurf is an agentic IDE built around Cascade, an AI agent that keeps a live understanding of your project state and can plan and execute multi-file changes, run commands, and preview results while you stay in flow.
+      Devin Desktop is the new name for Windsurf, Cognition's agentic IDE. It keeps the Windsurf editor, extensions and settings, and adds a command center for dispatching, monitoring and coordinating multiple coding agents, locally or in Devin's cloud, with hand-off between the two.
   - name: GitHub Copilot
     company: GitHub
     url: https://github.com/features/copilot
@@ -185,7 +185,7 @@ tools:
 
       TensorFlow is widely used by researchers, data scientists, and developers in academia, startups, and large enterprises across industries like healthcare, finance, robotics, and more. It supports a wide variety of applications, with particular strengths in deep neural networks for computer vision, natural language processing, and time series analysis.
     recentUpdates: |
-      Recent updates to TensorFlow include enhanced performance optimizations, improved integration with TensorFlow.js for browser-based ML, expanded TensorFlow Lite capabilities for mobile and edge devices, and advancements in distributed training frameworks.
+      TensorFlow's on-device runtime, formerly TensorFlow Lite, is now called LiteRT and is part of Google AI Edge; TensorFlow.js continues to cover browser-based ML. Consult the official release notes for changes in the TensorFlow version you use.
 
   - name: PyTorch
     company: Meta
@@ -198,12 +198,12 @@ tools:
       - Imperative programming style that feels natural to Python developers
       - Robust ecosystem for computer vision (torchvision), NLP (transformers), and other domains
       - Efficient memory usage and GPU acceleration
-      - Easy transition from research to production with TorchScript and TorchServe
+      - Compilation and export tooling (such as torch.compile and torch.export) for moving models toward production
       - Strong community support and extensive documentation
 
-      PyTorch is the preferred framework for many researchers and practitioners in academic institutions and leading AI labs due to its flexibility and ease of use. It excels in research environments where rapid iteration and experimentation are crucial, while also supporting production deployment through TorchServe and integration with other tools like ONNX.
+      PyTorch is the preferred framework for many researchers and practitioners in academic institutions and leading AI labs due to its flexibility and ease of use. It excels in research environments where rapid iteration and experimentation are crucial, while also supporting production deployment through model export and integration with tools like ONNX.
     recentUpdates: |
-      PyTorch 2.0 introduced significant performance improvements through compiler optimizations, enhanced distributed training capabilities, better integration with cloud platforms, and expanded support for quantization and model optimization techniques.
+      The PyTorch 2 series added torch.compile for compiler-based speedups alongside ongoing work on distributed training and quantization. TorchServe, the model server once recommended for PyTorch, is now in limited maintenance with no planned updates or security patches, so new deployments should use an actively maintained serving stack. Consult the official release notes for the version you use.
 
   - name: Scikit-learn
     company: Open Source Project
@@ -233,7 +233,7 @@ tools:
       It includes leading architectures for natural language processing (NLP) such as BERT, GPT-2, RoBERTa, XLM, and more.
       The library allows easy use of these models for tasks such as text classification, entity recognition, question answering, and more.
     recentUpdates: |
-      Recently, support for Transformers.js was added for running models in the browser and Transformers Tuner for model optimization.
+      The wider Hugging Face ecosystem includes Transformers.js for running models in JavaScript and the browser. Consult the official release notes for changes in the version you use.
 
   - name: LangChain
     company: LangChain
@@ -262,8 +262,8 @@ tools:
       It allows the creation of information flow and control graphs, composed of various components such as LLMs, tools, and external information sources.
       LangGraph provides a framework for describing and implementing complex, multi-stage processes such as planning, problem-solving, and decision-making.
     recentUpdates: |
-      LangGraph is a relatively new library launched in late 2023. Recent updates include improvements in support
-      for different types of graphs, enhanced tools for debugging and visualizing processes, and tighter integration with LangChain components.
+      LangGraph is developed by the LangChain team as a lower-level framework for long-running, stateful agents, with persistence, human-in-the-loop interrupts and streaming.
+      Consult the official changelog for recent changes.
 
   - name: LlamaIndex
     company: Open Source Project
@@ -273,7 +273,7 @@ tools:
       LlamaIndex provides tools for organizing and managing structured and unstructured information, and enables efficient access to this information
       for LLMs. It offers a variety of indexing and retrieval methods, and supports efficient implementation of techniques such as RAG.
     recentUpdates: |
-      Recently, support for real-time retrieval and integration with additional data sources was added.
+      LlamaIndex is actively developed; consult its official changelog for recent changes.
 
   - name: Gymnasium
     company: Farama Foundation
@@ -383,11 +383,11 @@ tools:
       Pika AI is particularly valuable for content creators, marketers, educators, and artists who need to produce engaging video content without extensive video production skills or resources. It excels at creating short-form content for social media, product demonstrations, educational animations, and creative projects.
 
 
-  - name: Runway Gen-4.5
+  - name: Runway
     company: Runway
     url: https://runwayml.com/
     description: |
-      Runway Gen-4.5 is Runway's current AI video-generation model, designed for cinematic, photorealistic video with strong prompt adherence, motion quality and visual fidelity.
+      Runway builds AI video-generation models designed for cinematic, photorealistic video with strong prompt adherence, motion quality and visual fidelity.
 
       Key capabilities:
       - Generates video from text prompts and visual inputs
@@ -400,7 +400,7 @@ tools:
 
   - name: LivePortrait
     company: open source
-    url: https://huggingface.co/spaces/KwaiVGI/LivePortrait
+    url: https://huggingface.co/spaces/KlingTeam/LivePortrait
     description: |
       Image and video processing, mimicking facial movements from video into a static image.
 
@@ -414,14 +414,13 @@ tools:
       Character.AI offers a unique experience where people can form meaningful connections with AI characters,
       making it popular among those seeking social interaction in a new and innovative way.
 
-  - name: Flux 1.1 Pro
+  - name: FLUX
     company: Black Forest Labs
-    url: https://fal.ai/dashboard
+    url: https://bfl.ai/
     description: |
-      Flux is an advanced AI image generation model that now supports training of LoRA models.
-      This feature allows users to create customized models by uploading 10-15 high-quality images.
-      The streamlined process facilitates the creation of personalized AI images, offering new possibilities for creativity and customization.
-      Flux caters to a diverse audience, from enthusiasts to professionals, seeking innovative image solutions.
+      FLUX is Black Forest Labs' family of image generation and editing models, available through the company's API and through partner platforms.
+      Custom fine-tuning, such as training a LoRA on a small set of your own images, lets users produce consistent subjects, products or styles.
+      FLUX serves a broad audience, from hobbyists to professional designers and developers building image features into their products.
 
   - name: Astria
     company: Astria
@@ -443,7 +442,7 @@ tools:
       - Community features for sharing and inspiration
       - Ongoing model updates that improve image quality, prompt adherence, and creative control
 
-      Midjourney is widely used by artists, designers, creative professionals, marketers, and hobbyists seeking to visualize concepts, generate inspiration, create assets for projects, or explore creative possibilities. Its Discord-based interface and community-centric approach have fostered a collaborative environment for AI art creation and experimentation.
+      Midjourney is widely used by artists, designers, creative professionals, marketers, and hobbyists seeking to visualize concepts, generate inspiration, create assets for projects, or explore creative possibilities. Its web app and Discord community make it a collaborative environment for AI art creation and experimentation.
 
 
   - name: Tensor.Art
@@ -452,11 +451,11 @@ tools:
     description: |
       Tensor.Art is a creative platform that leverages AI to enable users to generate and share digital art. It offers tools for creating various styles, including anime, realistic, and sci-fi, and supports workflows for model hosting and online training, making it a versatile tool for artists and designers.
 
-  - name: Veo 3 / Flow
+  - name: Veo / Flow
     company: Google
     url: https://labs.google/flow/
     description: |
-      Veo 3 is Google's state-of-the-art video generation model, producing cinematic clips with native synchronized audio — dialogue, sound effects and music. Flow is the AI filmmaking tool built around it, letting creators direct scenes, extend shots and keep characters consistent across clips.
+      Veo is Google's video generation model family, which can produce cinematic clips with native synchronized audio — dialogue, sound effects and music. Flow is the AI filmmaking tool built around it, letting creators direct scenes, extend shots and keep characters consistent across clips.
 
   - name: ElevenLabs
     company: ElevenLabs
@@ -523,7 +522,7 @@ tools:
     company: Parlance Labs
     url: https://parlance-labs.com/
     description: |
-      Parlance Labs provides AI-driven solutions for enhancing communication and productivity. Their tools focus on automating and optimizing customer interactions, enabling businesses to improve efficiency and customer satisfaction through advanced natural language processing technologies.
+      Parlance Labs focuses on practical AI development for production systems. Its best-known offering is a course on building evaluation systems for AI applications, taken by thousands of engineers and product managers, alongside free educational material on applying LLMs in practice.
 
   - name: LF AI & Data Foundation Interactive Landscape
     company: LF AI & Data Foundation
@@ -554,11 +553,11 @@ tools:
     description: |
       NotebookLM is an AI-powered tool by Google designed to enhance productivity by integrating machine learning capabilities into digital note-taking. It helps users organize, search, and analyze their notes more efficiently, providing insights and recommendations based on the content.
  
-  - name: "Gamma, presentation AI tool"
+  - name: Gamma
     company: Gamma
-    url: https://gamma.app/docs/Exploring-AI-From-Basics-to-Advanced-Applications-zlgxrgm775737rn?mode=doc
+    url: https://gamma.app/
     description: |
-      A comprehensive guide exploring AI from foundational concepts to advanced applications, providing insights and practical examples for learners at all levels. This is a presentation AI tool.      
+      Gamma is an AI tool for creating presentations, documents and simple web pages from a prompt, an outline or existing notes. It drafts the content and layout, which you can then edit, restyle and share.
 
   - name: Otter.ai
     company: Otter.ai
@@ -568,7 +567,7 @@ tools:
 
 
   - name: Grammarly
-    company: Grammarly Inc.
+    company: Superhuman (formerly Grammarly Inc.)
     url: https://www.grammarly.com/
     description: |
       Grammarly is an AI-powered writing assistant that helps users improve their writing by providing suggestions for grammar, spelling, style, and tone.
