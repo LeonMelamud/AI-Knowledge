@@ -1827,6 +1827,30 @@ concepts:
       - The appropriate metric depends on the task, stakeholders, and legal or ethical context.
       - Metrics should be interpreted alongside data quality, deployment conditions, and potential harms.
 
+  - name: BLEU and ROUGE
+    shortDescription: Overlap-based metrics that compare generated text with one or more human-written reference texts.
+    fullDescription: |
+      BLEU and ROUGE score generated text by counting shared words and word sequences (n-grams) with reference texts.
+      - BLEU is precision-oriented and is traditionally used for machine translation.
+      - ROUGE is recall-oriented and is traditionally used for summarization; ROUGE-L uses the longest common subsequence.
+      - Both reward surface overlap, so they can miss valid paraphrases and say little about factual accuracy; they are best paired with human or model-based evaluation.
+
+  - name: Intersection over Union (IoU) and mAP
+    shortDescription: Standard metrics for object detection and segmentation that measure how well predicted regions match the true ones.
+    fullDescription: |
+      Intersection over Union compares a predicted region with the ground-truth region.
+      - IoU is the area of overlap divided by the area of union; 1 means a perfect match and 0 means no overlap.
+      - A detection usually counts as correct only when its IoU passes a threshold, such as 0.5.
+      - Mean Average Precision (mAP) averages precision across recall levels and object classes, and is often reported over several IoU thresholds.
+
+  - name: NDCG (Normalized Discounted Cumulative Gain)
+    shortDescription: A ranking metric that rewards placing the most relevant results near the top of a list.
+    fullDescription: |
+      NDCG evaluates ranked lists such as search results, recommendations, and retrieved documents.
+      - Each result's relevance is discounted by its position, so relevant items ranked lower contribute less.
+      - The score is normalized by the best possible ordering, giving values between 0 and 1.
+      - It is often reported at a cutoff, such as NDCG@10, alongside precision at k and recall at k.
+
 - id: tools_and_libraries
   title: Tools and Libraries
   items:
@@ -1899,6 +1923,30 @@ concepts:
       - Tracks runs, parameters, metrics, datasets, and artifacts.
       - Supports model packaging, registry workflows, and deployment-oriented management.
       - Includes tools for traditional ML as well as LLM and agent evaluation workflows.
+
+  - name: NumPy
+    shortDescription: The core Python library for fast array computing that most of the scientific and ML stack builds on.
+    fullDescription: |
+      NumPy provides the n-dimensional array and the numerical routines that much of the Python data ecosystem relies on.
+      - Supports vectorized math, broadcasting, linear algebra, random sampling, and Fourier transforms.
+      - Runs array operations in compiled code, which is far faster than equivalent pure-Python loops.
+      - Its array interface is shared or mirrored by libraries such as pandas, scikit-learn, SciPy, and JAX.
+
+  - name: XGBoost
+    shortDescription: An open-source gradient-boosted decision tree library widely used for tabular data.
+    fullDescription: |
+      XGBoost trains ensembles of decision trees in which each new tree corrects the errors of the previous ones.
+      - Supports classification, regression, and ranking tasks.
+      - Includes regularization, native handling of missing values, and parallel and distributed training.
+      - Gradient-boosted trees remain a strong baseline for structured, tabular datasets.
+
+  - name: vLLM
+    shortDescription: An open-source engine for high-throughput, memory-efficient serving of large language models.
+    fullDescription: |
+      vLLM is used to run language-model inference efficiently on GPUs and other accelerators.
+      - Uses PagedAttention to manage the attention key-value cache with less wasted memory.
+      - Batches incoming requests continuously to raise throughput.
+      - Offers an OpenAI-compatible API server, so applications can switch to self-hosted models with few code changes.
 
 - id: applications
   title: Key Applications of Artificial Intelligence
@@ -1975,6 +2023,31 @@ concepts:
       - Examples include adaptive practice, tutoring support, feedback on drafts, and accessibility tools.
       - Teachers and institutions should evaluate accuracy, privacy, bias, and appropriate human oversight.
       - AI should support learning goals rather than replace meaningful instruction and assessment.
+
+  - name: AI in Manufacturing
+    shortDescription: AI applications that improve quality, uptime, and efficiency on the factory floor.
+    fullDescription: |
+      Manufacturers use AI to analyze sensor, camera, and production data.
+      - Visual inspection systems detect defects on production lines.
+      - Predictive maintenance flags equipment likely to fail before it breaks down.
+      - Demand forecasting and scheduling help plan production and inventory.
+      - Results depend on reliable data collection and close work with the engineers who run the process.
+
+  - name: Robotics and Physical AI
+    shortDescription: AI that perceives, plans, and acts in the physical world through robots and other machines.
+    fullDescription: |
+      Physical AI connects perception and decision-making to motors, grippers, and vehicles.
+      - Applications include warehouse picking, mobile robots, drones, agricultural machines, and assistive devices.
+      - Robots are often trained in simulation and with demonstration data before being tested in the real world.
+      - Safety, reliability in unpredictable environments, and the cost of real-world data are central challenges.
+
+  - name: AI in Software Development
+    shortDescription: AI assistants and agents that help write, review, test, and maintain code.
+    fullDescription: |
+      AI tools support developers across the software lifecycle.
+      - Uses include code completion, generating tests, explaining unfamiliar code, and drafting documentation.
+      - Coding agents can carry out multi-step tasks such as fixing a bug or implementing a small feature for human review.
+      - Teams still need code review, testing, and security checks, because generated code can be wrong or insecure.
 
 - id: future_trends
   title: Future Trends in Artificial Intelligence
