@@ -92,6 +92,22 @@
         ]
       }
     </script>
+    <script>
+      // Each deploy replaces the hashed /assets/ files. A page cached from before a deploy
+      // then points at a bundle that no longer exists and renders without its app. Reload
+      // once to fetch the current HTML; at most one reload a minute, so it can never loop.
+      window.addEventListener('error', function (e) {
+        var t = e.target
+        if (!t || (t.tagName !== 'SCRIPT' && t.tagName !== 'LINK')) return
+        if (!/\/assets\//.test(t.src || t.href || '')) return
+        try {
+          var last = Number(sessionStorage.getItem('ak-asset-reload') || 0)
+          if (Date.now() - last < 60000) return
+          sessionStorage.setItem('ak-asset-reload', String(Date.now()))
+        } catch (_) { return }
+        location.reload()
+      }, true)
+    </script>
   </head>
   <body>
     <div id="root"></div>
