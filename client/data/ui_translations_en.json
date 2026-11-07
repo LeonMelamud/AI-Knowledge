@@ -40,21 +40,19 @@
   "infoCollectTitle": "2. Information We Collect",
   "infoProvidedTitle": "2.1. Information You Provide",
   "infoProvidedList": [
-    "Information entered in text generation tools and calculators",
-    "Content you create on the site"
+    "Nothing is sent to us. Text you type into the calculators and tools stays in your browser and is not uploaded."
   ],
   "infoAutoTitle": "2.2. Automatically Collected Information",
   "infoAutoList": [
-    "IP address",
-    "Browser and device type",
-    "Pages visited on our site",
-    "Visit time and duration"
+    "The site runs no analytics, no tracking scripts and no cookies, and we collect nothing automatically.",
+    "The site is hosted on GitHub Pages. GitHub logs visitors' IP addresses for security under its own privacy statement; we do not receive or use those logs.",
+    "Your language choice is remembered in your browser's local storage; it never leaves your device."
   ],
   "howWeUseTitle": "3. How We Use Information",
   "howWeUseList": [
     "To provide and improve our website services",
     "To respond to your questions and provide support",
-    "To analyze website usage and improve user experience"
+    "To remember your language choice, stored only in your own browser"
   ],
   "contactUsTitle": "4. Contact Us",
   "contactUsText": "For questions or comments regarding this Privacy Policy:",
