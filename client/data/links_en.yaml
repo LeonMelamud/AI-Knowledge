@@ -584,3 +584,10 @@ tools:
     description: |
       Replika is an AI companion designed to chat with users, providing emotional support and helping with mental wellness through conversation.
 
+  - name: Meetini
+    company: Moonveil AI Inc.
+    url: https://meetini.net/
+    description: |
+      Meetini is a paid meeting and interview assistant for Apple Silicon Macs. Live captions and transcripts run locally on the Mac. It provides meeting notes and history, interview preparation and mock interviews. The Career plan adds cloud AI keywords, answer suggestions and follow-up assistance with 600 AI minutes per month.
+
+      Notes costs $20/month or $45/quarter; Career costs $95/month or $240/quarter. Current pricing is available at https://meetini.net/pricing. Public launch is planned for November 9, 2026.
