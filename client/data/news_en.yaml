@@ -2,6 +2,135 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+- section: Cybersecurity Models Scale Up Authorized Vulnerability Research
+  date: '2026-11-07'
+  topics:
+  - title: OpenAI restricts GPT-6 Cyber to Daybreak Red and reports large-scale Linux findings
+    description: >
+      OpenAI published its GPT-6 Cyber system card on November 5, following a
+      November 4 report on an autonomous Linux vulnerability-research pipeline.
+
+      Key developments:
+
+      - GPT-6 Cyber is a security-specialized variant of GPT-6 Astra; access is
+      restricted to Daybreak Red with identity and organizational security checks
+
+      - OpenAI reports that its research pipeline reproduced 1,724 vulnerabilities
+      and produced 948 working local privilege escalation exploits in one run
+
+      - The Linux run cost $1,213,430 in API credits; human researchers reviewed
+      outputs and submitted findings with candidate patches for maintainer review
+
+      - These are vendor-reported research results, not evidence that every affected
+      system is patched or that the model is safe without authorization controls
+    questions:
+    - question: Can anyone use GPT-6 Cyber?
+      answer: No. Access is restricted through OpenAI's Daybreak Red program, with identity verification, use restrictions and organizational security requirements. It is intended for authorized security work.
+    - question: Did OpenAI automatically fix every reported Linux vulnerability?
+      answer: The pipeline generated candidate patches and exploit evidence, followed by human review and reporting to maintainers. Generating a patch is not the same as its acceptance upstream or deployment to all users.
+    links:
+    - name: OpenAI - A thousand fewer paths to root
+      url: https://openai.com/index/a-thousand-fewer-paths-to-root
+    - name: OpenAI - GPT-6 Cyber system card
+      url: https://deploymentsafety.openai.com/gpt-6-cyber
+- section: Image and Video Creation Gains Faster Iteration and Longer Clips
+  date: '2026-11-07'
+  topics:
+  - title: OpenAI releases Images 2.6 with GIFs and two API models
+    description: >
+      OpenAI introduced Images 2.6 on November 4 for ChatGPT, Codex and the API,
+      emphasizing faster creation and more consistent editing.
+
+      Key developments:
+
+      - OpenAI says generation is 50% faster; Flare prioritizes speed while
+      Sunburst targets higher quality and consistency across edits
+
+      - GIF creation adds short animated visuals, while the API gains image markup,
+      SVG export and a complexity control separate from image quality
+
+      - The announcement lists global availability across ChatGPT and Codex
+      subscription tiers, with Flare and Sunburst also available through the API
+    questions:
+    - question: What is the difference between Images 2.6 Flare and Sunburst?
+      answer: Flare is the speed-oriented API model, while Sunburst focuses on detail and consistency across edits. OpenAI's speed claims are vendor-reported and actual latency depends on settings and workload.
+    - question: Can Images 2.6 generate animated GIFs?
+      answer: Yes. OpenAI's announcement introduces GIF creation for animated characters, reactions and product visuals, alongside new editing and export controls.
+    links:
+    - name: OpenAI - Introducing Images 2.6
+      url: https://openai.com/index/introducing-images-2-6
+  - title: Google makes Gemini Omni 1.2 Flash generally available for 15-second video
+    description: >
+      Google announced Gemini Omni 1.2 Flash on November 5, bringing longer video
+      generation and conversational editing to its production API offering.
+
+      Key developments:
+
+      - Native generation and editing support clips from 3 to 15 seconds, with
+      multi-turn edits that refine a clip instead of starting over
+
+      - Google lists 720p output at $0.07 per second, 30% below Omni 1.1, and
+      describes improved reference adherence, lip-sync and multi-speaker dialogue
+
+      - General availability covers the Gemini API and Gemini for business;
+      consumer app rollouts and subscription eligibility vary by product
+    questions:
+    - question: How long can Gemini Omni 1.2 Flash videos be?
+      answer: The model supports native generation and editing from 3 to 15 seconds in one-second increments. Longer sequences can use clip extension, but a single native clip is limited to 15 seconds.
+    - question: Is Gemini Omni 1.2 Flash still only a preview?
+      answer: Google announced general availability for the Gemini API and Gemini for business. Availability in consumer applications follows product-specific rollouts and plan eligibility.
+    links:
+    - name: Google - Introducing Gemini Omni 1.2 Flash
+      url: https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash
+- section: Open Weights Expand from Giant Multimodal Models to Dense Coding Models
+  date: '2026-11-07'
+  topics:
+  - title: Moonshot releases Kimi K3.1 Pro weights with a one-million-token context
+    description: >
+      Moonshot released Kimi K3.1 Pro weights this week, extending its multimodal
+      model family for coding, research and tool-using agents.
+
+      Key developments:
+
+      - The model card lists a 2.8-trillion-parameter mixture-of-experts model,
+      104 billion active parameters, text and image input, and a one-million-token context
+
+      - Moonshot reports 65.7 on Terminal-Bench 4.0 but 31.5 on Program Bench,
+      illustrating that strong results on one coding evaluation do not imply uniform leadership
+
+      - Weights use the custom Kimi K3.1 Pro License, not Apache 2.0; teams should
+      review its terms and hardware requirements before self-hosting
+    questions:
+    - question: Is Kimi K3.1 Pro an unrestricted open-source model?
+      answer: It is an open-weight model under a custom Kimi K3.1 Pro License. Downloadable weights do not remove licensing conditions or the substantial infrastructure requirements of a 2.8-trillion-parameter model.
+    links:
+    - name: Moonshot - Kimi K3.1 Pro model card and weights
+      url: https://huggingface.co/moonshotai/Kimi-K3.1-Pro
+  - title: Ricursive releases Ripple-65B Preview under Apache 2.0
+    description: >
+      Ricursive introduced Ripple-65B Preview on November 4, a dense model trained
+      from scratch with an emphasis on agentic coding and local deployment.
+
+      Key developments:
+
+      - The release includes instruction-tuned BF16 and NVFP4 checkpoints and a
+      BF16 base model, with 65 billion parameters and support for up to one million context tokens
+
+      - Ricursive reports training on 12 trillion tokens and a Terminal-Bench 2.1
+      score of about 80.5; these are lab-reported results sensitive to evaluation setup
+
+      - The Apache-2.0 release provides a more permissively licensed alternative,
+      but its own model card shows weaker results on some other coding benchmarks
+    questions:
+    - question: What makes Ripple-65B Preview different from a mixture-of-experts model?
+      answer: Ripple is a dense 65B-parameter Transformer rather than an MoE model with a larger total parameter pool and selectively activated experts. It is released under Apache 2.0 with base and instruction-tuned checkpoints.
+    - question: Does Ripple's Terminal-Bench score prove it is the best coding model?
+      answer: No. The score is reported by Ricursive under specific harness and precision settings, and performance varies across benchmarks. Teams should test their own workloads rather than generalize from one leaderboard.
+    links:
+    - name: Ricursive - Introducing Ripple-65B Preview
+      url: https://www.ricursive.com/ripple
+    - name: Ricursive - Model card, weights and Apache 2.0 license
+      url: https://huggingface.co/ricursiveAI/Ripple-65B-Preview
 - section: Frontier Models Advance in Cybersecurity and Long-Running Work
   date: '2026-10-31'
   topics:
