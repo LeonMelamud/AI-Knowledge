@@ -547,11 +547,20 @@ tools:
 - id: productivity
   title: Productivity Tools
   items:
-  - name: NotebookLM
+  - name: Gemini Notebook (NotebookLM)
     company: Google
-    url: https://notebooklm.google/
+    url: https://notebook.google.com/
     description: |
-      NotebookLM is an AI-powered tool by Google designed to enhance productivity by integrating machine learning capabilities into digital note-taking. It helps users organize, search, and analyze their notes more efficiently, providing insights and recommendations based on the content.
+      Gemini Notebook, formerly NotebookLM, is Google's source-grounded AI research notebook. It helps users understand and synthesize material they add to a notebook, rather than simply organize digital notes.
+
+      Key capabilities:
+      - Answers questions about your sources with citations and relevant quotes
+      - Works with documents, slides and web pages as research material
+      - Creates summaries, study guides and briefing documents from your sources
+      - Generates Audio Overviews that discuss the material and connect topics
+      - Creates Video Overviews and slide decks, with controls to review the outline and guide content and visual style before generation
+
+      It is useful for students, researchers and professionals who need to learn from a collection of sources or turn research into explanations. Generated answers and overviews still need fact-checking against the original material.
  
   - name: Gamma
     company: Gamma
