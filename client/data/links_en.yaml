@@ -28,9 +28,8 @@ tools:
       - Document understanding and summarization
       - Creative writing with attention to style and tone
       - Code assistance with explanation capabilities
-      - Reduced tendency toward hallucination compared to some competitors
 
-      Claude is particularly useful for researchers, writers, business professionals, and developers who need to process large documents, generate thoughtful content, or engage in complex problem-solving. Anthropic's Constitutional AI approach aims to create systems that are both powerful and aligned with human values and safety considerations. Model availability and context limits vary by product and plan.
+      Claude is particularly useful for researchers, writers, business professionals, and developers who need to process large documents, generate thoughtful content, or engage in complex problem-solving. Anthropic's Constitutional AI approach aims to create systems that are both powerful and aligned with human values and safety considerations. Model availability and context limits vary by product and plan. Claude can still generate incorrect information; important claims should be checked against original sources.
   - name: Gemini
     company: Google
     url: https://gemini.google.com/
@@ -93,7 +92,7 @@ tools:
 
   - name: DeepSeek
     company: DeepSeek, Inc.
-    url: https://platform.deepseek.com/api-docs/
+    url: https://api-docs.deepseek.com
     description: |
       DeepSeek offers a powerful API for conversational AI and code generation, featuring its latest open-weight chat and reasoning models. It provides robust capabilities for integrating AI into applications, supporting both chat and coding functionalities.
       
@@ -159,7 +158,7 @@ tools:
     company: Google
     url: https://github.com/google-gemini/gemini-cli
     description: |
-      Gemini CLI is Google's open-source terminal AI agent powered by Gemini. It brings a large context window, built-in web grounding and MCP support to the command line, with generous free usage for individual developers.
+      Gemini CLI is Google's open-source terminal AI agent powered by Gemini. It brings a large context window, built-in web grounding and MCP support to the command line. Google has transitioned free individual users and Google AI Pro and Ultra subscribers to Antigravity CLI. Gemini CLI remains available through Gemini Code Assist Standard and Enterprise licenses and supported paid API access; availability and quotas depend on the authentication method and account.
   - name: Continue
     company: Continue, Inc.
     url: https://www.continue.dev/
