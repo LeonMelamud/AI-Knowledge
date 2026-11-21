@@ -2,6 +2,192 @@
 # מקטעים בני יותר מ-6 חודשים מוסתרים אוטומטית (client/src/lib/data.ts)
 # וניתן להסירם פיזית עם: node client/scripts/prune-news.mjs
 hot_news:
+- section: מודלים מתקדמים מתחרים ביעילות ובעבודה יומיומית עם סוכנים
+  date: '2026-11-21'
+  topics:
+  - title: OpenAI משיקה את GPT-6.2 Astra ו-Sol לעבודה מקצועית ויומיומית
+    description: >
+      OpenAI הציגה השבוע את GPT-6.2 Astra ו-Sol, עם דגש על תוצרים מקצועיים
+      משופרים וצמצום השימוש בטוקנים בתהליכי עבודה מרובי שלבים.
+
+      התפתחויות מרכזיות:
+
+      - מחיר Astra הוא 8 דולר למיליון טוקני קלט ו-40 דולר למיליון טוקני פלט,
+      נמוך ב-20% מ-GPT-6 Astra; מחירי הטוקנים של Sol ב-API נשארים ללא שינוי
+
+      - שני המודלים זמינים ב-ChatGPT Work וב-Codex למנויי Plus, Pro,
+      Enterprise ו-Edu, וכן דרך ה-API של OpenAI
+
+      - מצב Ultrafast מתרחב למנויי Pro 200, תחילה עם Sol; טענות היעילות
+      במבחנים תלויות במשימה, בהגדרות החשיבה ובסביבת הפעלת הסוכן
+    questions:
+    - question: איך לבחור בין GPT-6.2 Astra ל-Sol?
+      answer: OpenAI מייעדת את Astra לפרויקטים המקצועיים המורכבים ביותר ואת Sol לעבודה יומיומית יעילה. כדאי להשוות עלות כוללת למשימה ואיכות ביצוע בתהליכי העבודה שלכם, ולא להסתמך רק על מחיר לטוקן או על מבחן יחיד.
+    links:
+    - name: OpenAI - הצגת GPT-6.2 Astra ו-Sol
+      url: https://openai.com/index/introducing-gpt-6-2-astra-sol
+    - name: OpenAI - כרטיס המערכת של GPT-6.2
+      url: https://deploymentsafety.openai.com/gpt-6-2-astra-sol
+  - title: Google משיקה את Gemini 4 Neon בין Hydrogen ל-Carbon
+    description: >
+      Google הכריזה ב-18 בנובמבר על Gemini 4 Neon למשימות קוד מורכבות,
+      חשיבה אנליטית ותהליכי עבודה מדעיים.
+
+      התפתחויות מרכזיות:
+
+      - המחיר הוא 3 דולר למיליון טוקני קלט ו-15 דולר למיליון טוקני פלט,
+      עם חלון הקשר של מיליון טוקנים וארבע רמות חשיבה
+
+      - ההשקה כוללת את Gemini API בתשלום, את Gemini for business וגישה
+      למנויי Google AI Pro ו-Ultra באפליקציית Gemini וב-Antigravity
+
+      - Google ממקמת את Neon בין משימות היומיום המהירות של Hydrogen
+      לפרויקטים הממושכים והקשים ביותר של Carbon; דירוגים משתנים לפי סביבת ההערכה
+    questions:
+    - question: האם Gemini 4 Neon מחליף את Carbon או את Hydrogen?
+      answer: לא. Google מציגה את Neon כאיזון בין עומק ליעילות בעבודה מורכבת ותכופה. Hydrogen ממשיך להתמקד בביצוע יומיומי מהיר, ו-Carbon בבעיות המורכבות ביותר הדורשות עבודה ממושכת.
+    links:
+    - name: Google - הצגת Gemini 4 Neon
+      url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon
+- section: צוותי סוכנים מתמשכים ועולמות אינטראקטיביים מגיעים ליותר משתמשים
+  date: '2026-11-21'
+  topics:
+  - title: Devin Bots מתאמים עבודה הנדסית מתמשכת באמצעות סשנים נפרדים
+    description: >
+      השקת Devin Bots של Cognition מוסיפה שכבת תיאום מתמשכת מעל סשנים
+      בודדים של כתיבת קוד, עם דיווח מרוכז וזיכרון.
+
+      התפתחויות מרכזיות:
+
+      - הבוט אחראי לתוצאה, מתכנן את העבודה ומפעיל סשנים נפרדים, כל אחד
+      עם מכונה משלו, במקום לטפל רק במשימת קוד מבודדת
+
+      - אוטומציות יכולות לפעול לפי לוח זמנים או אירועים; אישורים, החלטות
+      ובקשות מיזוג הדורשים תשומת לב אנושית נאספים ברשימה ייעודית
+
+      - לבוטים חיבורים וסודות משלהם, ולכן חשוב לשלוט בהרשאות בעת שיתוף;
+      העבודה נספרת במסגרת מכסת השימוש של המסלול הקיים
+    questions:
+    - question: במה Devin Bot שונה מסשן רגיל של Devin?
+      answer: הבוט מתאם כמה סשנים לאורך זמן ושומר זיכרון, בעוד שכל סשן מבצע חלק מהעבודה במכונה משלו. אישורים ובדיקה אנושית נשארים חלק מתהליך העבודה.
+    links:
+    - name: Cognition - תיעוד Devin Bots
+      url: https://docs.devin.ai/work-with-devin/bots
+    - name: Cognition - גישה ואבטחה של בוטים
+      url: https://docs.devin.ai/work-with-devin/bots/access-and-security
+  - title: Genie 4 יוצא מתצוגת המחקר ל-Project Genie למנויי Ultra זכאים
+    description: >
+      Google הרחיבה את הגישה ל-Genie 4 דרך חוויית Project Genie חדשה,
+      בהמשך להכרזה הקודמת על תצוגת המחקר.
+
+      התפתחויות מרכזיות:
+
+      - מנויי Google AI Ultra זכאים יכולים לחקור עולמות אינטראקטיביים,
+      לערוך אותם בטקסט תוך כדי סשן ולשמוע אודיו מובנה המשתנה עם הסצנה
+
+      - סוכן Project Genie מסייע ביצירת עולמות, וגלריה קהילתית מאפשרת
+      גילוי, פרסום ועיבוד מחדש; מנויי Pro יכולים להצטרף לרשימת המתנה
+
+      - הווידאו והאודיו שנוצרים כוללים סימון SynthID; Google עדיין מתארת
+      מודלי עולם מחקריים עם מגבלות בהשהיה, בפיזיקה ובהתמדה של הסצנה
+    questions:
+    - question: האם כל מנוי Gemini יכול להשתמש כעת ב-Genie 4?
+      answer: לא. הרחבת הגישה מיועדת למנויי Google AI Ultra זכאים דרך Project Genie. מנויי Google AI Pro יכולים להצטרף לרשימת המתנה; זו אינה גישה כללית ללא הגבלות.
+    links:
+    - name: Google - Genie 4 זמין כעת ב-Project Genie
+      url: https://blog.google/innovation-and-ai/models-and-research/google-deepmind/genie-4-now-available-project-genie/
+- section: השלמת הפער - מודלים טכניים חזקים יותר וביצוע יומיומי מהיר יותר
+  date: '2026-11-12'
+  topics:
+  - title: Anthropic מציגה את Claude Fable 5.2 ואת Mythos 5.2 בגישה מוגבלת
+    description: >
+      ההשקה של Anthropic מ-9 בנובמבר מקדמת חשיבה טכנית, קוד וראייה,
+      תוך הבחנה בין גרסה זמינה לציבור לגרסה הדורשת אימות.
+
+      התפתחויות מרכזיות:
+
+      - Fable ו-Mythos מבוססים על אותו מודל; ל-Fable הגנות חזקות יותר
+      בתחומי הסייבר והביולוגיה, ואילו Mythos דורש גישה דרך תוכניות אימות
+
+      - המחיר הרגיל ב-API הוא 8 דולר למיליון טוקני קלט ו-40 דולר למיליון
+      טוקני פלט; Anthropic מדווחת על יצירת פלט מהירה בעד 30% מגרסה 5.1
+
+      - Anthropic ממליצה על Opus 5.5 לרוב משימות הקוד ועבודת הידע היומיומיות,
+      ועל Fable למשימות פתוחות ושאפתניות או כמודל מייעץ ומתאם
+    questions:
+    - question: האם Claude Fable 5.2 ו-Mythos 5.2 הם מודלי בסיס שונים?
+      answer: לא. לפי Anthropic הם מבוססים על אותו מודל, אך נבדלים בהגנות ובתנאי הגישה. Mythos מוגבל לתוכניות אימות מאושרות, ואילו Fable הוא הגרסה הזמינה באופן רחב.
+    links:
+    - name: Anthropic - הצגת Claude Fable 5.2 ו-Mythos 5.2
+      url: https://www.anthropic.com/claude-fable-and-mythos-5-2
+  - title: Gemini 4 Hydrogen מתמקד בקוד מהיר ובתהליכי סוכנים רב-מודאליים
+    description: >
+      Google הציגה ב-12 בנובמבר את Gemini 4 Hydrogen כמודל היומיומי
+      המהיר במשפחה, עם תמיכה בהפעלת כלים במקביל.
+
+      התפתחויות מרכזיות:
+
+      - מחיר ה-API אחיד לאורך חלון הקשר של מיליון טוקנים ועומד על
+      1.50 דולר למיליון טוקני קלט ו-7.50 דולר למיליון טוקני פלט
+
+      - Google מדווחת על השלמת משימות מהר פי 2.5 מ-Gemini 3.8 Flash
+      בהגדרת החשיבה הגבוהה המשמשת כברירת מחדל; זו השוואה של הספק
+
+      - קלט רב-מודאלי מובנה ועד מיליון טוקני פלט תומכים בתוצרים ארוכים,
+      ותהליכי תיאום בין מודלים יכולים להעביר משימות ביצוע ל-Hydrogen
+    questions:
+    - question: לאילו משימות מיועד Gemini 4 Hydrogen?
+      answer: Google מייעדת את Hydrogen לקוד יומיומי, לבניית אבות טיפוס ולהפעלת סוכנים כשהמהירות חשובה. השיפור המוצהר במהירות תלוי בעומס העבודה, וכדאי לבדוק אותו עם הכלים והגדרות החשיבה שלכם.
+    links:
+    - name: Google - הצגת Gemini 4 Hydrogen
+      url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/
+- section: השלמת הפער - ממשקי החלטה ומשקולות רב-מודאליות להורדה
+  date: '2026-11-12'
+  topics:
+  - title: Gemini Decisions API מדרג אפשרויות מוגדרות במקום לייצר טקסט חופשי
+    description: >
+      Google השיקה ב-11 בנובמבר את Gemini Decisions API, המבוסס על
+      Gemini Decision 1 לניתוב, לבדיקות מדיניות ולהחלטות מוגדרות אחרות.
+
+      התפתחויות מרכזיות:
+
+      - קלט משותף אחד יכול לשלב טקסט, תמונות, אודיו, וידאו ומסמכי PDF
+      עד 256 אלף טוקנים, לצד עד 1,000 שאלות עצמאיות
+
+      - שאלות כן או לא, שאלות בחירה ודירוג לפי מחוון מחזירים הסתברויות
+      או ערכי ביטחון במקום תשובות בטקסט פתוח
+
+      - המחיר המוצהר הוא 0.10 דולר למיליון טוקני קלט, ללא חיוב על טוקני
+      פלט; מקרים עם ביטחון נמוך ניתנים להעברה למנגנון חלופי או לבודק אנושי
+    questions:
+    - question: האם Gemini Decision 1 מחליף מודל שיחה?
+      answer: לא. הוא מדרג אפשרויות ומחוונים שהוגדרו מראש במקום לכתוב תשובות חופשיות. הוא מיועד כרכיב במשימות כמו בחירת כלים, ניתוב בקשות ובדיקת מדיניות.
+    links:
+    - name: Google - Gemini Decisions API
+      url: https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api
+  - title: Thinking Machines מפרסמת את משקולות Inkling 2 Small לאחר ההשקה בשירות מתארח
+    description: >
+      משקולות Inkling 2 Small הפכו לזמינות להורדה ב-12 בנובמבר,
+      והרחיבו את הגישה מעבר להשקה המקורית בשירות Tinker.
+
+      התפתחויות מרכזיות:
+
+      - מודל תערובת המומחים כולל 594 מיליארד פרמטרים, 17 מיליארד פעילים
+      לכל טוקן, קלט טקסט ותמונה וחלון הקשר של עד מיליון טוקנים
+
+      - גרסאות ברישיון Apache-2.0 כוללות NVFP4 מקורי וחלופת MXFP8;
+      Tinker ממשיך לספק הרצה והתאמה אישית בשירות מתארח
+
+      - כרטיס המודל דורש לפחות 500GB זיכרון GPU מצטבר ל-NVFP4
+      ו-800GB ל-MXFP8; השם Small אינו אומר שהמודל רץ במחשב נייד רגיל
+    questions:
+    - question: האם אפשר להריץ את Inkling 2 Small באופן עצמאי במחשב נייד רגיל?
+      answer: לא בגרסאות המלאות שפורסמו. כרטיס המודל דורש אשכול מעבדים גרפיים עם לפחות 500GB זיכרון VRAM מצטבר ל-NVFP4 או 800GB ל-MXFP8, אף שרק 17 מיליארד פרמטרים פעילים לכל טוקן.
+    links:
+    - name: Thinking Machines - כרטיס המודל והמשקולות של Inkling 2 Small
+      url: https://huggingface.co/thinkingmachines/Inkling-2-Small
+    - name: Thinking Machines - עדכון שחרור המשקולות
+      url: https://tinker-docs.thinkingmachines.ai/changelog
 - section: מודלי סייבר מרחיבים מחקר חולשות מורשה בקנה מידה גדול
   date: '2026-11-07'
   topics:

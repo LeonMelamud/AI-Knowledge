@@ -2,6 +2,192 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+- section: Frontier Models Compete on Efficiency and Everyday Agent Work
+  date: '2026-11-21'
+  topics:
+  - title: OpenAI releases GPT-6.2 Astra and Sol for professional and everyday work
+    description: >
+      OpenAI introduced GPT-6.2 Astra and Sol this week, emphasizing better
+      professional outputs and lower token use in multi-step workflows.
+
+      Key developments:
+
+      - Astra costs $8 per million input tokens and $40 per million output tokens,
+      20% below GPT-6 Astra; Sol retains its predecessor's API token prices
+
+      - Both models are available in ChatGPT Work and Codex for Plus, Pro,
+      Enterprise and Edu users, and through the OpenAI API
+
+      - Ultrafast expands to Pro 200 subscribers starting with Sol; claimed
+      benchmark efficiency gains depend on the task, reasoning settings and harness
+    questions:
+    - question: How should teams choose between GPT-6.2 Astra and Sol?
+      answer: OpenAI positions Astra for its hardest professional projects and Sol for efficient everyday work. Compare total task cost and completion quality on your own workflows rather than relying only on token prices or a single benchmark.
+    links:
+    - name: OpenAI - Introducing GPT-6.2 Astra and Sol
+      url: https://openai.com/index/introducing-gpt-6-2-astra-sol
+    - name: OpenAI - GPT-6.2 system card
+      url: https://deploymentsafety.openai.com/gpt-6-2-astra-sol
+  - title: Google launches Gemini 4 Neon between Hydrogen and Carbon
+    description: >
+      Google announced Gemini 4 Neon on November 18 for complex coding,
+      analytical reasoning and scientific workflows.
+
+      Key developments:
+
+      - Pricing is $3 per million input tokens and $15 per million output tokens,
+      with a one-million-token context window and four thinking levels
+
+      - Rollout includes the paid Gemini API, Gemini for business, and Google AI
+      Pro and Ultra access in the Gemini app and Antigravity
+
+      - Google positions Neon between fast everyday Hydrogen tasks and Carbon's
+      hardest long-running projects; leaderboard results vary by evaluation setup
+    questions:
+    - question: Does Gemini 4 Neon replace Carbon or Hydrogen?
+      answer: No. Google presents Neon as a balance of depth and efficiency for frequent complex work. Hydrogen remains oriented toward fast everyday execution, while Carbon targets the hardest long-horizon problems.
+    links:
+    - name: Google - Introducing Gemini 4 Neon
+      url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon
+- section: Persistent Agent Teams and Interactive Worlds Reach More Users
+  date: '2026-11-21'
+  topics:
+  - title: Devin Bots coordinate ongoing engineering work across child sessions
+    description: >
+      Cognition's Devin Bots launch adds a persistent coordination layer above
+      individual coding sessions, with shared reporting and memory.
+
+      Key developments:
+
+      - A Bot owns an outcome, plans the work and starts child sessions, each
+      with its own machine, rather than handling only one isolated coding task
+
+      - Automations can run on schedules or events; approvals, decisions and
+      pull requests needing human attention are collected in a dedicated list
+
+      - Bots have their own connections and secrets, making access controls
+      important when sharing them; work counts toward the existing plan's usage
+    questions:
+    - question: How is a Devin Bot different from a regular Devin session?
+      answer: A Bot coordinates multiple sessions over time and retains memory, while each child session carries out a piece of work on its own machine. Human approvals and review remain part of the workflow.
+    links:
+    - name: Cognition - Devin Bots documentation
+      url: https://docs.devin.ai/work-with-devin/bots
+    - name: Cognition - Bot access and security
+      url: https://docs.devin.ai/work-with-devin/bots/access-and-security
+  - title: Genie 4 moves from research preview into Project Genie for eligible Ultra users
+    description: >
+      Google expanded access to Genie 4 through a new Project Genie experience,
+      following the earlier research-preview announcement.
+
+      Key developments:
+
+      - Eligible Google AI Ultra subscribers can explore interactive worlds
+      with mid-session text edits and native audio that adapts to the scene
+
+      - A Project Genie agent helps create worlds, while a community gallery
+      supports discovery, publishing and remixing; Pro users can join a waitlist
+
+      - Generated video and audio carry SynthID watermarks; Google still describes
+      these as research world models with latency, physics and persistence limitations
+    questions:
+    - question: Can every Gemini subscriber use Genie 4 now?
+      answer: No. The expanded rollout is for eligible Google AI Ultra subscribers through Project Genie. Google AI Pro members can join the waitlist; this is not unrestricted general access.
+    links:
+    - name: Google - Genie 4 is now available in Project Genie
+      url: https://blog.google/innovation-and-ai/models-and-research/google-deepmind/genie-4-now-available-project-genie/
+- section: Catch-Up - Stronger Technical Models and Faster Everyday Execution
+  date: '2026-11-12'
+  topics:
+  - title: Anthropic introduces Claude Fable 5.2 and restricted Mythos 5.2
+    description: >
+      Anthropic's November 9 release advances technical reasoning, coding and
+      vision while distinguishing generally available and verified-access variants.
+
+      Key developments:
+
+      - Fable and Mythos share the same underlying model; Fable has stronger
+      cyber and biology safeguards, while Mythos requires verification-program access
+
+      - Standard API pricing is $8 per million input tokens and $40 per million
+      output tokens; Anthropic reports output generation up to 30% faster than 5.1
+
+      - Anthropic recommends Opus 5.5 for most everyday coding and knowledge work,
+      with Fable for ambitious open-ended tasks or as an advisor and orchestrator
+    questions:
+    - question: Are Claude Fable 5.2 and Mythos 5.2 separate base models?
+      answer: No. Anthropic says they share the same underlying model but differ in safeguards and access. Mythos is limited to approved verification programs, while Fable is the broadly available variant.
+    links:
+    - name: Anthropic - Introducing Claude Fable 5.2 and Mythos 5.2
+      url: https://www.anthropic.com/claude-fable-and-mythos-5-2
+  - title: Gemini 4 Hydrogen targets fast coding and multimodal agent workflows
+    description: >
+      Google introduced Gemini 4 Hydrogen on November 12 as the fast everyday
+      member of its model family, with support for parallel tool use.
+
+      Key developments:
+
+      - Flat API pricing is $1.50 per million input tokens and $7.50 per million
+      output tokens across a one-million-token context window
+
+      - Google reports tasks completed 2.5 times faster than Gemini 3.8 Flash
+      at Hydrogen's default high thinking setting; this is a vendor comparison
+
+      - Native multimodal input and up to one million output tokens support
+      long deliverables, while orchestrated workflows can delegate execution to Hydrogen
+    questions:
+    - question: What is Gemini 4 Hydrogen intended for?
+      answer: Google positions Hydrogen for everyday coding, prototyping and agent execution where speed matters. Its announced speedup is workload-dependent and should be tested with your tools and reasoning settings.
+    links:
+    - name: Google - Introducing Gemini 4 Hydrogen
+      url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/
+- section: Catch-Up - Decision APIs and Downloadable Multimodal Weights
+  date: '2026-11-12'
+  topics:
+  - title: Gemini Decisions API scores bounded choices instead of generating prose
+    description: >
+      Google launched the Gemini Decisions API on November 11, powered by
+      Gemini Decision 1 for routing, policy checks and other bounded judgments.
+
+      Key developments:
+
+      - One shared input can combine text, images, audio, video and PDFs up to
+      256K tokens, alongside up to 1,000 independent questions
+
+      - Yes/no checks, multiple-choice questions and rubric scores return
+      probabilities or confidence values rather than open-ended answer text
+
+      - Announced pricing is $0.10 per million input tokens with no billed output
+      tokens; low-confidence cases can be routed to a fallback or human reviewer
+    questions:
+    - question: Is Gemini Decision 1 a replacement for a conversational model?
+      answer: No. It scores predefined choices and rubrics instead of writing free-form responses. It is designed as a component for tasks such as selecting tools, routing requests and checking policies.
+    links:
+    - name: Google - Gemini Decisions API
+      url: https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api
+  - title: Thinking Machines publishes Inkling 2 Small weights after its hosted launch
+    description: >
+      Inkling 2 Small gained downloadable weights on November 12, extending
+      access beyond the original hosted Tinker release.
+
+      Key developments:
+
+      - The mixture-of-experts model has 594 billion total parameters, 17 billion
+      active per token, text and image input, and a context window up to one million tokens
+
+      - Apache-2.0 checkpoints include native NVFP4 and an MXFP8 alternative;
+      Tinker continues to provide hosted inference and fine-tuning
+
+      - The model card specifies at least 500GB aggregated GPU memory for NVFP4
+      and 800GB for MXFP8; Small does not mean it runs on a typical laptop
+    questions:
+    - question: Can Inkling 2 Small be self-hosted on an ordinary laptop?
+      answer: Not as the full published checkpoints. The model card calls for a GPU cluster with at least 500GB aggregated VRAM for NVFP4 or 800GB for MXFP8, despite only 17 billion parameters being active per token.
+    links:
+    - name: Thinking Machines - Inkling 2 Small model card and weights
+      url: https://huggingface.co/thinkingmachines/Inkling-2-Small
+    - name: Thinking Machines - Open-weights release update
+      url: https://tinker-docs.thinkingmachines.ai/changelog
 - section: Cybersecurity Models Scale Up Authorized Vulnerability Research
   date: '2026-11-07'
   topics:
