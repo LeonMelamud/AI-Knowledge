@@ -369,17 +369,17 @@ tools:
     company: Pika ai
     url: https://pika.art/home
     description: |
-      Pika AI is a powerful text-to-video and image-to-video generation platform that enables users to create high-quality, customizable video content with minimal effort. It transforms both textual descriptions and static images into dynamic, fluid videos with precise control over style, motion, and visual elements.
+      Pika is an AI creative platform for generating and editing video, images, and sound. Its task-focused apps combine Pika's own models with models from other providers, letting users start from a prompt or work with their own media.
 
       Key capabilities:
-      - Text-to-video generation from detailed prompts with style control
-      - Image-to-video transformation that animates static images with natural motion
-      - Video editing and enhancement of existing footage
-      - Customizable video parameters including duration, aspect ratio, and motion intensity
-      - Style transfer options for artistic and creative video effects
-      - User-friendly interface requiring minimal technical expertise
+      - Video Studio generates clips from text prompts and visual references
+      - Pikaframes creates motion between still images, while Motion Transfer animates a character from a photo using a motion reference
+      - Swap Anything changes subjects, outfits, or settings in existing footage; Extend Video generates material before or after a clip
+      - Color grading and relighting tools adjust the look of images and video
+      - Image Studio, Edit Image, and Character Studio support image creation, editing, and reusable character references
+      - Audio apps generate music, speech, and sound effects; Pika Soundtrack creates audio to match a video
 
-      Pika AI is particularly valuable for content creators, marketers, educators, and artists who need to produce engaging video content without extensive video production skills or resources. It excels at creating short-form content for social media, product demonstrations, educational animations, and creative projects.
+      Pika is useful for content creators, marketers, filmmakers, and designers producing social clips, product visuals, and creative experiments. Available settings and reference inputs depend on the app and model, so users should check those options before generating.
 
 
   - name: Runway
