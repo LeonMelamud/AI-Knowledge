@@ -2,6 +2,101 @@
 # Sections older than 6 months are hidden automatically (client/src/lib/data.ts)
 # and can be physically removed with: node client/scripts/prune-news.mjs
 hot_news:
+- section: Agents Gain Pull Request Workflows and Server-Delivered Expertise
+  date: '2026-11-28'
+  topics:
+  - title: Claude Ship adds automated PR fixes and policy-based approvals
+    description: >
+      Anthropic launched Claude Ship on November 23 for GitHub repositories on
+      Claude Team and Enterprise plans, extending agents beyond writing code.
+
+      Key developments:
+
+      - Generally available Code Review is joined by two beta agents, PR Steward
+      for CI failures and review feedback, and Claude Approvals for repository policies
+
+      - The /ship command opens and reviews a PR and works through fixes; existing
+      permissions, required checks and branch protection still govern merging
+
+      - Anthropic recommends observe-only approval policies first; AI review can
+      miss bugs and security issues, and token-based usage adds organizational costs
+    questions:
+    - question: Does Claude Ship automatically merge every pull request?
+      answer: No. Approval depends on the team's policy, permissions and branch rules. PR Steward is designed not to approve or merge PRs, and Anthropic recommends starting Claude Approvals in observe-only mode.
+    links:
+    - name: Anthropic - Introducing Claude Ship
+      url: https://claude.com/resources/articles/introducing-claude-ship
+  - title: Skills over MCP enters public beta as Tasks and Elicitation become generally available
+    description: >
+      Anthropic's November 24 update lets MCP servers supply workflow expertise
+      alongside tools and support longer, interactive work in Claude and Claude Code.
+
+      Key developments:
+
+      - Skills load only when needed and update with their server, avoiding a
+      separate installation of instructions for each connected service
+
+      - Tasks lets servers run background operations while Claude continues working;
+      Elicitation lets a server pause for user input or approval before continuing
+
+      - Skills is in public beta, with plan-specific availability; Tasks and
+      Elicitation are generally available on Pro, Max and Ultra, with organizational
+      rollout ongoing, while File Uploads is still forthcoming
+    questions:
+    - question: How does Skills over MCP differ from a tool description?
+      answer: A tool description explains what a server can do. A server-delivered skill teaches workflows and best practices for using those tools, and Claude loads that guidance only when relevant. Client support and plan availability still matter.
+    links:
+    - name: Anthropic - Skills over MCP, Tasks and more
+      url: https://claude.com/resources/articles/skills-over-mcp-tasks-and-more
+    - name: MCP - Skills extension overview
+      url: https://modelcontextprotocol.io/extensions/skills/overview
+- section: Looped Models and Runtime Shields Extend AI Infrastructure
+  date: '2026-11-28'
+  topics:
+  - title: Z.ai launches GLM-5.4 with a looped architecture and vision-assisted coding
+    description: >
+      Z.ai introduced GLM-5.4 on November 23, reusing model layers to increase
+      computational depth rather than simply adding parameters.
+
+      Key developments:
+
+      - At the 750B scale, 28 layers of the GLM-5 base run twice, with gated
+      updates, shared attention indices and a hybrid KV cache to contain overhead
+
+      - The release combines coding and vision for tasks including video creation,
+      games and CAD; Z.ai acknowledges overly long marathon-thinking behavior
+
+      - Access is through GLM Coding Plan, ZCode and Z.ai Chat; API access is
+      coming soon and open weights are planned after safety hardening, not yet released
+    questions:
+    - question: Can GLM-5.4 be downloaded or used through its public API now?
+      answer: The launch announcement lists the API as coming soon and says weights are planned after safety hardening. Current access is through Z.ai's hosted products; larger-model performance comparisons are vendor claims, not independent validation.
+    links:
+    - name: Z.ai - GLM-5.4 and its first Loop Transformer
+      url: https://z.ai/blog/glm-5.4
+  - title: OpenAI and Cisco release Shirudo for temporary protection of running Linux systems
+    description: >
+      OpenAI and Cisco announced Shirudo on November 23, an open-source runtime
+      that helps defenders protect services while permanent patches are prepared.
+
+      Key developments:
+
+      - Agents can develop and test targeted eBPF shields; an operator approves
+      deployment, and services can keep running without a restart
+
+      - Cryptographic signatures and eBPF verification support deployment controls,
+      with TPM-backed evidence for checking protections loaded or removed
+
+      - A controlled test blocked a Java4Shell exploit against Elasticsearch using
+      a Codex-generated shield; this is not a guarantee against all vulnerabilities
+    questions:
+    - question: Does Shirudo replace installing security patches?
+      answer: No. Its shields are temporary mitigations that need testing and operator approval while teams prepare permanent patches. The published demonstration is a controlled example, not proof that every exploit can be blocked safely.
+    links:
+    - name: OpenAI - Introducing Shirudo with Cisco
+      url: https://openai.com/index/introducing-shirudo
+    - name: Shirudo - Open-source repository
+      url: https://github.com/shirudo-dev/shirudo
 - section: Frontier Models Compete on Efficiency and Everyday Agent Work
   date: '2026-11-21'
   topics:
